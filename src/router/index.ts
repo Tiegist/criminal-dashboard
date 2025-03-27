@@ -72,8 +72,17 @@ const router = createRouter({
       path: '/form-elements',
       name: 'Form Elements',
       component: () => import('../views/Forms/FormElements.vue'),
+      
       meta: {
         title: 'Form Elements',
+      },
+    },
+    {
+      path: '/PrisonerHistory',
+      name: 'PrisonerHistory',
+      component: () => import('../views/Criminal/PrisonerHistory.vue'),
+      meta: {
+        title: 'prisoner History',
       },
     },
     {

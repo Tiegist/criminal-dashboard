@@ -282,6 +282,7 @@ const menuGroups = [
         icon: ListIcon,
         subItems: [
           { name: "Form Elements", path: "/form-elements", pro: false },
+          { name: "prisoner history", path: "/PrisonerHistory", pro: false },
         ],
       },
     ],
