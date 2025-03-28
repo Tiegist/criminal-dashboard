@@ -282,7 +282,13 @@ const menuGroups = [
         icon: ListIcon,
         subItems: [
           { name: "Form Elements", path: "/form-elements", pro: false },
+<<<<<<< Updated upstream
           { name: "prisoner history", path: "/PrisonerHistory", pro: false },
+=======
+          { name: "Prisioner", path: "/Prisioner", pro: false },
+          { name: "Prisioner Apperance", path: "/PrisionerApperance", pro: false },
+          { name: "Prisioner Property", path: "/PrisionerProperty", pro: false },
+>>>>>>> Stashed changes
         ],
       },
     ],
