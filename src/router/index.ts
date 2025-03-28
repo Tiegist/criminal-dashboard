@@ -190,6 +190,25 @@ const router = createRouter({
         title: 'Prisioner',
       },
     },
+    //prisioner apperance
+    {
+      path: '/PrisionerApperance',
+      name: 'PrisionerApperance',
+      component: () => import('../views/Prisioner/PrisionerApperance.vue'),
+      meta: {
+        title: 'PrisionerApperance',
+      },
+    },
+    
+    //prisioner property
+    {
+      path: '/PrisionerProperty',
+      name: 'PrisionerProperty',
+      component: () => import('../views/Prisioner/PrisionerProperty.vue'),
+      meta: {
+        title: 'PrisionerProperty',
+      },
+    },
     
   ],
 })

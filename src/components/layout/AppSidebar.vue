@@ -283,6 +283,9 @@ const menuGroups = [
         subItems: [
           { name: "Form Elements", path: "/form-elements", pro: false },
           { name: "prisoner history", path: "/PrisonerHistory", pro: false },
+          { name: "Prisioner", path: "/Prisioner", pro: false },
+          { name: "Prisioner Apperance", path: "/PrisionerApperance", pro: false },
+          { name: "Prisioner Property", path: "/PrisionerProperty", pro: false },
         ],
       },
     ],

@@ -212,7 +212,9 @@ export default {
       })
       .then(response => {
         let token = response.data.token
+        let user_id = response.data.user_id
         localStorage.setItem('token', token)
+        localStorage.setItem('user_id', user_id)
         
         this.applyHeader(token)
       })
