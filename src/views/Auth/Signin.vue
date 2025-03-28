@@ -213,6 +213,7 @@ export default {
       .then(response => {
         let token = response.data.token
         localStorage.setItem('token', token)
+        
         this.applyHeader(token)
       })
       .catch(error => {
