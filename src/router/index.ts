@@ -88,6 +88,14 @@ const router = createRouter({
       },
     },
     {
+      path: '/CriminalCash',
+      name: 'CriminalCash',
+      component: () => import('../views/Criminal/CriminalCash.vue'),
+      meta: {
+        title: 'prisoner cash',
+      },
+    },
+    {
       path: '/line-chart',
       name: 'Line Chart',
       component: () => import('../views/Chart/LineChart/LineChart.vue'),
