@@ -506,6 +506,7 @@ import Button from '@/components/ui/Button.vue';
 import FlatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
 import axios from 'axios';
+import router from '@/router'
 // import { Script } from 'vm';
 
 export default {
@@ -536,7 +537,7 @@ export default {
       date_of_release: '',
       release_reason: '',
       date_of_mercy_release: '',
-      user_id: 1,
+      user_id: localStorage.getItem('user_id'),
 
     });
 
@@ -644,8 +645,7 @@ const submitData = async () => {
     });
     console.log('response', response);
     localStorage.setItem('prisioner_history_id', response.data.data.id);
-    // Navigate to the next page
-    // Use this.$router.push('/criminalinfo') inside a component or use a router instance
+    router.push('/PrisionerApperance')
   } catch (error) {
     console.error('Error submitting data:', error);
   }

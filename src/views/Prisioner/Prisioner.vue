@@ -406,7 +406,9 @@ const registerPrisioner = async()=>{
   model.value.prisioner.birth_district  = '';
   model.value.prisioner.birth_town_id  = '';
   model.value.prisioner.ethnic_group_id  = '';
+  router.push('/PrisonerHistory')
 }
+
 onMounted(()=>{
   fetchSex();
   fetchEthnic();

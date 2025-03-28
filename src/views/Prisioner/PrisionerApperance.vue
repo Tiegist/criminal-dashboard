@@ -350,10 +350,9 @@
   import { ref ,reactive, onMounted} from 'vue'
   import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
   import AdminLayout from '@/components/layout/AdminLayout.vue'
-  import router from '@/router'
   import flatPickr from 'vue-flatpickr-component'
   import axios from 'axios'
-  
+  import router from '@/router'
 //   const sexes = ref([]);
 //   const ethnicGroups = ref([]);
 //   const Towns = ref([]);
@@ -361,7 +360,7 @@
 const hairs = ref([])
   const model = ref({
     prisionerapperance:{
-        prision_history_id:1,
+        prision_history_id:localStorage.getItem('prisioner_history_id'),
         hair_type_id:null,
         height:null,
         face:' ',
@@ -425,11 +424,10 @@ const hairs = ref([])
         'Content-Type':'multipart/form-data'
       }
     })
-    console.log('registered prisoner', response.data.prisioner.id);
-  
-    console.log('prisoner_id', response.data.prisioner.id); 
-  
-    localStorage.setItem('prisoner_id', response.data.prisioner.id); 
+    // console.log('registered prisonerapperance', response.data);
+    
+    
+    // localStorage.setItem('prisoner_id', response.data.prisioner.id); 
     
     model.value.prisionerapperance.prision_history_id  = '';
     model.value.prisionerapperance.hair_type_id  = null;
@@ -443,6 +441,7 @@ const hairs = ref([])
     model.value.prisionerapperance.ear  = '';
     model.value.prisionerapperance.unique_appearance  = '';
     model.value.prisionerapperance.citizenship  = '';
+    router.push('/PrisionerProperty')
   }
   onMounted(()=>{
   
