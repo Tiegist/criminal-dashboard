@@ -283,13 +283,12 @@ const menuGroups = [
         subItems: [
           { name: "Form Elements", path: "/form-elements", pro: false },
           { name: "prisoner history", path: "/PrisonerHistory", pro: false },
-<<<<<<< Updated upstream
           { name: "Prisioner", path: "/Prisioner", pro: false },
           { name: "Prisioner Apperance", path: "/PrisionerApperance", pro: false },
           { name: "Prisioner Property", path: "/PrisionerProperty", pro: false },
-=======
+
           { name: "prisoner cash", path: "/CriminalCash", pro: false },
->>>>>>> Stashed changes
+
         ],
       },
     ],
