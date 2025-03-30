@@ -286,9 +286,11 @@ const menuGroups = [
           { name: "Prisioner", path: "/Prisioner", pro: false },
           { name: "Prisioner Apperance", path: "/PrisionerApperance", pro: false },
           { name: "Prisioner Property", path: "/PrisionerProperty", pro: false },
-
+          { name: "Prisioner Court History", path: "/PrisionerCourtHistory", pro: false },
+          
           { name: "prisoner cash", path: "/CriminalCash", pro: false },
-
+          { name: "User Register", path: "/UserRegister", pro: false },
+          
         ],
       },
     ],
