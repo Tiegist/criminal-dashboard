@@ -217,7 +217,24 @@ const router = createRouter({
         title: 'PrisionerProperty',
       },
     },
-    
+    //prisioner court story
+    {
+      path: '/PrisionerCourtHistory',
+      name: 'PrisionerCourtHistory',
+      component: () => import('../views/Prisioner/PrisionerCourtHistory.vue'),
+      meta: {
+        title: 'PrisionerCourtHistory',
+      },
+    },
+    {
+      path: '/UserRegister',
+      name: 'UserRegister',
+      component: () => import('../views/User/UserRegister.vue'),
+      meta: {
+        title: 'User Register',
+      },
+    },
+     
   ],
 })
 
