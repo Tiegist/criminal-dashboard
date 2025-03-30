@@ -96,6 +96,22 @@ const router = createRouter({
       },
     },
     {
+      path: '/PrisonerCrimes',
+      name: 'PrisonerCrimes',
+      component: () => import('../views/Criminal/PrisonerCrimes.vue'),
+      meta: {
+        title: 'prisoner crimes',
+      },
+    },
+    {
+      path: '/MedicalHistory',
+      name: 'MedicalHistory',
+      component: () => import('../views/Criminal/MedicalHistory.vue'),
+      meta: {
+        title: 'Medical History',
+      },
+    },
+    {
       path: '/line-chart',
       name: 'Line Chart',
       component: () => import('../views/Chart/LineChart/LineChart.vue'),
