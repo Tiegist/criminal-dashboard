@@ -4,7 +4,7 @@
         <div class="flex w-full">
         <div class="w-1/2 mr-10">
           <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-            የገንዘብ አይነት 
+            የገንዘቡ አይነት 
           </label>
           <div class="relative z-20 bg-transparent">
             <select
@@ -39,7 +39,7 @@
         </div>
         <div class="w-1/2 mr-10">
           <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-            የብር መጠን
+            የገንዘቡ መጠን
           </label>
           <input
             type="number"
@@ -53,7 +53,7 @@
 
   
       <div class="flex w-full mt-5">
-        <div class="w-1/2 mr-10">
+        <div class="w-1/2 pr-10">
         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
         ቀን 
         </label>
@@ -87,8 +87,8 @@
         </div>
       </div>
       </div>
-    <div class="ml-40">
-      <div class="ml-96 mt-6">
+    <div class="">
+      <div class=" mt-6">
         <Button
           :size="size"
           :variant="variant"
@@ -98,7 +98,7 @@
           :disabled="isDisabled"
           @click="submitData"
         >
-          Next
+        ይቀጥሉ
         </Button>
       </div>
     </div>
@@ -133,7 +133,7 @@
       const cashtypes = ref([]);
 
   
-      const currentPageTitle = ref('Form Elements');
+      const currentPageTitle = ref('የእስረኛው ገንዘብ');
       const date = ref(null);
       const flatpickrConfig = {
         dateFormat: 'Y-m-d',

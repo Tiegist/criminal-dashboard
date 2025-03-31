@@ -1,7 +1,8 @@
 <template>
   <AdminLayout>
     <PageBreadcrumb :pageTitle="currentPageTitle" />
-      <div class="flex w-full">
+    <div class=" ml-">
+      <div class=" w-full">
       <div class="w-1/2 mr-10">
         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
           የእስረኛው ሁኔታ 
@@ -39,7 +40,7 @@
       </div>
 
 
-<div class="w-1/2 mr-10">
+<div class="w-1/2 mr-10 mt-5">
       <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
         የወንጀሉ አይነት
       </label>
@@ -76,19 +77,17 @@
     </div>
   </div>
 
-      <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-          የወንጀሉ ገለጻ
-        </label>
-        <input
-          type="text"
-         v-model="crimes.crime_description"
-       
-          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
-        />
-      </div>
-  <div class="ml-40">
-    <div class="ml-96 mt-6">
+  <div class="w-1/2  mt-5">
+  <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+    የወንጀሉ ገለጻ
+  </label>
+  <textarea
+    v-model="crimes.crime_description"
+    class="dark:bg-dark-900 h-24 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+  ></textarea>
+</div>
+  <div class="">
+    <div class="ml- mt-6">
       <Button
         :size="size"
         :variant="variant"
@@ -98,10 +97,11 @@
         :disabled="isDisabled"
         @click="submitData"
       >
-        Next
+      ይቀጥሉ 
       </Button>
     </div>
   </div>
+</div>
   </AdminLayout>
 </template>
 <script>
@@ -134,7 +134,7 @@ export default {
     const criminalStatus = ref([]);
 
 
-    const currentPageTitle = ref('crime');
+    const currentPageTitle = ref('የእስረኛው መረጃ');
     const date = ref(null);
     const flatpickrConfig = {
       dateFormat: 'Y-m-d',
