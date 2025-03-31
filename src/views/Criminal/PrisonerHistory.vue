@@ -1,10 +1,10 @@
 <template>
   <AdminLayout>
     <PageBreadcrumb :pageTitle="currentPageTitle" />
-      <div class="flex w-full">
-      <div class="w-1/2 mr-10">
+      <div class="flex w-full ">
+      <div class="w-1/2 mr-10 ">
         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-          የታሳሪ ክፍል 
+          የእስረኛው የመቆያ ክፍል 
         </label>
         <div class="relative z-20 bg-transparent">
           <select
@@ -40,7 +40,7 @@
       </div>
       <div class="w-1/2">
         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-          የእስረኛ አይነት 
+          የእስረኛው አይነት 
         </label>
         <div class="relative z-20 bg-transparent">
           <select
@@ -77,10 +77,10 @@
   </div>
 
 <!-- ///// -->
-  <div class="flex w-full">
+  <div class="flex w-full mt-5">
     <div class="w-1/2 mr-10">
       <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-        አሁን የሚኖርበት/የምትኖርበት ዞን 
+        አሁን የሚኖርበት ዞን 
       </label>
       <div class="relative z-20 bg-transparent">
         <select
@@ -152,7 +152,7 @@
     </div>
 </div>
 <!-- ////////////// -->
-<div class="flex w-full">
+<div class="flex w-full mt-5">
     <div class="w-1/2 mr-10">
       <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
         ሀይማኖት 
@@ -189,9 +189,27 @@
         </span>
       </div>
     </div>
-    <div class="w-1/2">
+
+    <div class="w-1/2 ">
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+          የቅርብ ተጠሪ
+        </label>
+        <input
+          type="text"
+          v-model="histories.closest_respondent"
+       
+          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+        />
+      </div>
+ 
+
+</div>
+
+    <div class="flex w-full mt-5">
+
+<div class="w-1/2 mr-10">
       <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-        የቅርብ ተጠሪ ከተማ 
+        የቅርብ ተጠሪ መኖሪያ ከተማ 
       </label>
       <div class="relative z-20 bg-transparent">
         <select
@@ -225,23 +243,9 @@
         </span>
       </div>
     </div>
-</div>
-
-    <div class="flex w-full">
-      <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-          የቅርብ ተጠሪ
-        </label>
-        <input
-          type="text"
-          v-model="histories.closest_respondent"
-       
-          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
-        />
-      </div>
       <div class="w-1/2">
       <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-        የቅርብ ተጠሪ ቀበሌ 
+        የቅርብ ተጠሪ መኖሪያ ቀበሌ 
       </label>
       <input
         type="text"
@@ -355,7 +359,7 @@
     <div class="flex w-full mt-5">
       <div class="w-1/2 mr-10">
         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-          አሁን የሚኖርበት/የምትኖርበት ቀበሌ 
+          አሁን የሚኖርበት ቀበሌ 
         </label>
         <input
     
@@ -382,7 +386,7 @@
     
     
   </div>
-  <div class="flex w-full mt-2">
+  <div class="flex w-full mt-5">
     <div class="w-1/2 mr-10">
       <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
         የመፈቻ ምክንያት
@@ -416,7 +420,7 @@
   <div class="flex w-full mt-5">
     <div class="w-1/2 mr-10">
       <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-        በምህረት የሚፈታበት/የምትፈታበት ቀን 
+        በምህረት የሚፈታበት ቀን 
       </label>
       <div class="relative">
         <flat-pickr
@@ -447,7 +451,7 @@
         </span>
       </div>
     </div>
-    <div class="w-1/2 mr-10">
+    <div class="w-1/2 ">
       <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
         የእስር ቅጣቱ ያለቀበት ቀን
       </label>
@@ -481,8 +485,8 @@
       </div>
     </div>
   </div>
-  <div class="ml-40">
-    <div class="ml-96 mt-6">
+  <div class="">
+    <div class="ml-56 mt-6">
       <Button
         :size="size"
         :variant="variant"
@@ -492,7 +496,7 @@
         :disabled="isDisabled"
         @click="submitData"
       >
-        Next
+        ይቀጥሉ 
       </Button>
     </div>
   </div>
@@ -548,7 +552,7 @@ export default {
     const religions = ref([]);
     const prisonerCells = ref([]);
 
-    const currentPageTitle = ref('Form Elements');
+    const currentPageTitle = ref('የእስረኛው መረጃ');
     const date = ref(null);
     const flatpickrConfig = {
       dateFormat: 'Y-m-d',
