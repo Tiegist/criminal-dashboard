@@ -8,7 +8,7 @@
         <img src="/images/user/owner.jpg" alt="User" />
       </span>
 
-      <span class="block mr-1 font-medium text-theme-sm">Musharof </span>
+      <span class="block mr-1 font-medium text-theme-sm">{{ user.full_name }} </span>
 
       <ChevronDownIcon :class="{ 'rotate-180': dropdownOpen }" />
     </button>
@@ -20,10 +20,10 @@
     >
       <div>
         <span class="block font-medium text-gray-700 text-theme-sm dark:text-gray-400">
-          Musharof Chowdhury
+          {{ user.full_name }}
         </span>
         <span class="mt-0.5 block text-theme-xs text-gray-500 dark:text-gray-400">
-          randomuser@pimjo.com
+          {{ user.user_name }}
         </span>
       </div>
 
@@ -57,45 +57,48 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import { UserCircleIcon, ChevronDownIcon, LogoutIcon, SettingsIcon, InfoCircleIcon } from '@/icons'
-import { RouterLink } from 'vue-router'
-import { ref, onMounted, onUnmounted } from 'vue'
 
-const dropdownOpen = ref(false)
-const dropdownRef = ref(null)
-
-const menuItems = [
-  { href: '/profile', icon: UserCircleIcon, text: 'Edit profile' },
-  { href: '/chat', icon: SettingsIcon, text: 'Account settings' },
-  { href: '/profile', icon: InfoCircleIcon, text: 'Support' },
-]
-
-const toggleDropdown = () => {
-  dropdownOpen.value = !dropdownOpen.value
+export default {
+	data() {
+		return  {
+			dropdownOpen: false,
+			dropdownRef: null,
+			menuItems: [
+			  { href: '/profile', icon: UserCircleIcon, text: 'Edit profile' },
+			  { href: '/chat', icon: SettingsIcon, text: 'Account settings' },
+			  { href: '/profile', icon: InfoCircleIcon, text: 'Support' },
+			],
+		}
+	},
+	components: {
+		UserCircleIcon, ChevronDownIcon, LogoutIcon, SettingsIcon, InfoCircleIcon,
+	},
+	methods: {
+		toggleDropdown: () => {
+			this.dropdownOpen = !this.dropdownOpen
+		},
+		closeDropdown: () => {
+			this.dropdownOpen = false
+		},
+		signOut: () => {
+			this.$store.dispatch('logout');
+			this.closeDropdown()
+		},
+		handleClickOutside: (event) => {
+			if (this.dropdownRef && !this.dropdownRef.contains(event.target)) {
+				this.closeDropdown()
+			}
+		}
+	},
+	computed: {
+		user() { return this.$store.state.user },
+	},
+	mounted() {
+		document.addEventListener('click', this.handleClickOutside)
+  		document.removeEventListener('click', this.handleClickOutside)
+	}
 }
 
-const closeDropdown = () => {
-  dropdownOpen.value = false
-}
-
-const signOut = () => {
-  // Implement sign out logic here
-  console.log('Signing out...')
-  closeDropdown()
-}
-
-const handleClickOutside = (event) => {
-  if (dropdownRef.value && !dropdownRef.value.contains(event.target)) {
-    closeDropdown()
-  }
-}
-
-onMounted(() => {
-  document.addEventListener('click', handleClickOutside)
-})
-
-onUnmounted(() => {
-  document.removeEventListener('click', handleClickOutside)
-})
 </script>

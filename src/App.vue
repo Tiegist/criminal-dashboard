@@ -17,6 +17,7 @@ export default {
   },
   created() {
     this.$store.dispatch('applyHeader')
+    this.$store.dispatch('fetchUser')
   }
 }
 </script>

@@ -23,17 +23,35 @@ const store = createStore({
     state () {
       return {
         apiServer: 'http://127.0.0.1:8000/api/',
+        user: {},
       }
     },
     mutations: {
-      
+      setUser(state, data) {
+        state.user = data
+      }
     },
     actions: {
       applyHeader() {
         if(localStorage.getItem('token')) {
           axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`
           axios.defaults.withCredentials = true        }
-      }
+      },
+      fetchUser( { commit }) {
+        axios.get(this.state.apiServer + 'user')
+          .then(response => {
+            commit('setUser', response.data)
+          })
+          .catch(error => {
+            localStorage.removeItem('token')
+            router.push({ name: 'Signin' });
+          })
+      },
+	  logout() {
+		localStorage.removeItem('token')
+		router.push({ name: 'Signin' });
+	  }
+     
     }
 })
 
