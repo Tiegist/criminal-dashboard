@@ -205,6 +205,15 @@ const router = createRouter({
         title: 'Signup',
       },
     },
+    // Prisioner Stepper
+    {
+      path: '/prisoner-form',
+      name: 'prisonerForm',
+      component: () => import('../views/Prisioner/PrisonerStepper.vue'),
+      meta: {
+        title: 'Prisoner Form',
+      },
+    },
     //prisioner
     {
       path: '/Prisioner',

@@ -1,6 +1,4 @@
 <template>
-  <AdminLayout>
-    <PageBreadcrumb :pageTitle="currentPageTitle" />
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
       <div class="space-y-6">
         <div>
@@ -310,13 +308,10 @@
         </ComponentCard> -->
       </div>
     </div>
-  </AdminLayout>
 </template>
 
 <script setup lang="ts">
 import { ref ,reactive, onMounted} from 'vue'
-import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
-import AdminLayout from '@/components/layout/AdminLayout.vue'
 import router from '@/router'
 import flatPickr from 'vue-flatpickr-component'
 import axios from 'axios'
