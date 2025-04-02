@@ -6,20 +6,20 @@
           <div
             class="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800"
           >
-            <img src="/images/user/owner.jpg" alt="user" />
+            <img :src="users.photo || '/images/user/owner.jpg'" alt="user" />
           </div>
           <div class="order-3 xl:order-2">
             <h4
               class="mb-2 text-lg font-semibold text-center text-gray-800 dark:text-white/90 xl:text-left"
             >
-              tg  
+              {{users.full_name}}
             </h4>
             <div
               class="flex flex-col items-center gap-1 text-center xl:flex-row xl:gap-3 xl:text-left"
             >
-              <p class="text-sm text-gray-500 dark:text-gray-400">Team Manager</p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">የስራ ድርሻ</p>
               <div class="hidden h-3.5 w-px bg-gray-300 dark:bg-gray-700 xl:block"></div>
-              <p class="text-sm text-gray-500 dark:text-gray-400">Arizona, United States</p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">{{roles.name}}</p>
             </div>
           </div>
           <!--  -->
@@ -94,7 +94,7 @@
                     </label>
                     <input
                       type="text"
-                      value="Musharof"
+                        v-model="full_name"
                       class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -103,11 +103,11 @@
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      የአባት ስም 
+                    እድሜ
                     </label>
                     <input
                       type="text"
-                      value="Chowdhury"
+                    v-model="age"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -120,7 +120,7 @@
                     </label>
                     <input
                       type="text"
-                      value="randomuser@pimjo.com"
+                    v-model="user_name"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -129,11 +129,11 @@
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      ስልክ ቁጥር 
+                 ስልክ ቁጥር 
                     </label>
                     <input
                       type="text"
-                      value="+09 363 398 46"
+                    v-model="phone_number"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -146,7 +146,7 @@
                     </label>
                     <input
                       type="text"
-                      value="Team Manager"
+                    v-model="role"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -175,16 +175,71 @@
     </Modal>
   </div>
 </template>
-
 <script setup>
-import { ref } from 'vue'
-import Modal from './Modal.vue'
+import { ref, reactive, onMounted } from 'vue'
+import axios from 'axios'
 
 const isProfileInfoModal = ref(false)
+const users = ref([])
+const roles = ref([])
+const info = reactive({
+  full_name: '',
+  role: null,
+  phone_number: '',
+  user_name: '',
+  age: null,
+  sex: '',
+  address: '',
+  photo: ''
+})
 
-const saveProfile = () => {
-  // Implement save profile logic here
-  console.log('Profile saved')
-  isProfileInfoModal.value = false
+const saveProfile = async () => {
+  const userData = {
+    full_name: info.full_name,
+    role: info.role,
+    phone_number: info.phone_number,
+    user_name: info.user_name,
+    age: info.age,
+    sex: info.sex,
+    address: '',
+    photo: ''
+  }
+
+  try {
+    const response = await axios.post('http://127.0.0.1:8000/api/user', userData, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    console.log('Profile saved', response.data)
+    isProfileInfoModal.value = false
+  } catch (error) {
+    console.error('Error saving profile', error)
+  }
 }
+
+const fetchUser = async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:8000/api/user')
+    users.value = response.data
+    console.log('Users:', users.value)
+  } catch (error) {
+    console.error('Error fetching user information', error)
+  }
+}
+
+const fetchRole = async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:8000/api/user-role')
+    roles.value = response.data
+    console.log('Roles:', roles.value)
+  } catch (error) {
+    console.error('Error fetching roles', error)
+  }
+}
+
+onMounted(() => {
+  fetchUser()
+  fetchRole()
+})
 </script>

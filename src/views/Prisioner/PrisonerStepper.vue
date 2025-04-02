@@ -37,9 +37,9 @@ export default {
     return {
       currentPageTitle: 'New Prisoner Form',
       steps: [
-        { no: 0, name: 'Basic Information' },
-        { no: 1, name: 'Apperance' },
-        { no: 2, name: 'Properties' },
+        { no: 0, name: 'ዋና ዋና መረጃወች' },
+        { no: 1, name: 'የሰዉነት ገጽታ' },
+        { no: 2, name: 'ንብረቶች' },
       ],
       currentStep: 0,
     }

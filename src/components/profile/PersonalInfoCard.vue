@@ -7,34 +7,34 @@
            የግል መረጃ 
           </h4>
 
-          <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32">
+          <div class="grid lg:grid-cols-5 grid-cols-1 gap-4  lg:gap-7 2xl:gap-x-32">
             <div>
-              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ስም</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">Musharof</p>
+              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">ስም</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{users.full_name}}</p>
             </div>
 
             <div>
-              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">የአባት ስም</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">Chowdhury</p>
+              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">እድሜ</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{users.age}}</p>
             </div>
 
             <div>
-              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">
                 ልዩ ስም 
               </p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90">
-                randomuser@pimjo.com
+                {{users.user_name}}
               </p>
             </div>
 
             <div>
-              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ስልክ ቁጥር</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">+09 363 398 46</p>
+              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">ስልክ ቁጥር</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{users.phone_number}}</p>
             </div>
 
             <div>
-              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">የስራ ድርሻ</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">Team Manager</p>
+              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">የስራ ድርሻ</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{users.role}}</p>
             </div>
           </div>
         </div>
@@ -191,14 +191,66 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import Modal from './Modal.vue'
+import { ref, reactive, onMounted } from 'vue'
+import axios from 'axios'
 
 const isProfileInfoModal = ref(false)
+const users = ref([])
+const roles = ref([])
+const info = reactive({
+  full_name: '',
+  role: null,
+  phone_number: '',
+  user_name: '',
+  age: null,
+  sex: ''
+})
 
-const saveProfile = () => {
-  // Implement save profile logic here
-  console.log('Profile saved')
-  isProfileInfoModal.value = false
+const saveProfile = async () => {
+  const userData = {
+    full_name: info.full_name,
+    role: info.role,
+    phone_number: info.phone_number,
+    user_name: info.user_name,
+    age: info.age,
+    sex: info.sex
+  }
+
+  try {
+    const response = await axios.post('http://127.0.0.1:8000/api/user', userData, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    console.log('Profile saved', response.data)
+    isProfileInfoModal.value = false
+  } catch (error) {
+    console.error('Error saving profile', error)
+  }
 }
+
+const fetchUser = async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:8000/api/user')
+    users.value = response.data
+    console.log('Users:', users.value)
+  } catch (error) {
+    console.error('Error fetching user information', error)
+  }
+}
+
+const fetchRole = async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:8000/api/user-role')
+    roles.value = response.data
+    console.log('Roles:', roles.value)
+  } catch (error) {
+    console.error('Error fetching roles', error)
+  }
+}
+
+onMounted(() => {
+  fetchUser()
+  fetchRole()
+})
 </script>
