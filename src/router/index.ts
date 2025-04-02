@@ -35,6 +35,110 @@ const router = createRouter({
         title: 'Towns',
       },
     },  
+    {
+      path: '/hair',
+      name: 'hair',
+      component: () => import('../views/Criminal/Appearance/HairType.vue'),
+      meta: {
+        title: 'የጸጉር አይነት',
+      },
+    },  
+    {
+      path: '/EthnicGroup',
+      name: 'EthnicGroup',
+      component: () => import('../views/Criminal/Appearance/EthnicGroup.vue'),
+      meta: {
+        title: 'ብሄር',
+      },
+    },  
+    {
+      path: '/Courts',
+      name: 'Courts',
+      component: () => import('../views/Criminal/Appearance/Courts.vue'),
+      meta: {
+        title: 'ፍርድ ቤቶች',
+      },
+    },  
+    {
+      path: '/Crimes',
+      name: 'Crimes',
+      component: () => import('../views/Criminal/Appearance/Crimes.vue'),
+      meta: {
+        title: 'የወንጀል አይነቶች ',
+      },
+    },  
+    {
+      path: '/CriminalType',
+      name: 'CriminalType',
+      component: () => import('../views/Criminal/Appearance/CriminalType.vue'),
+      meta: {
+        title: 'የወንጀለኛ አይነቶች ',
+      },
+    },  
+    {
+      path: '/EducationalLevel',
+      name: 'EducationalLevel',
+      component: () => import('../views/Criminal/Appearance/EducationalLevel.vue'),
+      meta: {
+        title: 'የትምህርት ደርጃ ',
+      },
+    },  
+    {
+      path: '/PropertyType',
+      name: 'PropertyType',
+      component: () => import('../views/Criminal/Appearance/PropertyType.vue'),
+      meta: {
+        title: 'የእቃው አይነት ',
+      },
+    },  
+    {
+      path: '/PrisonerCell',
+      name: 'PrisonerCell',
+      component: () => import('../views/Criminal/Appearance/PrisonerCell.vue'),
+      meta: {
+        title: 'የእስረኛው ክፍል',
+      },
+    },  
+    {
+      path: '/Teeths',
+      name: 'Teeths',
+      component: () => import('../views/Criminal/Appearance/Teeths.vue'),
+      meta: {
+        title: 'ጥርስ',
+      },
+    },  
+    {
+      path: '/Noses',
+      name: 'Noses',
+      component: () => import('../views/Criminal/Appearance/Noses.vue'),
+      meta: {
+        title: 'አፍንጫ',
+      },
+    },  
+    {
+      path: '/Lips',
+      name: 'Lips',
+      component: () => import('../views/Criminal/Appearance/Lips.vue'),
+      meta: {
+        title: 'ከንፈር',
+      },
+    },  
+    {
+      path: '/Ears',
+      name: 'Ears',
+      component: () => import('../views/Criminal/Appearance/Ears.vue'),
+      meta: {
+        title: 'ጆሮ ',
+      },
+    },  
+    {
+      path: '/Eyes',
+      name: 'Eyes',
+      component: () => import('../views/Criminal/Appearance/Eyes.vue'),
+      meta: {
+        title: 'አይን',
+      },
+    },  
 
     {
       path: '/religions',

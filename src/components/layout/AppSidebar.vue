@@ -264,6 +264,25 @@ const menuGroups = [
         ],
       },
       {
+        name: "Appearance",
+        icon: ListIcon,
+        subItems: [
+          { name: "የጸጉር አይነት", path: "/hair", pro: false },
+          { name: "ብሄር", path: "/EthnicGroup", pro: false },
+          { name: "ፍርድ ቤቶች", path: "/Courts", pro: false },
+          { name: "የወንጀል አይነቶች", path: "/Crimes", pro: false },
+          { name: "የወንጀለኛ አይነቶች", path: "/CriminalType", pro: false },
+          { name: "የትምህርት ደረጃ", path: "/EducationalLevel", pro: false },
+          { name: "የእቃው አይነት", path: "/PropertyType", pro: false },
+          { name: "የእስረኛው ክፍል", path: "/PrisonerCell", pro: false },
+          { name: "ጥርስ", path: "/Teeths", pro: false },
+          { name: "አፍንጫ", path: "/Noses", pro: false },
+          { name: "ከንፈር", path: "/Lips", pro: false },
+          { name: "ጆሮ", path: "/Ears", pro: false },
+          { name: "የአይን ቀለም", path: "/Eyes", pro: false },
+        ],
+      },
+      {
         name: "System",
         icon: ListIcon,
         subItems: [
