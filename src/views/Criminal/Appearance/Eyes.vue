@@ -3,23 +3,23 @@
 		<PageBreadcrumb :pageTitle="currentPageTitle" />
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
 			<div class="space-y-6">
-				<ComponentCard title="Manage Disease Types">
+				<ComponentCard title="የአይን ቀለም">
 					<div class="space-y-6">
 						<div>
 							<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-								Disease Type
+								የአይን ቀለም 
 							</label>
-							<input type="text" v-model="name" placeholder="Enter Disease Type"
+							<input type="text" v-model="name" placeholder="የአይን ቀለም አይነት ያስገቡ "
 								class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
 						</div>
 					</div>
 
 					<Button size="sm" variant="primary" @click="handleForm"> 
 						<span v-if="!editValue">
-							{{ adding ? 'Adding' : 'Add' }} 
+							{{ adding ? 'በማስገባት ላይ' : 'አስገባ' }} 
 						</span>
 						<span v-else>
-							{{ updating ? 'Updating' : 'Update' }} 
+							{{ updating ? 'በማስተካከል ላይ' : 'አስተካክል' }} 
 						</span>
 					</Button>
 					<Alert
@@ -64,9 +64,9 @@
 									</th>
 
 									<td class="px-6 py-4">
-										<a @click="editEye(eye)"	class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+										<a @click="editEye(eye)"	class="font-medium cursor-pointer text-blue-600 dark:text-blue-500 hover:underline">ያስተካክሉ</a>
 										|
-										<a @click="confirmDelete(eye)" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+										<a @click="confirmDelete(eye)" class="font-medium cursor-pointer text-red-600 dark:text-red-500 hover:underline">ያጥፉ</a>
 									</td>
 								</tr>
 
@@ -80,11 +80,11 @@
 		</div>
 		<div v-if="isModalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
 			<div class="bg-white rounded-lg shadow-lg w-96 p-6">
-			<h2 class="text-xl font-semibold mb-4"> Confirm Delete </h2>
-			<p class="text-gray-700 mb-6">Are you sure to delete <span class="text-teal-600">{{ eye.name }}</span></p>
+			<h2 class="text-xl font-semibold mb-4">ያረጋግጡ</h2>
+			<p class="text-gray-700 mb-6">ማጥፋት ይፈልጋሉ?<span class="text-teal-600">{{ eye.name }}</span></p>
 			<div class="flex justify-end space-x-2">
-				<button @click="() => isModalOpen = false" class="px-4 py-2 bg-gray-300 rounded-lg">No</button>
-				<button @click="deleteEye()" class="px-4 py-2 bg-blue-600 bg-opacity-80 text-white rounded-lg">Yes</button>
+				<button @click="() => isModalOpen = false" class="px-4 py-2 bg-gray-300 rounded-lg">አይ</button>
+				<button @click="deleteEye()" class="px-4 py-2 bg-blue-600 bg-opacity-80 text-white rounded-lg">አዎ</button>
 			</div>
 			</div>
 		</div>
@@ -102,7 +102,7 @@ import axios from 'axios'
 export default {
 	data() {
 		return {
-			currentPageTitle: 'Disease Types',
+			currentPageTitle: 'የአይን ቀለም',
 			eyes: [],
 			eye: {},
 			name: '',

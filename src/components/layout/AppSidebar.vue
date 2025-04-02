@@ -25,7 +25,7 @@
         <img
           v-if="isExpanded || isHovered || isMobileOpen"
           class="dark:hidden"
-          src="../../assets/criminallogo.png"
+          src="/criminallogo.png"
           alt="Logo"
           width="60"
           height="20"
@@ -273,7 +273,7 @@ const menuGroups = [
           { name: "የወንጀል አይነቶች", path: "/Crimes", pro: false },
           { name: "የወንጀለኛ አይነቶች", path: "/CriminalType", pro: false },
           { name: "የትምህርት ደረጃ", path: "/EducationalLevel", pro: false },
-          { name: "የእቃው አይነት", path: "/PropertyType", pro: false },
+          { name: "የንብረት አይነት", path: "/PropertyType", pro: false },
           { name: "የእስረኛው ክፍል", path: "/PrisonerCell", pro: false },
           { name: "ጥርስ", path: "/Teeths", pro: false },
           { name: "አፍንጫ", path: "/Noses", pro: false },
