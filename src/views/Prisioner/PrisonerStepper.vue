@@ -17,7 +17,8 @@
      <BasicInformation @prisonerSaved="changeStep(1)" v-if="currentStep == 0"> </BasicInformation>
      <!-- <Prisioner v-if="currentStep == 1"> </Prisioner> -->
      <PrisionerApperance @prisonerApperanceSaved="changeStep(2)" v-if="currentStep == 1"> </PrisionerApperance>
-     <PrisionerProperty v-if="currentStep == 2"> </PrisionerProperty>
+     <PersonalInformation @prisonerPersonalInfoSaved="changeStep(3)" v-if="currentStep == 2"> </PersonalInformation>
+     <PrisionerProperty v-if="currentStep == 3"> </PrisionerProperty>
 
 
   </AdminLayout>
@@ -29,13 +30,14 @@ import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 
 import Prisioner from '@/views/Prisioner/Prisioner.vue'
-import PrisionerApperance from './PrisionerApperance.vue'
+import PrisionerApperance from './Steps/PrisionerApperance.vue'
 import PrisionerProperty from './PrisionerProperty.vue'
 import BasicInformation from './Steps/BasicInformation.vue'
+import PersonalInformation from './Steps/PersonalInformation.vue'
 
 export default {
   components: {
-    PageBreadcrumb, AdminLayout, Prisioner, PrisionerApperance, PrisionerProperty, BasicInformation,
+    PageBreadcrumb, AdminLayout, Prisioner, PrisionerApperance, PrisionerProperty, BasicInformation, PersonalInformation,
   },
   data() {
     return {
@@ -43,7 +45,8 @@ export default {
       steps: [
         { no: 0, name: 'ዋና ዋና መረጃወች' },
         { no: 1, name: 'የሰዉነት ገጽታ' },
-        { no: 2, name: 'ንብረቶች' },
+        { no: 2, name: 'Personal Information' },
+        { no: 3, name: 'ንብረቶች' },
       ],
       currentStep: 0,
     }
