@@ -112,6 +112,7 @@ import Button from '@/components/ui/Button.vue';
 import FlatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
 import axios from 'axios';
+  import router from '@/router'
 // import { Script } from 'vm';
 
 export default {
@@ -121,7 +122,7 @@ export default {
     Button,
     FlatPickr,
   },
-  setup() {
+  setup(){
     const crimes = ref({
       status: '',
       crime_id: '',
@@ -176,6 +177,7 @@ const submitData = async () => {
       },
     });
     console.log('response', response);
+    router.push('/PrisionerCourtHistory')
   //   localStorage.setItem('cashtype_id', response.data.data.id);
     // Navigate to the next page
     // Use this.$router.push('/criminalinfo') inside a component or use a router instance

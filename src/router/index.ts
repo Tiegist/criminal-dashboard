@@ -331,7 +331,7 @@ const router = createRouter({
     {
       path: '/PrisionerApperance',
       name: 'PrisionerApperance',
-      component: () => import('../views/Prisioner/PrisionerApperance.vue'),
+      component: () => import('../views/Prisioner/Steps/PrisionerApperance.vue'),
       meta: {
         title: 'PrisionerApperance',
       },
@@ -355,6 +355,24 @@ const router = createRouter({
         title: 'PrisionerCourtHistory',
       },
     },
+//showPrisioner
+{
+  path: '/ShowPrisioner',
+  name: 'ShowPrisioner',
+  component: () => import('../views/Prisioner/ShowPrisioner.vue'),
+  meta: {
+    title: 'ShowPrisioner',
+  },
+},
+{
+  path: '/ShowSinglePrisoner',
+  name: 'ShowSinglePrisoner',
+  component: () => import('../views/Prisioner/ShowSinglePrisoner.vue'),
+  meta: {
+    title: 'ShowSinglePrisoner',
+  },
+},
+ 
     {
       path: '/UserRegister',
       name: 'UserRegister',

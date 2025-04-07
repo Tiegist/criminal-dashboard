@@ -483,8 +483,8 @@
         'Content-Type':'multipart/form-data'
       }
     })
-    // console.log('registered prisonerapperance', response.data);
-    
+     console.log('registered prisonerapperance', response.data);
+    router.push('/PrisionerApperance')
     
     // localStorage.setItem('prisoner_id', response.data.prisioner.id); 
     
