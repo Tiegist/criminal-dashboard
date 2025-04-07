@@ -188,6 +188,13 @@ const fetchTown = async () => {
             Towns.value = response.data.data;
         })
 }
+const prisonerCell = async () => {
+    axios
+        .get(apiServer.value + 'prisonerCell')
+        .then(response => {
+            Towns.value = response.data.data;
+        })
+}
 
 const registerPrisoner = async () => {
 
@@ -224,6 +231,7 @@ onMounted(() => {
 	fetchSex();
 	fetchEthnic();
 	fetchTown();
+	prisonerCell();
 });
 
 const currentPageTitle = ref('የታራሚዎቺ መረጃ ምዝገባ ')

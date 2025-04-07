@@ -612,7 +612,7 @@ export default {
     };
     const fetchPrisonerCell = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/prisoner-cell');
+        const response = await axios.get('http://127.0.0.1:8000/api/prisonerCell');
         prisonerCells.value = response.data.data;
         console.log('criminal cell', religions.value);
       } catch (error) {
@@ -649,7 +649,7 @@ const submitData = async () => {
     });
     console.log('response', response);
     localStorage.setItem('prisioner_history_id', response.data.data.id);
-    router.push('/PrisionerApperance')
+    router.push('/PrisonerCrimes')
   } catch (error) {
     console.error('Error submitting data:', error);
   }

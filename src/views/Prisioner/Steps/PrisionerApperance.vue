@@ -1,171 +1,174 @@
 <template>
-	<div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
-		<div class="space-y-4">
-			<div>
-				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ቁመት </label>
-				<input type="text" v-model="prisonerApperance.height" placeholder="ቁመት"
-					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
-			</div>
-			<div>
-				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> መልክ </label>
-				<input type="text" v-model="prisonerApperance.face" placeholder="መልክ"
-					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
-			</div>
-			<div>
-				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ግንባር </label>
-				<input type="text" v-model="prisonerApperance.forehead" placeholder=" ግንባር"
-					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
-			</div>
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+    <div class="space-y-4">
+      <div>
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ቁመት </label>
+        <input type="text" v-model="prisonerApperance.height" placeholder="ቁመት"
+          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+      </div>
+      <div>
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> መልክ </label>
+        <input type="text" v-model="prisonerApperance.face" placeholder="መልክ"
+          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+      </div>
+      <div>
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ግንባር </label>
+        <input type="text" v-model="prisonerApperance.forehead" placeholder=" ግንባር"
+          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+      </div>
 
-			<div>
-				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> አፍንጫ </label>
-				<div class="relative z-20 bg-transparent">
-					<select v-model="prisonerApperance.nose_id"
-						class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
-						<option v-for="(nose, index) in noses" :key="index" :value="nose.id">{{ nose.name }}</option>
-					</select>
-					<span
-						class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
-						<svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
-							xmlns="http://www.w3.org/2000/svg">
-							<path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
-								stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</span>
-				</div>
-			</div>
+      <div>
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> አፍንጫ </label>
+        <div class="relative z-20 bg-transparent">
+          <select v-model="prisonerApperance.nose_id"
+            class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
+            <option v-for="(nose, index) in noses" :key="index" :value="nose.id">{{ nose.name }}</option>
+          </select>
+          <span
+            class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
+            <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </div>
+      </div>
+      
 
-			<div>
-				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> የጸጉር አይነት </label>
-				<div class="relative z-20 bg-transparent">
-					<select v-model="prisonerApperance.hair_type_id"
-						class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
-						<option v-for="hair in hairs" :key="hair.id" :value="hair.id">{{ hair.name }}</option>
-					</select>
-					<span
-						class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
-						<svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
-							xmlns="http://www.w3.org/2000/svg">
-							<path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
-								stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</span>
-				</div>
-			</div>
-
-
-			<p class="text text-red-600"> {{ errorMessage }} </p>
-			<button :class="[
-				'inline-flex items-center justify-center font-medium gap-2 rounded-lg transition',
-				sizeClasses[size],
-				variantClasses[variant],
-				className,
-				{ 'cursor-not-allowed opacity-50': disabled },
-			]" @click="registerPrisonerApperance" :disabled="disabled">
-				<span v-if="startIcon" class="flex items-center"> </span>
-				{{ !saving ? 'Save & Continue' : 'Saving...' }}
-				<span v-if="endIcon" class="flex items-center">
-
-				</span>
-			</button>
-
-		</div>
-		<div class="space-y-4">
-			<div>
-				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> የአይኑ ቀለም </label>
-				<div class="relative z-20 bg-transparent">
-					<select v-model="prisonerApperance.eye_id"
-						class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
-						<option v-for="(eye, index) in eyes" :key="index" :value="eye.id">{{ eye.name }}</option>
-					</select>
-					<span
-						class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
-						<svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
-							xmlns="http://www.w3.org/2000/svg">
-							<path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
-								stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</span>
-				</div>
-			</div>
-
-			<div>
-				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ጥርስ </label>
-				<div class="relative z-20 bg-transparent">
-					<select v-model="prisonerApperance.teeth_id"
-						class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
-						<option v-for="(teeth, index) in teeths" :key="index" :value="teeth.id">{{ teeth.name }}</option>
-					</select>
-					<span
-						class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
-						<svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
-							xmlns="http://www.w3.org/2000/svg">
-							<path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
-								stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</span>
-				</div>
-			</div>
-
-			<div>
-				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ከንፈር </label>
-				<div class="relative z-20 bg-transparent">
-					<select v-model="prisonerApperance.lip_id"
-						class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
-						<option v-for="(lip, index) in lips" :key="index" :value="lip.id">{{ lip.name }}</option>
-					</select>
-					<span
-						class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
-						<svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
-							xmlns="http://www.w3.org/2000/svg">
-							<path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
-								stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</span>
-				</div>
-			</div>
+      <div>
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> የጸጉር አይነት </label>
+        <div class="relative z-20 bg-transparent">
+          <select v-model="prisonerApperance.hair_type_id"
+            class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
+            <option v-for="hair in hairs" :key="hair.id" :value="hair.id">{{ hair.name }}</option>
+          </select>
+          <span
+            class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
+            <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </div>
+      </div>
 
 
-			<div>
-				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ልዩ ምልክት </label>
-				<input type="text" v-model="prisonerApperance.unique_appearance" placeholder="  ልዩ ምልክት "
-					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
-			</div>
+      <p class="text text-red-600"> {{ errorMessage }} </p>
+      <button :class="[
+        'inline-flex items-center justify-center font-medium gap-2 rounded-lg transition',
+        sizeClasses[size],
+        variantClasses[variant],
+        className,
+        { 'cursor-not-allowed opacity-50': disabled },
+      ]" @click="registerPrisonerApperance" :disabled="disabled">
+        <span v-if="startIcon" class="flex items-center"> </span>
+        {{ !saving ? 'Save & Continue' : 'Saving...' }}
+        <span v-if="endIcon" class="flex items-center">
 
-			<div>
-				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ዜግነት </label>
-				<input type="text" v-model="prisonerApperance.citizenship" placeholder="ዜግነት"
-					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
-			</div>
+        </span>
+      </button>
 
-		</div>
-		<div class="space-y-4">
+    </div>
+    <div class="space-y-4">
+      <div>
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> የአይኑ ቀለም </label>
+        <div class="relative z-20 bg-transparent">
+          <select v-model="prisonerApperance.eye_id"
+            class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
+            <option v-for="(eye, index) in eyes" :key="index" :value="eye.id">{{ eye.name }}</option>
+          </select>
+          <span
+            class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
+            <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </div>
+      </div>
+      
 
-			<div>
-				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ጆሮ </label>
-				<div class="relative z-20 bg-transparent">
-					<select v-model="prisonerApperance.ear_id"
-						class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
-						<option v-for="(ear, index) in ears" :key="index" :value="ear.id">{{ ear.name }}</option>
-					</select>
-					<span
-						class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
-						<svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
-							xmlns="http://www.w3.org/2000/svg">
-							<path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
-								stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</span>
-				</div>
-			</div>
-			<div>
-				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> Extra Description </label>
-				<textarea type="text" :rows="10" v-model="prisonerApperance.extra_description"
-					placeholder="extra_description"
-					class="dark:bg-dark-900 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"></textarea>
-			</div>
-		</div>
-	</div>
+      <div>
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ጥርስ </label>
+        <div class="relative z-20 bg-transparent">
+          <select v-model="prisonerApperance.teeth_id"
+            class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
+            <option v-for="(teeth, index) in teeths" :key="index" :value="teeth.id">{{ teeth.name }}</option>
+          </select>
+          <span
+            class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
+            <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ከንፈር </label>
+        <div class="relative z-20 bg-transparent">
+          <select v-model="prisonerApperance.lip_id"
+            class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
+            <option v-for="(lip, index) in lips" :key="index" :value="lip.id">{{ lip.name }}</option>
+          </select>
+          <span
+            class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
+            <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+
+      <div>
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ልዩ ምልክት </label>
+        <input type="text" v-model="prisonerApperance.unique_appearance" placeholder="  ልዩ ምልክት "
+          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+      </div>
+
+      <div>
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ዜግነት </label>
+        <input type="text" v-model="prisonerApperance.citizenship" placeholder="ዜግነት"
+          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+      </div>
+
+    </div>
+    <div class="space-y-4">
+
+
+      <div>
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ጆሮ </label>
+        <div class="relative z-20 bg-transparent">
+          <select v-model="prisonerApperance.ear_id"
+            class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
+            <option v-for="(ear, index) in ears" :key="index" :value="ear.id">{{ ear.name }}</option>
+          </select>
+          <span
+            class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
+            <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div>
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> Extra Description </label>
+        <textarea type="text" :rows="10" v-model="prisonerApperance.extra_description"
+          placeholder="extra_description"
+          class="dark:bg-dark-900 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"></textarea>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -193,18 +196,18 @@ const saving = ref(false);
 const errorMessage = ref('');
 
 const prisonerApperance = ref({
-	hair_type_id: 1,
-	height: 1.67,
-	face: 'Big Face',
-	forehead: 'Ginbaram',
-	nose_id: 1,
-	eye_id: 1,
-	teeth_id: 1,
-	lip_id: 1,
-	ear_id: 1,
-	unique_appearance: 'Shefafa',
-	citizenship: 'Ethiopian',
-	extra_description: 'He is, Shefafa, eyanekese yhedal, kindbu lay tebasa alebet...',
+  hair_type_id: 1,
+  height: 1.67,
+  face: 'Big Face',
+  forehead: 'Ginbaram',
+  nose_id: 1,
+  eye_id: 1,
+  teeth_id: 1,
+  lip_id: 1,
+  ear_id: 1,
+  unique_appearance: 'Shefafa',
+  citizenship: 'Ethiopian',
+  extra_description: 'He is, Shefafa, eyanekese yhedal, kindbu lay tebasa alebet...',
 })
 
 const fetchhair = async () => { axios.get(apiServer.value + 'hair').then(response => { hairs.value = response.data.data; }) }
@@ -215,70 +218,74 @@ const fetchEar = async () => { axios.get(apiServer.value + 'ear').then(response 
 const fetchNose = async () => { axios.get(apiServer.value + 'nose').then(response => { noses.value = response.data.data; }) }
 
 const registerPrisonerApperance = async () => {
-	if (saving.value == true) return;
+  if (saving.value == true) return;
 
-	errorMessage.value = ''
-	saving.value = true
+  errorMessage.value = ''
+  saving.value = true
+  
 
-	axios
-		.post(apiServer.value + 'prisoner/apperance', {
-			prison_history_id: route.query.prison_history_id,
-			hair_type_id: prisonerApperance.value.hair_type_id,
-			height: prisonerApperance.value.height,
-			face: prisonerApperance.value.face,
-			forehead: prisonerApperance.value.forehead,
-			nose_id: prisonerApperance.value.nose_id,
-			eye_id: prisonerApperance.value.eye_id,
-			teeth_id: prisonerApperance.value.teeth_id,
-			lip_id: prisonerApperance.value.lip_id,
-			ear_id: prisonerApperance.value.ear_id,
-			unique_appearance: prisonerApperance.value.unique_appearance,
-			citizenship: prisonerApperance.value.citizenship,
-			extra_description: prisonerApperance.value.extra_description,
-		})
-		.then(response => {
-			saving.value = false
-			emit('prisonerApperanceSaved');
-		})
-		.catch(error => {
-			errorMessage.value = error.response.data.message
-			saving.value = false
-		})
+  axios
+    .post(apiServer.value + 'prisoner/apperance', {
+      prison_history_id: route.query.prison_history_id,
+      hair_type_id: prisonerApperance.value.hair_type_id,
+      height: prisonerApperance.value.height,
+      face: prisonerApperance.value.face,
+      forehead: prisonerApperance.value.forehead,
+      nose_id: prisonerApperance.value.nose_id,
+      eye_id: prisonerApperance.value.eye_id,
+      teeth_id: prisonerApperance.value.teeth_id,
+      lip_id: prisonerApperance.value.lip_id,
+      ear_id: prisonerApperance.value.ear_id,
+      unique_appearance: prisonerApperance.value.unique_appearance,
+      citizenship: prisonerApperance.value.citizenship,
+      extra_description: prisonerApperance.value.extra_description,
+    })
+    .then(response => {
+      saving.value = false
+      emit('prisonerApperanceSaved');
+    })
+    .catch(error => {
+      errorMessage.value = error.response.data.message
+      saving.value = false
+    })
 }
 onMounted(() => {
-	fetchhair();
-	fetchNose();
-	fetchEye();
-	fetchTeeth();
-	fetchLip();
-	fetchEar();
+  fetchhair();
+  fetchNose();
+  fetchEye();
+  fetchTeeth();
+  fetchLip();
+  fetchEar();
 });
 
 const currentPageTitle = ref('የታራሚዎቺ መረጃ ምዝገባ ሁለተኛ ቅጽ  ')
 interface ButtonProps {
-	size?: 'sm' | 'md'
-	variant?: 'primary' | 'outline'
-	startIcon?: object
-	endIcon?: object
-	className?: string
-	disabled?: boolean
+  size?: 'sm' | 'md'
+  variant?: 'primary' | 'outline'
+  startIcon?: object
+  endIcon?: object
+  className?: string
+  disabled?: boolean
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
-	size: 'md',
-	variant: 'primary',
-	className: '',
-	disabled: false,
+  size: 'md',
+  variant: 'primary',
+  className: '',
+  disabled: false,
 })
 
 const sizeClasses = {
-	sm: 'px-6  py-3 text-sm',
-	md: 'px-12  py-3.5 text-sm',
+  sm: 'px-6  py-3 text-sm',
+  md: 'px-12  py-3.5 text-sm',
 }
 
 const variantClasses = {
-	primary: 'bg-brand-500 text-white shadow-theme-xs hover:bg-brand-600 disabled:bg-brand-300',
-	outline:
-		'bg-white text-gray-700 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03] dark:hover:text-gray-300',
+  primary: 'bg-brand-500 text-white shadow-theme-xs hover:bg-brand-600 disabled:bg-brand-300',
+  outline:
+    'bg-white text-gray-700 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03] dark:hover:text-gray-300',
 }
 </script>
+
+
+
