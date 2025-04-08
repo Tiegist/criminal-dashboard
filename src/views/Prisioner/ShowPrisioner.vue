@@ -49,40 +49,7 @@
 										|
 										<a class="font-medium text-theme-sm text-red-600 dark:text-red-500 hover:underline cursor-pointer">ያጥፉ</a>
 									</td>
-            <!-- <td class="px-5 py-4 sm:px-6">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ user.prisioner_unique_number }}</p>
-            </td> -->
-            <!-- <td class="px-5 py-4 sm:px-6">
-              <div class="flex -space-x-2">
-                <div
-                  v-for="(member, memberIndex) in user.team"
-                  :key="memberIndex"
-                  class="w-6 h-6 overflow-hidden border-2 border-white rounded-full dark:border-gray-900"
-                >
-                  <img :src="member" alt="team member" />
-                </div>
-              </div>
-            </td> -->
-            <!-- <td class="px-5 py-4 sm:px-6">
-              <span
-                :class="[
-                  'rounded-full px-2 py-0.5 text-theme-xs font-medium',
-                  {
-                    'bg-success-50 text-success-700 dark:bg-success-500/15 dark:text-success-500':
-                      user.status === 'Active',
-                    'bg-warning-50 text-warning-700 dark:bg-warning-500/15 dark:text-warning-400':
-                      user.status === 'Pending',
-                    'bg-error-50 text-error-700 dark:bg-error-500/15 dark:text-error-500':
-                      user.status === 'Cancel',
-                  },
-                ]"
-              >
-                {{ user.status }}
-              </span>
-            </td> -->
-            <!-- <td class="px-5 py-4 sm:px-6">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ user.budget }}</p>
-            </td> -->
+         
           </tr>
         </tbody>
       </table>
@@ -161,55 +128,7 @@
       </div>
     
     </div>
-    <!-- <div>
-      <div v-if="showPrisoinerInfo">
-      <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.closest_respondent }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.closest_respondent_district }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.closest_respondent_town_id }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.current_city_id }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.current_district }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.date_of_mercy_release }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.date_time_entered }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.job }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.mobile_number }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.phone_number }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.photo }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.prision_cell_id }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.release_reason }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.religion_id }}
-       </p>
-       <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.user_id }}
-       </p>
-    </div>
-    </div> -->
+
     <div 
   v-if="showPrisoinerInfo"
       :class="[
@@ -355,26 +274,25 @@ export default {
             console.log('Prisioner Infro',PrisionerInfo.value)
         })
     };
-    const fetchSinglePrisioner = (id)=>{
-      localStorage.setItem('prisoner_id',id)
-      router.push('/ShowSinglePrisoner')
-// axios.get(`http://127.0.0.1:8000/api/prisioner/${id}`).then((res)=>{
-//   singlePrisioner.value = res.data.Prisioner
-//   console.log('prisioner_id',res.data.Prisioner.id)
-//   localStorage.setItem('prisoner_id',res.data.Prisioner.id)
-//   console.log('single prisioner',singlePrisioner.value )
-//   showPrisoiner.value = true
-//   //fetchSinglePrisionerInfo(id)
-// })
+    const fetchSinglePrisioner = (prisoner_id)=>{
+axios.get(`http://127.0.0.1:8000/api/prisioner/${prisoner_id}`).then((res)=>{
+  singlePrisioner.value = res.data.Prisioner
+  console.log('prisioner_id',res.data.Prisioner.id)
+  localStorage.setItem('prisoner_id',res.data.Prisioner.id)
+  console.log('single prisioner',singlePrisioner.value )
+  showPrisoiner.value = true
+  //fetchSinglePrisionerInfo(id)
+})
     };
     const fetchSinglePrisionerInfo = (id)=>{
-    const prisoner_id =  localStorage.getItem('prisoner_id')
-      console.log('prisoner_id',prisoner_id)
-axios.get(`http://127.0.0.1:8000/api/prision-history/${prisoner_id}`).then((res)=>{
-  singlePrisionerInfo.value = res.data.data
-  console.log('single prisioner info',singlePrisionerInfo.value)
-  showPrisoinerInfo.value = true
-})
+      localStorage.setItem('prisoner_id',id)
+    router.push('/ShowSinglePrisoner')
+//       console.log('prisoner_id',prisoner_id)
+// axios.get(`http://127.0.0.1:8000/api/prision-history/${prisoner_id}`).then((res)=>{
+//   singlePrisionerInfo.value = res.data.data
+//   console.log('single prisioner info',singlePrisionerInfo.value)
+//   showPrisoinerInfo.value = true
+// })
     };
     const toggleShow = ()=>{
       showMore.value = !showMore.value

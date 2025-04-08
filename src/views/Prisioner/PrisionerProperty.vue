@@ -205,7 +205,7 @@
   const fetchType = async ()=>{
     try {
       const res = await axios.get('http://127.0.0.1:8000/api/type');
-      types.value = res.data.types
+      types.value = res.data.data
       console.log('response',  types.value); 
     } catch (error) {
       console.error('Error fetching data:', error); 

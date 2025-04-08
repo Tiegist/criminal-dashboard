@@ -219,6 +219,7 @@ const registerPrisoner = async () => {
             saving.value = false
             prisonHistoryId.value = response.data.prison_history_id
             router.replace({ query: { ...route.query, prison_history_id: prisonHistoryId.value } });
+			localStorage.setItem('prisioner_history_id', prisonHistoryId.value);
             emit('prisonerSaved');
         })
         .catch(error => {
