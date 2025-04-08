@@ -11,7 +11,7 @@
 >
   <!-- Card Header -->
   <div class="px-6 py-5">
-  የታራሚው ገጽታ 
+  የታራሚው ንብረት  
   </div>
 
   <!-- Card Body -->
@@ -21,57 +21,23 @@
       
     <div class="">
       <p class="text-base  text-blue-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800">የጸጉር አይነት  :</span>{{ matchedHistory.hair?.name }}
+    <span class="font-bold mr-11 text-gray-800">ቀን:</span>{{ matchedHistory.date}}
       </p>
       <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-     <span class="font-bold mr-18 text-gray-800"> አፍንጫ  :</span> {{ matchedHistory.nose?.name }}
+     <span class="font-bold mr-25 text-gray-800"> ብዛት :</span> {{ matchedHistory.amount}}
     </p>
   </div>
   <div class="mt-5">
      <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-   <span class="font-bold mr-23 text-gray-800">አይን:</span>{{ matchedHistory.eye?.name }}
+   <span class="font-bold mr-5 text-gray-800">ገቢ/ወጪ:</span>{{ matchedHistory.type }}
      </p>
 
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold mr-22 text-gray-800">ጥርስ:</span> {{ matchedHistory.teeth?.name }}
-     </p>
+    
     </div>
-    <div class="">
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold mr-20 text-gray-800">ክንፈር:</span> {{ matchedHistory.lip?.name }}
-     </p>
-
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
- <span class="font-bold mr-24 text-gray-800">ጆሮ:</span>  {{ matchedHistory.ear?.name }}
-     </p>
-    </div>
-    <div class="">
-     <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-    <span class="font-bold mr-23 text-gray-800">ቁመት</span>{{ matchedHistory.height }}
-     </p>
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-    <span class="font-bold mr-16 text-gray-800"> የፊት ግጽታ :</span>  {{ matchedHistory.face }}
-     </p>
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-    <span class="font-bold mr-22 text-gray-800"> ግንባር:</span>  {{ matchedHistory.forehead }}
-     </p>
-    </div>
-    <div class="">
-     <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-    <span class="font-bold mr-16 text-gray-800"> ልዩ ምልክት :</span>  {{ matchedHistory.unique_appearance}}
-     </p>
-
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold mr-15 text-gray-800 "> ተጨማሪ ገለጻ :</span>  {{ matchedHistory.extra_description }}
-     </p>
-   </div>
-   <div>
-    <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold mr-24 text-gray-800"> ዜግነት:</span>  {{ matchedHistory.citizenship }}
-     </p>
-   </div>
-  
-   <Button size="sm" variant="outline" @click="redirectToPrisionerProperty">የታራሚዉን ንብረት ይመልከቱ </Button>
+ 
+ 
+<!--   
+   <Button size="sm" variant="outline" @click="redirectToPrisionerCrime">የታራሚዉን ወንጀሎቺ ይመልከቱ </Button> -->
     </div>
   </div>
 
@@ -115,22 +81,18 @@ export default {
     //         console.log('Prisioner Infro',PrisionerInfo.value)
     //     })
     // };
-    const redirectToPrisionerProperty = (id)=>{
-      localStorage.setItem('priosoner_history_id', prisonerHistoryID.value)
-      router.push('/ShowSinglePrisonerProperty')
-    }
-    const fetchSinglePrisionerApperance = (id)=>{
+ 
+    const fetchSinglePrisionerCash = (id)=>{
       const priosoner_history_id =  localStorage.getItem('priosoner_history_id')
       prisonerHistoryID.value = priosoner_history_id 
-      console.log('prisonerHistoryID',prisonerHistoryID.value)
-axios.get(`http://127.0.0.1:8000/api/prisionerapperance`).then((res)=>{
-  singlePrisioner.value = res.data.prisionerApperance
-  console.log('single prisioner apperance',singlePrisioner.value)
+axios.get(`http://127.0.0.1:8000/api/Prisioners_cashe`).then((res)=>{
+  singlePrisioner.value = res.data.data
+  console.log('single prisioner property',singlePrisioner.value)
   matchedHistory.value = singlePrisioner.value.find(item=>item.prision_history_id == priosoner_history_id)
-  console.log('matchedApperacne',matchedHistory.value)
+  console.log('matchedProperty',matchedHistory.value)
   if(matchedHistory){
     singlePrisioner.value = matchedHistory
-    console.log('single prisioner apperance',singlePrisioner.value )
+    console.log('single prisioner property',singlePrisioner.value )
   }
   console.log('prisioner',singlePrisioner.value)
   //localStorage.setItem('prisoner_id',res.data.Prisioner.id)
@@ -164,7 +126,7 @@ axios.get(`http://127.0.0.1:8000/api/prisionerapperance`).then((res)=>{
     onMounted(()=>{
      const prisoner_id = localStorage.getItem('priosoner_history_id')
         console.log('prisoner_history_id',localStorage.getItem('priosoner_history_id'))
-        fetchSinglePrisionerApperance()
+        fetchSinglePrisionerCash()
        // fetchSinglePrisionerInfo(prisoner_id)
         //fetchPrisioner()
       
@@ -173,15 +135,14 @@ axios.get(`http://127.0.0.1:8000/api/prisionerapperance`).then((res)=>{
     return {
 //fetchPrisioner,
 //PrisionerInfo,
-fetchSinglePrisionerApperance,
+fetchSinglePrisionerCash,
 //fetchSinglePrisionerInfo,
 //singlePrisioner,
 //showPrisoiner,
 //showPrisoinerInfo,
-singlePrisioner,
+// singlePrisioner,
 matchedHistory,
-redirectToPrisionerProperty
-
+prisonerHistoryID
 //toggleShow,
 //showMore
 };
