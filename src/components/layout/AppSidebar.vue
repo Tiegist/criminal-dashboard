@@ -312,6 +312,7 @@ const menuGroups = [
           { name: "Medical History", path: "/MedicalHistory", pro: false },
           { name: "User Register", path: "/UserRegister", pro: false },
           { name: "show Prisioner", path: "/ShowPrisioner", pro: false },
+          { name: "prisoner cash", path: "/ShowPrisonerCash", pro: false },
           
         ],
       },

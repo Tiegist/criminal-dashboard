@@ -55,7 +55,7 @@
       </table>
     </div>
   </div>
-  <div class="flex">
+  <div class="flex w-12/12 mx-auto">
 
     <div 
   v-if="showPrisoiner"
@@ -115,12 +115,12 @@
          </p>
   
          <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold mr-22 text-gray-800">የተወለደበት ከተማ :</span>  {{ singlePrisioner.birth_town.name }}
+          <span class="font-bold mr-17 text-gray-800">የተወለደበት ከተማ :</span>  {{ singlePrisioner.birth_town.name }}
          </p>
        </div>
        <div>
         <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold mr-22 text-gray-800"> ብሄር :</span>  {{ singlePrisioner.ethnic_group?.name }}
+          <span class="font-bold mr-37 text-gray-800"> ብሄር :</span>  {{ singlePrisioner.ethnic_group?.name }}
          </p>
        </div>
        <Button size="sm" variant="outline" @click="fetchSinglePrisionerInfo(singlePrisioner.id)">ተጨማሪ መረጃ ይመልከቱ </Button>
@@ -129,115 +129,7 @@
     
     </div>
 
-    <div 
-  v-if="showPrisoinerInfo"
-      :class="[
-        'rounded-2xl ml-5 border border-gray-200 px-5 bg-white dark:border-gray-800 dark:bg-white/[0.03] mt-10 w-1/2',
-        className,
-      ]"
-    >
-      <!-- Card Header -->
-      <div class="px-6 py-5">
-       የታራሚው ተጨማሪ  መረጃ 
-  
-      </div>
-  
-      <!-- Card Body -->
-      <div  class="p-4 border-t  border-gray-100 dark:border-gray-800 sm:p-6">
-        <div class="space-y-5">
-          <img  :src="`http://127.0.0.1:8000/${singlePrisionerInfo.photo }`" alt="no image">
-          <div v-if="!showMore" class="px-11 pt-5">
-            <div class="">
-          <p class="text-base   text-blue-800 dark:text-white/90">
-        <span class="font-bold mr-30 text-gray-800">የቅርብ ተጠሪ  :</span>  {{ singlePrisionerInfo.closest_respondent }}
-          </p>
-          <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-         <span class="font-bold mr-18 text-gray-800">የቅርብ ተጠሪ መኖሪያ ቀበሌ :</span>{{ singlePrisionerInfo.closest_respondent_district }}
-        </p>
-      </div>
-      <div class=" mt-5">
-         <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-       <span class="font-bold mr-17 text-gray-800">የቅርብ ተጠሪ መኖሪያ ከተማ :</span>{{ singlePrisionerInfo.closest_respondent_town.name }}
-         </p>
-  
-         <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold mr-22 text-gray-800"> አሁን የሚኖርበት ከተማ :</span> {{ singlePrisionerInfo.current_city.name }}
-         </p>
-        </div>
-        <div class=" mt-5">
-         <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold mr-23 text-gray-800">አሁን የሚኖርበት ቀበሌ :</span>  {{ singlePrisionerInfo.current_district }}
-         </p>
-  
-         <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-     <span class="font-bold mr-18 text-gray-800">በምህረት የሚፈታበት ቀን :</span>   {{ singlePrisionerInfo.date_of_mercy_release }}
-         </p>
-        </div>
-        <div class=" mt-5">
-         <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-        <span class="font-bold mr-32 text-gray-800"> የታሰረበት ቀን </span>{{ singlePrisionerInfo.date_time_entered }}
-         </p>
-  
-         <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-        <span class="font-bold mr-45 text-gray-800"> ስራ  :</span>  {{ singlePrisionerInfo.job }}
-         </p>
-        </div>
-        <div>
-          <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold text-gray-800 mr-30"> የእስረኛው አይነት  :</span> {{ singlePrisionerInfo.criminal_type.name }}
-         </p>
-          </div>
-        </div>
-                <h1 @click="toggleShow" v-if="!showMore" class="text-blue-400 ml-10 cursor-pointer underline">ተጨማሪ </h1>
-          <div v-if="showMore" class="px-15 pt-2">
-            <!-- <div class=" mt-5">
-         <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-        <span class="font-bold text-gray-800 mr-20"> የተወለደበት ቀበሌ :</span>  {{ singlePrisionerInfo.birth_district }}
-         </p>
-  
-         <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold text-gray-800 mr-19">የተወለደበት ከተማ :</span>  {{ singlePrisionerInfo.birth_town_id }}
-         </p>
-       </div> -->
-       <div class=" mt-5">
-        <!-- <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-          <span class="font-bold"> ፎቶ </span>  {{ singlePrisionerInfo.photo }}
-         </p> -->
-         <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold text-gray-800 mr-20"> የእስረኛው የመቆያ ክፍል : </span> {{ singlePrisionerInfo.prisoner_cell.name }}
-         </p>
-         <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold text-gray-800 mr-36"> ሀይማኖት  :</span> {{ singlePrisionerInfo.religion.name }}
-         </p>
-       </div>
-       <div class=" mt-5">
-        <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold text-gray-800 mr-28"> የመፈቻ ምክንያት :</span> {{ singlePrisionerInfo.release_reason }}
-         </p>
-         <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold text-gray-800 mr-29">የትምርት ደረጃ :</span> {{ singlePrisionerInfo.educational_level.name}}
-         </p>
-       </div>
-       <div class=" mt-5">
-        <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold text-gray-800 mr-27"> የመዘገበዉ ፖሊስ  :</span> {{ singlePrisionerInfo.user.full_name }}
-         </p>
-         <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold text-gray-800 mr-33">ስልክ ቁጥር   :</span> {{ singlePrisionerInfo.phone_number }}
-         </p>
-       </div>
-       <div class=" mt-5">
-        <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold text-gray-800 mr-33">  የቤት ቁጥር  :</span> {{ singlePrisionerInfo.mobile_number }}
-         </p>
-         
-       </div>
-       <h1 @click="toggleShow" v-if="showMore" class="text-blue-400 cursor-pointer underline  mt-5">ተመለስ  </h1>
-          </div>
-        </div>
-       <!-- <Button size="sm" variant="outline" @click="fetchSinglePrisionerInfo(singlePrisioner.id">ተጨማሪ መረጃ ይመልከቱ </Button> -->
-        </div>
-      </div>
+   
     
     </div>
 

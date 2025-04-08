@@ -350,6 +350,14 @@ const router = createRouter({
         title: 'ShowSinglePrisonerCourtHistories',
       },
     },
+    {
+      path: '/ShowPrisonerCash',
+      name: 'ShowPrisonerCash',
+      component: () => import('../views/Prisioner/ShowPrisonerCash.vue'),
+      meta: {
+        title: 'ShowPrisonerCash',
+      },
+    },
     
     //prisioner
     {
