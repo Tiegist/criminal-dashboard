@@ -3,178 +3,118 @@
 <div class="flex">
 
 <div 
-v-if="showPrisoiner"
+
   :class="[
-    'rounded-2xl border border-gray-200 px-5 bg-white dark:border-gray-800 dark:bg-white/[0.03] mt-10 w-1/3',
+    'rounded-2xl border border-gray-200 px-5 bg-white dark:border-gray-800 dark:bg-white/[0.03] mt-10 w-1/2 mx-auto',
     className,
   ]"
 >
   <!-- Card Header -->
   <div class="px-6 py-5">
-  የታራሚው ዝርዝር መረጃ 
+  የታራሚው ተጨማሪ መረጃ 
   </div>
 
   <!-- Card Body -->
+   <img :src="matchedHistory.photo" alt="no image">
   <div class="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
     <div class="space-y-5">
       
     <div class="">
       <p class="text-base  text-blue-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800">የማረ/ቤት መ/መ/ቁጥር :  </span>  {{ singlePrisioner.prisioner_unique_number }}
+    <span class="font-bold mr-30 text-gray-800">የቅርብ ተጠሪ :</span>{{ matchedHistory.closest_respondent }}
       </p>
       <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-     <span class="font-bold mr-21 text-gray-800">የ/ወ/መ/ፍ/ቁጥር :</span> {{ singlePrisioner.prision_unique_number }}
+     <span class="font-bold mr-17 text-gray-800">  የቅርብ ተጠሪ መኖሪያ ከተማ :</span> {{ matchedHistory.closest_respondent_town?.name }}
     </p>
   </div>
   <div class="mt-5">
      <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-   <span class="font-bold mr-38 text-gray-800">ስም :</span>{{ singlePrisioner.first_name }}
+   <span class="font-bold mr-19 text-gray-800">የቅርብ ተጠሪ መኖሪያ ቀበሌ :</span>{{ matchedHistory.closest_respondent_district }}
      </p>
 
      <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold mr-29 text-gray-800">የአባት ስም  :</span> {{ singlePrisioner.middle_name }}
+      <span class="font-bold mr-27 text-gray-800">የእስረኛዉ አይነት  :</span> {{ matchedHistory.criminal_type?.name }}
      </p>
     </div>
     <div class="">
      <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold mr-29 text-gray-800">የአያት ስም :</span> {{ singlePrisioner.last_name }}
+      <span class="font-bold mr-28 text-gray-800">አሁን የሚኖርበት ዞን:</span> {{ matchedHistory.current_city?.name }}
      </p>
 
      <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
- <span class="font-bold mr-29 text-gray-800">የእናት ስም :</span>  {{ singlePrisioner.mother_name }}
-     </p>
-    </div>
-    <div class="">
-     <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-    <span class="font-bold mr-20 text-gray-800"> የተወለደበት ቀን</span>{{ singlePrisioner.date_of_birth }}
-     </p>
-
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-    <span class="font-bold mr-39 text-gray-800"> ጾታ :</span>  {{ singlePrisioner.sex }}
+ <span class="font-bold mr-25 text-gray-800">አሁን የሚኖርበት ቀበሌ:</span>  {{ matchedHistory.current_district }}
      </p>
     </div>
     <div class="">
      <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-    <span class="font-bold mr-20 text-gray-800"> የተወለደበት ቀበሌ :</span>  {{ singlePrisioner.birth_district }}
+    <span class="font-bold mr-20 text-gray-800">በምህረት የተፈታበት ቀን</span>{{ matchedHistory.date_of_mercy_release }}
+     </p>
+     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
+    <span class="font-bold mr-39 text-gray-800"> እስራቱን ጨርሶ የሚፈታበት ቀን:</span>  {{ matchedHistory.date_of_release }}
+     </p>
+     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
+    <span class="font-bold mr-39 text-gray-800"> የታሰረበት ቀን:</span>  {{ matchedHistory.date_time_entered }}
+     </p>
+    </div>
+    <div class="">
+     <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
+    <span class="font-bold mr-34 text-gray-800"> የትምህርት ደረጃ :</span>  {{ matchedHistory.educational_level?.name }}
      </p>
 
      <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold mr-22 text-gray-800">የተወለደበት ከተማ :</span>  {{ singlePrisioner.birth_town.name }}
+      <span class="font-bold mr-22 text-gray-800"> የእስር ቅጣቱ ያለቀበት ቀን:</span>  {{ matchedHistory.end_date_of_arrest }}
      </p>
    </div>
    <div>
     <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold mr-22 text-gray-800"> ብሄር :</span>  {{ singlePrisioner.ethnic_group?.name }}
+      <span class="font-bold mr-22 text-gray-800"> ብሄር :</span>  {{ matchedHistory.ethnic_group?.name }}
      </p>
    </div>
-   <Button size="sm" variant="outline" @click="fetchSinglePrisionerInfo(singlePrisioner.id)">ተጨማሪ መረጃ ይመልከቱ </Button>
+   <div>
+    <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
+      <span class="font-bold mr-49 text-gray-800">ስራ :</span>  {{ matchedHistory.job }}
+     </p>
+   </div>
+   <div>
+    <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
+      <span class="font-bold mr-42 text-gray-800"> የቤት ስልክ:</span>  {{ matchedHistory.mobile_number }}
+     </p>
+   </div>
+   <div>
+    <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
+      <span class="font-bold mr-38 text-gray-800">ሞባይል ስልክ:</span>  {{ matchedHistory.phone_number }}
+     </p>
+   </div>
+   <div>
+    <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
+      <span class="font-bold mr-22 text-gray-800"> የእስረኛው የመቆያ ክፍል :</span>  {{ matchedHistory.prision_cell_id }}
+     </p>
+   </div>
+   <div>
+    <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
+      <span class="font-bold mr-22 text-gray-800"> የመፈቻ ምክንያት :</span>  {{ matchedHistory.release_reason }}
+     </p>
+   </div>
+   <div>
+    <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
+      <span class="font-bold mr-42 text-gray-800"> ሀይማኖት :</span>  {{ matchedHistory.religion?.name }}
+     </p>
+   </div>
+   <div>
+    <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
+      <span class="font-bold mr-26 text-gray-800"> መረጃዉን የሞላዉ ፖሊስ :</span>  {{ matchedHistory.user?.user_name }}
+     </p>
+   </div>
+   <div>
+    <!-- <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
+      <span class="font-bold mr-22 text-gray-800"> ብሄር :</span>  {{ matchedHistory.verdict_court?.name }}
+     </p> -->
+   </div>
+   <Button size="sm" variant="outline" @click="fetchmatchedHistoryInfo(matchedHistory.id)">ተጨማሪ መረጃ ይመልከቱ </Button>
     </div>
   </div>
 
 </div>
-<div 
-v-if="showPrisoinerInfo"
-  :class="[
-    'rounded-2xl ml-5 border border-gray-200 px-5 bg-white dark:border-gray-800 dark:bg-white/[0.03] mt-10 w-1/2',
-    className,
-  ]"
->
-  <!-- Card Header -->
-  <div class="px-6 py-5">
-   የታራሚው ተጨማሪ  መረጃ 
-
-  </div>
-
-  <!-- Card Body -->
-  <div  class="p-4 border-t  border-gray-100 dark:border-gray-800 sm:p-6">
-    <div class="space-y-5">
-      <img  :src="`http://127.0.0.1:8000/${singlePrisionerInfo.photo }`" alt="no image">
-      <div v-if="!showMore" class="px-11 pt-5">
-        <div class="">
-      <p class="text-base   text-blue-800 dark:text-white/90">
-    <span class="font-bold mr-30 text-gray-800">የቅርብ ተጠሪ  :</span>  {{ singlePrisionerInfo.closest_respondent }}
-      </p>
-      <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-     <span class="font-bold mr-18 text-gray-800">የቅርብ ተጠሪ መኖሪያ ቀበሌ :</span>{{ singlePrisionerInfo.closest_respondent_district }}
-    </p>
-  </div>
-  <div class=" mt-5">
-     <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-   <span class="font-bold mr-17 text-gray-800">የቅርብ ተጠሪ መኖሪያ ከተማ :</span>{{ singlePrisionerInfo.closest_respondent_town.name }}
-     </p>
-
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold mr-22 text-gray-800"> አሁን የሚኖርበት ከተማ :</span> {{ singlePrisionerInfo.current_city.name }}
-     </p>
-    </div>
-    <div class=" mt-5">
-     <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold mr-23 text-gray-800">አሁን የሚኖርበት ቀበሌ :</span>  {{ singlePrisionerInfo.current_district }}
-     </p>
-
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
- <span class="font-bold mr-18 text-gray-800">በምህረት የሚፈታበት ቀን :</span>   {{ singlePrisionerInfo.date_of_mercy_release }}
-     </p>
-    </div>
-    <div class=" mt-5">
-     <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-    <span class="font-bold mr-32 text-gray-800"> የታሰረበት ቀን </span>{{ singlePrisionerInfo.date_time_entered }}
-     </p>
-
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-    <span class="font-bold mr-45 text-gray-800"> ስራ  :</span>  {{ singlePrisionerInfo.job }}
-     </p>
-    </div>
-    <div>
-      <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold text-gray-800 mr-30"> የእስረኛው አይነት  :</span> {{ singlePrisionerInfo.criminal_type.name }}
-     </p>
-      </div>
-    </div>
-            <h1 @click="toggleShow" v-if="!showMore" class="text-blue-400 ml-10 cursor-pointer underline">ተጨማሪ </h1>
-      <div v-if="showMore" class="px-15 pt-2">
-   
-   <div class=" mt-5">
-  
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold text-gray-800 mr-20"> የእስረኛው የመቆያ ክፍል : </span> {{ singlePrisionerInfo.prisoner_cell.name }}
-     </p>
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold text-gray-800 mr-36"> ሀይማኖት  :</span> {{ singlePrisionerInfo.religion.name }}
-     </p>
-   </div>
-   <div class=" mt-5">
-    <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold text-gray-800 mr-28"> የመፈቻ ምክንያት :</span> {{ singlePrisionerInfo.release_reason }}
-     </p>
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold text-gray-800 mr-29">የትምርት ደረጃ :</span> {{ singlePrisionerInfo.educational_level.name}}
-     </p>
-   </div>
-   <div class=" mt-5">
-    <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold text-gray-800 mr-27"> የመዘገበዉ ፖሊስ  : </span> {{ singlePrisionerInfo.user.full_name }}
-     </p>
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold text-gray-800 mr-33">ስልክ ቁጥር   : </span> {{ singlePrisionerInfo.phone_number }}
-     </p>
-   </div>
-   <div class=" mt-5">
-    <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold text-gray-800 mr-33">  የቤት ቁጥር  : </span> {{ singlePrisionerInfo.mobile_number }}
-     </p>
-     
-   </div>
-   <div class="flex">
-
-     <h1 @click="toggleShow" v-if="showMore" class="text-blue-400 cursor-pointer underline  mt-5"> ተመለስ </h1>
-     <button @click="PrisionerApperance(singlePrisionerInfo.id)">ዝርዝር መረጃ </button>
-   </div>
-      </div>
-    </div>
-   <!-- <Button size="sm" variant="outline" @click="fetchSinglePrisionerInfo(singlePrisioner.id">ተጨማሪ መረጃ ይመልከቱ </Button> -->
-    </div>
-  </div>
 
 
 
@@ -205,6 +145,7 @@ export default {
     const showPrisoiner = ref(false)
     const showPrisoinerInfo = ref(false)
     const showMore = ref(false)
+    const matchedHistory = ref([])
     // const fetchPrisioner = ()=>{
     //     axios.get('http://127.0.0.1:8000/api/prisioner').then((res)=>{
             
@@ -212,13 +153,17 @@ export default {
     //         console.log('Prisioner Infro',PrisionerInfo.value)
     //     })
     // };
+    const fetchmatchedHistoryInfo = (id)=>{
+      localStorage.setItem('priosoner_history_id',id)
+      router.push('/ShowSinglePrisonerApperance')
+    }
     const fetchSinglePrisionerInfo = (id)=>{
       const prisoner_id =  localStorage.getItem('prisoner_id')
 axios.get(`http://127.0.0.1:8000/api/prision-history`).then((res)=>{
   singlePrisioner.value = res.data.data
   console.log('single prisioner info',singlePrisioner.value)
-  const matchedHistory = singlePrisioner.value.find(item=>item.prisoner_id == prisoner_id)
-  console.log('matchedHistory',matchedHistory)
+  matchedHistory.value = singlePrisioner.value.find(item=>item.prisioner_id== prisoner_id)
+  console.log('matchedHistory',matchedHistory.value)
   if(matchedHistory){
     singlePrisioner.value = matchedHistory
     console.log('single prisioner',singlePrisioner.value )
@@ -270,6 +215,9 @@ fetchSinglePrisionerInfo,
 //showPrisoiner,
 //showPrisoinerInfo,
 singlePrisioner,
+matchedHistory,
+fetchmatchedHistoryInfo
+
 //toggleShow,
 //showMore
 };

@@ -318,6 +318,39 @@ const router = createRouter({
         title: 'Prisoner Form',
       },
     },
+    {
+      path: '/ShowSinglePrisonerApperance',
+      name: 'ShowSinglePrisonerApperance',
+      component: () => import('../views/Prisioner/ShowSinglePrisonerApperance.vue'),
+      meta: {
+        title: 'ShowSinglePrisonerApperance',
+      },
+    },
+    {
+      path: '/ShowSinglePrisonerProperty',
+      name: 'ShowSinglePrisonerProperty',
+      component: () => import('../views/Prisioner/ShowSinglePrisonerProperty.vue'),
+      meta: {
+        title: 'ShowSinglePrisonerProperty',
+      },
+    },
+    {
+      path: '/ShowSinglePrisonerCrimes',
+      name: 'ShowSinglePrisonerCrimes',
+      component: () => import('../views/Prisioner/ShowSinglePrisonerCrimes.vue'),
+      meta: {
+        title: 'ShowSinglePrisonerCrimes',
+      },
+    },
+    {
+      path: '/ShowSinglePrisonerCourtHistories',
+      name: 'ShowSinglePrisonerCourtHistories',
+      component: () => import('../views/Prisioner/ShowSinglePrisonerCourtHistories.vue'),
+      meta: {
+        title: 'ShowSinglePrisonerCourtHistories',
+      },
+    },
+    
     //prisioner
     {
       path: '/Prisioner',
