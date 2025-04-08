@@ -133,19 +133,9 @@ v-if="showPrisoinerInfo"
     </div>
             <h1 @click="toggleShow" v-if="!showMore" class="text-blue-400 ml-10 cursor-pointer underline">ተጨማሪ </h1>
       <div v-if="showMore" class="px-15 pt-2">
-        <!-- <div class=" mt-5">
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-    <span class="font-bold text-gray-800 mr-20"> የተወለደበት ቀበሌ :</span>  {{ singlePrisionerInfo.birth_district }}
-     </p>
-
-     <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-      <span class="font-bold text-gray-800 mr-19">የተወለደበት ከተማ :</span>  {{ singlePrisionerInfo.birth_town_id }}
-     </p>
-   </div> -->
+   
    <div class=" mt-5">
-    <!-- <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-      <span class="font-bold"> ፎቶ </span>  {{ singlePrisionerInfo.photo }}
-     </p> -->
+  
      <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
       <span class="font-bold text-gray-800 mr-20"> የእስረኛው የመቆያ ክፍል : </span> {{ singlePrisionerInfo.prisoner_cell.name }}
      </p>
@@ -185,55 +175,7 @@ v-if="showPrisoinerInfo"
    <!-- <Button size="sm" variant="outline" @click="fetchSinglePrisionerInfo(singlePrisioner.id">ተጨማሪ መረጃ ይመልከቱ </Button> -->
     </div>
   </div>
-<!-- <div>
-  <div v-if="showPrisoinerInfo">
-  <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.closest_respondent }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.closest_respondent_district }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.closest_respondent_town_id }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.current_city_id }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.current_district }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.date_of_mercy_release }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.date_time_entered }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.job }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.mobile_number }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.phone_number }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.photo }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.prision_cell_id }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.release_reason }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.religion_id }}
-   </p>
-   <p  class="mt-1 text-sm text-gray-800 dark:text-white/90">
-    <span class="font-bold mr-10 text-gray-800"> ብሄር </span>  {{ singlePrisionerInfo.user_id }}
-   </p>
-</div>
-</div> -->
+
 
 
 </div>
@@ -259,58 +201,77 @@ export default {
   setup(){
     const PrisionerInfo = ref([]);
     const singlePrisioner = ref([])
-    const singlePrisionerInfo = ref([])
+    const singlePrisionerApperance = ref([])
     const showPrisoiner = ref(false)
     const showPrisoinerInfo = ref(false)
     const showMore = ref(false)
-    const fetchPrisioner = ()=>{
-        axios.get('http://127.0.0.1:8000/api/prisioner').then((res)=>{
+    // const fetchPrisioner = ()=>{
+    //     axios.get('http://127.0.0.1:8000/api/prisioner').then((res)=>{
             
-            PrisionerInfo.value = res.data.Prisioner
-            console.log('Prisioner Infro',PrisionerInfo.value)
-        })
-    };
-    const fetchSinglePrisioner = (prisoner_id)=>{
-axios.get(`http://127.0.0.1:8000/api/prisioner/${prisoner_id}`).then((res)=>{
-  singlePrisioner.value = res.data.Prisioner
-  console.log('prisioner_id',res.data.Prisioner.id)
-  localStorage.setItem('prisoner_id',res.data.Prisioner.id)
-  console.log('single prisioner',singlePrisioner.value )
+    //         PrisionerInfo.value = res.data.Prisioner
+    //         console.log('Prisioner Infro',PrisionerInfo.value)
+    //     })
+    // };
+    const fetchSinglePrisionerInfo = (id)=>{
+      const prisoner_id =  localStorage.getItem('prisoner_id')
+axios.get(`http://127.0.0.1:8000/api/prision-history`).then((res)=>{
+  singlePrisioner.value = res.data.data
+  console.log('single prisioner info',singlePrisioner.value)
+  const matchedHistory = singlePrisioner.value.find(item=>item.prisoner_id == prisoner_id)
+  console.log('matchedHistory',matchedHistory)
+  if(matchedHistory){
+    singlePrisioner.value = matchedHistory
+    console.log('single prisioner',singlePrisioner.value )
+  }
+  console.log('prisioner',singlePrisioner.value)
+  //localStorage.setItem('prisoner_id',res.data.Prisioner.id)
+  // console.log('single prisioner',singlePrisioner.value )
   showPrisoiner.value = true
   //fetchSinglePrisionerInfo(id)
 })
     };
-    const fetchSinglePrisionerInfo = (id)=>{
-    const prisoner_id =  localStorage.getItem('prisoner_id')
-      console.log('prisoner_id',prisoner_id)
-axios.get(`http://127.0.0.1:8000/api/prision-history/${prisoner_id}`).then((res)=>{
-  singlePrisionerInfo.value = res.data.data
-  console.log('single prisioner info',singlePrisionerInfo.value)
-  showPrisoinerInfo.value = true
-})
-    };
-    const toggleShow = ()=>{
-      showMore.value = !showMore.value
-    }
+//     const fetchSinglePrisionerApperance = (id)=>{
+//     const prisoner_id =  localStorage.getItem('prisoner_id')
+//    // const prisioner_history_id = localStorage.getItem('prisioner_history_id')
+//       console.log('prisoner_id',prisoner_id)
+//       console.log('prisioner_history_id',prisioner_history_id)
+// axios.get(`http://127.0.0.1:8000/api/prisionerapperance/`).then((res)=>{
+//   singlePrisionerApperance.value = res.data.prisionerApperance
+//  const mathedApperance =  singlePrisioner.value.find(item=>item.prisioner_history_id == prisioner_history_id)
+//   console.log('single prisioner',singlePrisioner.value )
+//   if(mathedApperance){
+//     singlePrisioner.value = mathedApperance
+//     console.log('single prisioner',singlePrisioner.value )
+//   }
+
+ 
+//   console.log('single prisioner info',singlePrisionerApperance.value)
+//  // showPrisoinerInfo.value = true
+// })
+//     };
+    // const toggleShow = ()=>{
+    //   showMore.value = !showMore.value
+    // }
     onMounted(()=>{
      const prisoner_id = localStorage.getItem('prisoner_id')
         console.log('prisoner_id',localStorage.getItem('prisoner_id'))
-        fetchSinglePrisioner(prisoner_id)
+        fetchSinglePrisionerInfo()
+       // fetchSinglePrisionerInfo(prisoner_id)
         //fetchPrisioner()
       
     });
     
     return {
-fetchPrisioner,
-PrisionerInfo,
-fetchSinglePrisioner,
+//fetchPrisioner,
+//PrisionerInfo,
 fetchSinglePrisionerInfo,
+//fetchSinglePrisionerInfo,
+//singlePrisioner,
+//showPrisoiner,
+//showPrisoinerInfo,
 singlePrisioner,
-showPrisoiner,
-showPrisoinerInfo,
-singlePrisionerInfo,
-toggleShow,
-showMore
+//toggleShow,
+//showMore
 };
   
 }
