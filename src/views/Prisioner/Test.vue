@@ -1,5 +1,285 @@
-<template>
+<!-- <template>
+	<div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+		<div class="space-y-4">
+			<div>
+				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> የእስረኛው የመቆያ ክፍል  </label>
+				<input type="text" v-model="prisonerPersonalInfo.prision_cell_id" placeholder="የእስረኛው የመቆያ ክፍል "
+					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+			</div>
+
+
+			<div>
+				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> የእስረኛው አይነት </label>
+				<input type="text" v-model="prisonerPersonalInfo.criminal_type_id" placeholder="የእስረኛው አይነት "
+					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+			</div>
+
+			<div>
+				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">  አሁን የሚኖርበት ዞን </label>
+				<input type="text" v-model="prisonerPersonalInfo.current_district" placeholder=" አሁን የሚኖርበት ዞን "
+					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+			</div>
+
+			<div>
+				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> Educational Level </label>
+				<div class="relative z-20 bg-transparent">
+					<select v-model="prisonerPersonalInfo.educational_level_id"
+						class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
+						<option v-for="educationalLevel in educationalLevels" :key="educationalLevel.id" :value="educationalLevel.id">{{ educationalLevel.name }}</option>
+					</select>
+					<span
+						class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
+						<svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
+								stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</span>
+				</div>
+			</div>
+
+
+
+			<p class="text text-red-600"> {{ errorMessage }} </p>
+			<button :class="[
+				'inline-flex items-center justify-center font-medium gap-2 rounded-lg transition',
+				sizeClasses[size],
+				variantClasses[variant],
+				className,
+				{ 'cursor-not-allowed opacity-50': disabled },
+			]" @click="registerPrisonerApperance" :disabled="disabled">
+				<span v-if="startIcon" class="flex items-center"> </span>
+				{{ !saving ? 'Save & Continue' : 'Saving...' }}
+				<span v-if="endIcon" class="flex items-center">
+
+				</span>
+			</button>
+
+		</div>
+		<div class="space-y-4">
+			<div>
+				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> Mobile Number </label>
+				<input type="text" v-model="prisonerPersonalInfo.mobile_number" placeholder="Mobile Number"
+					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+			</div>
+
+			<div>
+				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> Closest Respondent Town </label>
+				<div class="relative z-20 bg-transparent">
+					<select v-model="prisonerPersonalInfo.closest_respondent_town_id"
+						class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
+						<option v-for="town in towns" :key="town.id" :value="town.id">{{ town.name }}</option>
+					</select>
+					<span
+						class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
+						<svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
+								stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</span>
+				</div>
+			</div>
+
+
+			<div>
+				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> Ccurrent City </label>
+				<div class="relative z-20 bg-transparent">
+					<select v-model="prisonerPersonalInfo.current_city_id"
+						class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
+						<option v-for="city in cities" :key="city.id" :value="city.id">{{ city.name }}</option>
+					</select>
+					<span
+						class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
+						<svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
+								stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</span>
+				</div>
+			</div>
+
+
+
+
+		</div>
+		<div class="space-y-4">
+
+			<div>
+				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> Job </label>
+				<input type="text" v-model="prisonerPersonalInfo.job" placeholder=" Job"
+					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+			</div>
+
+
+			<div>
+				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> Closest Respondent District </label>
+				<input type="text" v-model="prisonerPersonalInfo.closest_respondent_district" placeholder="Closest Respondent District"
+					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+			</div>
+
+
 	
+			<div>
+				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> Religion </label>
+				<div class="relative z-20 bg-transparent">
+					<select v-model="prisonerPersonalInfo.religion_id"
+						class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
+						<option v-for="religion in religions" :key="religion.id" :value="religion.id">{{ religion.name }}</option>
+					</select>
+					<span
+						class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
+						<svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
+								stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script setup lang="ts">
+import { ref, reactive, onMounted, computed } from 'vue'
+import axios from 'axios'
+import { useStore } from 'vuex';
+import { useRoute, useRouter } from 'vue-router';
+
+const route = useRoute();
+const router = useRouter();
+
+const emit = defineEmits(['prisonerPersonalInfoSaved']);
+
+const store = useStore();
+const apiServer = computed(() => store.state.apiServer);
+
+const religions = ref([])
+const towns = ref([])
+const cities = ref([])
+const educationalLevels = ref([])
+ const prisonerCells = ref([]);
+  const criminalTypes = ref([]);
+const saving = ref(false);
+const errorMessage = ref('');
+
+const prisonerPersonalInfo = ref({
+     photo: null,
+		prision_cell_id:null,
+		criminal_type_id: null,
+		current_city_id: null,
+		educational_level_id: null,
+		religion_id: null,
+		closest_respondent: '',
+		closest_respondent_town_id: null,
+		current_district: '',
+		closest_respondent_district: '',
+		job: '',
+		phone_number: '',
+		mobile_number: '',
+		date_time_entered: '',
+		end_date_of_arrest: '',
+		date_of_release: '',
+		release_reason: '',
+		date_of_mercy_release: '',
+})
+
+const fetchReligion = async () => { axios.get(apiServer.value + 'religion').then(response => { religions.value = response.data.data; }) }
+const fetchTowns = async () => { axios.get(apiServer.value + 'town').then(response => { towns.value = response.data.data; }) }
+const fetchCities = async () => { axios.get(apiServer.value + 'city').then(response => { cities.value = response.data.data; }) }
+const fetchEducationalLevels = async () => { axios.get(apiServer.value + 'education').then(response => { educationalLevels.value = response.data.data; }) }
+const fetchPrisonerCell = async () => { axios.get(apiServer.value + 'prisonerCell').then(response => { prisonerCells.value = response.data.data; }) }
+const fetchCriminalType= async () => { axios.get(apiServer.value + 'criminalType').then(response => { criminalTypes.value = response.data.data; }) }
+
+  
+	const handlePhoto = (event) => {
+	const file = event.target.files[0]; 
+	if (file) {
+	  histories.value.photo = file; 
+	  console.log('photo', histories.value.photo);
+	}
+  };
+const registerPrisonerApperance = async () => {
+	if (saving.value == true) return;
+
+	errorMessage.value = ''
+	saving.value = true
+
+	axios
+		.post(apiServer.value + 'prisoner/personal-info', {
+			prison_history_id: route.query.prison_history_id,
+			phone_number: prisonerPersonalInfo.value.phone_number,
+			prision_cell_id: prisonerPersonalInfo.value.prision_cell_id,
+			criminal_type_id: prisonerPersonalInfo.value.criminal_type_id,
+			current_city_id: prisonerPersonalInfo.value.current_city_id,
+			educational_level_id: prisonerPersonalInfo.value.educational_level_id,
+			religion_id: prisonerPersonalInfo.value.religion_id,
+			closest_respondent: prisonerPersonalInfo.value.closest_respondent,
+			closest_respondent_town_id: prisonerPersonalInfo.value.closest_respondent_town_id,
+			current_district: prisonerPersonalInfo.value.current_district,
+			closest_respondent_district: prisonerPersonalInfo.value.closest_respondent_district,
+			job: prisonerPersonalInfo.value.job,
+			phone_number: prisonerPersonalInfo.value.phone_number,
+			mobile_number: prisonerPersonalInfo.value.mobile_number,
+			date_time_entered: prisonerPersonalInfo.value.date_time_entered,
+			end_date_of_arrest: prisonerPersonalInfo.value.end_date_of_arrest,
+			date_of_release: prisonerPersonalInfo.value.date_of_release,
+			release_reason: prisonerPersonalInfo.value.release_reason,
+			date_of_mercy_release: prisonerPersonalInfo.value.date_of_mercy_release,
+			photo: prisonerPersonalInfo.value.photo,
+		})
+		.then(response => {
+			saving.value = false
+			emit('prisonerPersonalInfoSaved');
+		})
+		.catch(error => {
+			errorMessage.value = error.response.data.message
+			saving.value = false
+		})
+}
+onMounted(() => {
+	fetchReligion();
+	fetchTowns();
+	fetchCities();
+	fetchEducationalLevels();
+	fetchPrisonerCell();
+	fetchCriminalType();
+});
+
+const currentPageTitle = ref('የታራሚዎቺ መረጃ ምዝገባ Third ቅጽ  ')
+interface ButtonProps {
+	size?: 'sm' | 'md'
+	variant?: 'primary' | 'outline'
+	startIcon?: object
+	endIcon?: object
+	className?: string
+	disabled?: boolean
+}
+
+const props = withDefaults(defineProps<ButtonProps>(), {
+	size: 'md',
+	variant: 'primary',
+	className: '',
+	disabled: false,
+})
+
+const sizeClasses = {
+	sm: 'px-6  py-3 text-sm',
+	md: 'px-12  py-3.5 text-sm',
+}
+
+const variantClasses = {
+	primary: 'bg-brand-500 text-white shadow-theme-xs hover:bg-brand-600 disabled:bg-brand-300',
+	outline:
+		'bg-white text-gray-700 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03] dark:hover:text-gray-300',
+}
+</script> -->
+
+
+<template>
+	<AdminLayout>
 	  <PageBreadcrumb :pageTitle="currentPageTitle" />
 		<div class="flex w-full ">
 		<div class="w-1/2 mr-10 ">
@@ -8,7 +288,7 @@
 		  </label>
 		  <div class="relative z-20 bg-transparent">
 			<select
-			  v-model="prisonerPersonalInfo.prision_cell_id"
+			  v-model="histories.prision_cell_id"
 			  class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 			  :class="{ 'text-gray-800 dark:text-white/90': selectInput }"
 			>
@@ -44,7 +324,7 @@
 		  </label>
 		  <div class="relative z-20 bg-transparent">
 			<select
-			  v-model="prisonerPersonalInfo.criminal_type_id"
+			  v-model="histories.criminal_type_id"
 			  class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 			  :class="{ 'text-gray-800 dark:text-white/90': selectInput }"
 			>
@@ -84,12 +364,12 @@
 		</label>
 		<div class="relative z-20 bg-transparent">
 		  <select
-			v-model="prisonerPersonalInfo.current_city_id"
+			v-model="histories.current_city_id"
 			class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 			:class="{ 'text-gray-800 dark:text-white/90': selectInput }"
 		  >
 			<option value="" disabled selected></option>
-			<option v-for="City in cities" :key="City.id" :value="City.id">{{ City.name }}</option>
+			<option v-for="City in Cities" :key="City.id" :value="City.id">{{ City.name }}</option>
   
 		  </select>
 		  <span
@@ -120,12 +400,12 @@
 		</label>
 		<div class="relative z-20 bg-transparent">
 		  <select
-			v-model="prisonerPersonalInfo.educational_level_id"
+			v-model="histories.educational_level_id"
 			class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 			:class="{ 'text-gray-800 dark:text-white/90': selectInput }"
 		  >
 			<option value="" disabled selected></option>
-			<option v-for="education in educationalLevels" :key="education.id" :value="education.id">{{ education.name }}</option>
+			<option v-for="education in educations" :key="education.id" :value="education.id">{{ education.name }}</option>
   
 		  </select>
 		  <span
@@ -159,7 +439,7 @@
 		</label>
 		<div class="relative z-20 bg-transparent">
 		  <select
-			v-model="prisonerPersonalInfo.religion_id"
+			v-model="histories.religion_id"
 			class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 			:class="{ 'text-gray-800 dark:text-white/90': selectInput }"
 		  >
@@ -196,7 +476,7 @@
 		  </label>
 		  <input
 			type="text"
-			v-model="prisonerPersonalInfo.closest_respondent"
+			v-model="histories.closest_respondent"
 		 
 			class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 		  />
@@ -213,7 +493,7 @@
 		</label>
 		<div class="relative z-20 bg-transparent">
 		  <select
-			v-model="prisonerPersonalInfo.closest_respondent_town_id"
+			v-model="histories.closest_respondent_town_id"
 			class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 			:class="{ 'text-gray-800 dark:text-white/90': selectInput }"
 		  >
@@ -250,7 +530,7 @@
 		<input
 		  type="text"
 		  
-		  v-model="prisonerPersonalInfo.closest_respondent_district"
+		  v-model="histories.closest_respondent_district"
 		  class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 		/>
 	  </div>
@@ -264,7 +544,7 @@
 		<div class="relative">
 		  <flat-pickr
 	
-			v-model="prisonerPersonalInfo.date_time_entered"
+			v-model="histories.date_time_entered"
 			:config="flatpickrConfig"
 			class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 			placeholder="Select date"
@@ -317,7 +597,7 @@
 		<div class="relative">
 		  <flat-pickr
 		
-			v-model="prisonerPersonalInfo.date_of_release"
+			v-model="histories.date_of_release"
 			:config="flatpickrConfig"
 			class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 			placeholder="Select date"
@@ -350,7 +630,7 @@
 		  <input
    
 			type="text"
-			v-model="prisonerPersonalInfo.job"
+			v-model="histories.job"
 			class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 		  />
 		</div>
@@ -364,7 +644,7 @@
 		  <input
 	  
 			type="text"
-			v-model="prisonerPersonalInfo.current_district"
+			v-model="histories.current_district"
 			class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 		  />
 		</div>
@@ -376,7 +656,7 @@
 	<div class="relative">
 	  <input
 	 
-		v-model="prisonerPersonalInfo.phone_number"
+		v-model="histories.phone_number"
 		placeholder="ሞባይል ስልክ (e.g., 555-000-0000)"
 		type="tel"
 		class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-3 pl-4 pr-4 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
@@ -394,7 +674,7 @@
 		<input
 	  
 		  type="text"
-		  v-model="prisonerPersonalInfo.release_reason"
+		  v-model="histories.release_reason"
 		  class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 		/>
 	  </div>
@@ -408,7 +688,7 @@
 	<div class="relative">
 	  <input
 	 
-		v-model="prisonerPersonalInfo.mobile_number"
+		v-model="histories.mobile_number"
 		placeholder="የቤት ስልክ (e.g., 555-000-0000)"
 		type="tel"
 		class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-3 pl-4 pr-4 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
@@ -425,7 +705,7 @@
 		<div class="relative">
 		  <flat-pickr
 		
-			v-model="prisonerPersonalInfo.date_of_mercy_release"
+			v-model="histories.date_of_mercy_release"
 			:config="flatpickrConfig"
 			class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 			placeholder="Select date"
@@ -458,7 +738,7 @@
 		<div class="relative">
 		  <flat-pickr
 	   
-			v-model="prisonerPersonalInfo.end_date_of_arrest "
+			v-model="histories.end_date_of_arrest "
 			:config="flatpickrConfig"
 			class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 			placeholder="Select date"
@@ -502,143 +782,6 @@
 			</button>
 	  </div>
 	</div>
-	
+	</AdminLayout>
   </template>
   
-  <script setup lang="ts">
-  import { ref, reactive, onMounted, computed } from 'vue'
-  import axios from 'axios'
-  import Button from '@/components/ui/Button.vue';
-  import { useStore } from 'vuex';
-  import { useRoute, useRouter } from 'vue-router';
-  import FlatPickr from 'vue-flatpickr-component';
-import 'flatpickr/dist/flatpickr.css';
-  
-  const route = useRoute();
-  const router = useRouter();
-  
-  const emit = defineEmits(['prisonerPersonalInfoSaved']);
-  
-  const store = useStore();
-  const apiServer = computed(() => store.state.apiServer);
-  
-  const religions = ref([])
-  const towns = ref([])
-  const cities = ref([])
-  const educationalLevels = ref([])
-   const prisonerCells = ref([]);
-	const criminalTypes = ref([]);
-  const saving = ref(false);
-  const errorMessage = ref('');
-  
-  const prisonerPersonalInfo = ref({
-	prisioner_id:null,
-	   photo: null,
-		  prision_cell_id:null,
-		  criminal_type_id: null,
-		  current_city_id: null,
-		  educational_level_id: null,
-		  religion_id: null,
-		  closest_respondent: '',
-		  closest_respondent_town_id: null,
-		  current_district: '',
-		  closest_respondent_district: '',
-		  job: '',
-		  phone_number: '',
-		  mobile_number: '',
-		  date_time_entered: '',
-		  end_date_of_arrest: '',
-		  date_of_release: '',
-		  release_reason: '',
-		  date_of_mercy_release: '',
-  })
-  
-  const fetchReligion = async () => { axios.get(apiServer.value + 'religion').then(response => { religions.value = response.data.data; }) }
-  const fetchTowns = async () => { axios.get(apiServer.value + 'town').then(response => { towns.value = response.data.data; }) }
-  const fetchCities = async () => { axios.get(apiServer.value + 'city').then(response => { cities.value = response.data.data; }) }
-  const fetchEducationalLevels = async () => { axios.get(apiServer.value + 'education').then(response => { educationalLevels.value = response.data.data; }) }
-  const fetchPrisonerCell = async () => { axios.get(apiServer.value + 'prisonerCell').then(response => { prisonerCells.value = response.data.data; }) }
-  const fetchCriminalType= async () => { axios.get(apiServer.value + 'criminalType').then(response => { criminalTypes.value = response.data.data; }) }
-  
-	
-	  const handlePhoto = (event) => {
-	  const file = event.target.files[0]; 
-	  if (file) {
-		prisonerPersonalInfo.value.photo = file; 
-		console.log('photo', prisonerPersonalInfo.value.photo);
-	  }
-	};
-  const registerPrisonerApperance = async () => {
-	  if (saving.value == true) return;
-  
-	  errorMessage.value = ''
-	  saving.value = true
-  
-	  axios
-		  .post(apiServer.value + 'prisoner/personal-info', {
-			prison_history_id: route.query.prison_history_id,
-			  prision_cell_id: prisonerPersonalInfo.value.prision_cell_id,
-			  criminal_type_id: prisonerPersonalInfo.value.criminal_type_id,
-			  current_city_id: prisonerPersonalInfo.value.current_city_id,
-			  educational_level_id: prisonerPersonalInfo.value.educational_level_id,
-			  religion_id: prisonerPersonalInfo.value.religion_id,
-			  closest_respondent: prisonerPersonalInfo.value.closest_respondent,
-			  closest_respondent_town_id: prisonerPersonalInfo.value.closest_respondent_town_id,
-			  current_district: prisonerPersonalInfo.value.current_district,
-			  closest_respondent_district: prisonerPersonalInfo.value.closest_respondent_district,
-			  job: prisonerPersonalInfo.value.job,
-			  phone_number: prisonerPersonalInfo.value.phone_number,
-			  mobile_number: prisonerPersonalInfo.value.mobile_number,
-			  date_time_entered: prisonerPersonalInfo.value.date_time_entered,
-			  end_date_of_arrest: prisonerPersonalInfo.value.end_date_of_arrest,
-			  date_of_release: prisonerPersonalInfo.value.date_of_release,
-			  release_reason: prisonerPersonalInfo.value.release_reason,
-			  date_of_mercy_release: prisonerPersonalInfo.value.date_of_mercy_release,
-			  photo: prisonerPersonalInfo.value.photo,
-		  })
-		  .then(response => {
-			  saving.value = false
-			  emit('prisonerPersonalInfoSaved');
-		  })
-		  .catch(error => {
-			  errorMessage.value = error.response.data.message
-			  saving.value = false
-		  })
-  }
-  onMounted(() => {
-	  fetchReligion();
-	  fetchTowns();
-	  fetchCities();
-	  fetchEducationalLevels();
-	  fetchPrisonerCell();
-	  fetchCriminalType();
-  });
-  
-  const currentPageTitle = ref('የታራሚዎቺ መረጃ ምዝገባ Third ቅጽ  ')
-  interface ButtonProps {
-	  size?: 'sm' | 'md'
-	  variant?: 'primary' | 'outline'
-	  startIcon?: object
-	  endIcon?: object
-	  className?: string
-	  disabled?: boolean
-  }
-  
-  const props = withDefaults(defineProps<ButtonProps>(), {
-	  size: 'md',
-	  variant: 'primary',
-	  className: '',
-	  disabled: false,
-  })
-  
-  const sizeClasses = {
-	  sm: 'px-6  py-3 text-sm',
-	  md: 'px-12  py-3.5 text-sm',
-  }
-  
-  const variantClasses = {
-	  primary: 'bg-brand-500 text-white shadow-theme-xs hover:bg-brand-600 disabled:bg-brand-300',
-	  outline:
-		  'bg-white text-gray-700 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03] dark:hover:text-gray-300',
-  }
-  </script>

@@ -41,7 +41,7 @@ export default {
   },
   data() {
     return {
-      currentPageTitle: 'New Prisoner Form',
+      currentPageTitle: 'የታራሚዎች ቅጽ',
       steps: [
         { no: 0, name: 'ዋና ዋና መረጃወች' },
         { no: 1, name: 'የሰዉነት ገጽታ' },

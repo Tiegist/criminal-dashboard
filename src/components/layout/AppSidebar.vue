@@ -251,30 +251,61 @@ const menuGroups = [
       
       {
         icon: GridIcon,
-        name: "Dashboard",
+        name: "ዳሽቦርድ",
         path: "/",
       },
       {
-        name: "Locations",
+        icon: UserCircleIcon,
+        name: "የግል መረጃ",
+        path: "/profile",
+      },
+      {
+        icon: ListIcon,
+        name: "የሰራተኞች መረጃ መመዝገቢያ ",
+        path: "/UserRegister",
+      },
+      {
+        name: "መረጃ መሙያ ቅጽ",
         icon: ListIcon,
         subItems: [
-          { name: "Region", path: "/regions", pro: false },
-          { name: "City", path: "/cities", pro: false },
-          { name: "Town", path: "/towns", pro: false },
+          // { name: "Form Elements", path: "/form-elements", pro: false },
+          { name: "የእስረኞች መረጃ ቅጽ", path: "/prisoner-form", pro: false },
+          { name: "የእስረኞች ታሪክ ቅጽ", path: "/PrisonerHistory", pro: false },
+          { name: "የእስረኞች ወንጀል ቅጽ", path: "/PrisonerCrimes", pro: false },
+          { name: "የእስረኞች ፍርድ ታሪክ ቅጽ", path: "/PrisionerCourtHistory", pro: false },  
+          // { name: "Prisioner", path: "/Prisioner", pro: false },
+          { name: "የእስረኞች ገጽታ ቅጽ", path: "/PrisionerApperance", pro: false },
+          { name: "የእስረኞች ንብረት ቅጽ ", path: "/PrisionerProperty", pro: false },
+          { name: "የእስረኞች ገንዘብ ቅጽ", path: "/CriminalCash", pro: false },
+          { name: "የእስረኞች የህክምና ታሪክ ቅጽ", path: "/MedicalHistory", pro: false },
+         
+   
         ],
       },
       {
-        name: "Appearance",
+        name: "የእስረኛ መረጃ ማሳያ",
+        icon: ListIcon,
+        subItems: [
+        { name: "የእስረኛ መረጃ ማሳያ", path: "/ShowPrisioner", pro: false },
+          { name: "የእስረኛ የህክምና መረጃ ", path: "/ShowMedical", pro: false },
+          { name: "የእስረኛ ገንዘብ ማሳያ", path: "/ShowPrisonerCash", pro: false },
+        ],
+      },
+      {
+        name: "ቦታዎች",
+        icon: ListIcon,
+        subItems: [
+          { name: "ክልል ", path: "/regions", pro: false },
+          { name: "ዞን", path: "/cities", pro: false },
+          { name: "ወረዳ", path: "/towns", pro: false },
+        ],
+      },
+      {
+        name: "የሰዉነት ገጽታዎቺ",
         icon: ListIcon,
         subItems: [
           { name: "የጸጉር አይነት", path: "/hair", pro: false },
-          { name: "ብሄር", path: "/EthnicGroup", pro: false },
-          { name: "ፍርድ ቤቶች", path: "/Courts", pro: false },
-          { name: "የወንጀል አይነቶች", path: "/Crimes", pro: false },
-          { name: "የወንጀለኛ አይነቶች", path: "/CriminalType", pro: false },
-          { name: "የትምህርት ደረጃ", path: "/EducationalLevel", pro: false },
-          { name: "የንብረት አይነት", path: "/PropertyType", pro: false },
-          { name: "የእስረኛው ክፍል", path: "/PrisonerCell", pro: false },
+      
           { name: "ጥርስ", path: "/Teeths", pro: false },
           { name: "አፍንጫ", path: "/Noses", pro: false },
           { name: "ከንፈር", path: "/Lips", pro: false },
@@ -283,75 +314,81 @@ const menuGroups = [
         ],
       },
       {
-        name: "System",
+        name: "ተጨማሪ መረጃዎች",
         icon: ListIcon,
         subItems: [
-          { name: "Religion", path: "/religions", pro: false },
-          { name: "Disease Type", path: "/disease-types", pro: false },
+          { name: "ሀይማኖቶች", path: "/religions", pro: false },
+          { name: "የበሽታ አይነቶች", path: "/disease-types", pro: false },
+          { name: "ብሄር", path: "/EthnicGroup", pro: false },
+          { name: "የወንጀል አይነቶች", path: "/Crimes", pro: false },
+          { name: "የወንጀለኛ አይነቶች", path: "/CriminalType", pro: false },
+          { name: "የትምህርት ደረጃ", path: "/EducationalLevel", pro: false },
+          { name: "የንብረት አይነቶች", path: "/PropertyType", pro: false },
+          { name: "የእስረኛው ክፍል", path: "/PrisonerCell", pro: false },
         ],
       },
-      {
-        icon: UserCircleIcon,
-        name: "User Profile",
-        path: "/profile",
-      },
+     
 
-      {
-        name: "Forms",
-        icon: ListIcon,
-        subItems: [
-          { name: "Form Elements", path: "/form-elements", pro: false },
-          { name: "Prisoner Form", path: "/prisoner-form", pro: false },
-          { name: "prisoner history", path: "/PrisonerHistory", pro: false },
-          { name: "Prisioner crime", path: "/PrisonerCrimes", pro: false },
-          { name: "Prisioner Court History", path: "/PrisionerCourtHistory", pro: false },
-          // { name: "Prisioner", path: "/Prisioner", pro: false },
-          { name: "Prisioner Apperance", path: "/PrisionerApperance", pro: false },
-          { name: "Prisioner Property", path: "/PrisionerProperty", pro: false },
-          { name: "prisoner cash", path: "/CriminalCash", pro: false },
-          { name: "Medical History", path: "/MedicalHistory", pro: false },
-          { name: "User Register", path: "/UserRegister", pro: false },
-          { name: "show Prisioner", path: "/ShowPrisioner", pro: false },
-          { name: "prisoner cash", path: "/ShowPrisonerCash", pro: false },
-          
-        ],
-      },
-    ],
-  },
-  {
-    title: "Others",
-    items: [
       // {
-      //   icon: PieChartIcon,
-      //   name: "Charts",
+      //   name: "Forms",
+      //   icon: ListIcon,
       //   subItems: [
-      //     { name: "Line Chart", path: "/line-chart", pro: false },
-      //     { name: "Bar Chart", path: "/bar-chart", pro: false },
+      //     { name: "Form Elements", path: "/form-elements", pro: false },
+      //     { name: "Prisoner Form", path: "/prisoner-form", pro: false },
+      //     { name: "prisoner history", path: "/PrisonerHistory", pro: false },
+      //     { name: "Prisioner crime", path: "/PrisonerCrimes", pro: false },
+      //     { name: "Prisioner Court History", path: "/PrisionerCourtHistory", pro: false },
+      //     // { name: "Prisioner", path: "/Prisioner", pro: false },
+      //     { name: "Prisioner Apperance", path: "/PrisionerApperance", pro: false },
+      //     { name: "Prisioner Property", path: "/PrisionerProperty", pro: false },
+      //     { name: "prisoner cash", path: "/CriminalCash", pro: false },
+      //     { name: "Medical History", path: "/MedicalHistory", pro: false },
+      //     { name: "User Register", path: "/UserRegister", pro: false },
+      //     { name: "show Prisioner", path: "/ShowPrisioner", pro: false },
+      //     { name: "show Medical", path: "/ShowMedical", pro: false },
+      //     { name: "prisoner cash", path: "/ShowPrisonerCash", pro: false },
       //   ],
       // },
-      {
-        icon: BoxCubeIcon,
-        name: "Ui Elements",
-        subItems: [
-          { name: "Alerts", path: "/alerts", pro: false },
-          { name: "Avatars", path: "/avatars", pro: false },
-          { name: "Badge", path: "/badge", pro: false },
-          { name: "Buttons", path: "/buttons", pro: false },
-          { name: "Images", path: "/images", pro: false },
-          { name: "Videos", path: "/videos", pro: false },
-        ],
-      },
-      // {
-      //   icon: PlugInIcon,
-      //   name: "Authentication",
-      //   subItems: [
-      //     { name: "Signin", path: "/signin", pro: false },
-      //     { name: "Signup", path: "/signup", pro: false },
-      //   ],
-      // },
+      
 
+      
+     
     ],
   },
+  // {
+  //   title: "Others",
+  //   items: [
+  //     {
+  //       icon: PieChartIcon,
+  //       name: "Charts",
+  //       subItems: [
+  //         { name: "Line Chart", path: "/line-chart", pro: false },
+  //         { name: "Bar Chart", path: "/bar-chart", pro: false },
+  //       ],
+  //     },
+  //     {
+  //       icon: BoxCubeIcon,
+  //       name: "Ui Elements",
+  //       subItems: [
+  //         { name: "Alerts", path: "/alerts", pro: false },
+  //         { name: "Avatars", path: "/avatars", pro: false },
+  //         { name: "Badge", path: "/badge", pro: false },
+  //         { name: "Buttons", path: "/buttons", pro: false },
+  //         { name: "Images", path: "/images", pro: false },
+  //         { name: "Videos", path: "/videos", pro: false },
+  //       ],
+  //     },
+  //     {
+  //       icon: PlugInIcon,
+  //       name: "Authentication",
+  //       subItems: [
+  //         { name: "Signin", path: "/signin", pro: false },
+  //         { name: "Signup", path: "/signup", pro: false },
+  //       ],
+  //     },
+
+  //   ],
+  // },
 ];
 
 const isActive = (path) => route.path === path;
