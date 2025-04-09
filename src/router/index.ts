@@ -413,6 +413,14 @@ const router = createRouter({
     title: 'ShowSinglePrisoner',
   },
 },
+{
+  path: '/ShowMedical',
+  name: 'ShowMedical',
+  component: () => import('../views/Prisioner/ShowMedical.vue'),
+  meta: {
+    title: 'ShowMedical',
+  },
+},
  
     {
       path: '/UserRegister',

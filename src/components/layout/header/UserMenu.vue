@@ -5,7 +5,7 @@
       @click.prevent="toggleDropdown"
     >
       <span class="mr-3 overflow-hidden rounded-full h-11 w-11">
-        <img src="/images/user/owner.jpg" alt="User" />
+        <img :src="user.photo" alt="User" />
       </span>
 
       <span class="block mr-1 font-medium text-theme-sm">{{ user.full_name }} </span>
@@ -50,7 +50,7 @@
         <LogoutIcon
           class="text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300"
         />
-        Sign out
+        ዘግተዉ ይውጡ
       </router-link>
     </div>
     <!-- Dropdown End -->
@@ -66,9 +66,9 @@ export default {
 			dropdownOpen: false,
 			dropdownRef: null,
 			menuItems: [
-			  { href: '/profile', icon: UserCircleIcon, text: 'Edit profile' },
-			  { href: '/chat', icon: SettingsIcon, text: 'Account settings' },
-			  { href: '/profile', icon: InfoCircleIcon, text: 'Support' },
+			  { href: '/profile', icon: UserCircleIcon, text: 'መረጃዎን ያስተካክሉ' },
+			  // { href: '/chat', icon: SettingsIcon, text: 'Account settings' },
+			  // { href: '/profile', icon: InfoCircleIcon, text: 'Support' },
 			],
 		}
 	},
@@ -76,17 +76,17 @@ export default {
 		UserCircleIcon, ChevronDownIcon, LogoutIcon, SettingsIcon, InfoCircleIcon,
 	},
 	methods: {
-		toggleDropdown: () => {
+		toggleDropdown() {
 			this.dropdownOpen = !this.dropdownOpen
 		},
-		closeDropdown: () => {
+		closeDropdown(){
 			this.dropdownOpen = false
 		},
-		signOut: () => {
+		signOut(){
 			this.$store.dispatch('logout');
 			this.closeDropdown()
 		},
-		handleClickOutside: (event) => {
+		handleClickOutside(event){
 			if (this.dropdownRef && !this.dropdownRef.contains(event.target)) {
 				this.closeDropdown()
 			}
