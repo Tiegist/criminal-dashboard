@@ -45,7 +45,7 @@ export default {
       steps: [
         { no: 0, name: 'ዋና ዋና መረጃወች' },
         { no: 1, name: 'የሰዉነት ገጽታ' },
-        { no: 2, name: 'Personal Information' },
+        { no: 2, name: 'የእስረኞቺ ተጨማሪ መረጃዎቺ' },
         { no: 3, name: 'ንብረቶች' },
       ],
       currentStep: 0,

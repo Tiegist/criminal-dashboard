@@ -433,7 +433,7 @@
   const fetchCourt = async ()=>{
     try {
       const res = await axios.get('http://127.0.0.1:8000/api/court');
-      courts.value = res.data.court
+      courts.value = res.data.data
       console.log('response',  courts.value); 
     } catch (error) {
       console.error('Error fetching data:', error); 
@@ -498,7 +498,7 @@
     model.value.court.status  = null;
     model.value.court.criminal_status  = null;
 
-    router.push('/PrisionerProperty')
+    router.push('/CriminalCash')
   }
   onMounted(()=>{
   
@@ -506,7 +506,7 @@
     fetchCriminalStatus();
     fetchCourt();
   });
-  const currentPageTitle = ref('የታራሚዎቺ መረጃ ምዝገባ ሁለተኛ ቅጽ  ')
+  const currentPageTitle = ref('የታራሚዎቺ የፍርድ ቤት ሁኔታ ምዝገባ ቅጽ  ')
   interface ButtonProps {
     size?: 'sm' | 'md'
     variant?: 'primary' | 'outline'

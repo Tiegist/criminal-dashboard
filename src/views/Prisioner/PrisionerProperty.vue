@@ -238,6 +238,7 @@
     model.value.prisioner.description  = '';
     model.value.prisioner.date_received  = '';
     model.value.prisioner.date_returned  = '';
+    router.push('/PrisonerCrimes')
   }
   onMounted(()=>{
     fetchType();

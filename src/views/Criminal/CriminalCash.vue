@@ -88,8 +88,8 @@
       </div>
       </div>
     <div class="">
-      <div class=" mt-6">
-        <Button
+      <div class=" mt-6 ">
+        <Button class="w-1/7"
           :size="size"
           :variant="variant"
           :startIcon="startIcon"
@@ -133,7 +133,7 @@
       const cashtypes = ref([]);
 
   
-      const currentPageTitle = ref('የእስረኛው ገንዘብ');
+      const currentPageTitle = ref('የእስረኛው ገንዘብ መመዝገቢያ ቅጽ');
       const date = ref(null);
       const flatpickrConfig = {
         dateFormat: 'Y-m-d',
