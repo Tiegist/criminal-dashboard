@@ -1,45 +1,17 @@
 <template>
-  <div class="w-1/2 mx-auto">
+  <div class="w-2/3 mx-auto">
     <div class="p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6">
-      <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+      <div class="">
         <div>
-          <h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
-           የግል መረጃ 
-          </h4>
+          <div class="flex justify-between">
+<div>
 
-          <div class="grid lg:grid-cols-2 grid-cols-1 gap-4  lg:gap-7 2xl:gap-x-32">
-            <div class="flex justify-between w-40">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">ስም</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{users.full_name}}</p>
-            </div>
-
-            <div class="flex justify-between w-40">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">እድሜ</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{users.age}}</p>
-            </div>
-
-            <div class="flex justify-between w-40">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">
-                ልዩ ስም 
-              </p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">
-                {{users.user_name}}
-              </p>
-            </div>
-
-            <div class="flex justify-between w-55">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">ስልክ ቁጥር</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90 ml-10">{{users.phone_number}}</p>
-            </div>
-
-            <div class="flex justify-between w-40">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">የስራ ድርሻ</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{users.role}}</p>
-            </div>
-          </div>
-        </div>
-
-        <button class="edit-button -mt-3" @click="isProfileInfoModal = true">
+  <h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
+   የግል መረጃ 
+  </h4>
+</div>
+<div>
+  <button class="edit-button " @click="isProfileInfoModal = true">
           <svg
             class="fill-current "
             width="18"
@@ -57,6 +29,50 @@
           </svg>
           ያስተካክሉ 
         </button>
+</div>
+          </div>
+
+          <div class="flex flex-col gap-4 w-6/7 mx-auto">
+            <div class="flex justify-between w-2/3">
+              <div class="flex justify-between w-1/3">
+              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">ስም :</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1 "> {{users.full_name}}</p>
+            </div>
+
+            <div class="flex justify-between  w-1/4">
+              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">እድሜ:</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1">{{users.age}}</p>
+            </div>
+            </div>
+    
+
+            <div class="flex justify-between w-2/3">
+              <div class="flex justify-between w-1/4">
+
+                <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400 ">
+                  ልዩ ስም :
+                </p>
+                <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1">
+                  {{users.user_name}}
+                </p>
+              </div>
+              <div class="flex justify-between  w-1/4">
+              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">የስራ ድርሻ</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{users.role}}</p>
+            </div>
+             
+            </div>
+
+           
+
+             <div class="flex  w-1/2">
+              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">ስልክ ቁጥር :</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90 ml-4 mt-1">{{users.phone_number}}</p>
+            </div>
+          </div>
+        </div>
+
+    
       </div>
     </div>
     <Modal v-if="isProfileInfoModal" @close="isProfileInfoModal = false">

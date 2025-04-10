@@ -562,7 +562,7 @@ import 'flatpickr/dist/flatpickr.css';
   
 	
 	  const handlePhoto = (event) => {
-	  const file = event.target.files[0]; 
+	  const file = event.target.files[0].name; 
 	  if (file) {
 		prisonerPersonalInfo.value.photo = file; 
 		console.log('photo', prisonerPersonalInfo.value.photo);

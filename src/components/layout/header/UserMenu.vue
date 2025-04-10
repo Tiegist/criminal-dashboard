@@ -4,8 +4,8 @@
       class="flex items-center text-gray-700 dark:text-gray-400"
       @click.prevent="toggleDropdown"
     >
-      <span class="mr-3 overflow-hidden rounded-full h-11 w-11">
-        <img :src="user.photo" alt="User" />
+      <span class="w-10 h-10 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800 mr-3">
+        <img :src="`http://127.0.0.1:8000/${user.photo}`" alt="" />
       </span>
 
       <span class="block mr-1 font-medium text-theme-sm">{{ user.full_name }} </span>

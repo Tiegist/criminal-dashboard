@@ -270,12 +270,12 @@ const menuGroups = [
         subItems: [
           // { name: "Form Elements", path: "/form-elements", pro: false },
           { name: "የእስረኞች መረጃ ቅጽ", path: "/prisoner-form", pro: false },
-          { name: "የእስረኞች ታሪክ ቅጽ", path: "/PrisonerHistory", pro: false },
+          // { name: "የእስረኞች ታሪክ ቅጽ", path: "/PrisonerHistory", pro: false },
           { name: "የእስረኞች ወንጀል ቅጽ", path: "/PrisonerCrimes", pro: false },
-          { name: "የእስረኞች ፍርድ ታሪክ ቅጽ", path: "/PrisionerCourtHistory", pro: false },  
+          { name: "የእስረኞች የፍርድ ቤት ታሪክ ቅጽ", path: "/PrisionerCourtHistory", pro: false },  
           // { name: "Prisioner", path: "/Prisioner", pro: false },
-          { name: "የእስረኞች ገጽታ ቅጽ", path: "/PrisionerApperance", pro: false },
-          { name: "የእስረኞች ንብረት ቅጽ ", path: "/PrisionerProperty", pro: false },
+          // { name: "የእስረኞች ገጽታ ቅጽ", path: "/PrisionerApperance", pro: false },
+          // { name: "የእስረኞች ንብረት ቅጽ ", path: "/PrisionerProperty", pro: false },
           { name: "የእስረኞች ገንዘብ ቅጽ", path: "/CriminalCash", pro: false },
           { name: "የእስረኞች የህክምና ታሪክ ቅጽ", path: "/MedicalHistory", pro: false },
          
@@ -325,6 +325,7 @@ const menuGroups = [
           { name: "የትምህርት ደረጃ", path: "/EducationalLevel", pro: false },
           { name: "የንብረት አይነቶች", path: "/PropertyType", pro: false },
           { name: "የእስረኛው ክፍል", path: "/PrisonerCell", pro: false },
+          { name: "ፍርድ ቤቶች", path: "/PrisonerCell", pro: false },
         ],
       },
      

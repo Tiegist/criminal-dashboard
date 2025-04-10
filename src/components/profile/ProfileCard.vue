@@ -6,7 +6,7 @@
           <div
             class="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800"
           >
-            <img :src="users.photo || '/images/user/owner.jpg'" alt="user" />
+            <img :src="`http://127.0.0.1:8000/${users.photo}`" alt="" />
           </div>
           <div class="order-3 xl:order-2">
             <h4
@@ -86,6 +86,8 @@
                 </h5>
 
                 <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
+                  
+        
                   <div class="col-span-2 lg:col-span-1">
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"

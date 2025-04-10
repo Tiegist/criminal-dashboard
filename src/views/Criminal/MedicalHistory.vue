@@ -128,6 +128,7 @@
     <div class="">
       <div class=" mt-6">
         <Button
+        class="w-1/7"
           :size="size"
           :variant="variant"
           :startIcon="startIcon"
@@ -174,7 +175,7 @@
   
       const diseaseTypes = ref([]);
 
-      const currentPageTitle = ref('የህክምና መረጃ');
+      const currentPageTitle = ref('የእስረኞች የህክምና መረጃ ቅጽ');
       const date = ref(null);
       const flatpickrConfig = {
         dateFormat: 'Y-m-d',

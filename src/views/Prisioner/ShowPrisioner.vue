@@ -60,7 +60,7 @@
     <div 
   v-if="showPrisoiner"
       :class="[
-        'rounded-2xl border border-gray-200 px-5 bg-white dark:border-gray-800 dark:bg-white/[0.03] mt-10 w-1/3',
+        'rounded-2xl border border-gray-200 px-5 bg-white dark:border-gray-800 dark:bg-white/[0.03] mt-10 w-1/3 mx-auto',
         className,
       ]"
     >

@@ -88,7 +88,8 @@
 </div>
   <div class="">
     <div class="ml- mt-6">
-      <Button
+      <Button 
+      class="w-1/6"
         :size="size"
         :variant="variant"
         :startIcon="startIcon"
@@ -135,7 +136,7 @@ export default {
     const criminalStatus = ref([]);
 
 
-    const currentPageTitle = ref('የእስረኛው መረጃ');
+    const currentPageTitle = ref('እስረኞቺ የፈጸሟቸዉ ወንጀሎች መመዝገቢያ ቅጽ ');
     const date = ref(null);
     const flatpickrConfig = {
       dateFormat: 'Y-m-d',
