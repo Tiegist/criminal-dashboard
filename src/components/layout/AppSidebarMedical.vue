@@ -1,7 +1,7 @@
 <template>
   <aside
     :class="[
-      'fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-99999 border-r border-gray-200',
+      'fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-sky-950 dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-99999 border-r border-gray-200',
       {
         'lg:w-[290px]': isExpanded || isMobileOpen || isHovered,
         'lg:w-[90px]': !isExpanded && !isHovered,
@@ -29,6 +29,7 @@
           alt="Logo"
           width="60"
           height="20"
+          color="white"
         />
         <img
           v-if="isExpanded || isHovered || isMobileOpen"
@@ -45,7 +46,7 @@
           width="32"
           height="32"
         />
-        <span class="mt-5">
+        <span class="mt-5 text-white">
           ኮምቦልቻ ማረሚያ ቤት
         </span>
       </div>
@@ -60,13 +61,13 @@
           <div v-for="(menuGroup, groupIndex) in menuGroups" :key="groupIndex">
             <h2
               :class="[
-                'mb-4 text-xs uppercase flex leading-[20px] text-gray-400',
+                'mb-4 text-xs uppercase flex leading-[20px] text-gray-200',
                 !isExpanded && !isHovered
                   ? 'lg:justify-center'
                   : 'justify-start',
               ]"
             >
-              <template v-if="isExpanded || isHovered || isMobileOpen">
+              <template v-if="isExpanded || isHovered || isMobileOpen" >
                 {{ menuGroup.title }}
               </template>
               <HorizontalDots v-else />
@@ -104,7 +105,7 @@
                   <ChevronDownIcon
                     v-if="isExpanded || isHovered || isMobileOpen"
                     :class="[
-                      'ml-auto w-5 h-5 transition-transform duration-200',
+                      'ml-auto w-5 h-5 transition-transform duration-200 text-white',
                       {
                         'rotate-180 text-brand-500': isSubmenuOpen(
                           groupIndex,
@@ -169,7 +170,7 @@
                           ]"
                         >
                           {{ subItem.name }}
-                          <span class="flex items-center gap-1 ml-auto">
+                          <span class="flex items-center gap-1 ml-auto text-white">
                             <span
                               v-if="subItem.new"
                               :class="[
@@ -246,37 +247,38 @@ const { isExpanded, isMobileOpen, isHovered, openSubmenu } = useSidebar();
 
 const menuGroups = [
   {
-    title: "Menu",
+    title: "አማራጮች",
     items: [
       
       {
         icon: GridIcon,
         name: "ዳሽቦርድ",
         path: "/",
+        class: 'text-white'
       },
       {
         icon: UserCircleIcon,
         name: "የግል መረጃ",
         path: "/profile",
       },
-      {
-        icon: ListIcon,
-        name: "የሰራተኞች መረጃ መመዝገቢያ ",
-        path: "/UserRegister",
-      },
+      // {
+      //   icon: ListIcon,
+      //   name: "የሰራተኞች መረጃ መመዝገቢያ ",
+      //   path: "/UserRegister",
+      // },
       {
         name: "መረጃ መሙያ ቅጽ",
         icon: ListIcon,
         subItems: [
           // { name: "Form Elements", path: "/form-elements", pro: false },
-          { name: "የእስረኞች መረጃ ቅጽ", path: "/prisoner-form", pro: false },
+          // { name: "የእስረኞች መረጃ ቅጽ", path: "/prisoner-form", pro: false },
           // { name: "የእስረኞች ታሪክ ቅጽ", path: "/PrisonerHistory", pro: false },
-          { name: "የእስረኞች ወንጀል ቅጽ", path: "/PrisonerCrimes", pro: false },
-          { name: "የእስረኞች የፍርድ ቤት ታሪክ ቅጽ", path: "/PrisionerCourtHistory", pro: false },  
+          // { name: "የእስረኞች ወንጀል ቅጽ", path: "/PrisonerCrimes", pro: false },
+          // { name: "የእስረኞች የፍርድ ቤት ታሪክ ቅጽ", path: "/PrisionerCourtHistory", pro: false },  
           // { name: "Prisioner", path: "/Prisioner", pro: false },
           // { name: "የእስረኞች ገጽታ ቅጽ", path: "/PrisionerApperance", pro: false },
           // { name: "የእስረኞች ንብረት ቅጽ ", path: "/PrisionerProperty", pro: false },
-          { name: "የእስረኞች ገንዘብ ቅጽ", path: "/CriminalCash", pro: false },
+          // { name: "የእስረኞች ገንዘብ ቅጽ", path: "/CriminalCash", pro: false },
           { name: "የእስረኞች የህክምና ታሪክ ቅጽ", path: "/MedicalHistory", pro: false },
          
    
@@ -286,47 +288,47 @@ const menuGroups = [
         name: "የእስረኛ መረጃ ማሳያ",
         icon: ListIcon,
         subItems: [
-        { name: "የእስረኛ መረጃ ማሳያ", path: "/ShowPrisioner", pro: false },
-          { name: "የእስረኛ የህክምና መረጃ ", path: "/ShowMedical", pro: false },
-          { name: "የእስረኛ ገንዘብ ማሳያ", path: "/ShowPrisonerCash", pro: false },
+        // { name: "የእስረኛ መረጃ ማሳያ", path: "/ShowPrisioner", pro: false },
+          // { name: "የእስረኛ የህክምና መረጃ ", path: "/ShowMedical", pro: false },
+          // { name: "የእስረኛ ገንዘብ ማሳያ", path: "/ShowPrisonerCash", pro: false },
           { name: "የእስረኛ የህክምና ታሪክ ማሳያ", path: "/ShowMedicalInfo", pro: false },
         ],
       },
-      {
-        name: "ቦታዎች",
-        icon: ListIcon,
-        subItems: [
-          { name: "ክልል ", path: "/regions", pro: false },
-          { name: "ዞን", path: "/cities", pro: false },
-          { name: "ወረዳ", path: "/towns", pro: false },
-        ],
-      },
-      {
-        name: "የሰዉነት ገጽታዎቺ",
-        icon: ListIcon,
-        subItems: [
-          { name: "የጸጉር አይነት", path: "/hair", pro: false },
+      // {
+      //   name: "ቦታዎች",
+      //   icon: ListIcon,
+      //   subItems: [
+      //     { name: "ክልል ", path: "/regions", pro: false },
+      //     { name: "ዞን", path: "/cities", pro: false },
+      //     { name: "ወረዳ", path: "/towns", pro: false },
+      //   ],
+      // },
+      // {
+      //   name: "የሰዉነት ገጽታዎቺ",
+      //   icon: ListIcon,
+      //   subItems: [
+      //     { name: "የጸጉር አይነት", path: "/hair", pro: false },
       
-          { name: "ጥርስ", path: "/Teeths", pro: false },
-          { name: "አፍንጫ", path: "/Noses", pro: false },
-          { name: "ከንፈር", path: "/Lips", pro: false },
-          { name: "ጆሮ", path: "/Ears", pro: false },
-          { name: "የአይን ቀለም", path: "/Eyes", pro: false },
-        ],
-      },
+      //     { name: "ጥርስ", path: "/Teeths", pro: false },
+      //     { name: "አፍንጫ", path: "/Noses", pro: false },
+      //     { name: "ከንፈር", path: "/Lips", pro: false },
+      //     { name: "ጆሮ", path: "/Ears", pro: false },
+      //     { name: "የአይን ቀለም", path: "/Eyes", pro: false },
+      //   ],
+      // },
       {
         name: "ተጨማሪ መረጃዎች",
         icon: ListIcon,
         subItems: [
-          { name: "ሀይማኖቶች", path: "/religions", pro: false },
+          // { name: "ሀይማኖቶች", path: "/religions", pro: false },
           { name: "የበሽታ አይነቶች", path: "/disease-types", pro: false },
-          { name: "ብሄር", path: "/EthnicGroup", pro: false },
-          { name: "የወንጀል አይነቶች", path: "/Crimes", pro: false },
-          { name: "የወንጀለኛ አይነቶች", path: "/CriminalType", pro: false },
-          { name: "የትምህርት ደረጃ", path: "/EducationalLevel", pro: false },
-          { name: "የንብረት አይነቶች", path: "/PropertyType", pro: false },
-          { name: "የእስረኛው ክፍል", path: "/PrisonerCell", pro: false },
-          { name: "ፍርድ ቤቶች", path: "/PrisonerCell", pro: false },
+          // { name: "ብሄር", path: "/EthnicGroup", pro: false },
+          // { name: "የወንጀል አይነቶች", path: "/Crimes", pro: false },
+          // { name: "የወንጀለኛ አይነቶች", path: "/CriminalType", pro: false },
+          // { name: "የትምህርት ደረጃ", path: "/EducationalLevel", pro: false },
+          // { name: "የንብረት አይነቶች", path: "/PropertyType", pro: false },
+          // { name: "የእስረኛው ክፍል", path: "/PrisonerCell", pro: false },
+          // { name: "ፍርድ ቤቶች", path: "/PrisonerCell", pro: false },
         ],
       },
      

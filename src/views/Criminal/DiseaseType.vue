@@ -1,5 +1,5 @@
 <template>
-	<AdminLayout>
+	<AdminLayoutMedical>
 		<PageBreadcrumb :pageTitle="currentPageTitle" />
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
 			<div class="space-y-6">
@@ -88,11 +88,11 @@
 			</div>
 			</div>
 		</div>
-	</AdminLayout>
+	</AdminLayoutMedical>
 </template>
 
 <script>
-import AdminLayout from '@/components/layout/AdminLayout.vue'
+import AdminLayoutMedical from '@/components/layout/AdminLayoutMedical.vue'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import ComponentCard from '@/components/common/ComponentCard.vue'
 import Alert from '@/components/ui/Alert.vue'
@@ -115,7 +115,7 @@ export default {
 		}
 	},
 	components: {
-		AdminLayout,
+		AdminLayoutMedical,
 		PageBreadcrumb,
 		ComponentCard,
 		Button,
