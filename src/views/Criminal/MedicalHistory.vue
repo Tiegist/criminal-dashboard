@@ -1,5 +1,5 @@
 <template>
-    <AdminLayout>
+    <AdminLayoutMedical>
       <PageBreadcrumb :pageTitle="currentPageTitle" />
         <div class="flex w-full">
         <div class="w-1/2 mr-10">
@@ -141,12 +141,12 @@
         </Button>
       </div>
     </div>
-    </AdminLayout>
+    </AdminLayoutMedical>
   </template>
   <script>
   import { ref, onMounted } from 'vue';
   import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue';
-  import AdminLayout from '@/components/layout/AdminLayout.vue';
+  import AdminLayoutMedical from '@/components/layout/AdminLayoutMedical.vue';
   import Button from '@/components/ui/Button.vue';
   import FlatPickr from 'vue-flatpickr-component';
   import 'flatpickr/dist/flatpickr.css';
@@ -156,7 +156,7 @@
   export default {
     components: {
       PageBreadcrumb,
-      AdminLayout,
+      AdminLayoutMedical,
       Button,
       FlatPickr,
     },

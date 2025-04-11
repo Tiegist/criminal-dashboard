@@ -343,6 +343,14 @@ const router = createRouter({
       },
     },
     {
+      path: '/ShowMedicalInfo',
+      name: 'ShowMedicalInfo',
+      component: () => import('../views/Criminal/ShowMedicalInfo.vue'),
+      meta: {
+        title: 'ShowMedicalInfo',
+      },
+    },
+    {
       path: '/ShowSinglePrisonerCourtHistories',
       name: 'ShowSinglePrisonerCourtHistories',
       component: () => import('../views/Prisioner/ShowSinglePrisonerCourtHistories.vue'),

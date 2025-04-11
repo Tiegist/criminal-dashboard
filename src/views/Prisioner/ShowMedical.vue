@@ -1,5 +1,5 @@
 <template>
-    <AdminLayout>
+    <AdminLayoutMedical>
 
     <div class="flex">
   
@@ -21,30 +21,31 @@
           <div class="space-y-5">
             
           <div class="">
-            <p class="text-base  text-blue-800 dark:text-white/90">
+            <p class="text-base  text-blue-800 dark:text-white/90 w-96">
+              <!-- {{ medicalInfo.disease_type.name }} -->
           <span class="font-bold mr-10 text-gray-800">የህመሙ አይነት :  </span>  
             </p>
-            <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-           <span class="font-bold mr-21 text-gray-800">የሆስፒታል ስም :</span> {{ medicalInfo.hospital_name }}
+            <p  class="mt-5 text-sm text-blue-800 dark:text-white/90 w-96">
+           <span class="font-bold mr-21 text-gray-800 e-40">የሆስፒታል ስም :</span> {{ medicalInfo.hospital_name }}
           </p>
         </div>
         <div class="mt-5">
-           <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-         <span class="font-bold mr-38 text-gray-800">የዶክተሩ ስም :</span>{{ medicalInfo.doctor_name }}
+           <p  class="mt-1 text-sm text-blue-800 dark:text-white/90 w-96">
+         <span class="font-bold mr-38 text-gray-800 w-96">የዶክተሩ ስም :</span>{{ medicalInfo.doctor_name }}
            </p>
     
-           <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-            <span class="font-bold mr-29 text-gray-800">የዶክተሩ አድራሻ  :</span> {{ medicalInfo.doctor_address }}
+           <p  class="mt-5 text-sm text-blue-800 dark:text-white/90 w-96">
+            <span class="font-bold mr-29 text-gray-800 w-96">የዶክተሩ አድራሻ  :</span> {{ medicalInfo.doctor_address }}
            </p>
           </div>
           <div class="">
-           <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
-            <span class="font-bold mr-29 text-gray-800">የብር መጠን :</span> {{ medicalInfo.medical_expense }}
+           <p  class="mt-5 text-sm text-blue-800 dark:text-white/90 w-96">
+            <span class="font-bold mr-29 text-gray-800 w-96">የብር መጠን :</span> {{ medicalInfo.medical_expense }}
            </p>
           </div>
           <div class="">
-           <p  class="mt-1 text-sm text-blue-800 dark:text-white/90">
-          <span class="font-bold mr-20 text-gray-800">ቀን</span>{{ medicalInfo.date }}
+           <p  class="mt-1 text-sm text-blue-800 dark:text-white/90 w-96">
+          <span class="font-bold mr-20 text-gray-800 w-96">ቀን</span>{{ medicalInfo.date }}
            </p>
     
 
@@ -66,12 +67,12 @@
       
       </div>
   
-    </AdminLayout>
+    </AdminLayoutMedical>
   </template>
   
   <script setup>
   import { ref, onMounted } from 'vue';
-  import AdminLayout from '@/components/layout/AdminLayout.vue';
+  import AdminLayoutMedical from '@/components/layout/AdminLayoutMedical.vue';
   import 'flatpickr/dist/flatpickr.css';
   import axios from 'axios';
 
@@ -95,24 +96,7 @@
               console.log('med',medicalInfo.value)
           })
       };
-      // const fetchSinglePrisioner = (id)=>{
-      //   localStorage.setItem('prisoner_id',id)
-      //   router.push('/ShowSinglePrisoner')
 
-      // };
-      
-  //     const fetchSinglePrisionerInfo = (id)=>{
-  //     const prisoner_id =  localStorage.getItem('prisoner_id')
-  //       console.log('prisoner_id',prisoner_id)
-  // axios.get(`http://127.0.0.1:8000/api/prision-history/${prisoner_id}`).then((res)=>{
-  //   singlePrisionerInfo.value = res.data.data
-  //   console.log('med',singlePrisionerInfo.value)
-  //   showPrisoinerInfo.value = true
-  // })
-  //     };
-      // const toggleShow = ()=>{
-      //   showMore.value = !showMore.value
-      // }
       onMounted(()=>{
           fetchPrisioner()
           fetchMedical()
