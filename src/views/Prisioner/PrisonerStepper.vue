@@ -18,7 +18,8 @@
      <!-- <Prisioner v-if="currentStep == 1"> </Prisioner> -->
      <PrisionerApperance @prisonerApperanceSaved="changeStep(2)" v-if="currentStep == 1"> </PrisionerApperance>
      <PersonalInformation @prisonerPersonalInfoSaved="changeStep(3)" v-if="currentStep == 2"> </PersonalInformation>
-     <PrisionerProperty v-if="currentStep == 3"> </PrisionerProperty>
+     <PrisionerProperty @prisonerPropertySaved="changeStep(4)" v-if="currentStep == 3"> </PrisionerProperty>
+     <PrisonerCrimes @prisonerCrimeSaved="gotoProfile" v-if="currentStep == 4"> </PrisonerCrimes>
 
 
   </AdminLayout>
@@ -34,10 +35,11 @@ import PrisionerApperance from './Steps/PrisionerApperance.vue'
 import PrisionerProperty from './PrisionerProperty.vue'
 import BasicInformation from './Steps/BasicInformation.vue'
 import PersonalInformation from './Steps/PersonalInformation.vue'
+import PrisonerCrimes from '../Criminal/PrisonerCrimes.vue'
 
 export default {
   components: {
-    PageBreadcrumb, AdminLayout, Prisioner, PrisionerApperance, PrisionerProperty, BasicInformation, PersonalInformation,
+    PageBreadcrumb, AdminLayout, Prisioner, PrisionerApperance, PrisionerProperty, BasicInformation, PersonalInformation, PrisonerCrimes,
   },
   data() {
     return {
@@ -47,6 +49,7 @@ export default {
         { no: 1, name: 'የሰዉነት ገጽታ' },
         { no: 2, name: 'የእስረኞቺ ተጨማሪ መረጃዎቺ' },
         { no: 3, name: 'ንብረቶች' },
+        { no: 4, name: 'Crimes' },
       ],
       currentStep: 0,
     }
@@ -54,6 +57,12 @@ export default {
   methods: {
     changeStep(step) {
       this.currentStep = step
+    },
+    gotoProfile() {
+      this.$router.push({
+        name: 'ShowSinglePrisoner',
+        query: { h: this.$route.query.prison_history_id },
+      })
     }
   }
 }
