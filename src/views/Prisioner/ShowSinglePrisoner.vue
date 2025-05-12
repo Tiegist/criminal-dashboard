@@ -110,7 +110,16 @@
       <span class="font-bold mr-22 text-gray-800"> ብሄር :</span>  {{ matchedHistory.verdict_court?.name }}
      </p> -->
    </div>
-   <Button size="sm" variant="outline" @click="fetchmatchedHistoryInfo(matchedHistory.id)">ተጨማሪ መረጃ ይመልከቱ </Button>
+   <div class="flex">
+<div>
+
+  <Button size="sm" variant="outline" @click="fetchmatchedHistoryInfo(matchedHistory.id)">ተጨማሪ መረጃ ይመልከቱ </Button>
+</div>
+<div>
+
+<Button size="sm" variant="outline" @click="fetchmatchedHistoryInfo(matchedHistory.id)">መረጃ ያስተካክሉ</Button>
+</div>
+   </div>
     </div>
   </div>
 

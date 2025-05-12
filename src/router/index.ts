@@ -166,6 +166,16 @@ const router = createRouter({
         title: 'Dashboard',
       },
     },
+    //police
+    
+    {
+      path: '/',
+      name: 'Dashboard',
+      component: () => import('../views/DashboardP.vue'),
+      meta: {
+        title: 'Dashboard',
+      },
+    },
     {
       path: '/profile',
       name: 'Profile',
@@ -174,6 +184,24 @@ const router = createRouter({
         title: 'Profile',
       },
     },
+    //police
+    {
+      path: '/ProfileP',
+      name: 'ProfileP',
+      component: () => import('../views/Others/UserProfileP.vue'),
+      meta: {
+        title: 'Profile',
+      },
+    },
+    {
+      path: '/Police',
+      name: 'Police',
+      component: () => import('../views/Police/Police.vue'),
+      meta: {
+        title: 'Police',
+      },
+    },
+    
     {
       path: '/form-elements',
       name: 'Form Elements',
@@ -191,10 +219,29 @@ const router = createRouter({
         title: 'prisoner History',
       },
     },
+
+    //
+    // {
+    //   path: '/PrisonerHistory',
+    //   name: 'PrisonerHistory',
+    //   component: () => import('../views/Criminal/PrisonerHistoryP.vue'),
+    //   meta: {
+    //     title: 'prisoner History',
+    //   },
+    // },
     {
       path: '/CriminalCash',
       name: 'CriminalCash',
       component: () => import('../views/Criminal/CriminalCash.vue'),
+      meta: {
+        title: 'prisoner cash',
+      },
+    },
+    //police
+    {
+      path: '/CriminalCash',
+      name: 'CriminalCash',
+      component: () => import('../views/Criminal/CriminalCashP.vue'),
       meta: {
         title: 'prisoner cash',
       },
@@ -207,10 +254,28 @@ const router = createRouter({
         title: 'prisoner crimes',
       },
     },
+    //police
+    {
+      path: '/PrisonerCrimes',
+      name: 'PrisonerCrimes',
+      component: () => import('../views/Criminal/PrisonerCrimesP.vue'),
+      meta: {
+        title: 'prisoner crimes',
+      },
+    },
     {
       path: '/MedicalHistory',
       name: 'MedicalHistory',
       component: () => import('../views/Criminal/MedicalHistory.vue'),
+      meta: {
+        title: 'Medical History',
+      },
+    },
+    //police
+    {
+      path: '/MedicalHistory',
+      name: 'MedicalHistory',
+      component: () => import('../views/Criminal/MedicalHistoryP.vue'),
       meta: {
         title: 'Medical History',
       },
@@ -318,10 +383,28 @@ const router = createRouter({
         title: 'Prisoner Form',
       },
     },
+    //police
+    {
+      path: '/prisoner-form',
+      name: 'prisonerForm',
+      component: () => import('../views/Prisioner/PrisonerStepperP.vue'),
+      meta: {
+        title: 'Prisoner Form',
+      },
+    },
     {
       path: '/ShowSinglePrisonerApperance',
       name: 'ShowSinglePrisonerApperance',
       component: () => import('../views/Prisioner/ShowSinglePrisonerApperance.vue'),
+      meta: {
+        title: 'ShowSinglePrisonerApperance',
+      },
+    },
+    //
+    {
+      path: '/ShowSinglePrisonerApperance',
+      name: 'ShowSinglePrisonerApperance',
+      component: () => import('../views/Prisioner/ShowSinglePrisonerApperanceP.vue'),
       meta: {
         title: 'ShowSinglePrisonerApperance',
       },
@@ -334,10 +417,28 @@ const router = createRouter({
         title: 'ShowSinglePrisonerProperty',
       },
     },
+    //police
+    {
+      path: '/ShowSinglePrisonerProperty',
+      name: 'ShowSinglePrisonerProperty',
+      component: () => import('../views/Prisioner/ShowSinglePrisonerPropertyP.vue'),
+      meta: {
+        title: 'ShowSinglePrisonerProperty',
+      },
+    },
     {
       path: '/ShowSinglePrisonerCrimes',
       name: 'ShowSinglePrisonerCrimes',
       component: () => import('../views/Prisioner/ShowSinglePrisonerCrimes.vue'),
+      meta: {
+        title: 'ShowSinglePrisonerCrimes',
+      },
+    },
+    //police
+    {
+      path: '/ShowSinglePrisonerCrimes',
+      name: 'ShowSinglePrisonerCrimes',
+      component: () => import('../views/Prisioner/ShowSinglePrisonerCrimesP.vue'),
       meta: {
         title: 'ShowSinglePrisonerCrimes',
       },
@@ -358,10 +459,28 @@ const router = createRouter({
         title: 'ShowSinglePrisonerCourtHistories',
       },
     },
+    //police
+    {
+      path: '/ShowSinglePrisonerCourtHistories',
+      name: 'ShowSinglePrisonerCourtHistories',
+      component: () => import('../views/Prisioner/ShowSinglePrisonerCourtHistoriesP.vue'),
+      meta: {
+        title: 'ShowSinglePrisonerCourtHistories',
+      },
+    },
     {
       path: '/ShowPrisonerCash',
       name: 'ShowPrisonerCash',
       component: () => import('../views/Prisioner/ShowPrisonerCash.vue'),
+      meta: {
+        title: 'ShowPrisonerCash',
+      },
+    },
+    //police
+    {
+      path: '/ShowPrisonerCash',
+      name: 'ShowPrisonerCash',
+      component: () => import('../views/Prisioner/ShowPrisonerCashP.vue'),
       meta: {
         title: 'ShowPrisonerCash',
       },
@@ -404,11 +523,30 @@ const router = createRouter({
         title: 'PrisionerCourtHistory',
       },
     },
+    //police
+
+    {
+      path: '/PrisionerCourtHistory',
+      name: 'PrisionerCourtHistory',
+      component: () => import('../views/Prisioner/PrisionerCourtHistoryP.vue'),
+      meta: {
+        title: 'PrisionerCourtHistory',
+      },
+    },
 //showPrisioner
 {
   path: '/ShowPrisioner',
   name: 'ShowPrisioner',
   component: () => import('../views/Prisioner/ShowPrisioner.vue'),
+  meta: {
+    title: 'ShowPrisioner',
+  },
+},
+//
+{
+  path: '/ShowPrisionerp',
+  name: 'ShowPrisionerp',
+  component: () => import('../views/Prisioner/ShowPrisionerP.vue'),
   meta: {
     title: 'ShowPrisioner',
   },
@@ -421,6 +559,15 @@ const router = createRouter({
     title: 'ShowSinglePrisoner',
   },
 },
+//police
+{
+  path: '/ShowSinglePrisonerp',
+  name: 'ShowSinglePrisonerp',
+  component: () => import('../views/Prisioner/ShowSinglePrisonerP.vue'),
+  meta: {
+    title: 'ShowSinglePrisonerp',
+  },
+},
 {
   path: '/ShowMedical',
   name: 'ShowMedical',
@@ -429,7 +576,15 @@ const router = createRouter({
     title: 'ShowMedical',
   },
 },
- 
+ //police
+ {
+  path: '/ShowMedical',
+  name: 'ShowMedical',
+  component: () => import('../views/Prisioner/ShowMedicalP.vue'),
+  meta: {
+    title: 'ShowMedical',
+  },
+},
     {
       path: '/UserRegister',
       name: 'UserRegister',
@@ -438,7 +593,15 @@ const router = createRouter({
         title: 'User Register',
       },
     },
-     
+    //user registration
+    {
+      path: '/UserRegister',
+      name: 'UserRegister',
+      component: () => import('../views/User/UserRegisterP.vue'),
+      meta: {
+        title: 'User Register',
+      },
+    },
   ],
 })
 

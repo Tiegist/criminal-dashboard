@@ -1,5 +1,5 @@
 <template>
-  <AdminLayout>
+  <police-layout>
     <div
     class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
   >
@@ -45,8 +45,8 @@
             <td class="px-5 py-4 sm:px-6">
 										<a @click="fetchSinglePrisioner(user.id)" class="font-medium text-theme-sm text-green-600 dark:text-green-500 hover:underline cursor-pointer">ተጨማሪ </a>
                     |
-										<a class="font-medium text-theme-sm text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">ያስተካክሉ</a>
-										|
+										<!-- <a class="font-medium text-theme-sm text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">ያስተካክሉ</a> -->
+										
 										<a class="font-medium text-theme-sm text-red-600 dark:text-red-500 hover:underline cursor-pointer">ያጥፉ</a>
 									</td>
          
@@ -71,12 +71,12 @@
       </div>
   
       <!-- Card Body -->
-      <div class="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
+      <div class="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6 w-7/7">
         <div class="space-y-5">
           
         <div class="">
           <p class="text-base  text-blue-800 dark:text-white/90">
-        <span class="font-bold mr-10 text-gray-800">የማረ/ቤት መ/መ/ቁጥር : </span>{{ singlePrisioner.prisioner_unique_number }}
+        <span class="font-bold mr-10 text-gray-800">የማረ/ቤት መ/መ/ቁጥር :  </span>  {{ singlePrisioner.prisioner_unique_number }}
           </p>
           <p  class="mt-5 text-sm text-blue-800 dark:text-white/90">
          <span class="font-bold mr-21 text-gray-800">የ/ወ/መ/ፍ/ቁጥር :</span> {{ singlePrisioner.prision_unique_number }}
@@ -123,30 +123,30 @@
           <span class="font-bold mr-37 text-gray-800"> ብሄር :</span>  {{ singlePrisioner.ethnic_group?.name }}
          </p>
        </div>
-       <div class="flex">
-        <div>
-          <Button size="sm" variant="outline" @click="fetchSinglePrisionerInfo(singlePrisioner.id)">ተጨማሪ መረጃ ይመልከቱ </Button>
-        </div>
-        <div>
-          <Button size="sm" variant="outline" @click="fetchSinglePrisionerInfo(singlePrisioner.id)">መረጃ ያስተካክሉ</Button>
-        </div>
+       <div class="flex justify-between">
+<div>
+
+  <Button size="sm" variant="outline" @click="fetchSinglePrisionerInfo(singlePrisioner.id)">ተጨማሪ መረጃ ይመልከቱ </Button>
+</div>
+<div>
+  <Button size="sm" variant="outline" @click="fetchSinglePrisionerInfo(singlePrisioner.id)">መረጃ ያስተካክሉ</Button>
+</div>
        </div>
         </div>
       </div>
     
+    </div> 
     </div>
 
-   
     
-    </div>
 
-  </AdminLayout>
+  </police-layout>>>
 </template>
 
 <script >
 import { ref, onMounted } from 'vue';
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue';
-import AdminLayout from '@/components/layout/AdminLayout.vue';
+import PoliceLayout from '@/components/layout/PoliceLayout.vue';
 import Button from '@/components/ui/Button.vue';
 import FlatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
@@ -155,7 +155,7 @@ import router from '@/router'
 export default {
     components: {
     PageBreadcrumb,
-    AdminLayout,
+    PoliceLayout,
     Button,
     FlatPickr,
   },
@@ -185,7 +185,7 @@ axios.get(`http://127.0.0.1:8000/api/prisioner/${prisoner_id}`).then((res)=>{
     };
     const fetchSinglePrisionerInfo = (id)=>{
       localStorage.setItem('prisoner_id',id)
-    router.push('/ShowSinglePrisoner')
+    router.push('/ShowSinglePrisonerp')
 //       console.log('prisoner_id',prisoner_id)
 // axios.get(`http://127.0.0.1:8000/api/prision-history/${prisoner_id}`).then((res)=>{
 //   singlePrisionerInfo.value = res.data.data
