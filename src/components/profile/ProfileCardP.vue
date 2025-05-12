@@ -1,19 +1,33 @@
 <template>
-  <div class="w-2/3 mx-auto">
-    <div class=" p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6">
-      <div class="w-11/11">
-        <div class="">
-          <div class="flex justify-between">
-<div>
+  <div>
+    <div class="p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6">
+      <div class="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between" v-if="!isProfileInfoModal">
+        <div class="flex flex-col items-center w-full gap-6 xl:flex-row">
+          <div
+            class="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800"
+          >
+            <img :src="`http://127.0.0.1:8000/${users.photo}`" alt="" />
+          </div>
+          <div class="order-3 xl:order-2">
+            <h4
+              class="mb-2 text-lg font-semibold text-center text-gray-800 dark:text-white/90 xl:text-left"
+            >
+              {{users.full_name}}
+            </h4>
+            <div
+              class="flex flex-col items-center gap-1 text-center xl:flex-row xl:gap-3 xl:text-left"
+            >
+              <p class="text-sm text-gray-500 dark:text-gray-400">የስራ ድርሻ</p>
+              <div class="hidden h-3.5 w-px bg-gray-300 dark:bg-gray-700 xl:block"></div>
+              <p class="text-sm text-gray-500 dark:text-gray-400">{{roles.name}}</p>
+            </div>
+          </div>
+          <!--  -->
 
-  <h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
-   የግል መረጃ 
-  </h4>
-</div>
-<div>
-  <button class="edit-button " @click="isProfileInfoModal = true">
+        </div>
+        <button @click="isProfileInfoModal = true" class="edit-button">
           <svg
-            class="fill-current "
+            class="fill-current"
             width="18"
             height="18"
             viewBox="0 0 18 18"
@@ -29,55 +43,10 @@
           </svg>
           ያስተካክሉ 
         </button>
-</div>
-          </div>
-
-          <div class="flex flex-col gap-4 w-6/7 pl-40">
-            <div class=" w-5/6">
-              <div class="flex justify-between w-1/2">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">ስም :</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1 "> {{users.full_name}}</p>
-            </div>
-
-            <div class="flex justify-between  w-1/3 mt-3">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">እድሜ:</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1">{{users.age}}</p>
-            </div>
-            </div>
-    
-
-            <div class="w-7/8">
-              <div class="flex justify-between w-1/3">
-
-                <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400 ">
-                  ልዩ ስም :
-                </p>
-                <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1">
-                  {{users.user_name}}
-                </p>
-              </div>
-              <div class="flex justify-between  w-1/3 mt-3">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">የስራ ድርሻ</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{users.role}}</p>
-            </div>
-             
-            </div>
-
-           
-
-             <div class="flex  w-1/2">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">ስልክ ቁጥር :</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90 ml-4 mt-1">{{users.phone_number}}</p>
-            </div>
-          </div>
-        </div>
-
-    
       </div>
     </div>
-    <Modal v-if="isProfileInfoModal" @close="isProfileInfoModal = false">
-      <template #body>
-        <div
+  
+        <div  v-if="isProfileInfoModal" @close="isProfileInfoModal = false"
           class="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900 lg:p-11"
         >
           <!-- close btn -->
@@ -103,28 +72,30 @@
           </button>
           <div class="px-2 pr-14">
             <h4 class="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-             የግል መረጃዎትን ያስተካክሉ 
+              የግል መረጃዎትን ያስተካክሉ 
             </h4>
 
           </div>
-          <form class="">
+          <form class="flex flex-col">
             <div class="custom-scrollbar h-[458px] overflow-y-auto p-2">
-              
+             
               <div class="mt-7">
                 <h5 class="mb-5 text-lg font-medium text-gray-800 dark:text-white/90 lg:mb-6">
-                  የግል መረጃ  
+                  የግል መረጃ 
                 </h5>
 
                 <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
+                  
+        
                   <div class="col-span-2 lg:col-span-1">
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      ስም
+                      ስም 
                     </label>
                     <input
                       type="text"
-                      value="Musharof"
+                        v-model="full_name"
                       class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -133,11 +104,11 @@
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      የአባት ስም 
+                    እድሜ
                     </label>
                     <input
                       type="text"
-                     
+                    v-model="age"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -150,7 +121,7 @@
                     </label>
                     <input
                       type="text"
-                    
+                    v-model="user_name"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -159,11 +130,11 @@
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      ስልክ ቁጥር 
+                 ስልክ ቁጥር 
                     </label>
                     <input
                       type="text"
-                      
+                    v-model="phone_number"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -176,7 +147,7 @@
                     </label>
                     <input
                       type="text"
-                     
+                    v-model="role"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -189,23 +160,21 @@
                 type="button"
                 class="flex w-full justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] sm:w-auto"
               >
-                ይመለሱ
+                ይመለሱ 
               </button>
               <button
                 @click="saveProfile"
                 type="button"
                 class="flex w-full justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 sm:w-auto"
               >
-                ያስተካክሉ 
+                ያረጋግጡ
               </button>
             </div>
           </form>
         </div>
-      </template>
-    </Modal>
+ 
   </div>
 </template>
-
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import axios from 'axios'
@@ -219,7 +188,9 @@ const info = reactive({
   phone_number: '',
   user_name: '',
   age: null,
-  sex: ''
+  sex: '',
+  address: '',
+  photo: ''
 })
 
 const saveProfile = async () => {
@@ -229,7 +200,9 @@ const saveProfile = async () => {
     phone_number: info.phone_number,
     user_name: info.user_name,
     age: info.age,
-    sex: info.sex
+    sex: info.sex,
+    address: '',
+    photo: ''
   }
 
   try {
@@ -264,6 +237,7 @@ const fetchRole = async () => {
     console.error('Error fetching roles', error)
   }
 }
+
 onMounted(() => {
   fetchUser()
   fetchRole()

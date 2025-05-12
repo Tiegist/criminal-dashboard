@@ -85,6 +85,9 @@ export default {
 		signOut(){
 			this.$store.dispatch('logout');
 			this.closeDropdown()
+      localStorage.removeItem('token')
+      localStorage.removeItem('user_id')
+      localStorage.removeItem('role')
 		},
 		handleClickOutside(event){
 			if (this.dropdownRef && !this.dropdownRef.contains(event.target)) {

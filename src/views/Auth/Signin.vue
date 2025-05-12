@@ -14,10 +14,10 @@
                 <h1
                   class="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md"
                 >
-                  Sign In
+                  ይግቡ
                 </h1>
                 <p class="text-sm text-gray-500 dark:text-gray-400">
-                  Enter your username and password to sign in!
+                  ልዩ ስሞን እና የይለፍ ቃሎን ያስገቡ
                 </p>
               </div>
               <div>
@@ -30,14 +30,14 @@
                         for="email"
                         class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                       >
-                        Username<span class="text-error-500">*</span>
+                        ልዩ ስም<span class="text-error-500">*</span>
                       </label>
                       <input
                         v-model="username"
                         type="username"
                         id="username"
                         name="username"
-                        placeholder="Enter your username"
+                        placeholder="ልዩ ስም ያስገቡ"
                         class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                       />
                     </div>
@@ -47,14 +47,14 @@
                         for="password"
                         class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                       >
-                        Password<span class="text-error-500">*</span>
+                        የይለፍ ቃል<span class="text-error-500">*</span>
                       </label>
                       <div class="relative">
                         <input
                           v-model="password"
                           :type="showPassword ? 'text' : 'password'"
                           id="password"
-                          placeholder="Enter your password"
+                          placeholder="የይለፍ ቃሎን ያስገቡ"
                           class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                         />
                         <span
@@ -137,13 +137,13 @@
                               </span>
                             </div>
                           </div>
-                          Keep me logged in
+                          እንደገባሁ አቆየኝ
                         </label>
                       </div>
                       <router-link
                         to="/reset-password"
                         class="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
-                        >Forgot password?</router-link
+                        >የይለፍ ቃሎን ረስተዋል?</router-link
                       >
                     </div>
                     <!-- Button -->
@@ -153,7 +153,7 @@
                         type="submit"
                         class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
                       >
-                        {{ !loading ? "Sign In" : 'Signing In' }}
+                        {{ !loading ? "ይግቡ" : 'እየገቡ ነዉ' }}
                       </button>
                     </div>
                   </div>
@@ -213,24 +213,31 @@ export default {
       .then(response => {
         let token = response.data.token
         let user_id = response.data.user_id
+        let role = response.data.role
         localStorage.setItem('token', token)
         localStorage.setItem('user_id', user_id)
+        localStorage.setItem('role', role)
         
-        this.applyHeader(token)
+        this.applyHeader(token,role)
       })
       .catch(error => {
         this.loading = false
-        this.message = error.response.data.message
+        this.message = error.response
       })
     },
-    applyHeader(token) {
+    applyHeader(token,role) {
+      //localStorage.getItem('role')
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
       axios.defaults.withCredentials = true
+if(role === 1){
 
-      this.$router.push({ name: 'Profile'})
+  this.$router.push({ name: 'Profile'})
+}
+else if(role === 2){
+  this.$router.push({ name: 'ProfileP'})
     }
   },
-  components: {
+  components: { 
     CommonGridShape,
     FullScreenLayout,
   },
@@ -238,5 +245,5 @@ export default {
     this.$store.dispatch('applyHeader')
   }
 }
-
+}
 </script>
