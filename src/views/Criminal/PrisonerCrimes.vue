@@ -1,16 +1,20 @@
 <template>
 	<table v-if="all_crimes.length > 0" class="mb-10">
-		<tr>
-			<th>No</th>
-			<th>Crime</th>
-			<th>Description</th>
-		</tr>
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Crime</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
 
-		<tr v-for="crime,i in all_crimes" :key="i">
-			<td>{{ i + 1 }}</td>
-			<td>{{ crimes.find( t => t.id == crime.crime_id)?.name }}</td>
-			<td>{{ crime.description }}</td>
-		</tr>
+			<tr v-for="crime,i in all_crimes" :key="i">
+				<td>{{ i + 1 }}</td>
+				<td>{{ crimes.find( t => t.id == crime.crime_id)?.name }}</td>
+				<td>{{ crime.description }}</td>
+			</tr>
+		</tbody>
 	</table>
 	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
 		<div class="space-y-6">
@@ -96,13 +100,15 @@ const apiServer = computed(() => store.state.apiServer);
 const saving = ref(false);
 const errorMessage = ref('');
 const route = useRoute();
-const emit = defineEmits(['prisonerCrimeSaved']);
 
 const crimes = ref([]);
 let single = ref({
 	crime_id: null,
 	description: '',
 })
+
+const emit = defineEmits(['prisonerCrimeSaved']);
+
 
 let all_crimes = ref([]);
 
@@ -113,7 +119,7 @@ function addSingle() {
 	single.value = {}
 }
 
-function registerPrisionerCrime() {
+const registerPrisionerCrime = () => {
 	if (saving.value == true) return;
 
 	errorMessage.value = ''

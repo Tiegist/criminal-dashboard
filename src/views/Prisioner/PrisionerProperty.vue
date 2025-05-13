@@ -1,18 +1,23 @@
 <template>
 	<table v-if="properties.length > 0" class="mb-10">
-		<tr>
-			<th>No</th>
-			<th>Type</th>
-			<th>Amount</th>
-			<th>Description</th>
-		</tr>
+		<thead>
 
-		<tr v-for="property,i in properties" :key="i">
-			<td>{{ i + 1}}</td>
-			<td>{{ types.find( t => t.id == property.type_id)?.type }}</td>
-			<td>{{ property.amount }}</td>
-			<td>{{ property.description }}</td>
-		</tr>
+			<tr>
+				<th>No</th>
+				<th>Type</th>
+				<th>Amount</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr v-for="property,i in properties" :key="i">
+				<td>{{ i + 1}}</td>
+				<td>{{ types.find( t => t.id == property.type_id)?.type }}</td>
+				<td>{{ property.amount }}</td>
+				<td>{{ property.description }}</td>
+			</tr>
+		</tbody>
 	</table>
 	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
 		<div class="space-y-6">

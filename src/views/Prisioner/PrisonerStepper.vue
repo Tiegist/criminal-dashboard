@@ -61,8 +61,11 @@ export default {
     gotoProfile() {
       this.$router.push({
         name: 'ShowSinglePrisoner',
-        query: { h: this.$route.query.prison_history_id },
+        query: { prisoner: this.$route.query.prisoner },
       })
+    },
+    mounted() {
+
     }
   }
 }

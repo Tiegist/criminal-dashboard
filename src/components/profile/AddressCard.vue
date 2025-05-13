@@ -3,28 +3,34 @@
     <div class="p-5 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6">
       <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
         <div>
-          <h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">አድራሻ</h4>
+          <h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">Address</h4>
 
           <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32">
             <div>
-              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ክልል</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">United States</p>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Current District</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.current_district }} </p>
             </div>
 
             <div>
-              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ዞን</p>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Current City/State</p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90">
-                Phoenix, United States
+                {{ props.history.current_city.name }}
               </p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                ቀበሌ 
+                Closeset Correspondent City
               </p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">ERT 2489</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.history.closest_respondent_town.name }}</p>
             </div>
 
+            <div>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                Closeset Correspondent District
+              </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.history.closest_respondent_district }}</p>
+            </div>
           </div>
         </div>
 
@@ -47,7 +53,7 @@
               fill=""
             />
           </svg>
-          ያስተካክሉ 
+          Edit
         </button>
       </div>
     </div>
@@ -79,16 +85,18 @@
           </button>
           <div class="px-2 pr-14">
             <h4 class="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              አድራሻ ያስተካክሉ 
+              Edit Address
             </h4>
-
+            <p class="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
+              Update your details to keep your profile up-to-date.
+            </p>
           </div>
           <form class="flex flex-col">
             <div class="px-2 overflow-y-auto custom-scrollbar">
               <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
                 <div>
                   <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                    ክልል 
+                    Country
                   </label>
                   <input
                     type="text"
@@ -99,7 +107,7 @@
 
                 <div>
                   <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                    ዞን 
+                    City/State
                   </label>
                   <input
                     type="text"
@@ -110,7 +118,7 @@
 
                 <div>
                   <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                    ቀበሌ 
+                    Postal Code
                   </label>
                   <input
                     type="text"
@@ -119,6 +127,16 @@
                   />
                 </div>
 
+                <div>
+                  <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                    TAX ID
+                  </label>
+                  <input
+                    type="text"
+                    value="AS4568384"
+                    class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                  />
+                </div>
               </div>
             </div>
             <div class="flex items-center gap-3 mt-6 lg:justify-end">
@@ -127,14 +145,14 @@
                 type="button"
                 class="flex w-full justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] sm:w-auto"
               >
-                ይመለሱ 
+                Close
               </button>
               <button
                 @click="saveProfile"
                 type="button"
                 class="flex w-full justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 sm:w-auto"
               >
-                ያረጋግጡ 
+                Save Changes
               </button>
             </div>
           </form>
@@ -149,6 +167,8 @@ import { ref } from 'vue'
 import Modal from './Modal.vue'
 
 const isProfileAddressModal = ref(false)
+
+const props = defineProps(['history'])
 
 const saveProfile = () => {
   // Implement save profile logic here

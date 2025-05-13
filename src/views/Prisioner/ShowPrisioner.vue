@@ -152,6 +152,8 @@ import FlatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
 import axios from 'axios';
 import router from '@/router'
+import { useRoute, useRouter } from 'vue-router';
+
 export default {
     components: {
     PageBreadcrumb,
@@ -160,6 +162,8 @@ export default {
     FlatPickr,
   },
   setup(){
+    const route = useRoute();
+
     const PrisionerInfo = ref([]);
     const singlePrisioner = ref([])
     const singlePrisionerInfo = ref([])
@@ -174,14 +178,17 @@ export default {
         })
     };
     const fetchSinglePrisioner = (prisoner_id)=>{
-axios.get(`http://127.0.0.1:8000/api/prisioner/${prisoner_id}`).then((res)=>{
-  singlePrisioner.value = res.data.Prisioner
-  console.log('prisioner_id',res.data.Prisioner.id)
-  localStorage.setItem('prisoner_id',res.data.Prisioner.id)
-  console.log('single prisioner',singlePrisioner.value )
-  showPrisoiner.value = true
-  //fetchSinglePrisionerInfo(id)
-})
+
+      router.push({name: 'ShowSinglePrisoner', query: { prisoner: prisoner_id }});
+    // axios.get(`http://127.0.0.1:8000/api/prisioner/${prisoner_id}`).then((res)=>{
+    //   singlePrisioner.value = res.data.Prisioner
+    //   console.log('prisioner_id',res.data.Prisioner.id)
+    //   localStorage.setItem('prisoner_id',res.data.Prisioner.id)
+    //   console.log('single prisioner',singlePrisioner.value )
+    //   showPrisoiner.value = true
+    //   //fetchSinglePrisionerInfo(id)
+    // })
+
     };
     const fetchSinglePrisionerInfo = (id)=>{
       localStorage.setItem('prisoner_id',id)

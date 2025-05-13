@@ -1,19 +1,52 @@
 <template>
-  <div class="w-2/3 mx-auto">
-    <div class=" p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6">
-      <div class="w-11/11">
-        <div class="">
-          <div class="flex justify-between">
-<div>
+  <div>
+    <div class="p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6">
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+        <div>
+          <h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
+            Prisoner Information
+          </h4>
 
-  <h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
-   የግል መረጃ 
-  </h4>
-</div>
-<div>
-  <button class="edit-button " @click="isProfileInfoModal = true">
+          <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32">
+            <div>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Job</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.job }} </p>
+            </div>
+
+            <div>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Religion</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.history.religion.name }}</p>
+            </div>
+
+            <div>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                Mobile
+              </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+                {{ props.history.mobile_number }}
+              </p>
+            </div>
+
+            <div>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Phone</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.history.phone_number}}</p>
+            </div>
+
+            <div>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Educational Level</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.history.educational_level.name }}</p>
+            </div>
+
+            <div>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Closest Respondent</p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.history.closest_respondent }}</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="edit-button" @click="isProfileInfoModal = true">
           <svg
-            class="fill-current "
+            class="fill-current"
             width="18"
             height="18"
             viewBox="0 0 18 18"
@@ -27,52 +60,8 @@
               fill=""
             />
           </svg>
-          ያስተካክሉ 
+          Edit
         </button>
-</div>
-          </div>
-
-          <div class="flex flex-col gap-4 w-6/7 pl-40">
-            <div class=" w-5/6">
-              <div class="flex justify-between w-1/2">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">ስም :</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1 "> {{users.full_name}}</p>
-            </div>
-
-            <div class="flex justify-between  w-1/3 mt-3">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">እድሜ:</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1">{{users.age}}</p>
-            </div>
-            </div>
-    
-
-            <div class="w-7/8">
-              <div class="flex justify-between w-1/3">
-
-                <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400 ">
-                  ልዩ ስም :
-                </p>
-                <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1">
-                  {{users.user_name}}
-                </p>
-              </div>
-              <div class="flex justify-between  w-1/3 mt-3">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">የስራ ድርሻ</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{users.role}}</p>
-            </div>
-             
-            </div>
-
-           
-
-             <div class="flex  w-1/2">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">ስልክ ቁጥር :</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90 ml-4 mt-1">{{users.phone_number}}</p>
-            </div>
-          </div>
-        </div>
-
-    
       </div>
     </div>
     <Modal v-if="isProfileInfoModal" @close="isProfileInfoModal = false">
@@ -103,16 +92,76 @@
           </button>
           <div class="px-2 pr-14">
             <h4 class="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-             የግል መረጃዎትን ያስተካክሉ 
+              Edit Personal Information
             </h4>
-
+            <p class="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
+              Update your details to keep your profile up-to-date.
+            </p>
           </div>
           <form class="">
             <div class="custom-scrollbar h-[458px] overflow-y-auto p-2">
-              
+              <div>
+                <h5 class="mb-5 text-lg font-medium text-gray-800 dark:text-white/90 lg:mb-6">
+                  Social Links
+                </h5>
+
+                <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
+                  <div>
+                    <label
+                      class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                    >
+                      Facebook
+                    </label>
+                    <input
+                      type="text"
+                      value="https://www.facebook.com/PimjoHQ"
+                      class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                    >
+                      X.com
+                    </label>
+                    <input
+                      type="text"
+                      value="https://x.com/PimjoHQ"
+                      class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                    >
+                      Linkedin
+                    </label>
+                    <input
+                      type="text"
+                      value="https://www.linkedin.com/company/pimjo/posts/?feedView=all"
+                      class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                    >
+                      Instagram
+                    </label>
+                    <input
+                      type="text"
+                      value="https://instagram.com/PimjoHQ"
+                      class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                    />
+                  </div>
+                </div>
+              </div>
               <div class="mt-7">
                 <h5 class="mb-5 text-lg font-medium text-gray-800 dark:text-white/90 lg:mb-6">
-                  የግል መረጃ  
+                  Personal Information
                 </h5>
 
                 <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
@@ -120,7 +169,7 @@
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      ስም
+                      First Name
                     </label>
                     <input
                       type="text"
@@ -133,11 +182,11 @@
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      የአባት ስም 
+                      Last Name
                     </label>
                     <input
                       type="text"
-                     
+                      value="Chowdhury"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -146,11 +195,11 @@
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      ልዩ ስም 
+                      Email Address
                     </label>
                     <input
                       type="text"
-                    
+                      value="emirhanboruch55@gmail.com"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -159,11 +208,11 @@
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      ስልክ ቁጥር 
+                      Phone
                     </label>
                     <input
                       type="text"
-                      
+                      value="+09 363 398 46"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -172,11 +221,11 @@
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      የስራ ድርሻ 
+                      Bio
                     </label>
                     <input
                       type="text"
-                     
+                      value="Team Manager"
                       class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                     />
                   </div>
@@ -189,14 +238,14 @@
                 type="button"
                 class="flex w-full justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] sm:w-auto"
               >
-                ይመለሱ
+                Close
               </button>
               <button
                 @click="saveProfile"
                 type="button"
                 class="flex w-full justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 sm:w-auto"
               >
-                ያስተካክሉ 
+                Save Changes
               </button>
             </div>
           </form>
@@ -207,65 +256,17 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
-import axios from 'axios'
+import { ref } from 'vue'
+import Modal from './Modal.vue'
 
 const isProfileInfoModal = ref(false)
-const users = ref([])
-const roles = ref([])
-const info = reactive({
-  full_name: '',
-  role: null,
-  phone_number: '',
-  user_name: '',
-  age: null,
-  sex: ''
-})
 
-const saveProfile = async () => {
-  const userData = {
-    full_name: info.full_name,
-    role: info.role,
-    phone_number: info.phone_number,
-    user_name: info.user_name,
-    age: info.age,
-    sex: info.sex
-  }
+const props = defineProps(['history'])
 
-  try {
-    const response = await axios.post('http://127.0.0.1:8000/api/user', userData, {
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    console.log('Profile saved', response.data)
-    isProfileInfoModal.value = false
-  } catch (error) {
-    console.error('Error saving profile', error)
-  }
+
+const saveProfile = () => {
+  // Implement save profile logic here
+  console.log('Profile saved')
+  isProfileInfoModal.value = false
 }
-
-const fetchUser = async () => {
-  try {
-    const response = await axios.get('http://127.0.0.1:8000/api/user')
-    users.value = response.data
-    console.log('Users:', users.value)
-  } catch (error) {
-    console.error('Error fetching user information', error)
-  }
-}
-
-const fetchRole = async () => {
-  try {
-    const response = await axios.get('http://127.0.0.1:8000/api/user-role')
-    roles.value = response.data
-    console.log('Roles:', roles.value)
-  } catch (error) {
-    console.error('Error fetching roles', error)
-  }
-}
-onMounted(() => {
-  fetchUser()
-  fetchRole()
-})
 </script>

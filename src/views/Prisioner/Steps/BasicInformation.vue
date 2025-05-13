@@ -151,6 +151,7 @@ const sexes = ref([]);
 const ethnicGroups = ref([]);
 const Towns = ref([]);
 const prisonHistoryId = ref([])
+const prisonerId = ref([])
 const saving = ref(false);
 const errorMessage = ref('');
 const prisoner = ref({
@@ -218,8 +219,9 @@ const registerPrisoner = async () => {
         .then(response => {
             saving.value = false
             prisonHistoryId.value = response.data.prison_history_id
-            router.replace({ query: { ...route.query, prison_history_id: prisonHistoryId.value } });
-			localStorage.setItem('prisioner_history_id', prisonHistoryId.value);
+            prisonerId.value = response.data.prisoner
+            router.replace({ query: { ...route.query, prison_history_id: prisonHistoryId.value, prisoner: prisonerId.value } });
+			// localStorage.setItem('prisioner_history_id', prisonHistoryId.value);
             emit('prisonerSaved');
         })
         .catch(error => {
@@ -229,6 +231,26 @@ const registerPrisoner = async () => {
 }
 
 onMounted(() => {
+	if(route.query.prisoner) {
+
+	axios
+        .post(apiServer.value + 'prisoner/new-history', {
+            prisoner_id: route.query.prisoner
+        })
+        .then(response => {
+            saving.value = false
+            prisonHistoryId.value = response.data.prison_history_id
+            prisonerId.value = response.data.prisoner
+            router.replace({ query: { ...route.query, prison_history_id: prisonHistoryId.value, prisoner: prisonerId.value } });
+			// localStorage.setItem('prisioner_history_id', prisonHistoryId.value);
+            emit('prisonerSaved');
+        })
+        .catch(error => {
+            errorMessage.value = error.response.data.message
+            saving.value = false
+        })
+    }
+
 	fetchSex();
 	fetchEthnic();
 	fetchTown();
