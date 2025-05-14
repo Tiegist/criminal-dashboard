@@ -384,14 +384,14 @@ const router = createRouter({
       },
     },
     //police
-    {
-      path: '/prisoner-form',
-      name: 'prisonerForm',
-      component: () => import('../views/Prisioner/PrisonerStepperP.vue'),
-      meta: {
-        title: 'Prisoner Form',
-      },
-    },
+    // {
+    //   path: '/prisoner-form',
+    //   name: 'prisonerForm',
+    //   component: () => import('../views/Prisioner/PrisonerStepperP.vue'),
+    //   meta: {
+    //     title: 'Prisoner Form',
+    //   },
+    // },
     {
       path: '/ShowSinglePrisonerApperance',
       name: 'ShowSinglePrisonerApperance',

@@ -15,7 +15,6 @@
         </div>
      </div>
      <BasicInformation @prisonerSaved="changeStep(1)" v-if="currentStep == 0"> </BasicInformation>
-     <!-- <Prisioner v-if="currentStep == 1"> </Prisioner> -->
      <PrisionerApperance @prisonerApperanceSaved="changeStep(2)" v-if="currentStep == 1"> </PrisionerApperance>
      <PersonalInformation @prisonerPersonalInfoSaved="changeStep(3)" v-if="currentStep == 2"> </PersonalInformation>
      <PrisionerProperty @prisonerPropertySaved="changeStep(4)" v-if="currentStep == 3"> </PrisionerProperty>

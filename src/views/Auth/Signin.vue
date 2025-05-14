@@ -231,7 +231,7 @@ export default {
       axios.defaults.withCredentials = true
 if(role === 1){
 
-  this.$router.push({ name: 'Profile'})
+  this.$router.push({ name: 'Dashboard'})
 }
 else if(role === 2){
   this.$router.push({ name: 'ProfileP'})
