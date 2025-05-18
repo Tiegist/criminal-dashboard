@@ -602,6 +602,15 @@ const router = createRouter({
         title: 'User Register',
       },
     },
+     {
+      path: '/prisonerAttendance',
+      name: 'prisonerAttendance',
+      component: () => import('../views/Guard/prisonerAttendance.vue'),
+      meta: {
+        title: 'User Register',
+      },
+    },
+    
   ],
 })
 
