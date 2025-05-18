@@ -63,7 +63,7 @@
             </div>
           </div>
         </div>
-        <button @click="addNewStory(props.prisoner.id)" class="edit-button">
+        <button @click="addNewStory(props.prisoner.id)" class="edit-button absolute right-20">
           <svg
             class="fill-current"
             width="18"
@@ -79,7 +79,7 @@
               fill=""
             />
           </svg>
-          Create New History | Mahder
+          አዲስ የወንጀል ታሪክ | ማህደር 
         </button>
       </div>
     </div>

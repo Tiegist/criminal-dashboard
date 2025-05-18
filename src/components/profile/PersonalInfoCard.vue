@@ -9,12 +9,12 @@
 
           <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32">
             <div>
-              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Job</p>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ስራ</p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.job }} </p>
             </div>
 
             <div>
-              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Religion</p>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ሀይማኖት</p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.history.religion.name }}</p>
             </div>
 
@@ -28,17 +28,17 @@
             </div>
 
             <div>
-              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Phone</p>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ስልክ ቁጥር</p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.history.phone_number}}</p>
             </div>
 
             <div>
-              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Educational Level</p>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">የትምህርት ደረጃ</p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.history.educational_level.name }}</p>
             </div>
 
             <div>
-              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Closest Respondent</p>
+              <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">የቅርብ ተጠሪ</p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.history.closest_respondent }}</p>
             </div>
           </div>
@@ -92,7 +92,7 @@
           </button>
           <div class="px-2 pr-14">
             <h4 class="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              Edit Personal Information
+                የግል መረጃዎትን ያስተካክሉ
             </h4>
             <p class="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
               Update your details to keep your profile up-to-date.
@@ -161,7 +161,7 @@
               </div>
               <div class="mt-7">
                 <h5 class="mb-5 text-lg font-medium text-gray-800 dark:text-white/90 lg:mb-6">
-                  Personal Information
+                  የግል መረጃ 
                 </h5>
 
                 <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
@@ -169,7 +169,7 @@
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      First Name
+                      ስም 
                     </label>
                     <input
                       type="text"
@@ -182,7 +182,7 @@
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      Last Name
+                      ያባት ስም
                     </label>
                     <input
                       type="text"
@@ -195,7 +195,7 @@
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      Email Address
+                      ኢሜል 
                     </label>
                     <input
                       type="text"
@@ -208,7 +208,7 @@
                     <label
                       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                     >
-                      Phone
+                      ሰልክ ቁጥር
                     </label>
                     <input
                       type="text"
