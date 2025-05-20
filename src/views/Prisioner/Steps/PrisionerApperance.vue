@@ -64,7 +64,10 @@
         { 'cursor-not-allowed opacity-50': disabled },
       ]" @click="registerPrisonerApperance" :disabled="disabled">
         <span v-if="startIcon" class="flex items-center"> </span>
-        {{ !saving ? 'Save & Continue' : 'Saving...' }}
+
+        <span v-if="!editMode"> {{ !saving ? 'Save & Continue' : 'Saving...' }} </span>
+				<span v-if="editMode"> {{ !saving ? 'Update & Continue' : 'Updating...' }} </span>
+
         <span v-if="endIcon" class="flex items-center">
 
         </span>
@@ -184,6 +187,7 @@ const emit = defineEmits(['prisonerApperanceSaved']);
 
 const store = useStore();
 const apiServer = computed(() => store.state.apiServer);
+const editMode = computed(() => route.query.prison_history_id);
 
 const noses = ref([])
 const hairs = ref([])
@@ -196,18 +200,18 @@ const saving = ref(false);
 const errorMessage = ref('');
 
 const prisonerApperance = ref({
-  hair_type_id: 1,
-  height: 1.67,
-  face: 'Big Face',
-  forehead: 'Ginbaram',
-  nose_id: 1,
-  eye_id: 1,
-  teeth_id: 1,
-  lip_id: 1,
-  ear_id: 1,
-  unique_appearance: 'Shefafa',
-  citizenship: 'Ethiopian',
-  extra_description: 'He is, Shefafa, eyanekese yhedal, kindbu lay tebasa alebet...',
+  hair_type_id: null,
+  height: null,
+  face: '',
+  forehead: '',
+  nose_id: null,
+  eye_id: null,
+  teeth_id: null,
+  lip_id: null,
+  ear_id: null,
+  unique_appearance: '',
+  citizenship: '',
+  extra_description: '',
 })
 
 const fetchhair = async () => { axios.get(apiServer.value + 'hair').then(response => { hairs.value = response.data.data; }) }
@@ -249,6 +253,25 @@ const registerPrisonerApperance = async () => {
       saving.value = false
     })
 }
+const fetchPrisonerHistory = async () => {
+    axios
+		.get(apiServer.value + 'prisoner-history/' + route.query.prison_history_id)
+        .then(response => {
+            prisonerApperance.value.hair_type_id = response.data.data.prisoner_apperance.hair_type_id
+            prisonerApperance.value.height = response.data.data.prisoner_apperance.height
+            prisonerApperance.value.face = response.data.data.prisoner_apperance.face
+            prisonerApperance.value.forehead = response.data.data.prisoner_apperance.forehead
+            prisonerApperance.value.nose_id = response.data.data.prisoner_apperance.nose_id
+            prisonerApperance.value.eye_id = response.data.data.prisoner_apperance.eye_id
+            prisonerApperance.value.teeth_id = response.data.data.prisoner_apperance.teeth_id
+            prisonerApperance.value.lip_id = response.data.data.prisoner_apperance.lip_id
+            prisonerApperance.value.ear_id = response.data.data.prisoner_apperance.ear_id
+            prisonerApperance.value.unique_appearance = response.data.data.prisoner_apperance.unique_appearance
+            prisonerApperance.value.citizenship = response.data.data.prisoner_apperance.citizenship
+            prisonerApperance.value.extra_description = response.data.data.prisoner_apperance.extra_description
+        })
+}
+
 onMounted(() => {
   fetchhair();
   fetchNose();
@@ -256,9 +279,12 @@ onMounted(() => {
   fetchTeeth();
   fetchLip();
   fetchEar();
+
+  if(route.query.prison_history_id) {
+		fetchPrisonerHistory()
+	}
 });
 
-const currentPageTitle = ref('የታራሚዎቺ መረጃ ምዝገባ ሁለተኛ ቅጽ  ')
 interface ButtonProps {
   size?: 'sm' | 'md'
   variant?: 'primary' | 'outline'

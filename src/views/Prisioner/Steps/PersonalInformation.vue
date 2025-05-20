@@ -203,7 +203,10 @@
 				{ 'cursor-not-allowed opacity-50': disabled },
 			]" @click="registerPrisonerApperance" :disabled="disabled">
 				<span v-if="startIcon" class="flex items-center"> </span>
-				{{ !saving ? 'Save & Continue' : 'Saving...' }}
+
+				<span v-if="!editMode"> {{ !saving ? 'Save & Continue' : 'Saving...' }} </span>
+				<span v-if="editMode"> {{ !saving ? 'Update & Continue' : 'Updating...' }} </span>
+
 				<span v-if="endIcon" class="flex items-center">
 
 				</span>
@@ -229,6 +232,7 @@ const emit = defineEmits(['prisonerPersonalInfoSaved']);
 
 const store = useStore();
 const apiServer = computed(() => store.state.apiServer);
+const editMode = computed(() => route.query.prison_history_id);
 
 const religions = ref([])
 const towns = ref([])
@@ -239,17 +243,17 @@ const errorMessage = ref('');
 
 const prisonerPersonalInfo = ref({
 	photo: null,
-	current_city_id: 1,
-	educational_level_id: 1,
-	religion_id: 1,
-	closest_respondent: 'Meskerem',
-	closest_respondent_town_id: 1,
-	current_district: 'megenagna',
-	closest_respondent_district: 'saris',
-	job: 'Driver',
-	phone_number: '+211912112233',
-	mobile_number: '0912123412',
-	date_time_entered: '2025-5-28',
+	current_city_id: null,
+	educational_level_id: null,
+	religion_id: null,
+	closest_respondent: '',
+	closest_respondent_town_id: null,
+	current_district: '',
+	closest_respondent_district: '',
+	job: '',
+	phone_number: '',
+	mobile_number: '',
+	date_time_entered: '',
 })
 
 const fetchReligion = async () => { axios.get(apiServer.value + 'religion').then(response => { religions.value = response.data.data; }) }
@@ -296,11 +300,33 @@ const registerPrisonerApperance = async () => {
 			saving.value = false
 		})
 }
+
+const fetchPrisonerHistory = async () => {
+    axios
+		.get(apiServer.value + 'prisoner-history/' + route.query.prison_history_id)
+        .then(response => {
+			prisonerPersonalInfo.value.current_city_id = response.data.data.current_city_id
+			prisonerPersonalInfo.value.educational_level_id = response.data.data.educational_level_id
+			prisonerPersonalInfo.value.religion_id = response.data.data.religion_id
+			prisonerPersonalInfo.value.closest_respondent = response.data.data.closest_respondent
+			prisonerPersonalInfo.value.closest_respondent_town_id = response.data.data.closest_respondent_town_id
+			prisonerPersonalInfo.value.current_district = response.data.data.current_district
+			prisonerPersonalInfo.value.closest_respondent_district = response.data.data.closest_respondent_district
+			prisonerPersonalInfo.value.job = response.data.data.job
+			prisonerPersonalInfo.value.phone_number = response.data.data.phone_number
+			prisonerPersonalInfo.value.mobile_number = response.data.data.mobile_number
+			prisonerPersonalInfo.value.date_time_entered = response.data.data.date_time_entered
+        })
+}
+
 onMounted(() => {
 	fetchReligion();
 	fetchTowns();
 	fetchCities();
 	fetchEducationalLevels();
+	if(route.query.prison_history_id) {
+		fetchPrisonerHistory()
+	}
 });
 
 const currentPageTitle = ref('የታራሚዎቺ መረጃ ምዝገባ Third ቅጽ  ')

@@ -55,7 +55,8 @@
 				{ 'cursor-not-allowed opacity-50': disabled },
 			]" @click="registerPrisoner" :disabled="disabled">
 				<span v-if="startIcon" class="flex items-center"> </span>
-				{{ !saving ? 'Save & Continue' : 'Saving...' }}
+				<span v-if="!editMode"> {{ !saving ? 'Save & Continue' : 'Saving...' }} </span>
+				<span v-if="editMode"> {{ !saving ? 'Update & Continue' : 'Updating...' }} </span>
 				<span v-if="endIcon" class="flex items-center">
 
 				</span>
@@ -146,6 +147,7 @@ const emit = defineEmits(['prisonerSaved']);
 
 const store = useStore();
 const apiServer = computed(() => store.state.apiServer);
+const editMode = computed(() => route.query.prison_history_id);
 
 const sexes = ref([]);
 const ethnicGroups = ref([]);
@@ -155,15 +157,15 @@ const prisonerId = ref([])
 const saving = ref(false);
 const errorMessage = ref('');
 const prisoner = ref({
-    first_name: 'ጫላ ',
-    middle_name: 'ከበደ ',
-    last_name: 'አበበ ',
-    date_of_birth: '2011-1-11 11:12',
-    mother_name: 'አለም ',
+    first_name: '',
+    middle_name: '',
+    last_name: '',
+    date_of_birth: '',
+    mother_name: '',
     sex: 1,
-    birth_district: '010',
-    birth_town_id: 1,
-    ethnic_group_id: 1
+    birth_district: '',
+    birth_town_id: null,
+    ethnic_group_id: null,
 })
 
 const fetchSex = async () => {
@@ -171,6 +173,22 @@ const fetchSex = async () => {
         .get(apiServer.value + 'sexes')
         .then(response => {
             sexes.value = response.data;
+        })
+}
+
+const fetchPrisonerHistory = async () => {
+    axios
+		.get(apiServer.value + 'prisoner-history/' + route.query.prison_history_id)
+        .then(response => {
+			prisoner.value.first_name = response.data.data.prisoner.first_name
+			prisoner.value.middle_name = response.data.data.prisoner.middle_name
+			prisoner.value.last_name = response.data.data.prisoner.last_name
+			prisoner.value.date_of_birth = response.data.data.prisoner.date_of_birth
+			prisoner.value.mother_name = response.data.data.prisoner.mother_name
+			prisoner.value.sex = response.data.data.prisoner.sex
+			prisoner.value.birth_district = response.data.data.prisoner.birth_district
+			prisoner.value.birth_town_id = response.data.data.prisoner.birth_town_id
+			prisoner.value.ethnic_group_id = response.data.data.prisoner.ethnic_group_id
         })
 }
 
@@ -231,25 +249,28 @@ const registerPrisoner = async () => {
 }
 
 onMounted(() => {
-	if(route.query.prisoner) {
+	if(route.query.prisoner && !route.query.prison_history_id) {
 
-	axios
-        .post(apiServer.value + 'prisoner/new-history', {
-            prisoner_id: route.query.prisoner
-        })
-        .then(response => {
-            saving.value = false
-            prisonHistoryId.value = response.data.prison_history_id
-            prisonerId.value = response.data.prisoner
-            router.replace({ query: { ...route.query, prison_history_id: prisonHistoryId.value, prisoner: prisonerId.value } });
-			// localStorage.setItem('prisioner_history_id', prisonHistoryId.value);
-            emit('prisonerSaved');
-        })
-        .catch(error => {
-            errorMessage.value = error.response.data.message
-            saving.value = false
-        })
-    }
+		axios
+			.post(apiServer.value + 'prisoner/new-history', {
+				prisoner_id: route.query.prisoner
+			})
+			.then(response => {
+				saving.value = false
+				prisonHistoryId.value = response.data.prison_history_id
+				prisonerId.value = response.data.prisoner
+				router.replace({ query: { ...route.query, prison_history_id: prisonHistoryId.value, prisoner: prisonerId.value } });
+				emit('prisonerSaved');
+			})
+			.catch(error => {
+				errorMessage.value = error.response.data.message
+				saving.value = false
+			})
+		}
+
+	if(route.query.prison_history_id) {
+		fetchPrisonerHistory()
+	}
 
 	fetchSex();
 	fetchEthnic();
@@ -257,7 +278,6 @@ onMounted(() => {
 	prisonerCell();
 });
 
-const currentPageTitle = ref('የታራሚዎቺ መረጃ ምዝገባ ')
 interface ButtonProps {
 	size?: 'sm' | 'md'
 	variant?: 'primary' | 'outline'
