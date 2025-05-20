@@ -12,7 +12,7 @@
 			<tr v-for="crime,i in all_crimes" :key="i">
 				<td>{{ i + 1 }}</td>
 				<td>{{ crimes.find( t => t.id == crime.crime_id)?.name }}</td>
-				<td>{{ crime.description }}</td>
+				<td>{{ crime.crime_description }}</td>
 			</tr>
 		</tbody>
 	</table>
@@ -44,11 +44,12 @@
 				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
 					ማብራሪያ
 				</label>
-				<textarea type="text" :rows="6" v-model="single.description" placeholder=""
+				<textarea type="text" :rows="6" v-model="single.crime_description" placeholder=""
 					class="dark:bg-dark-900 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"></textarea>
 			</div>
 
 		</div>
+			<p class="text-red-600 mt-5">{{ errorMessage }}</p>
 
 			<button :class="[
 				'inline-flex items-center bg-teal-600 justify-center font-medium gap-2 rounded-lg transition mr-30',
@@ -76,7 +77,8 @@
 				<span v-if="startIcon" class="flex items-center">
 
 				</span>
-				Save
+				<span v-if="!editMode"> {{ 'Save' }} </span>
+				<span v-if="editMode"> {{ 'Update' }} </span>
 				<span v-if="endIcon" class="flex items-center">
 
 				</span>
@@ -100,11 +102,12 @@ const apiServer = computed(() => store.state.apiServer);
 const saving = ref(false);
 const errorMessage = ref('');
 const route = useRoute();
+const editMode = computed(() => route.query.prison_history_id);
 
 const crimes = ref([]);
 let single = ref({
 	crime_id: null,
-	description: '',
+	crime_description: '',
 })
 
 const emit = defineEmits(['prisonerCrimeSaved']);
@@ -115,12 +118,30 @@ let all_crimes = ref([]);
 const fetchCrimes = async () => { axios.get(apiServer.value + 'crime').then(response => { crimes.value = response.data.data; }) }
 
 function addSingle() {
+	if(single.value.crime_id == null) {
+		errorMessage.value = 'Please select the crime'
+		return
+	}
+
+	if(single.value.crime_description == '') {
+		errorMessage.value = 'Please enter the crime description'
+		return
+	}
+
 	all_crimes.value.push(single.value)
-	single.value = {}
+	single.value = {
+		crime_id: null,
+		crime_description: '',
+	}
 }
 
 const registerPrisionerCrime = () => {
 	if (saving.value == true) return;
+
+	if(all_crimes.value.length == 0) {
+		emit('prisonerCrimeSaved');
+		return
+	}
 
 	errorMessage.value = ''
 	saving.value = true
@@ -140,8 +161,20 @@ const registerPrisionerCrime = () => {
 	})
 }
 
+const fetchPrisonerHistory = async () => {
+    axios
+		.get(apiServer.value + 'prisoner-history/' + route.query.prison_history_id)
+        .then(response => {
+			all_crimes.value = response.data.data.prisioner_crimes
+            router.replace({ query: { ...route.query, prisioner_id: response.data.data.prisioner_id  } });
+        })
+}
+
 onMounted(() => {
 	fetchCrimes();
+	if(route.query.prison_history_id) {
+		fetchPrisonerHistory()
+	}
 });
 
 interface ButtonProps {

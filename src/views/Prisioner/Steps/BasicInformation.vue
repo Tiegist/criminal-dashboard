@@ -233,6 +233,7 @@ const registerPrisoner = async () => {
             birth_district: prisoner.value.birth_district,
             birth_town_id: prisoner.value.birth_town_id,
             ethnic_group_id: prisoner.value.ethnic_group_id,
+			prison_history_id: route.query.prison_history_id,
         })
         .then(response => {
             saving.value = false

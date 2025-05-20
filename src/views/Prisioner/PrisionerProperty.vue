@@ -50,6 +50,9 @@
 					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
 			</div>
 
+			<p class="text-red-600 mt-5">{{ errorMessage }}</p>
+
+
 			<button :class="[
 				'inline-flex items-center bg-teal-600 justify-center font-medium gap-2 rounded-lg transition mr-30',
 				sizeClasses[size],
@@ -76,7 +79,9 @@
 				<span v-if="startIcon" class="flex items-center">
 
 				</span>
-				Save and ይቀጥሉ
+				<span v-if="!editMode"> {{ 'Save & Continue' }} </span>
+				<span v-if="editMode"> {{ 'Update & Continue' }} </span>
+
 				<span v-if="endIcon" class="flex items-center">
 
 				</span>
@@ -110,6 +115,7 @@ const saving = ref(false);
 const errorMessage = ref('');
 const route = useRoute();
 const emit = defineEmits(['prisonerPropertySaved']);
+const editMode = computed(() => route.query.prison_history_id);
 
 const types = ref([]);
 let single = ref({
@@ -123,13 +129,37 @@ let properties = ref([]);
 const fetchType = async () => { axios.get(apiServer.value + 'type').then(response => { types.value = response.data.data; }) }
 
 function addSingle() {
+	errorMessage.value = ''
+	if(single.value.type_id == null) {
+		errorMessage.value = 'Please select item type'
+		return
+	}
+
+	if(single.value.amount == null) {
+		errorMessage.value = 'Please specify the amount'
+		return
+	}
+
+	if(single.value.description == '') {
+		errorMessage.value = 'Please enter the item description'
+		return
+	}
+
 	properties.value.push(single.value)
-	single.value = {}
+	single.value = {
+		type_id: null,
+		amount: null,
+		description: '',
+	}
 }
 
 function registerPrisionerProperty() {
 	if (saving.value == true) return;
 
+	if(properties.value.length == 0) {
+		emit('prisonerPropertySaved');
+		return
+	}
 	errorMessage.value = ''
 	saving.value = true
 
@@ -148,8 +178,19 @@ function registerPrisionerProperty() {
 	})
 }
 
+const fetchPrisonerHistory = async () => {
+    axios
+		.get(apiServer.value + 'prisoner-history/' + route.query.prison_history_id)
+        .then(response => {
+			properties.value = response.data.data.prisoner_properties
+        })
+}
+
 onMounted(() => {
 	fetchType();
+	if(route.query.prison_history_id) {
+		fetchPrisonerHistory()
+	}
 });
 
 interface ButtonProps {
