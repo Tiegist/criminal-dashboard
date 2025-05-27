@@ -1,5 +1,18 @@
 <template>
-  <div class="w-1/3 mx-auto mt-10">
+  <div class="min-h-screen xl:flex">
+    <app-sidebar />
+    <Backdrop />
+    <div
+      class="flex-1 transition-all duration-300 ease-in-out"
+      :class="[isExpanded || isHovered ? 'lg:ml-[290px]' : 'lg:ml-[10px]']"
+    >
+      <app-header />
+      <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
+        <slot></slot>
+      </div>
+    </div>
+  </div>
+  <div class="w-1/3 mx-auto -mt-120">
     <div class="flex">
       <img src="/criminallogo.png" alt="" class="w-1/2 mx-auto">
       <h1 class="text-center text-2xl font-bold text-gray-800 dark:text-white/90 mt-20">የእስረኞቺ የየቀን መቆጣጠሪያ</h1>
@@ -43,10 +56,14 @@
 import axios from 'axios';
 import flatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
+import AppHeader from "@/components/layout/AppHeader.vue";
+
+
 
 export default {
   components: {
-    flatPickr
+    flatPickr,
+    AppHeader
   },
   data() {
     return {
@@ -73,7 +90,7 @@ export default {
   methods: {
    getAllPrisoners() {
       axios.get('http://127.0.0.1:8000/api/prisoner').then((res) => {
-        this.prisoners = res.data.Prisioner.map(prison => ({ ...prison, checked: false }));
+        this.prisoners = res.data.Prisioner.data.map(prison => ({ ...prison, checked: false }));
         console.log('prisoners', this.prisoners);
       });
     },

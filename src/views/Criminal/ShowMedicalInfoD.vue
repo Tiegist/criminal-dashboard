@@ -1,5 +1,5 @@
 <template>
-  <AdminLayout>
+  <AdminLayoutMedical>
     <div class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
       <div class="max-w-full overflow-x-auto custom-scrollbar">
         <table class="min-w-full">
@@ -74,13 +74,13 @@
 
     </div>
 
-  </AdminLayout>
+  </AdminLayoutMedical>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue';
-import AdminLayout from '@/components/layout/AdminLayout.vue';
+import AdminLayoutMedical from '@/components/layout/AdminLayoutMedical.vue';
 import Button from '@/components/ui/Button.vue';
 import FlatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';

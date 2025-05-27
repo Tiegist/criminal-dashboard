@@ -1,7 +1,7 @@
 <template>
   <aside
     :class="[
-      'fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-sky-950 dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-99999 border-r border-gray-200',
+     'fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-99999 border-r border-gray-200',
       {
         'lg:w-[290px]': isExpanded || isMobileOpen || isHovered,
         'lg:w-[90px]': !isExpanded && !isHovered,
@@ -250,16 +250,16 @@ const menuGroups = [
     title: "አማራጮች",
     items: [
       
-      {
-        icon: GridIcon,
-        name: "ዳሽቦርድ",
-        path: "/",
-        class: 'text-white'
-      },
+      // {
+      //   icon: GridIcon,
+      //   name: "ዳሽቦርድ",
+      //   path: "/",
+      //   class: 'text-white'
+      // },
       {
         icon: UserCircleIcon,
         name: "የግል መረጃ",
-        path: "/profile",
+        path: "/profiled",
       },
       // {
       //   icon: ListIcon,
@@ -279,7 +279,7 @@ const menuGroups = [
           // { name: "የእስረኞች ገጽታ ቅጽ", path: "/PrisionerApperance", pro: false },
           // { name: "የእስረኞች ንብረት ቅጽ ", path: "/PrisionerProperty", pro: false },
           // { name: "የእስረኞች ገንዘብ ቅጽ", path: "/CriminalCash", pro: false },
-          { name: "የእስረኞች የህክምና ታሪክ ቅጽ", path: "/MedicalHistory", pro: false },
+          { name: "የእስረኞች የህክምና ታሪክ ቅጽ", path: "/MedicalHistoryD", pro: false },
          
    
         ],
@@ -291,7 +291,7 @@ const menuGroups = [
         // { name: "የእስረኛ መረጃ ማሳያ", path: "/ShowPrisioner", pro: false },
           // { name: "የእስረኛ የህክምና መረጃ ", path: "/ShowMedical", pro: false },
           // { name: "የእስረኛ ገንዘብ ማሳያ", path: "/ShowPrisonerCash", pro: false },
-          { name: "የእስረኛ የህክምና ታሪክ ማሳያ", path: "/ShowMedicalInfo", pro: false },
+          { name: "የእስረኛ የህክምና ታሪክ ማሳያ", path: "/ShowMedicalInfoD", pro: false },
         ],
       },
       // {
