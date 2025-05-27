@@ -325,7 +325,7 @@ const menuGroups = [
           { name: "የትምህርት ደረጃ", path: "/EducationalLevel", pro: false },
           { name: "የንብረት አይነቶች", path: "/PropertyType", pro: false },
           { name: "የእስረኛው ክፍል", path: "/PrisonerCell", pro: false },
-          { name: "ፍርድ ቤቶች", path: "/PrisonerCell", pro: false },
+          { name: "ፍርድ ቤቶች", path: "/Courts", pro: false },
         ],
       },
      

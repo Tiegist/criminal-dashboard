@@ -65,11 +65,11 @@ export default {
 		return  {
 			dropdownOpen: false,
 			dropdownRef: null,
-			// menuItems: [
-			//   { href: '/profile', icon: UserCircleIcon, text: 'መረጃዎን ያስተካክሉ' },
-			//   // { href: '/chat', icon: SettingsIcon, text: 'Account settings' },
-			//   // { href: '/profile', icon: InfoCircleIcon, text: 'Support' },
-			// ],
+			menuItems: [
+			  { href: '/profile', icon: UserCircleIcon, text: 'መረጃዎን ያስተካክሉ' },
+			  // { href: '/chat', icon: SettingsIcon, text: 'Account settings' },
+			  // { href: '/profile', icon: InfoCircleIcon, text: 'Support' },
+			],
 		}
 	},
 	components: {

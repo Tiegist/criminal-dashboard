@@ -169,8 +169,8 @@ const router = createRouter({
     //police
     
     {
-      path: '/',
-      name: 'Dashboard',
+      path: '/dashbordP',
+      name: 'DashboardP',
       component: () => import('../views/DashboardP.vue'),
       meta: {
         title: 'Dashboard',
@@ -189,6 +189,14 @@ const router = createRouter({
       path: '/ProfileP',
       name: 'ProfileP',
       component: () => import('../views/Others/UserProfileP.vue'),
+      meta: {
+        title: 'Profile',
+      },
+    },
+     {
+      path: '/ProfileD',
+      name: 'ProfileD',
+      component: () => import('../views/Others/UserProfileD.vue'),
       meta: {
         title: 'Profile',
       },
@@ -239,8 +247,8 @@ const router = createRouter({
     },
     //police
     {
-      path: '/CriminalCash',
-      name: 'CriminalCash',
+      path: '/CriminalCashP',
+      name: 'CriminalCashP',
       component: () => import('../views/Criminal/CriminalCashP.vue'),
       meta: {
         title: 'prisoner cash',
@@ -256,8 +264,8 @@ const router = createRouter({
     },
     //police
     {
-      path: '/PrisonerCrimes',
-      name: 'PrisonerCrimes',
+      path: '/PrisonerCrimesP',
+      name: 'PrisonerCrimesP',
       component: () => import('../views/Criminal/PrisonerCrimesP.vue'),
       meta: {
         title: 'prisoner crimes',
@@ -273,9 +281,17 @@ const router = createRouter({
     },
     //police
     {
-      path: '/MedicalHistory',
-      name: 'MedicalHistory',
+      path: '/MedicalHistoryP',
+      name: 'MedicalHistoryP',
       component: () => import('../views/Criminal/MedicalHistoryP.vue'),
+      meta: {
+        title: 'Medical History',
+      },
+    },
+      {
+      path: '/MedicalHistoryD',
+      name: 'MedicalHistoryD',
+      component: () => import('../views/Criminal/MedicalHistoryD.vue'),
       meta: {
         title: 'Medical History',
       },
@@ -384,14 +400,14 @@ const router = createRouter({
       },
     },
     //police
-    // {
-    //   path: '/prisoner-form',
-    //   name: 'prisonerForm',
-    //   component: () => import('../views/Prisioner/PrisonerStepperP.vue'),
-    //   meta: {
-    //     title: 'Prisoner Form',
-    //   },
-    // },
+    {
+      path: '/prisoner-formP',
+      name: 'prisonerFormP',
+      component: () => import('../views/Prisioner/PrisonerStepperP.vue'),
+      meta: {
+        title: 'Prisoner Form',
+      },
+    },
     {
       path: '/ShowSinglePrisonerApperance',
       name: 'ShowSinglePrisonerApperance',
@@ -402,8 +418,8 @@ const router = createRouter({
     },
     //
     {
-      path: '/ShowSinglePrisonerApperance',
-      name: 'ShowSinglePrisonerApperance',
+      path: '/ShowSinglePrisonerApperanceP',
+      name: 'ShowSinglePrisonerApperanceP',
       component: () => import('../views/Prisioner/ShowSinglePrisonerApperanceP.vue'),
       meta: {
         title: 'ShowSinglePrisonerApperance',
@@ -419,8 +435,8 @@ const router = createRouter({
     },
     //police
     {
-      path: '/ShowSinglePrisonerProperty',
-      name: 'ShowSinglePrisonerProperty',
+      path: '/ShowSinglePrisonerPropertyP',
+      name: 'ShowSinglePrisonerPropertyP',
       component: () => import('../views/Prisioner/ShowSinglePrisonerPropertyP.vue'),
       meta: {
         title: 'ShowSinglePrisonerProperty',
@@ -436,8 +452,8 @@ const router = createRouter({
     },
     //police
     {
-      path: '/ShowSinglePrisonerCrimes',
-      name: 'ShowSinglePrisonerCrimes',
+      path: '/ShowSinglePrisonerCrimesP',
+      name: 'ShowSinglePrisonerCrimesP',
       component: () => import('../views/Prisioner/ShowSinglePrisonerCrimesP.vue'),
       meta: {
         title: 'ShowSinglePrisonerCrimes',
@@ -451,6 +467,14 @@ const router = createRouter({
         title: 'ShowMedicalInfo',
       },
     },
+      {
+      path: '/ShowMedicalInfoD',
+      name: 'ShowMedicalInfoD',
+      component: () => import('../views/Criminal/ShowMedicalInfoD.vue'),
+      meta: {
+        title: 'ShowMedicalInfoD',
+      },
+    },
     {
       path: '/ShowSinglePrisonerCourtHistories',
       name: 'ShowSinglePrisonerCourtHistories',
@@ -461,8 +485,8 @@ const router = createRouter({
     },
     //police
     {
-      path: '/ShowSinglePrisonerCourtHistories',
-      name: 'ShowSinglePrisonerCourtHistories',
+      path: '/ShowSinglePrisonerCourtHistoriesP',
+      name: 'ShowSinglePrisonerCourtHistoriesP',
       component: () => import('../views/Prisioner/ShowSinglePrisonerCourtHistoriesP.vue'),
       meta: {
         title: 'ShowSinglePrisonerCourtHistories',
@@ -478,8 +502,8 @@ const router = createRouter({
     },
     //police
     {
-      path: '/ShowPrisonerCash',
-      name: 'ShowPrisonerCash',
+      path: '/ShowPrisonerCashP',
+      name: 'ShowPrisonerCashP',
       component: () => import('../views/Prisioner/ShowPrisonerCashP.vue'),
       meta: {
         title: 'ShowPrisonerCash',
@@ -526,8 +550,8 @@ const router = createRouter({
     //police
 
     {
-      path: '/PrisionerCourtHistory',
-      name: 'PrisionerCourtHistory',
+      path: '/PrisionerCourtHistoryP',
+      name: 'PrisionerCourtHistoryP',
       component: () => import('../views/Prisioner/PrisionerCourtHistoryP.vue'),
       meta: {
         title: 'PrisionerCourtHistory',
@@ -544,8 +568,8 @@ const router = createRouter({
 },
 //
 {
-  path: '/ShowPrisionerp',
-  name: 'ShowPrisionerp',
+  path: '/ShowPrisionerP',
+  name: 'ShowPrisionerP',
   component: () => import('../views/Prisioner/ShowPrisionerP.vue'),
   meta: {
     title: 'ShowPrisioner',
@@ -576,10 +600,18 @@ const router = createRouter({
     title: 'ShowMedical',
   },
 },
+{
+  path: '/ShowMedicalD',
+  name: 'ShowMedicalD',
+  component: () => import('../views/Prisioner/ShowMedicalD.vue'),
+  meta: {
+    title: 'ShowMedical',
+  },
+},
  //police
  {
-  path: '/ShowMedical',
-  name: 'ShowMedical',
+  path: '/ShowMedicalP',
+  name: 'ShowMedicalP',
   component: () => import('../views/Prisioner/ShowMedicalP.vue'),
   meta: {
     title: 'ShowMedical',
@@ -595,8 +627,8 @@ const router = createRouter({
     },
     //user registration
     {
-      path: '/UserRegister',
-      name: 'UserRegister',
+      path: '/UserRegisterP',
+      name: 'UserRegisterP',
       component: () => import('../views/User/UserRegisterP.vue'),
       meta: {
         title: 'User Register',

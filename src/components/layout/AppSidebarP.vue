@@ -249,35 +249,35 @@ const menuGroups = [
     title: "Menu",
     items: [
       
-      {
-        icon: GridIcon,
-        name: "ዳሽቦርድ",
-        path: "/",
-      },
+      // {
+      //   icon: GridIcon,
+      //   name: "ዳሽቦርድ",
+      //   path: "/",
+      // },
       {
         icon: UserCircleIcon,
         name: "የግል መረጃ",
         path: "/ProfileP",
       },
-      {
-        icon: ListIcon,
-        name: "የሰራተኞች መረጃ መመዝገቢያ ",
-        path: "/UserRegister",
-      },
+      // {
+      //   icon: ListIcon,
+      //   name: "የሰራተኞች መረጃ መመዝገቢያ ",
+      //   path: "/UserRegister",
+      // },
       {
         name: "መረጃ መሙያ ቅጽ",
         icon: ListIcon,
         subItems: [
           // { name: "Form Elements", path: "/form-elements", pro: false },
-          { name: "የእስረኞች መረጃ ቅጽ", path: "/prisoner-form", pro: false },
+          { name: "የእስረኞች መረጃ ቅጽ", path: "/prisoner-formP", pro: false },
           // { name: "የእስረኞች ታሪክ ቅጽ", path: "/PrisonerHistory", pro: false },
-          { name: "የእስረኞች ወንጀል ቅጽ", path: "/PrisonerCrimes", pro: false },
-          { name: "የእስረኞች የፍርድ ቤት ታሪክ ቅጽ", path: "/PrisionerCourtHistory", pro: false },  
+          { name: "የእስረኞች ወንጀል ቅጽ", path: "/PrisonerCrimesP", pro: false },
+          { name: "የእስረኞች የፍርድ ቤት ታሪክ ቅጽ", path: "/PrisionerCourtHistoryP", pro: false },  
           // { name: "Prisioner", path: "/Prisioner", pro: false },
           // { name: "የእስረኞች ገጽታ ቅጽ", path: "/PrisionerApperance", pro: false },
           // { name: "የእስረኞች ንብረት ቅጽ ", path: "/PrisionerProperty", pro: false },
-          { name: "የእስረኞች ገንዘብ ቅጽ", path: "/CriminalCash", pro: false },
-          { name: "የእስረኞች የህክምና ታሪክ ቅጽ", path: "/MedicalHistory", pro: false },
+          { name: "የእስረኞች ገንዘብ ቅጽ", path: "/CriminalCashP", pro: false },
+          { name: "የእስረኞች የህክምና ታሪክ ቅጽ", path: "/MedicalHistoryP", pro: false },
          
    
         ],
@@ -286,9 +286,9 @@ const menuGroups = [
         name: "የእስረኛ መረጃ ማሳያ",
         icon: ListIcon,
         subItems: [
-        { name: "የእስረኛ መረጃ ማሳያ", path: "/ShowPrisioner", pro: false },
-          { name: "የእስረኛ የህክምና መረጃ ", path: "/ShowMedical", pro: false },
-          { name: "የእስረኛ ገንዘብ ማሳያ", path: "/ShowPrisonerCash", pro: false },
+        { name: "የእስረኛ መረጃ ማሳያ", path: "/ShowPrisionerP", pro: false },
+          { name: "የእስረኛ የህክምና መረጃ ", path: "/ShowMedicalP", pro: false },
+          { name: "የእስረኛ ገንዘብ ማሳያ", path: "/ShowPrisonerCashP", pro: false },
         ],
       },
       // {

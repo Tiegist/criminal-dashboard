@@ -1,5 +1,5 @@
 <template>
-    <AdminLayout>
+    <AdminLayoutMedical>
 
     <div class="flex">
   
@@ -67,12 +67,12 @@
       
       </div>
   
-    </AdminLayout>
+    </AdminLayoutMedical>
   </template>
   
   <script setup>
   import { ref, onMounted } from 'vue';
-  import AdminLayout from '@/components/layout/AdminLayout.vue';
+  import AdminLayoutMedical from '@/components/layout/AdminLayoutMedical.vue';
   import 'flatpickr/dist/flatpickr.css';
   import axios from 'axios';
 

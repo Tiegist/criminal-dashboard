@@ -235,7 +235,14 @@ if(role === 1){
 }
 else if(role === 2){
   this.$router.push({ name: 'ProfileP'})
+   }
+    else if(role === 3){
+      this.$router.push({ name: 'prisonerAttendance'})
     }
+    else if(role === 4){
+      this.$router.push({ name: 'ProfileD'})
+    }
+
   },
   components: { 
     CommonGridShape,
