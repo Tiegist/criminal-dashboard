@@ -201,12 +201,6 @@
 								<a @click="fetchSinglePrisioner(user.id)"
 									class="font-medium text-theme-sm text-green-600 dark:text-green-500 hover:underline cursor-pointer">ተጨማሪ
 								</a>
-								|
-								<a
-									class="font-medium text-theme-sm text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">ያስተካክሉ</a>
-								|
-								<a
-									class="font-medium text-theme-sm text-red-600 dark:text-red-500 hover:underline cursor-pointer">ያጥፉ</a>
 							</td>
 
 						</tr>

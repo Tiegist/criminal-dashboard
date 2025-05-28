@@ -25,8 +25,8 @@
 <script setup>
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
-import ProfileCard from '@/components/profile/ProfileCard.vue'
-import PersonalInfoCard from '@/components/profile/PersonalInfoCard.vue'
+import ProfileCard from '@/components/profile/PrisonerProfileCard.vue'
+import PersonalInfoCard from '@/components/profile/PrisonerPersonalInfoCard.vue'
 import AddressCard from '@/components/profile/AddressCard.vue'
 import Apperance from '@/components/profile/Apperance.vue'
 import Crime from '@/components/profile/Crime.vue'
