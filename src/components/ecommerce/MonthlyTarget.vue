@@ -7,9 +7,9 @@
     >
       <div class="flex justify-between">
         <div>
-          <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">Monthly Arrests</h3>
+          <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">በዚህ ወር የታሰሩ </h3>
           <p class="mt-1 text-gray-500 text-theme-sm dark:text-gray-400">
-            Target you’ve set for each month
+           እንደ እቅድ የተያዘ
           </p>
         </div>
         <div>
