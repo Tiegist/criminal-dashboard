@@ -36,21 +36,24 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import DropdownMenu from '../common/DropdownMenu.vue'
+import { ref, onMounted } from 'vue';
+import DropdownMenu from '../common/DropdownMenu.vue';
+import VueApexCharts from 'vue3-apexcharts';
+import axios from 'axios';
+import { useStore } from 'vuex';
+
+const store = useStore();
 const menuItems = [
   { label: 'View More', onClick: () => console.log('View More clicked') },
   { label: 'Delete', onClick: () => console.log('Delete clicked') },
-]
-
-import VueApexCharts from 'vue3-apexcharts'
+];
 
 const series = ref([
   {
-    name: 'Sales',
-    data: [168, 385, 201, 298, 187, 195, 291, 110, 215, 390, 280, 112],
+    name: 'Monthly Arrests',
+    data: Array(12).fill(0),
   },
-])
+]);
 
 const chartOptions = ref({
   colors: ['#465fff'],
@@ -70,33 +73,23 @@ const chartOptions = ref({
     },
   },
   dataLabels: {
-    enabled: false,
+    enabled: true, 
   },
   stroke: {
     show: true,
-    width: 4,
+    width: 2, 
     colors: ['transparent'],
   },
   xaxis: {
     categories: [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
     ],
     axisBorder: {
-      show: false,
+      show: true, 
     },
     axisTicks: {
-      show: false,
+      show: true, 
     },
   },
   legend: {
@@ -109,7 +102,15 @@ const chartOptions = ref({
     },
   },
   yaxis: {
-    title: false,
+    title: {
+      text: 'Number of Arrests', 
+    },
+    min: 0, 
+    labels: {
+      formatter: function (value) {
+        return value; 
+      },
+    },
   },
   grid: {
     yaxis: {
@@ -127,13 +128,43 @@ const chartOptions = ref({
     },
     y: {
       formatter: function (val) {
-        return val.toString()
+        return val.toString();
       },
     },
   },
-})
+});
+
+
+const fetchAllPrisoners = async () => {
+  try {
+    const response = await axios.get(`${store.state.apiServer}prisoner`);
+    if (response.data && Array.isArray(response.data.Prisioner.data)) {
+      const prisoners = response.data.Prisioner.data;
+      console.log("Prisoner Data:", prisoners);
+
+      const monthlyCounts = Array(12).fill(0); 
+
+      prisoners.forEach(prisoner => {
+        const date = new Date(prisoner.created_at); 
+        if (!isNaN(date)) { 
+          const month = date.getMonth();
+          monthlyCounts[month] += 1; 
+        }
+      });
+
+      series.value[0].data = monthlyCounts; 
+      console.log("Monthly Counts:", monthlyCounts); 
+    } else {
+      console.error("Unexpected response structure:", response.data);
+      series.value[0].data = Array(12).fill(0);
+    }
+  } catch (error) {
+    console.error("Error fetching prisoners:", error);
+    series.value[0].data = Array(12).fill(0);
+  }
+};
 
 onMounted(() => {
-  // Any additional setup can be done here if needed
-})
+  fetchAllPrisoners(); 
+});
 </script>
