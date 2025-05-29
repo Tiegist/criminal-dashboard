@@ -58,7 +58,7 @@ const showHistory = (history) => {
 const fetchPrisonerInformation = async () => { axios.get(apiServer.value + 'prisoner/prisoner-info/'+route.query.prisoner).then(response => { information.value = response.data.data; }) }
 
 onMounted(() => {
-	fetchPrisonerInformation();
+  fetchPrisonerInformation();
 });
 
 

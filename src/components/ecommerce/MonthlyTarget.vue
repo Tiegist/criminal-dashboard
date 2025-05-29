@@ -44,12 +44,12 @@
           >+10%</span
         >
       </div>
-      <p class="mx-auto mt-1.5 w-full max-w-[380px] text-center text-sm text-gray-500 sm:text-base">
-        You earn $3287 today, it's higher than last month. Keep up your good work!
-      </p>
+    <p class="mx-auto mt-1.5 w-full max-w-[380px] text-center text-sm text-gray-500 sm:text-base">
+  You have {{ totalPrisoners }} prisoners today, which is {{ percentage }}% of your target. 
+</p>
     </div>
 
-    <div class="flex items-center justify-center gap-5 px-6 py-3.5 sm:gap-8 sm:py-5">
+    <!-- <div class="flex items-center justify-center gap-5 px-6 py-3.5 sm:gap-8 sm:py-5">
       <div>
         <p class="mb-1 text-center text-gray-500 text-theme-xs dark:text-gray-400 sm:text-sm">
           Target
@@ -128,27 +128,51 @@
           </svg>
         </p>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import DropdownMenu from '../common/DropdownMenu.vue'
+import { ref, computed, onMounted } from 'vue';
+import DropdownMenu from '../common/DropdownMenu.vue';
+import VueApexCharts from 'vue3-apexcharts';
+import axios from 'axios';
+import { useStore } from 'vuex';
+
+const store = useStore();
 const menuItems = [
   { label: 'View More', onClick: () => console.log('View More clicked') },
   { label: 'Delete', onClick: () => console.log('Delete clicked') },
-]
-import VueApexCharts from 'vue3-apexcharts'
+];
 
-const props = defineProps({
-  value: {
-    type: Number,
-    default: 75.55,
-  },
-})
+const targetValue = 200; // Set your target value here
+const totalPrisoners = ref(0);
+const percentage = ref(0);
 
-const series = computed(() => [props.value])
+// Fetch prisoner data
+const fetchTotalPrisoners = async () => {
+  try {
+    const response = await axios.get(`${store.state.apiServer}prisoner`);
+    if (response.data && Array.isArray(response.data.Prisioner.data)) {
+      totalPrisoners.value = response.data.Prisioner.data.length; 
+      percentage.value = Math.min(((totalPrisoners.value / targetValue) * 100).toFixed(2), 100); 
+    } else {
+      console.error("Unexpected response structure:", response.data);
+      totalPrisoners.value = 0; 
+      percentage.value = 0; 
+    }
+  } catch (error) {
+    console.error("Error fetching prisoners:", error);
+    totalPrisoners.value = 0; 
+    percentage.value = 0; 
+  }
+};
+
+onMounted(() => {
+  fetchTotalPrisoners(); 
+});
+
+const series = computed(() => [percentage.value]);
 
 const chartOptions = {
   colors: ['#465FFF'],
@@ -180,7 +204,7 @@ const chartOptions = {
           offsetY: 60,
           color: '#1D2939',
           formatter: function (val: number) {
-            return val.toFixed(2) + '%'
+            return val.toFixed(2) + '%'; 
           },
         },
       },
@@ -194,13 +218,5 @@ const chartOptions = {
     lineCap: 'round',
   },
   labels: ['Progress'],
-}
+};
 </script>
-
-<style scoped>
-.radial-bar-chart {
-  width: 100%;
-  max-width: 330px;
-  margin: 0 auto;
-}
-</style>
