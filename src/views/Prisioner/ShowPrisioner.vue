@@ -1,5 +1,5 @@
 <template>
-	<AdminLayout>
+	<LayoutComponent>
 		<div>
 			<div class="flex">
 				<div class="bg-gray-800 shadow-2xl rounded-2xl w-full p-8 border border-gray-700">
@@ -84,7 +84,7 @@
 
 
 
-							<div>
+							<div v-if="isAdmin">
 								<label class="block text-sm font-medium text-gray-300 mb-1">ሀይማኖት</label>
 								<div class="relative">
 									<select v-model="prisoner.religion_id"
@@ -108,7 +108,7 @@
 
 
 
-							<div>
+							<div v-if="isAdmin">
 								<label class="block text-sm font-medium text-gray-300 mb-1">የወንጀል አይነት</label>
 								<div class="relative">
 									<select v-model="prisoner.crime_id"
@@ -316,12 +316,13 @@
 
 		</div>
 
-	</AdminLayout>
+	</LayoutComponent>
 </template>
-<script>
+<script setup>
 import { ref, onMounted, computed } from 'vue';
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue';
 import AdminLayout from '@/components/layout/AdminLayout.vue';
+import AdminLayoutMedical from '@/components/layout/AdminLayoutMedical.vue';
 import Button from '@/components/ui/Button.vue';
 import FlatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
@@ -330,166 +331,143 @@ import router from '@/router';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 
-export default {
-	components: {
-		PageBreadcrumb,
-		AdminLayout,
-		Button,
-		FlatPickr,
-	},
-	setup() {
-		const route = useRoute();
-		const store = useStore();
-		const apiServer = computed(() => store.state.apiServer);
-
-		const paginationInfo = ref({});
-		const links = computed(() => paginationInfo.value.links);
-		const PrisionerInfo = ref([]);
-		const singlePrisioner = ref([]);
-		const singlePrisionerInfo = ref([]);
-		const sexes = ref([]);
-		const showPrisoiner = ref(false);
-		const showPrisoinerInfo = ref(false);
-		const showMore = ref(false);
-		const religions = ref([]);
-		const crimes = ref([])
-		const errorMessage = ref('');
-		const successMessage = ref('');
-		const noResults = ref(false);
-		const searching = ref(false)
 
 
-		const prisoner = ref({
-			first_name: '',
-			middle_name: '',
-			last_name: '',
-			date_of_birth: '',
-			mother_name: '',
-			sex: null,
-			eye_id: '',
-			religion_id: null,
-			crime_id: null,
-		});
+const route = useRoute();
+const store = useStore();
+const apiServer = computed(() => store.state.apiServer);
 
-		const fetchCrimes = async () => { axios.get(apiServer.value + 'crime').then(response => { crimes.value = response.data.data; }) }
-		const fetchReligion = async () => {
-			try {
-				const response = await axios.get(apiServer.value + 'religion');
-				religions.value = response.data.data;
-			} catch (error) {
-				console.error('Error fetching religions:', error);
-			}
-		}
+const isAdmin = computed(() => store.getters.isAdmin);
+const isDoctor = computed(() => store.getters.isDoctor);
 
-		const fetchSex = async () => {
-			axios
-				.get(apiServer.value + 'sexes')
-				.then(response => {
-					sexes.value = response.data;
-				})
-		}
+let LayoutComponent = isAdmin.value ? AdminLayout : AdminLayoutMedical
 
-		const clearSearch = function () {
-			prisoner.value = {
-				first_name: '',
-				middle_name: '',
-				last_name: '',
-				date_of_birth: '',
-				mother_name: '',
-				sex: null,
-				eye_id: '',
-				religion_id: null,
-				crime_id: null,
-			}
+const paginationInfo = ref({});
+const links = computed(() => paginationInfo.value.links);
+const PrisionerInfo = ref([]);
+const singlePrisioner = ref([]);
+const singlePrisionerInfo = ref([]);
+const sexes = ref([]);
+const showPrisoiner = ref(false);
+const showPrisoinerInfo = ref(false);
+const showMore = ref(false);
+const religions = ref([]);
+const crimes = ref([])
+const errorMessage = ref('');
+const successMessage = ref('');
+const noResults = ref(false);
+const searching = ref(false)
 
-			fetchPrisioner()
-		}
 
-		const fetchPrisioner = async (url = '', search = false) => {
-			paginationInfo.value = {}
-			PrisionerInfo.value = []
-			errorMessage.value = ''
-			successMessage.value = ''
+const prisoner = ref({
+	first_name: '',
+	middle_name: '',
+	last_name: '',
+	date_of_birth: '',
+	mother_name: '',
+	sex: null,
+	eye_id: '',
+	religion_id: null,
+	crime_id: null,
+});
 
-			url = url === '' ? apiServer.value + 'prisoner' : url;
-			const filters = {};
+const fetchCrimes = async () => { axios.get(apiServer.value + 'crime').then(response => { crimes.value = response.data.data; }) }
+const fetchReligion = async () => {
+	try {
+		const response = await axios.get(apiServer.value + 'religion');
+		religions.value = response.data.data;
+	} catch (error) {
+		console.error('Error fetching religions:', error);
+	}
+}
+
+const fetchSex = async () => {
+	axios
+		.get(apiServer.value + 'sexes')
+		.then(response => {
+			sexes.value = response.data;
+		})
+}
+
+const clearSearch = function () {
+	prisoner.value = {
+		first_name: '',
+		middle_name: '',
+		last_name: '',
+		date_of_birth: '',
+		mother_name: '',
+		sex: null,
+		eye_id: '',
+		religion_id: null,
+		crime_id: null,
+	}
+
+	fetchPrisioner()
+}
+
+const fetchPrisioner = async (url = '', search = false) => {
+	paginationInfo.value = {}
+	PrisionerInfo.value = []
+	errorMessage.value = ''
+	successMessage.value = ''
+
+	url = url === '' ? apiServer.value + 'prisoner' : url;
+	const filters = {};
+
+	if (search) {
+		searching.value = true
+		if (prisoner.value.first_name) filters.first_name = prisoner.value.first_name;
+		if (prisoner.value.middle_name) filters.middle_name = prisoner.value.middle_name;
+		if (prisoner.value.last_name) filters.last_name = prisoner.value.last_name;
+		if (prisoner.value.mother_name) filters.mother_name = prisoner.value.mother_name;
+		if (prisoner.value.sex) filters.sex = prisoner.value.sex;
+		if (prisoner.value.date_of_birth) filters.date_of_birth = prisoner.value.date_of_birth;
+		if (prisoner.value.crime_id) filters.crime_id = prisoner.value.crime_id;
+		if (prisoner.value.religion_id) filters.religion_id = prisoner.value.religion_id;
+	}
+
+	axios
+		.get(url, { params: filters })
+		.then(response => {
+
+			paginationInfo.value = response.data.Prisioner;
+			PrisionerInfo.value = response.data.Prisioner.data;
 
 			if (search) {
-				searching.value = true
-				if (prisoner.value.first_name) filters.first_name = prisoner.value.first_name;
-				if (prisoner.value.middle_name) filters.middle_name = prisoner.value.middle_name;
-				if (prisoner.value.last_name) filters.last_name = prisoner.value.last_name;
-				if (prisoner.value.mother_name) filters.mother_name = prisoner.value.mother_name;
-				if (prisoner.value.sex) filters.sex = prisoner.value.sex;
-				if (prisoner.value.date_of_birth) filters.date_of_birth = prisoner.value.date_of_birth;
-				if (prisoner.value.crime_id) filters.crime_id = prisoner.value.crime_id;
-				if (prisoner.value.religion_id) filters.religion_id = prisoner.value.religion_id;
+				if (PrisionerInfo.value.length == 0) {
+
+					errorMessage.value = '❌ NO RESULTS FOUND።'
+				} else {
+					successMessage.value = paginationInfo.value.total + ' RESULTS FOUND MATCHING YOUR RECORD'
+				}
 			}
-
-			axios
-				.get(url, { params: filters })
-				.then(response => {
-
-					paginationInfo.value = response.data.Prisioner;
-					PrisionerInfo.value = response.data.Prisioner.data;
-
-					if (search) {
-						if (PrisionerInfo.value.length == 0) {
-
-							errorMessage.value = '❌ NO RESULTS FOUND።'
-						} else {
-							successMessage.value = paginationInfo.value.total + ' RESULTS FOUND MATCHING YOUR RECORD'
-						}
-					}
-				}).catch(error => {
-					errorMessage.value = error.response?.data?.message ?? '❌ ፍለጋውን ማከናወን አልተቻለም። እባክዎን አንደገና ይሞክሩ።'
-				}).finally(() => {
-					searching.value = false
-				})
-		};
-
-		const fetchSinglePrisioner = (prisoner_id) => {
-			router.push({ name: 'ShowSinglePrisoner', query: { prisoner: prisoner_id } });
-		};
-
-		const fetchSinglePrisionerInfo = (id) => {
-			localStorage.setItem('prisoner_id', id);
-			router.push('/ShowSinglePrisoner');
-		};
-
-		const toggleShow = () => {
-			showMore.value = !showMore.value;
-		};
-
-		onMounted(() => {
-			fetchPrisioner();
-			fetchReligion();
-			fetchSex();
-			fetchCrimes();
-		});
-
-		return {
-			fetchPrisioner,
-			PrisionerInfo,
-			fetchSinglePrisioner,
-			fetchSinglePrisionerInfo,
-			singlePrisioner,
-			showPrisoiner,
-			showPrisoinerInfo,
-			singlePrisionerInfo,
-			toggleShow,
-			showMore,
-			links,
-			prisoner,
-			religions,
-			sexes,
-			crimes,
-			errorMessage,
-			successMessage,
-			noResults,
-			searching,
-			clearSearch,
-		};
-	},
+		}).catch(error => {
+			errorMessage.value = error.response?.data?.message ?? '❌ ፍለጋውን ማከናወን አልተቻለም። እባክዎን አንደገና ይሞክሩ።'
+		}).finally(() => {
+			searching.value = false
+		})
 };
+
+const fetchSinglePrisioner = (prisoner_id) => {
+	router.push({ name: 'ShowSinglePrisoner', query: { prisoner: prisoner_id } });
+};
+
+const fetchSinglePrisionerInfo = (id) => {
+	localStorage.setItem('prisoner_id', id);
+	router.push('/ShowSinglePrisoner');
+};
+
+const toggleShow = () => {
+	showMore.value = !showMore.value;
+};
+
+onMounted(() => {
+	fetchPrisioner();
+	fetchReligion();
+	fetchSex();
+	fetchCrimes();
+});
+
+		
+
 </script>

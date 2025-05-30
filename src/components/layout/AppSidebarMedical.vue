@@ -288,7 +288,8 @@ const menuGroups = [
         name: "የእስረኛ መረጃ ማሳያ",
         icon: ListIcon,
         subItems: [
-        // { name: "የእስረኛ መረጃ ማሳያ", path: "/ShowPrisioner", pro: false },
+          
+          { name: "የእስረኛ መረጃ ማሳያ", path: "/ShowPrisioner", pro: false },
           // { name: "የእስረኛ የህክምና መረጃ ", path: "/ShowMedical", pro: false },
           // { name: "የእስረኛ ገንዘብ ማሳያ", path: "/ShowPrisonerCash", pro: false },
           { name: "የእስረኛ የህክምና ታሪክ ማሳያ", path: "/ShowMedicalInfoD", pro: false },

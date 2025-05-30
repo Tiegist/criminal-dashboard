@@ -31,6 +31,23 @@ const store = createStore({
         state.user = data
       }
     },
+    getters: {
+      userRole(state) {
+          return state.user?.role ?? null;
+      },
+      isPolice(state) {
+          return state.user?.role == 2 ?? null;
+      },
+      isDoctor(state) {
+          return state.user?.role == 4 ?? null;
+      },
+      isAdmin(state) {
+          return state.user?.role == 1 ?? null;
+      },
+      isGuard(state) {
+          return state.user?.role == 3 ?? null;
+      },
+    },
     actions: {
       applyHeader() {
         if(localStorage.getItem('token')) {
