@@ -17,6 +17,7 @@
        <address-card :history="phist"  v-if="isAdmin"/>
       <apperance :history="phist" v-if="isAdmin || isDoctor"/>
       <crime :history="phist" v-if="isAdmin"/>
+      <MedicalHistory :history="phist" v-if="isAdmin || isDoctor" @reloadHistoryInfo="fetchPrisonerInformation()"/>
       
     </div>
   </LayoutComponent>
@@ -32,6 +33,7 @@ import PersonalInfoCard from '@/components/profile/PrisonerPersonalInfoCard.vue'
 import AddressCard from '@/components/profile/AddressCard.vue'
 import Apperance from '@/components/profile/Apperance.vue'
 import Crime from '@/components/profile/Crime.vue'
+import MedicalHistory from '@/components/profile/MedicalHistory.vue'
 
 
 import { ref, reactive, onMounted, computed } from 'vue'

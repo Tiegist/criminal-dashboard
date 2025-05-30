@@ -266,24 +266,24 @@ const menuGroups = [
       //   name: "የሰራተኞች መረጃ መመዝገቢያ ",
       //   path: "/UserRegister",
       // },
-      {
-        name: "መረጃ መሙያ ቅጽ",
-        icon: ListIcon,
-        subItems: [
-          // { name: "Form Elements", path: "/form-elements", pro: false },
-          // { name: "የእስረኞች መረጃ ቅጽ", path: "/prisoner-form", pro: false },
-          // { name: "የእስረኞች ታሪክ ቅጽ", path: "/PrisonerHistory", pro: false },
-          // { name: "የእስረኞች ወንጀል ቅጽ", path: "/PrisonerCrimes", pro: false },
-          // { name: "የእስረኞች የፍርድ ቤት ታሪክ ቅጽ", path: "/PrisionerCourtHistory", pro: false },  
-          // { name: "Prisioner", path: "/Prisioner", pro: false },
-          // { name: "የእስረኞች ገጽታ ቅጽ", path: "/PrisionerApperance", pro: false },
-          // { name: "የእስረኞች ንብረት ቅጽ ", path: "/PrisionerProperty", pro: false },
-          // { name: "የእስረኞች ገንዘብ ቅጽ", path: "/CriminalCash", pro: false },
-          { name: "የእስረኞች የህክምና ታሪክ ቅጽ", path: "/MedicalHistoryD", pro: false },
+      // {
+      //   name: "መረጃ መሙያ ቅጽ",
+      //   icon: ListIcon,
+      //   subItems: [
+      //     // { name: "Form Elements", path: "/form-elements", pro: false },
+      //     // { name: "የእስረኞች መረጃ ቅጽ", path: "/prisoner-form", pro: false },
+      //     // { name: "የእስረኞች ታሪክ ቅጽ", path: "/PrisonerHistory", pro: false },
+      //     // { name: "የእስረኞች ወንጀል ቅጽ", path: "/PrisonerCrimes", pro: false },
+      //     // { name: "የእስረኞች የፍርድ ቤት ታሪክ ቅጽ", path: "/PrisionerCourtHistory", pro: false },  
+      //     // { name: "Prisioner", path: "/Prisioner", pro: false },
+      //     // { name: "የእስረኞች ገጽታ ቅጽ", path: "/PrisionerApperance", pro: false },
+      //     // { name: "የእስረኞች ንብረት ቅጽ ", path: "/PrisionerProperty", pro: false },
+      //     // { name: "የእስረኞች ገንዘብ ቅጽ", path: "/CriminalCash", pro: false },
+      //     { name: "የእስረኞች የህክምና ታሪክ ቅጽ", path: "/MedicalHistoryD", pro: false },
          
    
-        ],
-      },
+      //   ],
+      // },
       {
         name: "የእስረኛ መረጃ ማሳያ",
         icon: ListIcon,
