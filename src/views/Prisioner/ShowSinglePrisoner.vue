@@ -16,7 +16,7 @@
       <personal-info-card  :history="phist"v-if="isAdmin || isDoctor"/>
        <address-card :history="phist"  v-if="isAdmin"/>
       <apperance :history="phist" v-if="isAdmin || isDoctor"/>
-      <crime :history="phist" v-if="isAdmin"/>
+      <crime :history="phist" v-if="isAdmin" @reloadHistoryInfo="fetchPrisonerInformation()"/>
       <MedicalHistory :history="phist" v-if="isAdmin || isDoctor" @reloadHistoryInfo="fetchPrisonerInformation()"/>
       
     </div>
