@@ -12,56 +12,38 @@
                 <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">የእስረኛው ስም</p>
               </th>
               <th class="px-5 py-3 text-left w-2/11 sm:px-6">
-                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">የህመሙ አይነት</p>
-              </th>
-              <th class="px-5 py-3 text-left w-2/11 sm:px-6">
-                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">የሆስፒታሉ ስም</p>
-              </th>
-              <th class="px-5 py-3 text-left w-2/11 sm:px-6">
-                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">የዶክተሩ ስም </p>
-              </th>
-              <th class="px-5 py-3 text-left w-2/11 sm:px-6">
-                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">የታከመበት ቀን </p>
-              </th>
-              <th class="px-5 py-3 text-left w-2/11 sm:px-6">
-                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">የዶክተሩ አድራሻ</p>
-              </th>
-              <th class="px-5 py-3 text-left w-2/11 sm:px-6">
                 <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">የብር መጠን</p>
               </th>
-              <!-- <th class="px-5 py-3 text-left w-2/11 sm:px-6">
-                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">actions</p>
-              </th> -->
+              
+              <th class="px-5 py-3 text-left w-2/11 sm:px-6">
+                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Type</p>
+              </th>
+              <th class="px-5 py-3 text-left w-2/11 sm:px-6">
+                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">ቀን</p>
+              </th>
+             
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-            <tr v-for="(medical, index) in MedicalInfo" :key="index" class="border-t border-gray-100 dark:border-gray-800">
+            <tr v-for="(cash, index) in CashInfo" :key="index" class="border-t border-gray-100 dark:border-gray-800">
                <td class="sm:px-6">
                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ index + 1 }}</p>
               </td>
               <td class="px-5 py-4 sm:px-6">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400"><span class="ml-2">{{ MedicalInfo[0].prisoner_history.prisoner.first_name }}</span> <span class="ml-2">{{ MedicalInfo[0].prisoner_history.prisoner.middle_name }}</span>  <span class="ml-2">{{ MedicalInfo[0].prisoner_history.prisoner.last_name }}</span> </p>
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400"><span class="ml-2">{{ CashInfo[0].prisoner_history.prisoner.first_name }}</span> <span class="ml-2">{{ CashInfo[0].prisoner_history.prisoner.middle_name }}</span>  <span class="ml-2">{{ CashInfo[0].prisoner_history.prisoner.last_name }}</span> </p>
               </td>
               <td class="px-5 py-4 sm:px-6">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ medical.disease_type.name }}</p>
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ cash.amount }} ETB</p>
               </td>
               <td class="px-5 py-4 sm:px-6">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ medical.hospital_name }}</p>
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ cash.type == 1 ? 'ገቢ' : 'ወጪ' }}</p>
               </td>
               <td class="px-5 py-4 sm:px-6">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ medical.doctor_name }}</p>
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ cash.date }}</p>
               </td>
-              <td class="px-5 py-4 sm:px-6">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ medical.date }}</p>
-              </td>
-              <td class="px-5 py-4 sm:px-6">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ medical.doctor_address }}</p>
-              </td>
-              <td class="px-5 py-4 sm:px-6">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ medical.medical_expense }}</p>
-              </td>
+             
               <!-- <td class="px-5 py-4 sm:px-6">
-                <a @click="fetchSingleMedicalInfo(medical.id)"
+                <a @click="fetchSingleCashInfo(cash.id)"
                   class="font-medium text-theme-sm text-green-600 dark:text-green-500 hover:underline cursor-pointer">ተጨማሪ
                 </a>
                 |
@@ -76,7 +58,7 @@
     <div class="flex w-12/12 mx-auto">
 
       <div class="flex flex-wrap justify-center items-center mt-6 space-x-2">
-					<span v-for="page in (links ?? [])" :key="page.label" @click="page.url && fetchMedical(page.url)"
+					<span v-for="page in (links ?? [])" :key="page.label" @click="page.url && fetchCashHistory(page.url)"
 						:class="['px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
             page.url ? 'cursor-pointer hover:bg-gray-700 hover:text-white' : 'cursor-not-allowed text-gray-500',
             page.active ? 'bg-teal-500 text-white' : 'text-gray-300 border border-gray-600'
@@ -104,9 +86,9 @@ import { useStore } from 'vuex';
 const store = useStore();
 const apiServer = computed(() => store.state.apiServer);
 
-const MedicalInfo = ref([]);
+const CashInfo = ref([]);
 const singlePrisioner = ref([])
-const singleMedicalInfo = ref([])
+const singleCashInfo = ref([])
 const showPrisoiner = ref(false)
 const showPrisoinerInfo = ref(false)
 const showMore = ref(false)
@@ -114,14 +96,14 @@ const showMore = ref(false)
 const paginationInfo = ref({});
 const links = computed(() => paginationInfo.value.links);
 
-const fetchMedical = (url = '') => {
+const fetchCashHistory = (url = '') => {
 	paginationInfo.value = {}
 
-  url = url === '' ? apiServer.value + 'medical' : url;
+  url = url === '' ? apiServer.value + 'prisoner-cash' : url;
 
   axios.get(url).then((res) => {
 
-    MedicalInfo.value = res.data.data.data
+    CashInfo.value = res.data.data.data
     paginationInfo.value = res.data.data;
 
   })
@@ -129,7 +111,7 @@ const fetchMedical = (url = '') => {
 
 
 onMounted(() => {
-  fetchMedical()
+  fetchCashHistory()
 });
 
 

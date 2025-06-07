@@ -275,7 +275,7 @@ const menuGroups = [
           // { name: "Prisioner", path: "/Prisioner", pro: false },
           // { name: "የእስረኞች ገጽታ ቅጽ", path: "/PrisionerApperance", pro: false },
           // { name: "የእስረኞች ንብረት ቅጽ ", path: "/PrisionerProperty", pro: false },
-          { name: "የእስረኞች ገንዘብ ቅጽ", path: "/CriminalCash", pro: false },
+          // { name: "የእስረኞች ገንዘብ ቅጽ", path: "/CriminalCash", pro: false },
           // { name: "የእስረኞች የህክምና ታሪክ ቅጽ", path: "/MedicalHistory", pro: false },
          
    
@@ -286,8 +286,9 @@ const menuGroups = [
         icon: ListIcon,
         subItems: [
         { name: "የእስረኛ መረጃ ማሳያ", path: "/ShowPrisioner", pro: false },
-          { name: "የእስረኛ የህክምና መረጃ ", path: "/ShowMedical", pro: false },
-          { name: "የእስረኛ ገንዘብ ማሳያ", path: "/ShowPrisonerCash", pro: false },
+          // { name: "የእስረኛ የህክምና መረጃ ", path: "/ShowMedical", pro: false },
+          { name: "የእስረኛ ገንዘብ ማሳያ", path: "/ShowCashHistory", pro: false },
+          { name: "የእስረኛ ገንዘብ Transaction", path: "/ShowCashTransactions", pro: false },
           { name: "የእስረኛ የህክምና ታሪክ ማሳያ", path: "/ShowMedicalInfo", pro: false },
         ],
       },

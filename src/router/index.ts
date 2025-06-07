@@ -467,6 +467,26 @@ const router = createRouter({
         title: 'ShowMedicalInfo',
       },
     },
+
+
+    {
+      path: '/ShowCashTransactions',
+      name: 'ShowCashTransactions',
+      component: () => import('../views/Criminal/ShowCashTransactions.vue'),
+      meta: {
+        title: 'ShowCashTransactions',
+      },
+    },
+
+    {
+      path: '/ShowCashHistory',
+      name: 'ShowCashHistory',
+      component: () => import('../views/Criminal/ShowCashHistory.vue'),
+      meta: {
+        title: 'ShowCashHistory',
+      },
+    },
+
       {
       path: '/ShowMedicalInfoD',
       name: 'ShowMedicalInfoD',
