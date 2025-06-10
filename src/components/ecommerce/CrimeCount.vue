@@ -2,7 +2,7 @@
 	<div
 		class="overflow-hidden rounded-2xl border border-gray-200 bg-white px-5 pt-5 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6 sm:pt-6">
 		<div class="flex items-center justify-between">
-			<h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">የየወሩ እስረኞቺ</h3>
+			<h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">Crime Count</h3>
 
 			<div class="relative h-fit">
 
@@ -11,7 +11,7 @@
 
 		<div class="max-w-full overflow-x-auto custom-scrollbar">
 			<div id="chartOne" class="-ml-5 min-w-[650px] xl:min-w-full pl-2">
-				<VueApexCharts v-if="keys.length > 0" type="bar" height="280" :options="chartOptions" :series="series" />
+				<VueApexCharts v-if="keys.length > 0" type="bar" height="380" :options="chartOptions" :series="series" />
 			</div>
 		</div>
 	</div>
@@ -33,12 +33,12 @@ const props = defineProps({
 	}
 })
 
-const values = computed(() => props.dashboardData.monthly_arrests.valuess ?? [])
-const keys = computed(() => props.dashboardData.monthly_arrests.keyss ?? [])
+const values = computed(() => props.dashboardData.crime_counts.valuess ?? [])
+const keys = computed(() => props.dashboardData.crime_counts.keyss ?? [])
 
 const series = computed(() => [
 	{
-		name: 'Monthly Arrests',
+		name: 'Crimes',
 		data: values.value,
 	},
 ]);
