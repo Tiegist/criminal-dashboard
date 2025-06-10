@@ -3,7 +3,7 @@
 		<div class="p-5 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6 mt-6">
 			<div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
 				<div>
-					<h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">Crime</h4>
+					<h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">ወንጀል </h4>
 
 					<div class="grid grid-cols-1 gap-4 lg:grid-cols-1 lg:gap-7 2xl:gap-x-32">
 						<div class="flex ">
@@ -28,9 +28,9 @@
 							
 						</div>
 						<div v-for="(story, i) in history.prisoner_court_histories" :key="i" class="min-w-[200px]">
-							<p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">Appointment Date: {{ story.appointment_date }} </p>
-							<p class="text-sm font-medium text-gray-800 dark:text-white/90"> Court : {{ story?.court?.name }} </p>
-							<p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="story?.criminal_status">Criminal Status: {{ story.criminal_status == 1 ? 'ተጠርጣሪ' : 'ፍርደኛ' }} </p>
+							<p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">የቀጠሮ ቀን : {{ story.appointment_date }} </p>
+							<p class="text-sm font-medium text-gray-800 dark:text-white/90"> ፍርድ ቤት  : {{ story?.court?.name }} </p>
+							<p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="story?.criminal_status">የታሳሪው ሁነታ : {{ story.criminal_status == 1 ? 'ተጠርጣሪ' : 'ፍርደኛ' }} </p>
 							<p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="story.verdict_date">Verdict Date: {{ story.verdict_date }} </p>
 							<p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="story.updated_court">Updated Court: {{ story?.updated_court?.name }} </p>
 							<p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="story.status">Status: {{ story.status == 1 ? 'ቀጠሮ' : 'የመጨረሻ_ዉሳኔ'}} </p>
@@ -57,10 +57,10 @@
 					</button>
 					<div class="px-2 pr-14">
 						<h4 class="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-							Court History
+							የፍርድ ቤት ታሪክ
 						</h4>
 						<p class="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
-							Fill the prisoners court history
+							እባኮትን የፍርድ ቤት መረጃዎችን ያስገቡ።
 						</p>
 					</div>
 					<div class="flex flex-col">
@@ -226,7 +226,7 @@
 								</button>
 								<button @click="saveCourtHistory()" type="button"
 									class="flex w-full justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 sm:w-auto">
-									Add Court History
+									ያስገቡ 
 								</button>
 							</div>
 						</div>

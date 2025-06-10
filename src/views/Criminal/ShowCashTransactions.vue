@@ -16,7 +16,7 @@
               </th>
               
               <th class="px-5 py-3 text-left w-2/11 sm:px-6">
-                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Type</p>
+                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">አይነት</p>
               </th>
               <th class="px-5 py-3 text-left w-2/11 sm:px-6">
                 <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">ቀን</p>
@@ -33,7 +33,7 @@
                 <p class="text-gray-500 text-theme-sm dark:text-gray-400"><span class="ml-2">{{ CashInfo[0].prisoner_history.prisoner.first_name }}</span> <span class="ml-2">{{ CashInfo[0].prisoner_history.prisoner.middle_name }}</span>  <span class="ml-2">{{ CashInfo[0].prisoner_history.prisoner.last_name }}</span> </p>
               </td>
               <td class="px-5 py-4 sm:px-6">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ cash.amount }} ETB</p>
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ cash.amount }} ብር </p>
               </td>
               <td class="px-5 py-4 sm:px-6">
                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ cash.type == 1 ? 'ገቢ' : 'ወጪ' }}</p>

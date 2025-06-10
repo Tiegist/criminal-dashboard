@@ -13,13 +13,13 @@
               </th>
 
               <th class="px-5 py-3 text-left w-2/11 sm:px-6">
-                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Total Deposit</p>
+                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">ተቀማጭ</p>
               </th>
               <th class="px-5 py-3 text-left w-2/11 sm:px-6">
-                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Total Withdraw</p>
+                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">ወጪ</p>
               </th>
               <th class="px-5 py-3 text-left w-2/11 sm:px-6">
-                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Current Balance</p>
+                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">አሁን ያለው የገንዘብ መጠን</p>
               </th>
 
             </tr>
@@ -34,13 +34,13 @@
                 </p>
               </td>
               <td class="px-5 py-4 sm:px-6">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ hist.total_deposit }} ETB</p>
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ hist.total_deposit }} ብር </p>
               </td>
               <td class="px-5 py-4 sm:px-6">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ hist.total_withdrawal }} ETB</p>
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ hist.total_withdrawal }} ብር </p>
               </td>
               <td class="px-5 py-4 sm:px-6">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ hist.balance }} ETB </p>
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ hist.balance }} ብር  </p>
               </td>
 
               <!-- <td class="px-5 py-4 sm:px-6">
