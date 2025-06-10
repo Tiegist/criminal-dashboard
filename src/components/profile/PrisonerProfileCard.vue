@@ -29,35 +29,35 @@
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                Mother Name
+                የእናት ስም
               </p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.prisoner.mother_name }}</p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                Date of Birth
+                የልደት ቀን
               </p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.prisoner.date_of_birth }}</p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                Birth Destrict
+                የትዉልድ ቀበሌ 
               </p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.prisoner.birth_district }}</p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                Birth Town
+                የትዉልድ ከተማ
               </p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.prisoner?.birth_town?.name }}</p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                Ethnic Group
+                ብሄር 
               </p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ props.prisoner?.ethnic_group?.name }}</p>
             </div>
@@ -79,7 +79,7 @@
               fill=""
             />
           </svg>
-          Create New History | Mahder
+          አዲስ ታሪክ ይመዝግቡ | ማህደር 
         </button>
       </div>
     </div>

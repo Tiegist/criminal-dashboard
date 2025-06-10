@@ -204,8 +204,8 @@
 			]" @click="registerPrisonerApperance" :disabled="disabled">
 				<span v-if="startIcon" class="flex items-center"> </span>
 
-				<span v-if="!editMode"> {{ !saving ? 'Save & Continue' : 'Saving...' }} </span>
-				<span v-if="editMode"> {{ !saving ? 'Update & Continue' : 'Updating...' }} </span>
+				<span v-if="!editMode"> {{ !saving ? 'ይመዝግቡና ይቀጥሉ' : 'እየመዘገቡ ነው...' }} </span>
+				<span v-if="editMode"> {{ !saving ? 'ያስተካክሉና ይቀጥሉ ' : 'እያስተካከሉ ነው...' }} </span>
 
 				<span v-if="endIcon" class="flex items-center">
 

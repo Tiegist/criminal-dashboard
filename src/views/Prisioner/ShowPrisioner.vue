@@ -138,7 +138,7 @@
 
 							<button @click="clearSearch()"
 								class="w-1/3 py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition-all duration-200 shadow-lg">
-								Clear
+								ይሰርዙ
 							</button>
 
 							<div v-if="errorMessage" class="text-red-500 text-center font-semibold mt-4">
@@ -177,7 +177,7 @@
 								<p class="font-medium text-gray-500 text-theme-md dark:text-gray-400">የ/ወ/መ/ፍ/ቁጥር</p>
 							</th>
 							<th class="px-5 py-3 text-left w-2/11 sm:px-6">
-								<p class="font-medium text-gray-500 text-theme-md dark:text-gray-400">actions</p>
+								<p class="font-medium text-gray-500 text-theme-md dark:text-gray-400">ድርጊቶች</p>
 							</th>
 						</tr>
 					</thead>

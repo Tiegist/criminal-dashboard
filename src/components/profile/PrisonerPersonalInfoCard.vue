@@ -4,7 +4,7 @@
       <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
-            Prisoner Information
+            የግል መረጃ
           </h4>
 
           <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32">
@@ -20,7 +20,7 @@
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                Mobile
+                ሞባይል ቁጥር
               </p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90">
                 {{ props.history.mobile_number }}
@@ -60,7 +60,7 @@
               fill=""
             />
           </svg>
-          Edit
+          ያስተካክሉ 
         </button>
       </div>
     </div>
