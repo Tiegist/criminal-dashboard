@@ -14,8 +14,7 @@
                   <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
                   </span>
                   <input type="text" v-model="prisoner.first_name"
-                    class="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
+                    class="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
               </div>
 
@@ -26,8 +25,7 @@
                   <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
                   </span>
                   <input type="text" v-model="prisoner.middle_name"
-                    class="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
+                    class="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
               </div>
 
@@ -38,8 +36,7 @@
                   <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
                   </span>
                   <input type="text" v-model="prisoner.mother_name"
-                    class="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
+                    class="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
               </div>
 
@@ -51,8 +48,7 @@
 
                   </span>
                   <input type="tel" v-model="prisoner.date_of_birth"
-                    class="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
+                    class="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
               </div>
 
@@ -81,8 +77,7 @@
                 <label class="block text-sm font-medium text-gray-300 mb-1">ሀይማኖት</label>
                 <div class="relative">
                   <select v-model="prisoner.religion_id"
-                    class="w-full pl-3 pr-10 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
-                    >
+                    class="w-full pl-3 pr-10 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
 
                     <option v-for="religion in religions" :key="religion.id" :value="religion.id">
                       {{ religion.name }}
@@ -104,8 +99,7 @@
                 <label class="block text-sm font-medium text-gray-300 mb-1">የወንጀል አይነት</label>
                 <div class="relative">
                   <select v-model="prisoner.criminal_types_id"
-                    class="w-full pl-3 pr-10 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
-                    >
+                    class="w-full pl-3 pr-10 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
 
                     <option v-for="crime in crimes" :key="crime.id" :value="crime.id">
                       {{ crime.name }}
@@ -127,12 +121,12 @@
                 🔎 ይፈልጉ
               </button>
               <div v-if="errorMessage" class="text-red-500 text-center font-semibold mt-4">
-  {{ errorMessage }}
-</div>
+                {{ errorMessage }}
+              </div>
 
-<div v-if="noResults" class="text-yellow-400 text-center font-semibold mt-4">
-  😕 በዚህ መረጃ ውስጥ የታሰረ ሰው አልተገኘም።
-</div>
+              <div v-if="noResults" class="text-yellow-400 text-center font-semibold mt-4">
+                😕 በዚህ መረጃ ውስጥ የታሰረ ሰው አልተገኘም።
+              </div>
 
             </div>
           </div>
@@ -331,7 +325,7 @@ export default {
     const religions = ref([]);
     const crimes = ref([])
     const errorMessage = ref('');
-const noResults = ref(false);
+    const noResults = ref(false);
 
 
     const prisoner = ref({
@@ -351,7 +345,7 @@ const noResults = ref(false);
         const response = await axios.get(apiServer.value + 'religion');
         religions.value = response.data.data;
       } catch (error) {
-        console.error('Error fetching religions:', error);
+        console.error('ሃይማኖቶችን ማምጣት ላይ ስህተት!', error);
       }
     };
     const fetchSex = async () => {
@@ -368,7 +362,7 @@ const noResults = ref(false);
         paginationInfo.value = res.data.Prisioner;
         PrisionerInfo.value = res.data.Prisioner.data;
       } catch (error) {
-        console.error('Error fetching prisoners:', error);
+        console.error('እስረኞችን ማምጣት ላይ ስህተት!', error);
       }
     };
 
@@ -380,63 +374,63 @@ const noResults = ref(false);
       localStorage.setItem('prisoner_id', id);
       router.push('/ShowSinglePrisoner');
     };
-const filterPrisoners = async () => {
-  errorMessage.value = '';
-  noResults.value = false;
+    const filterPrisoners = async () => {
+      errorMessage.value = '';
+      noResults.value = false;
 
-  // ✅ Validate date format (optional but useful)
-  if (
-    prisoner.value.date_of_birth &&
-    isNaN(Date.parse(prisoner.value.date_of_birth))
-  ) {
-    errorMessage.value = 'እባክዎ ትክክለኛ የትውልድ ቀን ያስገቡ።';
-    return; // ⛔ Stop here if the input is invalid
-  }
+      // ✅ Validate date format (optional but useful)
+      if (
+        prisoner.value.date_of_birth &&
+        isNaN(Date.parse(prisoner.value.date_of_birth))
+      ) {
+        errorMessage.value = 'እባክዎ ትክክለኛ የትውልድ ቀን ያስገቡ!';
+        return; // ⛔ Stop here if the input is invalid
+      }
 
-  try {
-    const filters = {};
+      try {
+        const filters = {};
 
-    if (prisoner.value.first_name) filters.first_name = prisoner.value.first_name;
-    if (prisoner.value.middle_name) filters.middle_name = prisoner.value.middle_name;
-    if (prisoner.value.mother_name) filters.mother_name = prisoner.value.mother_name;
-    if (prisoner.value.date_of_birth) filters.date_of_birth = prisoner.value.date_of_birth;
-    if (prisoner.value.sex) filters.sex = prisoner.value.sex;
-    if (prisoner.value.criminal_types_id) filters.criminal_types_id = prisoner.value.criminal_types_id;
-    if (prisoner.religion_id) filters.religion_id = prisoner.religion_id;
+        if (prisoner.value.first_name) filters.first_name = prisoner.value.first_name;
+        if (prisoner.value.middle_name) filters.middle_name = prisoner.value.middle_name;
+        if (prisoner.value.mother_name) filters.mother_name = prisoner.value.mother_name;
+        if (prisoner.value.date_of_birth) filters.date_of_birth = prisoner.value.date_of_birth;
+        if (prisoner.value.sex) filters.sex = prisoner.value.sex;
+        if (prisoner.value.criminal_types_id) filters.criminal_types_id = prisoner.value.criminal_types_id;
+        if (prisoner.religion_id) filters.religion_id = prisoner.religion_id;
 
-    const response = await axios.get(`${apiServer.value}prisoners/filter`, {
-      params: filters,
-    });
+        const response = await axios.get(`${apiServer.value}prisoners/filter`, {
+          params: filters,
+        });
 
-    const resultData = response.data.Prisioner.data;
+        const resultData = response.data.Prisioner.data;
 
-    if (!resultData.length) {
-      noResults.value = true;
-      PrisionerInfo.value = [];
-    } else {
-      PrisionerInfo.value = resultData;
-      paginationInfo.value = response.data.Prisioner;
-    }
+        if (!resultData.length) {
+          noResults.value = true;
+          PrisionerInfo.value = [];
+        } else {
+          PrisionerInfo.value = resultData;
+          paginationInfo.value = response.data.Prisioner;
+        }
         prisoner.value = {
-      first_name: '',
-      middle_name: '',
-      mother_name: '',
-      date_of_birth: '',
-      sex: '',
-      criminal_types_id: '',
-      religion_id: '',
+          first_name: '',
+          middle_name: '',
+          mother_name: '',
+          date_of_birth: '',
+          sex: '',
+          criminal_types_id: '',
+          religion_id: '',
+        };
+
+      } catch (error) {
+        console.error('Filter error:', error);
+
+        if (error.response && error.response.status === 422) {
+          errorMessage.value = '❌ እባክዎ ትክክለኛ መረጃ ያስገቡ።';
+        } else {
+          errorMessage.value = '❌ ፍለጋውን ማከናወን አልተቻለም። እባክዎን አንደገና ይሞክሩ።';
+        }
+      }
     };
-
-  } catch (error) {
-    console.error('Filter error:', error);
-
-    if (error.response && error.response.status === 422) {
-      errorMessage.value = '❌ እባክዎ ትክክለኛ መረጃ ያስገቡ።';
-    } else {
-      errorMessage.value = '❌ ፍለጋውን ማከናወን አልተቻለም። እባክዎን አንደገና ይሞክሩ።';
-    }
-  }
-};
 
 
 
@@ -470,8 +464,8 @@ const filterPrisoners = async () => {
       sexes,
       crimes,
       filterPrisoners,
-        errorMessage,
-  noResults,
+      errorMessage,
+      noResults,
     };
   },
 };

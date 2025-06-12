@@ -3,23 +3,23 @@
     <PageBreadcrumb :pageTitle="currentPageTitle" />
 
     <div v-if="Object.keys(information).length > 0"
-      class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] lg:p-6"
-    >
+      class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] lg:p-6">
       <h3 class="mb-5 text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-7">የግል መረጃ</h3>
-      <profile-card :prisoner="information"/>
+      <profile-card :prisoner="information" />
       <h2>የወንጀል ታሪክ | ማህደር </h2>
 
       <div class="flex col col-6 gap-4">
-        <p class="my-4" @click="showHistory(i)"  v-for="phist, i in information.prison_histories" :key="i"> {{ 'History ' + (i + 1) }} </p>
+        <p class="my-4" @click="showHistory(i)" v-for="phist, i in information.prison_histories" :key="i"> {{ 'History '
+          + (i + 1) }} </p>
       </div>
-      
-      <personal-info-card  :history="phist"v-if="isAdmin || isDoctor"/>
-       <address-card :history="phist"  v-if="isAdmin"/>
-      <apperance :history="phist" v-if="isAdmin || isDoctor"/>
-      <crime :history="phist" v-if="isAdmin" @reloadHistoryInfo="fetchPrisonerInformation()"/>
-      <MedicalHistory :history="phist" v-if="isAdmin || isDoctor" @reloadHistoryInfo="fetchPrisonerInformation()"/>
-      <PrisonerCashHistory :history="phist" v-if="isAdmin" @reloadHistoryInfo="fetchPrisonerInformation()"/>
-      
+
+      <personal-info-card :history="phist" v-if="isAdmin || isDoctor" />
+      <address-card :history="phist" v-if="isAdmin" />
+      <apperance :history="phist" v-if="isAdmin || isDoctor" />
+      <crime :history="phist" v-if="isAdmin" @reloadHistoryInfo="fetchPrisonerInformation()" />
+      <MedicalHistory :history="phist" v-if="isAdmin || isDoctor" @reloadHistoryInfo="fetchPrisonerInformation()" />
+      <PrisonerCashHistory :history="phist" v-if="isAdmin" @reloadHistoryInfo="fetchPrisonerInformation()" />
+
     </div>
   </LayoutComponent>
 </template>
@@ -56,7 +56,7 @@ let LayoutComponent = isAdmin.value ? AdminLayout : AdminLayoutMedical
 const route = useRoute();
 
 const phist = computed(() => {
-    return Object.values(information.value.prison_histories)[currentHistory.value];
+  return Object.values(information.value.prison_histories)[currentHistory.value];
 })
 
 const information = ref({})
@@ -66,7 +66,7 @@ const showHistory = (history) => {
   currentHistory.value = history
 }
 
-const fetchPrisonerInformation = async () => { axios.get(apiServer.value + 'prisoner/prisoner-info/'+route.query.prisoner).then(response => { information.value = response.data.data; }) }
+const fetchPrisonerInformation = async () => { axios.get(apiServer.value + 'prisoner/prisoner-info/' + route.query.prisoner).then(response => { information.value = response.data.data; }) }
 
 onMounted(() => {
   fetchPrisonerInformation();

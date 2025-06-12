@@ -3,9 +3,9 @@
 		<div class="px-5 pt-5 bg-white shadow-default rounded-2xl pb-11 dark:bg-gray-900 sm:px-6 sm:pt-6">
 			<div class="flex justify-between">
 				<div>
-					<h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">Gender </h3>
+					<h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">ጾታ </h3>
 					<p class="mt-1 text-gray-500 text-theme-sm dark:text-gray-400">
-						Prisoner's By gender ratio.
+						የእስረኞች ጾታ መጠን
 					</p>
 				</div>
 				<div>

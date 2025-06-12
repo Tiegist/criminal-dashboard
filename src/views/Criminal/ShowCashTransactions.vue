@@ -14,23 +14,26 @@
               <th class="px-5 py-3 text-left w-2/11 sm:px-6">
                 <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">የብር መጠን</p>
               </th>
-              
+
               <th class="px-5 py-3 text-left w-2/11 sm:px-6">
                 <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">አይነት</p>
               </th>
               <th class="px-5 py-3 text-left w-2/11 sm:px-6">
                 <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">ቀን</p>
               </th>
-             
+
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
             <tr v-for="(cash, index) in CashInfo" :key="index" class="border-t border-gray-100 dark:border-gray-800">
-               <td class="sm:px-6">
+              <td class="sm:px-6">
                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ index + 1 }}</p>
               </td>
               <td class="px-5 py-4 sm:px-6">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400"><span class="ml-2">{{ CashInfo[0].prisoner_history.prisoner.first_name }}</span> <span class="ml-2">{{ CashInfo[0].prisoner_history.prisoner.middle_name }}</span>  <span class="ml-2">{{ CashInfo[0].prisoner_history.prisoner.last_name }}</span> </p>
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400"><span class="ml-2">{{
+                  CashInfo[0].prisoner_history.prisoner.first_name }}</span> <span class="ml-2">{{
+                      CashInfo[0].prisoner_history.prisoner.middle_name }}</span> <span class="ml-2">{{
+                      CashInfo[0].prisoner_history.prisoner.last_name }}</span> </p>
               </td>
               <td class="px-5 py-4 sm:px-6">
                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ cash.amount }} ብር </p>
@@ -41,7 +44,7 @@
               <td class="px-5 py-4 sm:px-6">
                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ cash.date }}</p>
               </td>
-             
+
               <!-- <td class="px-5 py-4 sm:px-6">
                 <a @click="fetchSingleCashInfo(cash.id)"
                   class="font-medium text-theme-sm text-green-600 dark:text-green-500 hover:underline cursor-pointer">ተጨማሪ
@@ -58,13 +61,12 @@
     <div class="flex w-12/12 mx-auto">
 
       <div class="flex flex-wrap justify-center items-center mt-6 space-x-2">
-					<span v-for="page in (links ?? [])" :key="page.label" @click="page.url && fetchCashHistory(page.url)"
-						:class="['px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
-            page.url ? 'cursor-pointer hover:bg-gray-700 hover:text-white' : 'cursor-not-allowed text-gray-500',
-            page.active ? 'bg-teal-500 text-white' : 'text-gray-300 border border-gray-600'
-          ]" v-html="page.label">
-					</span>
-				</div>
+        <span v-for="page in (links ?? [])" :key="page.label" @click="page.url && fetchCashHistory(page.url)" :class="['px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
+          page.url ? 'cursor-pointer hover:bg-gray-700 hover:text-white' : 'cursor-not-allowed text-gray-500',
+          page.active ? 'bg-teal-500 text-white' : 'text-gray-300 border border-gray-600'
+        ]" v-html="page.label">
+        </span>
+      </div>
 
 
     </div>
@@ -97,7 +99,7 @@ const paginationInfo = ref({});
 const links = computed(() => paginationInfo.value.links);
 
 const fetchCashHistory = (url = '') => {
-	paginationInfo.value = {}
+  paginationInfo.value = {}
 
   url = url === '' ? apiServer.value + 'prisoner-cash' : url;
 

@@ -3,17 +3,17 @@
 		<thead>
 
 			<tr>
-				<th>No</th>
-				<th>Type</th>
-				<th>Amount</th>
-				<th>Description</th>
+				<th>ቁጥር</th>
+				<th>አይነት</th>
+				<th>መጠን</th>
+				<th>ገለጻ</th>
 			</tr>
 		</thead>
 		<tbody>
 
-			<tr v-for="property,i in properties" :key="i">
-				<td>{{ i + 1}}</td>
-				<td>{{ types.find( t => t.id == property.type_id)?.type }}</td>
+			<tr v-for="property, i in properties" :key="i">
+				<td>{{ i + 1 }}</td>
+				<td>{{types.find(t => t.id == property.type_id)?.type}}</td>
 				<td>{{ property.amount }}</td>
 				<td>{{ property.description }}</td>
 			</tr>
@@ -63,7 +63,7 @@
 				<span v-if="startIcon" class="flex items-center">
 
 				</span>
-				ADD
+				ይጨምሩ
 				<span v-if="endIcon" class="flex items-center">
 
 				</span>
@@ -130,18 +130,18 @@ const fetchType = async () => { axios.get(apiServer.value + 'type').then(respons
 
 function addSingle() {
 	errorMessage.value = ''
-	if(single.value.type_id == null) {
-		errorMessage.value = 'Please select item type'
+	if (single.value.type_id == null) {
+		errorMessage.value = 'እባክዎ አይነት ይምረጡ'
 		return
 	}
 
-	if(single.value.amount == null) {
-		errorMessage.value = 'Please specify the amount'
+	if (single.value.amount == null) {
+		errorMessage.value = 'እባክዎ መጠኑን ይግለጹ'
 		return
 	}
 
-	if(single.value.description == '') {
-		errorMessage.value = 'Please enter the item description'
+	if (single.value.description == '') {
+		errorMessage.value = 'እባክዎ መግለጫ ያስገቡ'
 		return
 	}
 
@@ -156,7 +156,7 @@ function addSingle() {
 function registerPrisionerProperty() {
 	if (saving.value == true) return;
 
-	if(properties.value.length == 0) {
+	if (properties.value.length == 0) {
 		emit('prisonerPropertySaved');
 		return
 	}
@@ -175,20 +175,20 @@ function registerPrisionerProperty() {
 		.catch(error => {
 			errorMessage.value = error.response.data.message
 			saving.value = false
-	})
+		})
 }
 
 const fetchPrisonerHistory = async () => {
-    axios
+	axios
 		.get(apiServer.value + 'prisoner-history/' + route.query.prison_history_id)
-        .then(response => {
+		.then(response => {
 			properties.value = response.data.data.prisoner_properties
-        })
+		})
 }
 
 onMounted(() => {
 	fetchType();
-	if(route.query.prison_history_id) {
+	if (route.query.prison_history_id) {
 		fetchPrisonerHistory()
 	}
 });

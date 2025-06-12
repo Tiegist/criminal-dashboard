@@ -3,106 +3,69 @@
     <PageBreadcrumb :pageTitle="currentPageTitle" />
     <div class=" ml-">
       <div class=" w-full">
-      <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-          የእስረኛው ሁኔታ 
-        </label>
-        <div class="relative z-20 bg-transparent">
-          <select
-            v-model="crimes.status"
-            class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
-            :class="{ 'text-gray-800 dark:text-white/90': selectInput }"
-          >
-            <option value="" disabled selected></option>
-            <option v-for="criminalStatu in criminalStatus" :key="criminalStatu.id" :value="criminalStatu.id">{{ criminalStatu.name }}</option>
-          </select>
-          <span
-            class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400"
-          >
-            <svg
-              class="stroke-current"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396"
-                stroke=""
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </span>
+        <div class="w-1/2 mr-10">
+          <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+            የእስረኛው ሁኔታ
+          </label>
+          <div class="relative z-20 bg-transparent">
+            <select v-model="crimes.status"
+              class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+              :class="{ 'text-gray-800 dark:text-white/90': selectInput }">
+              <option value="" disabled selected></option>
+              <option v-for="criminalStatu in criminalStatus" :key="criminalStatu.id" :value="criminalStatu.id">{{
+                criminalStatu.name }}</option>
+            </select>
+            <span
+              class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
+              <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </div>
+        </div>
+
+
+        <div class="w-1/2 mr-10 mt-5">
+          <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+            የወንጀሉ አይነት
+          </label>
+          <div class="relative z-20 bg-transparent">
+            <select v-model="crimes.crime_id"
+              class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+              :class="{ 'text-gray-800 dark:text-white/90': selectInput }">
+              <option value="" disabled selected></option>
+              <option v-for="crimes in crimess" :key="crimes.id" :value="crimes.id">{{ crimes.name }}</option>
+            </select>
+            <span
+              class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
+              <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </div>
         </div>
       </div>
 
-
-<div class="w-1/2 mr-10 mt-5">
-      <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-        የወንጀሉ አይነት
-      </label>
-      <div class="relative z-20 bg-transparent">
-        <select
-          v-model="crimes.crime_id"
-          class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
-          :class="{ 'text-gray-800 dark:text-white/90': selectInput }"
-        >
-          <option value="" disabled selected></option>
-          <option v-for="crimes in crimess" :key="crimes.id" :value="crimes.id">{{ crimes.name }}</option>
-        </select>
-        <span
-          class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400"
-        >
-          <svg
-            class="stroke-current"
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396"
-              stroke=""
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
+      <div class="w-1/2  mt-5">
+        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+          የወንጀሉ ገለጻ
+        </label>
+        <textarea v-model="crimes.crime_description"
+          class="dark:bg-dark-900 h-24 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"></textarea>
+      </div>
+      <div class="">
+        <div class="ml- mt-6">
+          <Button class="w-1/6" :size="size" :variant="variant" :startIcon="startIcon" :endIcon="endIcon"
+            :className="customClass" :disabled="isDisabled" @click="submitData">
+            ይቀጥሉ
+          </Button>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="w-1/2  mt-5">
-  <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-    የወንጀሉ ገለጻ
-  </label>
-  <textarea
-    v-model="crimes.crime_description"
-    class="dark:bg-dark-900 h-24 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
-  ></textarea>
-</div>
-  <div class="">
-    <div class="ml- mt-6">
-      <Button 
-      class="w-1/6"
-        :size="size"
-        :variant="variant"
-        :startIcon="startIcon"
-        :endIcon="endIcon"
-        :className="customClass"
-        :disabled="isDisabled"
-        @click="submitData"
-      >
-      ይቀጥሉ 
-      </Button>
-    </div>
-  </div>
-</div>
   </PoliceLayout>
 </template>
 <script>
@@ -113,7 +76,7 @@ import Button from '@/components/ui/Button.vue';
 import FlatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
 import axios from 'axios';
-  import router from '@/router'
+import router from '@/router'
 // import { Script } from 'vm';
 
 export default {
@@ -123,7 +86,7 @@ export default {
     Button,
     FlatPickr,
   },
-  setup(){
+  setup() {
     const crimes = ref({
       status: '',
       crime_id: '',
@@ -160,48 +123,48 @@ export default {
         crimess.value = response.data.data;
         console.log('crimes', crimess.value);
       } catch (error) {
-        console.error('Error fetching crimes type data', error);
+        console.error('የወንጀል አይነት ውሂብ ማምጣት ላይ ስህተት!', error);
       }
     };
-const submitData = async () => {
-  const formData = new FormData();
-  
+    const submitData = async () => {
+      const formData = new FormData();
 
-  Object.entries(crimes.value).forEach(([key, value]) => {
-    formData.append(key, value);
-  });
 
-  try {
-    const response = await axios.post('http://127.0.0.1:8000/api/Prisioner_crime', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+      Object.entries(crimes.value).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+
+      try {
+        const response = await axios.post('http://127.0.0.1:8000/api/Prisioner_crime', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        console.log('response', response);
+        router.push('/PrisionerCourtHistory')
+        //   localStorage.setItem('cashtype_id', response.data.data.id);
+        // Navigate to the next page
+        // Use this.$router.push('/criminalinfo') inside a component or use a router instance
+      } catch (error) {
+        console.error('ውሂብ ማስገባት ላይ ስህተት!', error);
+      }
+    };
+
+    onMounted(() => {
+
+      fetchCriminalStatus();
+      fetchcrime();
     });
-    console.log('response', response);
-    router.push('/PrisionerCourtHistory')
-  //   localStorage.setItem('cashtype_id', response.data.data.id);
-    // Navigate to the next page
-    // Use this.$router.push('/criminalinfo') inside a component or use a router instance
-  } catch (error) {
-    console.error('Error submitting data:', error);
+
+    return {
+      currentPageTitle,
+      date,
+      flatpickrConfig,
+      submitData,
+      criminalStatus,
+      crimess,
+      crimes
+    };
   }
-};
-
-onMounted(() => {
-
-  fetchCriminalStatus();
-  fetchcrime();
-});
-
-return {
-  currentPageTitle,
-  date,
-  flatpickrConfig,
-  submitData,
-  criminalStatus,
-  crimess,
-  crimes
-};
-}
 }
 </Script>

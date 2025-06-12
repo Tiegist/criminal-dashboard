@@ -1,12 +1,10 @@
 <template>
   <PoliceLayout>
     <div class="flex" v-if="!isEditing">
-      <div
-        :class="[
-          'rounded-2xl border border-gray-200 px-5 bg-white dark:border-gray-800 dark:bg-white/[0.03] mt-10 w-1/2 mx-auto',
-          className,
-        ]"
-      >
+      <div :class="[
+        'rounded-2xl border border-gray-200 px-5 bg-white dark:border-gray-800 dark:bg-white/[0.03] mt-10 w-1/2 mx-auto',
+        className,
+      ]">
         <!-- Card Header -->
         <div class="px-6 py-5">የታራሚው ተጨማሪ መረጃ</div>
 
@@ -125,31 +123,18 @@
             </div>
             <div></div>
             <Button size="sm" variant="outline" @click="isEditing = true" class="mr-10">
-              የታራሚዉን መረጃ ያስተካክሉ 
+              የታራሚዉን መረጃ ያስተካክሉ
             </Button>
-            <Button
-              size="sm"
-              variant="outline"
-              @click="fetchmatchedHistoryInfo(matchedHistory?.id)"
-            >
+            <Button size="sm" variant="outline" @click="fetchmatchedHistoryInfo(matchedHistory?.id)">
               ተጨማሪ መረጃ ይመልከቱ
             </Button>
           </div>
         </div>
       </div>
     </div>
-    <EditPrisonerInfo
-      v-if="isEditing"
-      :matchedHistory="matchedHistory"
-      :cities="cities"
-      :educationalLevels="educationalLevels"
-      :religions="religions"
-      :towns="towns"
-      :criminals="criminals"
-      :prisonerCells="prisonerCells"
-      @close="isEditing = false"
-      @update-history="updateMatchedHistory"
-    />
+    <EditPrisonerInfo v-if="isEditing" :matchedHistory="matchedHistory" :cities="cities"
+      :educationalLevels="educationalLevels" :religions="religions" :towns="towns" :criminals="criminals"
+      :prisonerCells="prisonerCells" @close="isEditing = false" @update-history="updateMatchedHistory" />
   </PoliceLayout>
 </template>
 
@@ -273,7 +258,7 @@ export default {
         );
         console.log('response', response);
       } catch (error) {
-        console.error('Error submitting data:', error);
+        console.error('ውሂብ ማስገባት ላይ ስህተት!', error);
       }
     };
     const registerPrisonerApperance = async () => {

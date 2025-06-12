@@ -40,7 +40,7 @@
                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ hist.total_withdrawal }} ብር </p>
               </td>
               <td class="px-5 py-4 sm:px-6">
-                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ hist.balance }} ብር  </p>
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ hist.balance }} ብር </p>
               </td>
 
               <!-- <td class="px-5 py-4 sm:px-6">

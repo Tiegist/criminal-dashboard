@@ -28,13 +28,13 @@
             class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
             <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
               xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </span>
         </div>
       </div>
-      
+
 
       <div>
         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> የጸጉር አይነት </label>
@@ -47,8 +47,8 @@
             class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
             <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
               xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </span>
         </div>
@@ -66,7 +66,7 @@
         <span v-if="startIcon" class="flex items-center"> </span>
 
         <span v-if="!editMode"> {{ !saving ? 'ይመዝግቡና ይቀጥሉ ' : 'እየመዘገቡ ነው...' }} </span>
-				<span v-if="editMode"> {{ !saving ? 'ያስተካክሉና ይቀጥሉ ' : 'እያስተካከሉ ነው...' }} </span>
+        <span v-if="editMode"> {{ !saving ? 'ያስተካክሉና ይቀጥሉ ' : 'እያስተካከሉ ነው...' }} </span>
 
         <span v-if="endIcon" class="flex items-center">
 
@@ -86,13 +86,13 @@
             class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
             <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
               xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </span>
         </div>
       </div>
-      
+
 
       <div>
         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ጥርስ </label>
@@ -105,8 +105,8 @@
             class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
             <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
               xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </span>
         </div>
@@ -123,8 +123,8 @@
             class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
             <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
               xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </span>
         </div>
@@ -158,16 +158,15 @@
             class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
             <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
               xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </span>
         </div>
       </div>
       <div>
         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ተጨማሪ ገለጻ </label>
-        <textarea type="text" :rows="10" v-model="prisonerApperance.extra_description"
-          placeholder="extra_description"
+        <textarea type="text" :rows="10" v-model="prisonerApperance.extra_description" placeholder="extra_description"
           class="dark:bg-dark-900 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"></textarea>
       </div>
     </div>
@@ -226,7 +225,7 @@ const registerPrisonerApperance = async () => {
 
   errorMessage.value = ''
   saving.value = true
-  
+
 
   axios
     .post(apiServer.value + 'prisoner/apperance', {
@@ -254,22 +253,22 @@ const registerPrisonerApperance = async () => {
     })
 }
 const fetchPrisonerHistory = async () => {
-    axios
-		.get(apiServer.value + 'prisoner-history/' + route.query.prison_history_id)
-        .then(response => {
-            prisonerApperance.value.hair_type_id = response.data.data.prisoner_apperance.hair_type_id
-            prisonerApperance.value.height = response.data.data.prisoner_apperance.height
-            prisonerApperance.value.face = response.data.data.prisoner_apperance.face
-            prisonerApperance.value.forehead = response.data.data.prisoner_apperance.forehead
-            prisonerApperance.value.nose_id = response.data.data.prisoner_apperance.nose_id
-            prisonerApperance.value.eye_id = response.data.data.prisoner_apperance.eye_id
-            prisonerApperance.value.teeth_id = response.data.data.prisoner_apperance.teeth_id
-            prisonerApperance.value.lip_id = response.data.data.prisoner_apperance.lip_id
-            prisonerApperance.value.ear_id = response.data.data.prisoner_apperance.ear_id
-            prisonerApperance.value.unique_appearance = response.data.data.prisoner_apperance.unique_appearance
-            prisonerApperance.value.citizenship = response.data.data.prisoner_apperance.citizenship
-            prisonerApperance.value.extra_description = response.data.data.prisoner_apperance.extra_description
-        })
+  axios
+    .get(apiServer.value + 'prisoner-history/' + route.query.prison_history_id)
+    .then(response => {
+      prisonerApperance.value.hair_type_id = response.data.data.prisoner_apperance.hair_type_id
+      prisonerApperance.value.height = response.data.data.prisoner_apperance.height
+      prisonerApperance.value.face = response.data.data.prisoner_apperance.face
+      prisonerApperance.value.forehead = response.data.data.prisoner_apperance.forehead
+      prisonerApperance.value.nose_id = response.data.data.prisoner_apperance.nose_id
+      prisonerApperance.value.eye_id = response.data.data.prisoner_apperance.eye_id
+      prisonerApperance.value.teeth_id = response.data.data.prisoner_apperance.teeth_id
+      prisonerApperance.value.lip_id = response.data.data.prisoner_apperance.lip_id
+      prisonerApperance.value.ear_id = response.data.data.prisoner_apperance.ear_id
+      prisonerApperance.value.unique_appearance = response.data.data.prisoner_apperance.unique_appearance
+      prisonerApperance.value.citizenship = response.data.data.prisoner_apperance.citizenship
+      prisonerApperance.value.extra_description = response.data.data.prisoner_apperance.extra_description
+    })
 }
 
 onMounted(() => {
@@ -280,9 +279,9 @@ onMounted(() => {
   fetchLip();
   fetchEar();
 
-  if(route.query.prison_history_id) {
-		fetchPrisonerHistory()
-	}
+  if (route.query.prison_history_id) {
+    fetchPrisonerHistory()
+  }
 });
 
 interface ButtonProps {
@@ -312,6 +311,3 @@ const variantClasses = {
     'bg-white text-gray-700 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03] dark:hover:text-gray-300',
 }
 </script>
-
-
-

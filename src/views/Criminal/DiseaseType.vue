@@ -14,26 +14,16 @@
 						</div>
 					</div>
 
-					<Button size="sm" variant="primary" @click="handleForm"> 
+					<Button size="sm" variant="primary" @click="handleForm">
 						<span v-if="!editValue">
-							{{ adding ? 'እየጨመሩ ነው...' : 'ይጨምሩ' }} 
+							{{ adding ? 'እየጨመሩ ነው...' : 'ይጨምሩ' }}
 						</span>
 						<span v-else>
-							{{ updating ? 'እያስተካከሉ ነው...' : 'ያስተካክሉ' }} 
+							{{ updating ? 'እያስተካከሉ ነው...' : 'ያስተካክሉ' }}
 						</span>
 					</Button>
-					<Alert
-						v-if="successMessage"
-						variant="success"
-						:message="successMessage"
-						:showLink="false"
-					/>
-					<Alert
-						v-if="errorMessage"
-						variant="warning"
-						:message="errorMessage"
-						:showLink="false"
-					/>
+					<Alert v-if="successMessage" variant="success" :message="successMessage" :showLink="false" />
+					<Alert v-if="errorMessage" variant="warning" :message="errorMessage" :showLink="false" />
 				</ComponentCard>
 			</div>
 
@@ -48,25 +38,28 @@
 								class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 								<tr>
 									<th scope="col" class="px-6 py-3">
-										ስም 
+										ስም
 									</th>
 									<th scope="col" class="px-6 py-3">
-										ድርጊቶች 
+										ድርጊቶች
 									</th>
 
 								</tr>
 							</thead>
 							<tbody>
-								<tr v-for="disease_type in disease_types" :key="disease_type.key" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+								<tr v-for="disease_type in disease_types" :key="disease_type.key"
+									class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
 									<th scope="row"
 										class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 										{{ disease_type.name }}
 									</th>
 
 									<td class="px-6 py-4">
-										<a @click="editDiseaseType(disease_type)"	class="font-medium text-blue-600 dark:text-blue-500 hover:underline">ያስተካክሉ</a>
+										<a @click="editDiseaseType(disease_type)"
+											class="font-medium text-blue-600 dark:text-blue-500 hover:underline">ያስተካክሉ</a>
 										|
-										<a @click="confirmDelete(disease_type)" class="font-medium text-red-600 dark:text-red-500 hover:underline">ያጥፉ</a>
+										<a @click="confirmDelete(disease_type)"
+											class="font-medium text-red-600 dark:text-red-500 hover:underline">ያጥፉ</a>
 									</td>
 								</tr>
 
@@ -80,12 +73,14 @@
 		</div>
 		<div v-if="isModalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
 			<div class="bg-white rounded-lg shadow-lg w-96 p-6">
-			<h2 class="text-xl font-semibold mb-4"> ያረጋግጡ  </h2>
-			<p class="text-gray-700 mb-6">እርግጠኛ ነዎት ማጥፋት ይፈጋሉ? <span class="text-teal-600">{{ disease_type.name }}</span></p>
-			<div class="flex justify-end space-x-2">
-				<button @click="() => isModalOpen = false" class="px-4 py-2 bg-gray-300 rounded-lg">No</button>
-				<button @click="deleteDiseaseType()" class="px-4 py-2 bg-blue-600 bg-opacity-80 text-white rounded-lg">አዎ</button>
-			</div>
+				<h2 class="text-xl font-semibold mb-4"> ያረጋግጡ </h2>
+				<p class="text-gray-700 mb-6">እርግጠኛ ነዎት ማጥፋት ይፈጋሉ? <span class="text-teal-600">{{ disease_type.name
+						}}</span></p>
+				<div class="flex justify-end space-x-2">
+					<button @click="() => isModalOpen = false" class="px-4 py-2 bg-gray-300 rounded-lg">አይ</button>
+					<button @click="deleteDiseaseType()"
+						class="px-4 py-2 bg-blue-600 bg-opacity-80 text-white rounded-lg">አዎ</button>
+				</div>
 			</div>
 		</div>
 	</AdminLayoutMedical>
@@ -119,7 +114,7 @@ export default {
 		PageBreadcrumb,
 		ComponentCard,
 		Button,
-		Alert,	
+		Alert,
 	},
 	methods: {
 		addDiseaseType() {
@@ -167,7 +162,7 @@ export default {
 				})
 		},
 		handleForm() {
-			if(this.editValue) {
+			if (this.editValue) {
 				this.updateDiseaseType()
 			} else {
 				this.addDiseaseType()
@@ -189,7 +184,7 @@ export default {
 			this.isModalOpen = true
 		},
 		deleteDiseaseType() {
-			if(!this.disease_type.hasOwnProperty('id')) return
+			if (!this.disease_type.hasOwnProperty('id')) return
 
 			axios
 				.delete(this.$store.state.apiServer + 'disease-type/' + this.disease_type.id)

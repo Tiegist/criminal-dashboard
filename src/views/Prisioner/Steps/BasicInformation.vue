@@ -6,7 +6,7 @@
 				<input type="text" v-model="prisoner.first_name" placeholder=" ስም"
 					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
 			</div>
-			
+
 			<div>
 				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ጾታ </label>
 				<div class="relative z-20 bg-transparent">
@@ -25,7 +25,7 @@
 					</span>
 				</div>
 			</div>
-			
+
 			<div>
 				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> የተወለደበት ከተማ </label>
 				<div class="relative z-20 bg-transparent">
@@ -46,7 +46,7 @@
 				</div>
 			</div>
 
-            <p class="text text-red-600"> {{ errorMessage }} </p>
+			<p class="text text-red-600"> {{ errorMessage }} </p>
 			<button :class="[
 				'inline-flex items-center justify-center font-medium gap-2 rounded-lg transition',
 				sizeClasses[size],
@@ -92,7 +92,7 @@
 				<input type="text" v-model="prisoner.birth_district" placeholder="የተወለደበት ቀበሌ"
 					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
 			</div>
-			
+
 		</div>
 		<div class="space-y-4">
 			<div>
@@ -128,13 +128,13 @@
 					</span>
 				</div>
 			</div>
-			
+
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted,computed } from 'vue'
+import { ref, reactive, onMounted, computed } from 'vue'
 import flatPickr from 'vue-flatpickr-component'
 import axios from 'axios'
 import { useStore } from 'vuex';
@@ -157,29 +157,29 @@ const prisonerId = ref([])
 const saving = ref(false);
 const errorMessage = ref('');
 const prisoner = ref({
-    first_name: '',
-    middle_name: '',
-    last_name: '',
-    date_of_birth: '',
-    mother_name: '',
-    sex: 1,
-    birth_district: '',
-    birth_town_id: null,
-    ethnic_group_id: null,
+	first_name: '',
+	middle_name: '',
+	last_name: '',
+	date_of_birth: '',
+	mother_name: '',
+	sex: 1,
+	birth_district: '',
+	birth_town_id: null,
+	ethnic_group_id: null,
 })
 
 const fetchSex = async () => {
-    axios
-        .get(apiServer.value + 'sexes')
-        .then(response => {
-            sexes.value = response.data;
-        })
+	axios
+		.get(apiServer.value + 'sexes')
+		.then(response => {
+			sexes.value = response.data;
+		})
 }
 
 const fetchPrisonerHistory = async () => {
-    axios
+	axios
 		.get(apiServer.value + 'prisoner-history/' + route.query.prison_history_id)
-        .then(response => {
+		.then(response => {
 			prisoner.value.first_name = response.data.data.prisoner.first_name
 			prisoner.value.middle_name = response.data.data.prisoner.middle_name
 			prisoner.value.last_name = response.data.data.prisoner.last_name
@@ -189,68 +189,68 @@ const fetchPrisonerHistory = async () => {
 			prisoner.value.birth_district = response.data.data.prisoner.birth_district
 			prisoner.value.birth_town_id = response.data.data.prisoner.birth_town_id
 			prisoner.value.ethnic_group_id = response.data.data.prisoner.ethnic_group_id
-        })
+		})
 }
 
 const fetchEthnic = async () => {
-    axios
-        .get(apiServer.value + 'ethnic')
-        .then(response => {
-            ethnicGroups.value = response.data.data;
-        })
+	axios
+		.get(apiServer.value + 'ethnic')
+		.then(response => {
+			ethnicGroups.value = response.data.data;
+		})
 }
 
 const fetchTown = async () => {
-    axios
-        .get(apiServer.value + 'town')
-        .then(response => {
-            Towns.value = response.data.data;
-        })
+	axios
+		.get(apiServer.value + 'town')
+		.then(response => {
+			Towns.value = response.data.data;
+		})
 }
 const prisonerCell = async () => {
-    axios
-        .get(apiServer.value + 'prisonerCell')
-        .then(response => {
-            Towns.value = response.data.data;
-        })
+	axios
+		.get(apiServer.value + 'prisonerCell')
+		.then(response => {
+			Towns.value = response.data.data;
+		})
 }
 
 const registerPrisoner = async () => {
 
-    if(saving.value == true) return;
+	if (saving.value == true) return;
 
-    errorMessage.value = ''
-    saving.value = true
+	errorMessage.value = ''
+	saving.value = true
 
-    axios
-        .post(apiServer.value + 'prisoner/basic-information', {
-            first_name: prisoner.value.first_name,
-            middle_name: prisoner.value.middle_name,
-            last_name: prisoner.value.last_name,
-            date_of_birth: prisoner.value.date_of_birth,
-            mother_name: prisoner.value.mother_name,
-            sex: prisoner.value.sex,
-            birth_district: prisoner.value.birth_district,
-            birth_town_id: prisoner.value.birth_town_id,
-            ethnic_group_id: prisoner.value.ethnic_group_id,
+	axios
+		.post(apiServer.value + 'prisoner/basic-information', {
+			first_name: prisoner.value.first_name,
+			middle_name: prisoner.value.middle_name,
+			last_name: prisoner.value.last_name,
+			date_of_birth: prisoner.value.date_of_birth,
+			mother_name: prisoner.value.mother_name,
+			sex: prisoner.value.sex,
+			birth_district: prisoner.value.birth_district,
+			birth_town_id: prisoner.value.birth_town_id,
+			ethnic_group_id: prisoner.value.ethnic_group_id,
 			prison_history_id: route.query.prison_history_id,
-        })
-        .then(response => {
-            saving.value = false
-            prisonHistoryId.value = response.data.prison_history_id
-            prisonerId.value = response.data.prisoner
-            router.replace({ query: { ...route.query, prison_history_id: prisonHistoryId.value, prisoner: prisonerId.value } });
+		})
+		.then(response => {
+			saving.value = false
+			prisonHistoryId.value = response.data.prison_history_id
+			prisonerId.value = response.data.prisoner
+			router.replace({ query: { ...route.query, prison_history_id: prisonHistoryId.value, prisoner: prisonerId.value } });
 			// localStorage.setItem('prisioner_history_id', prisonHistoryId.value);
-            emit('prisonerSaved');
-        })
-        .catch(error => {
-            errorMessage.value = error.response.data.message
-            saving.value = false
-        })
+			emit('prisonerSaved');
+		})
+		.catch(error => {
+			errorMessage.value = error.response.data.message
+			saving.value = false
+		})
 }
 
 onMounted(() => {
-	if(route.query.prisoner && !route.query.prison_history_id) {
+	if (route.query.prisoner && !route.query.prison_history_id) {
 
 		axios
 			.post(apiServer.value + 'prisoner/new-history', {
@@ -267,9 +267,9 @@ onMounted(() => {
 				errorMessage.value = error.response.data.message
 				saving.value = false
 			})
-		}
+	}
 
-	if(route.query.prison_history_id) {
+	if (route.query.prison_history_id) {
 		fetchPrisonerHistory()
 	}
 
