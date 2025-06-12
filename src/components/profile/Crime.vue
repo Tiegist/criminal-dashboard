@@ -24,17 +24,25 @@
 								</svg>
 								+ አዲስ የፍርድ ቤት ክትትል
 							</button>
-							
-							
+
+
 						</div>
 						<div v-for="(story, i) in history.prisoner_court_histories" :key="i" class="min-w-[200px]">
-							<p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">የቀጠሮ ቀን : {{ story.appointment_date }} </p>
-							<p class="text-sm font-medium text-gray-800 dark:text-white/90"> ፍርድ ቤት  : {{ story?.court?.name }} </p>
-							<p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="story?.criminal_status">የታሳሪው ሁነታ : {{ story.criminal_status == 1 ? 'ተጠርጣሪ' : 'ፍርደኛ' }} </p>
-							<p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="story.verdict_date">Verdict Date: {{ story.verdict_date }} </p>
-							<p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="story.updated_court">Updated Court: {{ story?.updated_court?.name }} </p>
-							<p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="story.status">Status: {{ story.status == 1 ? 'ቀጠሮ' : 'የመጨረሻ_ዉሳኔ'}} </p>
-							<p class="text-sm font-medium text-gray-800 dark:text-white/90">Verdict Description: {{ story.verdict_description }} </p>
+							<p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">የቀጠሮ ቀን : {{
+								story.appointment_date }} </p>
+							<p class="text-sm font-medium text-gray-800 dark:text-white/90"> ፍርድ ቤት : {{
+								story?.court?.name }} </p>
+							<p class="text-sm font-medium text-gray-800 dark:text-white/90"
+								v-if="story?.criminal_status">የታሳሪው ሁነታ : {{ story.criminal_status == 1 ? 'ተጠርጣሪ' :
+								'ፍርደኛ' }} </p>
+							<p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="story.verdict_date">
+								የፍርድ ቀን: {{ story.verdict_date }} </p>
+							<p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="story.updated_court">
+								የተሻሻለዉ ፍርድ ቤት: {{ story?.updated_court?.name }} </p>
+							<p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="story.status">ሁኔታ : {{
+								story.status == 1 ? 'ቀጠሮ' : 'የመጨረሻ_ዉሳኔ'}} </p>
+							<p class="text-sm font-medium text-gray-800 dark:text-white/90">የፍርዱ ገለጻ: {{
+								story.verdict_description }} </p>
 						</div>
 					</div>
 				</div>
@@ -159,8 +167,8 @@
 											class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
 											:class="{ 'text-gray-800 dark:text-white/90': selectInput }">
 											<option value="" disabled selected></option>
-											<option v-for="status in statuses" :key="status.id"
-												:value="status.id">{{ status.name }}</option>
+											<option v-for="status in statuses" :key="status.id" :value="status.id">{{
+												status.name }}</option>
 										</select>
 										<span
 											class="absolute z-30 text-gray-500 -translate-y-1/2 pointer-events-none right-4 top-1/2 dark:text-gray-400">
@@ -222,11 +230,11 @@
 								<span class="text-red-600"> {{ errorMessage }} </span>
 								<button @click="isProfileAddressModal = false" type="button"
 									class="flex w-full justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] sm:w-auto">
-									Close
+									ይዝጉ
 								</button>
 								<button @click="saveCourtHistory()" type="button"
 									class="flex w-full justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 sm:w-auto">
-									ያስገቡ 
+									ያስገቡ
 								</button>
 							</div>
 						</div>

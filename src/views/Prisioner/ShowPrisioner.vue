@@ -30,7 +30,7 @@
 							</div>
 
 							<div>
-								<label class="block text-sm font-medium text-gray-300 mb-1">LAST NAME</label>
+								<label class="block text-sm font-medium text-gray-300 mb-1">የአያት ስም</label>
 								<div class="relative">
 									<span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
 									</span>
@@ -211,9 +211,9 @@
 				<div class="flex flex-wrap justify-center items-center mt-6 space-x-2">
 					<span v-for="page in (links ?? [])" :key="page.label" @click="page.url && fetchPrisioner(page.url)"
 						:class="['px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
-            page.url ? 'cursor-pointer hover:bg-gray-700 hover:text-white' : 'cursor-not-allowed text-gray-500',
-            page.active ? 'bg-teal-500 text-white' : 'text-gray-300 border border-gray-600'
-          ]" v-html="page.label">
+							page.url ? 'cursor-pointer hover:bg-gray-700 hover:text-white' : 'cursor-not-allowed text-gray-500',
+							page.active ? 'bg-teal-500 text-white' : 'text-gray-300 border border-gray-600'
+						]" v-html="page.label">
 					</span>
 				</div>
 
@@ -224,9 +224,9 @@
 		<div class="flex w-12/12 mx-auto">
 
 			<div v-if="showPrisoiner" :class="[
-        'rounded-2xl border border-gray-200 px-5 bg-white dark:border-gray-800 dark:bg-white/[0.03] mt-10 w-1/3 mx-auto',
-        className,
-      ]">
+				'rounded-2xl border border-gray-200 px-5 bg-white dark:border-gray-800 dark:bg-white/[0.03] mt-10 w-1/3 mx-auto',
+				className,
+			]">
 				<!-- Card Header -->
 				<div class="px-6 py-5">
 					የታራሚው ዝርዝር መረጃ
@@ -281,18 +281,18 @@
 						<div class="">
 							<p class="mt-1 text-sm text-blue-800 dark:text-white/90">
 								<span class="font-bold mr-20 text-gray-800"> የተወለደበት ቀበሌ :</span> {{
-								singlePrisioner.birth_district }}
+									singlePrisioner.birth_district }}
 							</p>
 
 							<p class="mt-5 text-sm text-blue-800 dark:text-white/90">
 								<span class="font-bold mr-17 text-gray-800">የተወለደበት ከተማ :</span> {{
-								singlePrisioner.birth_town.name }}
+									singlePrisioner.birth_town.name }}
 							</p>
 						</div>
 						<div>
 							<p class="mt-1 text-sm text-blue-800 dark:text-white/90">
 								<span class="font-bold mr-37 text-gray-800"> ብሄር :</span> {{
-								singlePrisioner.ethnic_group?.name }}
+									singlePrisioner.ethnic_group?.name }}
 							</p>
 						</div>
 						<div class="flex">
@@ -377,7 +377,7 @@ const fetchReligion = async () => {
 		const response = await axios.get(apiServer.value + 'religion');
 		religions.value = response.data.data;
 	} catch (error) {
-		console.error('Error fetching religions:', error);
+		console.error('ሃይማኖቶችን ማምጣት ላይ ስህተት!', error);
 	}
 }
 
@@ -436,9 +436,9 @@ const fetchPrisioner = async (url = '', search = false) => {
 			if (search) {
 				if (PrisionerInfo.value.length == 0) {
 
-					errorMessage.value = '❌ NO RESULTS FOUND።'
+					errorMessage.value = '❌ ምንም ውጤት አልተገኘም!'
 				} else {
-					successMessage.value = paginationInfo.value.total + ' RESULTS FOUND MATCHING YOUR RECORD'
+					successMessage.value = paginationInfo.value.total + ' ከመዝገብህ ጋር የሚዛመዱ ውጤቶች ተገኝተዋል'
 				}
 			}
 		}).catch(error => {
@@ -468,6 +468,6 @@ onMounted(() => {
 	fetchCrimes();
 });
 
-		
+
 
 </script>

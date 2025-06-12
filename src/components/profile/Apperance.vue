@@ -9,64 +9,76 @@
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ዜግነት</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.prisoner_apperance.citizenship }} </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{
+                props.history.prisoner_apperance.citizenship }} </p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ፊት</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.prisoner_apperance.face }} </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.prisoner_apperance.face
+                }} </p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ግምባር </p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.prisoner_apperance.forehead }} </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{
+                props.history.prisoner_apperance.forehead }} </p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ቁመት </p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.prisoner_apperance.height }} </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{
+                props.history.prisoner_apperance.height }} </p>
             </div>
-        
+
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ጆሮ</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.prisoner_apperance.ear.name }} </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{
+                props.history.prisoner_apperance.ear.name }} </p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">አይን </p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.prisoner_apperance.eye.name }} </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{
+                props.history.prisoner_apperance.eye.name }} </p>
             </div>
 
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">አፍንጫ </p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.prisoner_apperance.nose.name }} </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{
+                props.history.prisoner_apperance.nose.name }} </p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ጥርስ </p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.prisoner_apperance.teeth.name }} </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{
+                props.history.prisoner_apperance.teeth.name }} </p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ጸጉር </p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.prisoner_apperance.hair.name }} </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{
+                props.history.prisoner_apperance.hair.name }} </p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ከንፈር</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.prisoner_apperance.lip.name }} </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{
+                props.history.prisoner_apperance.lip.name }} </p>
             </div>
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ልዩ ምልክት </p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.prisoner_apperance.unique_appearance }} </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{
+                props.history.prisoner_apperance.unique_appearance }} </p>
             </div>
-            
+
 
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ተጨማሪ ገልጻ </p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.prisoner_apperance.extra_description }} </p>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{
+                props.history.prisoner_apperance.extra_description }} </p>
             </div>
 
           </div>

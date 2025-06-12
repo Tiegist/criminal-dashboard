@@ -9,9 +9,9 @@
 		</thead>
 		<tbody>
 
-			<tr v-for="crime,i in all_crimes" :key="i">
+			<tr v-for="crime, i in all_crimes" :key="i">
 				<td>{{ i + 1 }}</td>
-				<td>{{ crimes.find( t => t.id == crime.crime_id)?.name }}</td>
+				<td>{{crimes.find(t => t.id == crime.crime_id)?.name}}</td>
 				<td>{{ crime.crime_description }}</td>
 			</tr>
 		</tbody>
@@ -20,12 +20,12 @@
 		<div class="space-y-6">
 			<div>
 				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-					ወንጀል 
+					ወንጀል
 				</label>
 				<div class="relative z-20 bg-transparent">
 					<select v-model="single.crime_id"
 						class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border 'text-gray-800 dark:text-white/90' border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800">
-						<option value="" disabled selected> ወንጀል  </option>
+						<option value="" disabled selected> ወንጀል </option>
 						<option v-for="crime in crimes" :key="crime.id" :value="crime.id">{{ crime.name }}</option>
 					</select>
 					<span
@@ -39,16 +39,16 @@
 				</div>
 			</div>
 
-      <div class="space-y-6">
-			<div>
-				<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-					ማብራሪያ
-				</label>
-				<textarea type="text" :rows="6" v-model="single.crime_description" placeholder=""
-					class="dark:bg-dark-900 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"></textarea>
-			</div>
+			<div class="space-y-6">
+				<div>
+					<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+						ማብራሪያ
+					</label>
+					<textarea type="text" :rows="6" v-model="single.crime_description" placeholder=""
+						class="dark:bg-dark-900 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"></textarea>
+				</div>
 
-		</div>
+			</div>
 			<p class="text-red-600 mt-5">{{ errorMessage }}</p>
 
 			<button :class="[
@@ -61,7 +61,7 @@
 				<span v-if="startIcon" class="flex items-center">
 
 				</span>
-				ያስገቡ 
+				ያስገቡ
 				<span v-if="endIcon" class="flex items-center">
 
 				</span>
@@ -85,7 +85,7 @@
 			</button>
 
 		</div>
-		
+
 	</div>
 
 </template>
@@ -118,12 +118,12 @@ let all_crimes = ref([]);
 const fetchCrimes = async () => { axios.get(apiServer.value + 'crime').then(response => { crimes.value = response.data.data; }) }
 
 function addSingle() {
-	if(single.value.crime_id == null) {
+	if (single.value.crime_id == null) {
 		errorMessage.value = 'እባክዎት የምርጫ መስክ ይሙሉ'
 		return
 	}
 
-	if(single.value.crime_description == '') {
+	if (single.value.crime_description == '') {
 		errorMessage.value = 'እባክዎት የማብራሪያ መስክ ይሙሉ'
 		return
 	}
@@ -138,7 +138,7 @@ function addSingle() {
 const registerPrisionerCrime = () => {
 	if (saving.value == true) return;
 
-	if(all_crimes.value.length == 0) {
+	if (all_crimes.value.length == 0) {
 		emit('prisonerCrimeSaved');
 		return
 	}
@@ -158,21 +158,21 @@ const registerPrisionerCrime = () => {
 		.catch(error => {
 			errorMessage.value = error.response.data.message
 			saving.value = false
-	})
+		})
 }
 
 const fetchPrisonerHistory = async () => {
-    axios
+	axios
 		.get(apiServer.value + 'prisoner-history/' + route.query.prison_history_id)
-        .then(response => {
+		.then(response => {
 			all_crimes.value = response.data.data.prisioner_crimes
-            router.replace({ query: { ...route.query, prisioner_id: response.data.data.prisioner_id  } });
-        })
+			router.replace({ query: { ...route.query, prisioner_id: response.data.data.prisioner_id } });
+		})
 }
 
 onMounted(() => {
 	fetchCrimes();
-	if(route.query.prison_history_id) {
+	if (route.query.prison_history_id) {
 		fetchPrisonerHistory()
 	}
 });

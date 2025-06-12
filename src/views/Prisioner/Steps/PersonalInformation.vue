@@ -181,14 +181,15 @@
 		</div>
 
 		<div class="w-1/2">
-		<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-			የቤት ስልክ
-		</label>
-		<div class="relative">
-			<input v-model="prisonerPersonalInfo.mobile_number" placeholder="የቤት ስልክ (e.g., 555-000-0000)" type="tel"
-				class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-3 pl-4 pr-4 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+			<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+				የቤት ስልክ
+			</label>
+			<div class="relative">
+				<input v-model="prisonerPersonalInfo.mobile_number" placeholder="የቤት ስልክ (e.g., 555-000-0000)"
+					type="tel"
+					class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-3 pl-4 pr-4 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+			</div>
 		</div>
-	</div>
 
 
 	</div>
@@ -302,9 +303,9 @@ const registerPrisonerApperance = async () => {
 }
 
 const fetchPrisonerHistory = async () => {
-    axios
+	axios
 		.get(apiServer.value + 'prisoner-history/' + route.query.prison_history_id)
-        .then(response => {
+		.then(response => {
 			prisonerPersonalInfo.value.current_city_id = response.data.data.current_city_id
 			prisonerPersonalInfo.value.educational_level_id = response.data.data.educational_level_id
 			prisonerPersonalInfo.value.religion_id = response.data.data.religion_id
@@ -316,7 +317,7 @@ const fetchPrisonerHistory = async () => {
 			prisonerPersonalInfo.value.phone_number = response.data.data.phone_number
 			prisonerPersonalInfo.value.mobile_number = response.data.data.mobile_number
 			prisonerPersonalInfo.value.date_time_entered = response.data.data.date_time_entered
-        })
+		})
 }
 
 onMounted(() => {
@@ -324,12 +325,12 @@ onMounted(() => {
 	fetchTowns();
 	fetchCities();
 	fetchEducationalLevels();
-	if(route.query.prison_history_id) {
+	if (route.query.prison_history_id) {
 		fetchPrisonerHistory()
 	}
 });
 
-const currentPageTitle = ref('የታራሚዎቺ መረጃ ምዝገባ Third ቅጽ  ')
+const currentPageTitle = ref('የታራሚዎቺ መረጃ ምዝገባ ቅጽ  ')
 interface ButtonProps {
 	size?: 'sm' | 'md'
 	variant?: 'primary' | 'outline'

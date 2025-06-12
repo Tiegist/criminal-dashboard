@@ -7,7 +7,7 @@
 					<div class="space-y-6">
 						<div>
 							<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-								ሀይማኖት 
+								ሀይማኖት
 							</label>
 							<input type="text" v-model="name" placeholder="Enter Religion"
 								class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
@@ -15,35 +15,25 @@
 
 						<div>
 							<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-								ኮድ 
+								ኮድ
 							</label>
-							
+
 							<input type="text" v-model="code" placeholder="Enter Code"
 								class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
 						</div>
 
 					</div>
 
-					<Button size="sm" variant="primary" @click="handleForm"> 
+					<Button size="sm" variant="primary" @click="handleForm">
 						<span v-if="!editValue">
-							{{ adding ? 'እያስገቡ ነዉ ' : 'ያስገቡ ' }} 
+							{{ adding ? 'እያስገቡ ነዉ ' : 'ያስገቡ ' }}
 						</span>
 						<span v-else>
-							{{ updating ? 'እያስተካከሉ ነው ' : 'ያስተካክሉ ' }} 
+							{{ updating ? 'እያስተካከሉ ነው ' : 'ያስተካክሉ ' }}
 						</span>
 					</Button>
-					<Alert
-						v-if="successMessage"
-						variant="success"
-						:message="successMessage"
-						:showLink="false"
-					/>
-					<Alert
-						v-if="errorMessage"
-						variant="warning"
-						:message="errorMessage"
-						:showLink="false"
-					/>
+					<Alert v-if="successMessage" variant="success" :message="successMessage" :showLink="false" />
+					<Alert v-if="errorMessage" variant="warning" :message="errorMessage" :showLink="false" />
 				</ComponentCard>
 			</div>
 
@@ -57,14 +47,15 @@
 							<thead
 								class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 								<tr>
-									<th scope="col" class="px-6 py-3"> ስም  </th>
+									<th scope="col" class="px-6 py-3"> ስም </th>
 									<th scope="col" class="px-6 py-3"> ኮድ </th>
-									<th scope="col" class="px-6 py-3"> ድርጊቶቸ  </th>
+									<th scope="col" class="px-6 py-3"> ድርጊቶቸ </th>
 
 								</tr>
 							</thead>
 							<tbody>
-								<tr v-for="religion in religions" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+								<tr v-for="religion in religions"
+									class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
 									<th scope="row"
 										class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 										{{ religion.name }}
@@ -75,9 +66,12 @@
 									</th>
 
 									<td class="px-6 py-4">
-										<a @click="editReligion(religion)"	class="font-medium text-blue-600 dark:text-blue-500 hover:underline">ያስተካክሉ </a>
+										<a @click="editReligion(religion)"
+											class="font-medium text-blue-600 dark:text-blue-500 hover:underline">ያስተካክሉ
+										</a>
 										|
-										<a @click="confirmDelete(religion)" class="font-medium text-red-600 dark:text-red-500 hover:underline">ያጥፉ </a>
+										<a @click="confirmDelete(religion)"
+											class="font-medium text-red-600 dark:text-red-500 hover:underline">ያጥፉ </a>
 									</td>
 								</tr>
 
@@ -91,12 +85,14 @@
 		</div>
 		<div v-if="isModalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
 			<div class="bg-white rounded-lg shadow-lg w-96 p-6">
-			<h2 class="text-xl font-semibold mb-4"> በማጥፋት እርግጠኛ ይሁኑ  </h2>
-			<p class="text-gray-700 mb-6">እርግጠኛ ነዎት ማጥፋት ይፈልጋሉ? <span class="text-teal-600">{{ religion.name }}</span></p>
-			<div class="flex justify-end space-x-2">
-				<button @click="() => isModalOpen = false" class="px-4 py-2 bg-gray-300 rounded-lg">No</button>
-				<button @click="deleteReligion()" class="px-4 py-2 bg-blue-600 bg-opacity-80 text-white rounded-lg">Yes</button>
-			</div>
+				<h2 class="text-xl font-semibold mb-4"> በማጥፋት እርግጠኛ ይሁኑ </h2>
+				<p class="text-gray-700 mb-6">እርግጠኛ ነዎት ማጥፋት ይፈልጋሉ? <span class="text-teal-600">{{ religion.name
+						}}</span></p>
+				<div class="flex justify-end space-x-2">
+					<button @click="() => isModalOpen = false" class="px-4 py-2 bg-gray-300 rounded-lg">አይ</button>
+					<button @click="deleteReligion()"
+						class="px-4 py-2 bg-blue-600 bg-opacity-80 text-white rounded-lg">አዎ</button>
+				</div>
 			</div>
 		</div>
 	</AdminLayout>
@@ -131,7 +127,7 @@ export default {
 		PageBreadcrumb,
 		ComponentCard,
 		Button,
-		Alert,	
+		Alert,
 	},
 	methods: {
 		addReligion() {
@@ -183,7 +179,7 @@ export default {
 				})
 		},
 		handleForm() {
-			if(this.editValue) {
+			if (this.editValue) {
 				this.updateReligion()
 			} else {
 				this.addReligion()
@@ -206,7 +202,7 @@ export default {
 			this.isModalOpen = true
 		},
 		deleteReligion() {
-			if(!this.religion.hasOwnProperty('id')) return
+			if (!this.religion.hasOwnProperty('id')) return
 
 			axios
 				.delete(this.$store.state.apiServer + 'religion/' + this.religion.id)
