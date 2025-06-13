@@ -60,6 +60,10 @@
 			<div class="col-span-12">
 				<CrimeCount v-if="loaded" :dashboardData="dashboardData" />
 			</div>
+
+			<div class="col-span-12">
+				<AttendanceDashboard v-if="loaded" :dashboardData="dashboardData" />
+			</div>
 		</div>
 	</admin-layout>
 </template>
@@ -70,6 +74,7 @@ import EcommerceMetrics from '../components/ecommerce/EcommerceMetrics.vue'
 import MonthlyTarget from '../components/ecommerce/MonthlyTarget.vue'
 import MonthlySale from '../components/ecommerce/MonthlySale.vue'
 import CrimeCount from '../components/ecommerce/CrimeCount.vue'
+import AttendanceDashboard from '../components/ecommerce/AttendanceDashboard.vue'
 
 import axios from 'axios'
 
