@@ -340,7 +340,7 @@ const apiServer = computed(() => store.state.apiServer);
 const isAdmin = computed(() => store.getters.isAdmin);
 const isDoctor = computed(() => store.getters.isDoctor);
 
-let LayoutComponent = isAdmin.value ? AdminLayout : AdminLayoutMedical
+let LayoutComponent = AdminLayout
 
 const paginationInfo = ref({});
 const links = computed(() => paginationInfo.value.links);
