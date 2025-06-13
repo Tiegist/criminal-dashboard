@@ -6,6 +6,15 @@ const router = createRouter({
     return savedPosition || { left: 0, top: 0 }
   },
   routes: [
+
+        {
+      path: '/usersList',
+      name: 'usersList',
+      component: () => import('../views/Criminal/UsersList.vue'),
+      meta: {
+        title: 'ሰራተኞች',
+      },
+    },  
     // CRIMINAL
     {
       path: '/regions',

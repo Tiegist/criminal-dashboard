@@ -193,6 +193,11 @@ const menuGroups = [
         path: "/profile",
       },
       {
+        icon: UserCircleIcon,
+        name: "ሰራተኞች",
+        path: "/usersList",
+      },
+      {
         icon: ListIcon,
         name: "የሰራተኞች መረጃ መመዝገቢያ ",
         path: "/UserRegister",
