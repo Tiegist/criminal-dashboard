@@ -6,8 +6,11 @@
           <h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
             የግል መረጃ
           </h4>
-
+          
           <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32">
+            <div class="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800">
+              <img :src="'http://127.0.0.1:8000/' + props.history?.photo" alt="user" />
+            </div>
             <div>
               <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">ስራ</p>
               <p class="text-sm font-medium text-gray-800 dark:text-white/90"> {{ props.history.job }} </p>

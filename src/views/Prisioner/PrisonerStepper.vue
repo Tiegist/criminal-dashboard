@@ -47,7 +47,7 @@ export default {
         { no: 1, name: 'የሰዉነት ገጽታ' },
         { no: 2, name: 'የእስረኞቺ ተጨማሪ መረጃዎቺ' },
         { no: 3, name: 'ንብረቶች' },
-        { no: 4, name: 'Crimes' },
+        { no: 4, name: 'ወንጀሎች' },
       ],
       currentStep: 0,
     }

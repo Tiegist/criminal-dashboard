@@ -239,7 +239,7 @@ const registerPrisoner = async () => {
 			saving.value = false
 			prisonHistoryId.value = response.data.prison_history_id
 			prisonerId.value = response.data.prisoner
-			router.replace({ query: { ...route.query, prison_history_id: prisonHistoryId.value, prisoner: prisonerId.value } });
+			router.replace({ query: { ...route.query, prison_history_id: prisonHistoryId.value, prisoner: prisonerId.value, prisioner_id: prisonerId.value } });
 			// localStorage.setItem('prisioner_history_id', prisonHistoryId.value);
 			emit('prisonerSaved');
 		})

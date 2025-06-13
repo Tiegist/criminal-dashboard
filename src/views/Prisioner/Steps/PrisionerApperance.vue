@@ -169,6 +169,13 @@
         <textarea type="text" :rows="10" v-model="prisonerApperance.extra_description" placeholder="extra_description"
           class="dark:bg-dark-900 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"></textarea>
       </div>
+
+      <div>
+          <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ፎቶ </label>
+          <input type="file" @change="handleFileChange"
+          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+      
+          </div>
     </div>
   </div>
 </template>
@@ -198,6 +205,10 @@ const ears = ref([])
 const saving = ref(false);
 const errorMessage = ref('');
 
+function handleFileChange(event) {
+    prisonerApperance.value.photo = event.target.files[0];
+}
+
 const prisonerApperance = ref({
   hair_type_id: null,
   height: null,
@@ -211,6 +222,7 @@ const prisonerApperance = ref({
   unique_appearance: '',
   citizenship: '',
   extra_description: '',
+  photo: null,
 })
 
 const fetchhair = async () => { axios.get(apiServer.value + 'hair').then(response => { hairs.value = response.data.data; }) }
@@ -226,22 +238,27 @@ const registerPrisonerApperance = async () => {
   errorMessage.value = ''
   saving.value = true
 
+  const formData = new FormData();
+  formData.append('prison_history_id', route.query.prison_history_id)
+  formData.append('hair_type_id',  prisonerApperance.value.hair_type_id)
+  formData.append('height',  prisonerApperance.value.height)
+  formData.append('face',  prisonerApperance.value.face)
+  formData.append('forehead',  prisonerApperance.value.forehead)
+  formData.append('nose_id',  prisonerApperance.value.nose_id)
+  formData.append('eye_id',  prisonerApperance.value.eye_id)
+  formData.append('teeth_id',  prisonerApperance.value.teeth_id)
+  formData.append('lip_id',  prisonerApperance.value.lip_id)
+  formData.append('ear_id',  prisonerApperance.value.ear_id)
+  formData.append('unique_appearance',  prisonerApperance.value.unique_appearance)
+  formData.append('citizenship',  prisonerApperance.value.citizenship)
+  formData.append('extra_description',  prisonerApperance.value.extra_description)
+  formData.append('photo',  prisonerApperance.value.photo)
 
   axios
-    .post(apiServer.value + 'prisoner/apperance', {
-      prison_history_id: route.query.prison_history_id,
-      hair_type_id: prisonerApperance.value.hair_type_id,
-      height: prisonerApperance.value.height,
-      face: prisonerApperance.value.face,
-      forehead: prisonerApperance.value.forehead,
-      nose_id: prisonerApperance.value.nose_id,
-      eye_id: prisonerApperance.value.eye_id,
-      teeth_id: prisonerApperance.value.teeth_id,
-      lip_id: prisonerApperance.value.lip_id,
-      ear_id: prisonerApperance.value.ear_id,
-      unique_appearance: prisonerApperance.value.unique_appearance,
-      citizenship: prisonerApperance.value.citizenship,
-      extra_description: prisonerApperance.value.extra_description,
+    .post(apiServer.value + 'prisoner/apperance', formData, {
+      headers: {
+            'Content-Type': 'multipart/form-data',
+          }
     })
     .then(response => {
       saving.value = false
