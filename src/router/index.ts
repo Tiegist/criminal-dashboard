@@ -585,7 +585,18 @@ const router = createRouter({
   meta: {
     title: 'ShowPrisioner',
   },
+
 },
+{
+  path: '/ShowPrisionerM',
+  name: 'ShowPrisionerM',
+  component: () => import('../views/Prisioner/ShowPrisionerM.vue'),
+  meta: {
+    title: 'ShowPrisioner',
+  },
+
+},
+
 {
   path: '/showAttendance',
   name: 'showAttendance',
