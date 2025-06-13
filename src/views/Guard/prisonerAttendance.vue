@@ -66,6 +66,16 @@
 								class="h-5 w-5 text-teal-600 rounded focus:ring-teal-500" />
 						</div>
 					</div>
+
+
+					<div class="flex flex-wrap justify-center items-center mt-6 space-x-2">
+					<span v-for="page in (links ?? [])" :key="page.label" @click="page.url && getAllPrisoners(page.url)"
+						:class="['px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
+							page.url ? 'cursor-pointer hover:bg-gray-700 hover:text-white' : 'cursor-not-allowed text-gray-500',
+							page.active ? 'bg-teal-500 text-white' : 'text-gray-300 border border-gray-600'
+						]" v-html="page.label">
+					</span>
+				</div>
 					
 						<span class="text-teal-500 text-2xl">{{  message }} </span>
 
@@ -76,6 +86,7 @@
 							✅ ይመዝግቡ
 						</button>
 					</div>
+
 				</div>
 			</div>
 		</div>
@@ -99,6 +110,8 @@ export default {
 	data() {
 		return {
 			prisoners: [],
+			paginationInfo:{},
+
 			date: null,
 			time: 1,
 			status: null,
@@ -118,6 +131,9 @@ export default {
 	computed: {
 		isFormValid() {
 			return this.time;
+		},
+		links() {
+			return this.paginationInfo.links
 		}
 	},
 	watch: {
@@ -127,9 +143,15 @@ export default {
 		}
 	},
 	methods: {
-		getAllPrisoners() {
-			axios.get(this.$store.state.apiServer + 'prisoner').then((res) => {
+		getAllPrisoners(url = '') {
+			this.paginationInfo = {}
+
+			url = url === '' ? this.$store.state.apiServer + 'prisoner' : url;
+
+			axios.get(url).then((res) => {
 				this.prisoners = res.data.Prisioner.data.map(prison => ({ ...prison, checked: false }));
+				this.paginationInfo = res.data.Prisioner;
+
 				this.getAttendance()
 			});
 
