@@ -78,7 +78,7 @@
 
 				</span>
 				<span v-if="!editMode"> {{ 'ይመዝግቡ ' }} </span>
-				<span v-if="editMode"> {{ 'ያስተካክሉ ' }} </span>
+				<span v-if="editMode"> {{ 'ይመዝግቡ ' }} </span>
 				<span v-if="endIcon" class="flex items-center">
 
 				</span>

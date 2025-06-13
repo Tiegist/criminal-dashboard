@@ -79,8 +79,8 @@
 				<span v-if="startIcon" class="flex items-center">
 
 				</span>
-				<span v-if="!editMode"> {{ 'Save & Continue' }} </span>
-				<span v-if="editMode"> {{ 'Update & Continue' }} </span>
+				<span v-if="!editMode"> {{ 'ይመዝግቡና ይቀጥሉ' }} </span>
+				<span v-if="editMode"> {{ 'ይመዝግቡና ይቀጥሉ' }} </span>
 
 				<span v-if="endIcon" class="flex items-center">
 
