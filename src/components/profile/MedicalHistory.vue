@@ -32,7 +32,7 @@
 							</div>
 
 
-							<button v-if="prisoner?.id" @click="addNewMedicalHistory(history.id)"
+							<button v-if="prisoner?.id && history.date_of_release == null" @click="addNewMedicalHistory(history.id)"
 								class="edit-button absolute right-20 mt-1">
 								<svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
 									xmlns="http://www.w3.org/2000/svg">

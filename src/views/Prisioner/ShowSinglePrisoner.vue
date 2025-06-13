@@ -6,11 +6,16 @@
       class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] lg:p-6">
       <h3 class="mb-5 text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-7">የግል መረጃ</h3>
       <profile-card :prisoner="information" />
-      <h2>የወንጀል ታሪክ | ማህደር </h2>
+      <h2 >የወንጀል ታሪክ | ማህደር </h2>
 
       <div class="flex col col-6 gap-4">
-        <p class="my-4" @click="showHistory(i)" v-for="phist, i in information.prison_histories" :key="i"> {{ 'History '
+        <p :class="{
+          'my-4': true,
+          'font-bold text-sm': currentHistory != i,
+          'font-bold text-teal-500': currentHistory == i
+        }" @click="showHistory(i)" v-for="phist, i in information.prison_histories" :key="i"> {{ 'የታሪክ ማህደር '
           + (i + 1) }} </p>
+
       </div>
 
       <personal-info-card :history="phist" v-if="isAdmin || isDoctor" />
