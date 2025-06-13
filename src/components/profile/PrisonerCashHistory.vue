@@ -137,6 +137,7 @@ const addNewCashHistory = (history_id, m = 'deposit') => {
 	isProfileAddressModal.value = true
 	currentHistory.value = history_id
 	mode.value = m
+	errorMessage.value = ''
 }
 
 const saveCashHistory = () => {

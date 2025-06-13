@@ -48,6 +48,7 @@ import router from '@/router'
 import axios from 'axios'
 import { useStore } from 'vuex';
 import { useRoute, useRouter } from 'vue-router';
+import PoliceLayout from '@/components/layout/PoliceLayout.vue';
 
 const currentPageTitle = ref('Prisoner Profile')
 const store = useStore();
@@ -56,7 +57,7 @@ const apiServer = computed(() => store.state.apiServer);
 const isAdmin = computed(() => store.getters.isAdmin);
 const isDoctor = computed(() => store.getters.isDoctor);
 const isPolice = computed(() => store.getters.isPolice);
-let LayoutComponent = isAdmin.value ? AdminLayout : AdminLayoutMedical
+let LayoutComponent = isAdmin.value ? AdminLayout : isPolice ? PoliceLayout : AdminLayoutMedical
 
 
 const route = useRoute();

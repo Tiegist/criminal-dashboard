@@ -106,9 +106,9 @@
                             <td class="px-5 py-4 sm:px-6">
                                 <p class="text-gray-500 text-theme-sm dark:text-gray-400" v-if="user.prisoner_attendances.length > 0">
                                         <span class="text-green-500" v-if="user.prisoner_attendances[0].status == 1 "> PRESENT </span>
-                                        <span class="text-green-500" v-if="user.prisoner_attendances[0].status == 2 "> ABSENT </span>
+                                        <span class="text-red-500" v-if="user.prisoner_attendances[0].status == 2 "> ABSENT </span>
                                     </p>
-                                <p class="text-gray-500 text-theme-sm dark:text-gray-400" v-else> {{ 'NOT Taken' }}</p>
+                                <p class="text-red-500 text-theme-sm dark:text-gray-400" v-else> ABSENT </p>
                             </td>
                             <td class="px-5 py-4 sm:px-6">
                                 <a @click="fetchSinglePrisioner(user.id)"

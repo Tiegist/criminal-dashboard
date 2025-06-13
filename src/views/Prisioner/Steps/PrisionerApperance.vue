@@ -166,7 +166,7 @@
       </div>
       <div>
         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"> ተጨማሪ ገለጻ </label>
-        <textarea type="text" :rows="10" v-model="prisonerApperance.extra_description" placeholder="extra_description"
+        <textarea type="text" :rows="10" v-model="prisonerApperance.extra_description"
           class="dark:bg-dark-900 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"></textarea>
       </div>
 
@@ -252,7 +252,9 @@ const registerPrisonerApperance = async () => {
   formData.append('unique_appearance',  prisonerApperance.value.unique_appearance)
   formData.append('citizenship',  prisonerApperance.value.citizenship)
   formData.append('extra_description',  prisonerApperance.value.extra_description)
-  formData.append('photo',  prisonerApperance.value.photo)
+  if(prisonerApperance.value.photo) {
+    formData.append('photo',  prisonerApperance.value.photo)
+  }
 
   axios
     .post(apiServer.value + 'prisoner/apperance', formData, {

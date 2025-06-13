@@ -123,6 +123,7 @@ export default {
 	watch: {
 		time() { 
 			this.getAttendance()
+			this.message = ''
 		}
 	},
 	methods: {
