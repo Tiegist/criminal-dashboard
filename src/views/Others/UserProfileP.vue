@@ -18,7 +18,7 @@ import PoliceLayout from '../../components/layout/PoliceLayout.vue'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import { ref } from 'vue'
 //import ProfileCardp from '../../components/profile/ProfileCardp.vue'
-import PersonalInfoCardp from '../../components/profile/PersonalInfoCardp.vue'
+import PersonalInfoCardp from '../../components/profile/PersonalInfoCardP.vue'
 // import AddressCard from '../../components/profile/AddressCard.vue'
 const currentPageTitle = ref(' የግል መረጃ ')
 </script>
