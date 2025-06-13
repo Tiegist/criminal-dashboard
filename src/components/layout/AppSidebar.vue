@@ -223,6 +223,7 @@ const menuGroups = [
           { name: "የእስረኛ ገንዘብ ማሳያ", path: "/ShowCashHistory", pro: false },
           { name: "የእስረኛ ገንዘብ Transaction", path: "/ShowCashTransactions", pro: false },
           { name: "የእስረኛ የህክምና ታሪክ ማሳያ", path: "/ShowMedicalInfo", pro: false },
+          { name: "የእስረኛ Attendance ማሳያ", path: "/showAttendance", pro: false },
         ],
       },
       {
