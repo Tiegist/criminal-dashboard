@@ -18,12 +18,12 @@
 
       </div>
 
-      <personal-info-card :history="phist" v-if="isAdmin || isDoctor" />
-      <address-card :history="phist" v-if="isAdmin" />
+      <personal-info-card :history="phist" v-if="isAdmin || isDoctor || isPolice" />
+      <address-card :history="phist" v-if="isAdmin || isPolice" />
       <apperance :history="phist" v-if="isAdmin || isDoctor" />
-      <crime :history="phist" v-if="isAdmin" @reloadHistoryInfo="fetchPrisonerInformation()" />
-      <MedicalHistory :history="phist" v-if="isAdmin || isDoctor" @reloadHistoryInfo="fetchPrisonerInformation()" />
-      <PrisonerCashHistory :history="phist" v-if="isAdmin" @reloadHistoryInfo="fetchPrisonerInformation()" />
+      <crime :history="phist" v-if="isAdmin || isPolice" @reloadHistoryInfo="fetchPrisonerInformation()" />
+      <MedicalHistory :history="phist" v-if="isAdmin || isDoctor || isPolice" @reloadHistoryInfo="fetchPrisonerInformation()" />
+      <PrisonerCashHistory :history="phist" v-if="isAdmin || isPolice" @reloadHistoryInfo="fetchPrisonerInformation()" />
 
     </div>
   </LayoutComponent>
@@ -55,6 +55,7 @@ const apiServer = computed(() => store.state.apiServer);
 
 const isAdmin = computed(() => store.getters.isAdmin);
 const isDoctor = computed(() => store.getters.isDoctor);
+const isPolice = computed(() => store.getters.isPolice);
 let LayoutComponent = isAdmin.value ? AdminLayout : AdminLayoutMedical
 
 

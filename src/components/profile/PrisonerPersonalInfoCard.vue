@@ -48,7 +48,7 @@
           </div>
         </div>
 
-        <button class="edit-button" @click="editPrisoner(props.history.id)">
+        <button v-if="!isDoctor" class="edit-button" @click="editPrisoner(props.history.id)">
           <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -64,13 +64,15 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 import { useStore } from 'vuex';
 import { useRoute, useRouter } from 'vue-router';
+const store = useStore();
 
 const route = useRoute();
 const router = useRouter();
+const isDoctor = computed(() => store.getters.isDoctor);
 
 const props = defineProps(['history'])
 

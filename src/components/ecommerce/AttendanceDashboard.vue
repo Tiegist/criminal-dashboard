@@ -9,12 +9,16 @@
 			</div>
 		</div>
 
+			<h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">ወንድ</h3>
+
 		<div class="max-w-full overflow-x-auto custom-scrollbar">
 			<div id="chartOne" class="-ml-5 min-w-[650px] xl:min-w-full pl-2">
 				<VueApexCharts v-if="keys.length > 0" type="bar" height="380" :options="chartOptions"
 					:series="series" />
 			</div>
 		</div>
+			<h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">ሴት</h3>
+    
 
 		<div class="max-w-full overflow-x-auto custom-scrollbar">
 			<div id="chartOne" class="-ml-5 min-w-[650px] xl:min-w-full pl-2">
