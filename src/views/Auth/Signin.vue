@@ -222,7 +222,7 @@ export default {
       })
       .catch(error => {
         this.loading = false
-        this.message = error.response
+        this.message = error.response.data.message
       })
     },
     applyHeader(token,role) {

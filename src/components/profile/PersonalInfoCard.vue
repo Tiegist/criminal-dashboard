@@ -1,6 +1,6 @@
 <template>
   <div class="w-2/3 mx-auto">
-    <div class="p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6" v-if="!isProfileInfoModal">
+    <!-- <div class="p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6" v-if="!isProfileInfoModal">
       <div class="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
         <div class="flex flex-col items-center w-full gap-6 xl:flex-row">
           <div class="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800">
@@ -16,10 +16,9 @@
               <p class="text-sm text-gray-500 dark:text-gray-400">{{ users.role }}</p>
             </div>
           </div>
-          <!--  -->
 
         </div>
-        <button @click="isProfileInfoModal = true" class="edit-button">
+         <button @click="isProfileInfoModal = true" class="edit-button">
           <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -27,9 +26,9 @@
               fill="" />
           </svg>
           ያስተካክሉ
-        </button>
+        </button> 
       </div>
-    </div>
+    </div> -->
 
     <div class=" p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6" v-if="!isProfileInfoModal">
 
@@ -39,11 +38,11 @@
             <div>
 
               <h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
-                የግል መረጃ
+                <!-- የግል መረጃ -->
               </h4>
             </div>
             <div>
-              <button class="edit-button " @click="isProfileInfoModal = true">
+              <!-- <button class="edit-button " @click="isProfileInfoModal = true">
                 <svg class="fill-current " width="18" height="18" viewBox="0 0 18 18" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd"
@@ -51,7 +50,7 @@
                     fill="" />
                 </svg>
                 ያስተካክሉ
-              </button>
+              </button> -->
             </div>
           </div>
 
@@ -81,7 +80,11 @@
               </div>
               <div class="flex justify-between  w-1/3 mt-3">
                 <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">የስራ ድርሻ</p>
-                <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ users.role }}</p>
+
+                 <p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="users.role == 1">አስተዳዳሪ</p>
+                <p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="users.role == 2">ፖሊስ</p>
+                <p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="users.role == 3">ጥበቃ</p>
+                <p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="users.role == 4">ሀኪም</p>
               </div>
 
             </div>

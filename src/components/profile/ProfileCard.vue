@@ -19,7 +19,7 @@
           <!--  -->
 
         </div>
-        <button @click="isProfileInfoModal = true" class="edit-button">
+        <!-- <button @click="isProfileInfoModal = true" class="edit-button">
           <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -27,7 +27,7 @@
               fill="" />
           </svg>
           ያስተካክሉ
-        </button>
+        </button> -->
       </div>
     </div>
     <Modal v-if="isProfileInfoModal" @close="isProfileInfoModal = false">

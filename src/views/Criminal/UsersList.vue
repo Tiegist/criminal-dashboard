@@ -23,6 +23,10 @@
               </th>
 
               <th class="px-5 py-3 text-left w-2/11 sm:px-6">
+                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">እድሜ</p>
+              </th>
+
+              <th class="px-5 py-3 text-left w-2/11 sm:px-6">
                 <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">የስራ ድርሻ</p>
               </th>
 
@@ -46,20 +50,23 @@
                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ user.phone_number }}</p>
               </td>
 
+                            <td class="px-5 py-4 sm:px-6">
+                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ user.age }}</p>
+              </td>
+
               <td class="px-5 py-4 sm:px-6">
                 <p class="text-gray-500 text-theme-sm dark:text-gray-400" v-if="user.role == 1">አስተዳዳሪ</p>
                 <p class="text-gray-500 text-theme-sm dark:text-gray-400" v-if="user.role == 2">ፖሊስ</p>
                 <p class="text-gray-500 text-theme-sm dark:text-gray-400" v-if="user.role == 3">ጥበቃ</p>
                 <p class="text-gray-500 text-theme-sm dark:text-gray-400" v-if="user.role == 4">ሀኪም</p>
               </td>
-              <!-- <td class="px-5 py-4 sm:px-6">
-                <a @click="fetchSingleusers(cash.id)"
+              <td class="px-5 py-4 sm:px-6">
+                <!-- <a @click="fetchSingleusers(cash.id)"
                   class="font-medium text-theme-sm text-green-600 dark:text-green-500 hover:underline cursor-pointer">ተጨማሪ
-                </a>
-                |
-                <a
+                </a> -->
+                <a @click="router.push({name: 'UserRegister', query: {user_id: user.id}})"
                   class="font-medium text-theme-sm text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">ያስተካክሉ</a>
-              </td> -->
+              </td>
             </tr>
           </tbody>
         </table>
