@@ -1,5 +1,5 @@
 <template>
-	<AdminLayoutMedical>
+	<AdminLayout>
 		<PageBreadcrumb :pageTitle="currentPageTitle" />
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
 			<div class="space-y-6">
@@ -83,11 +83,11 @@
 				</div>
 			</div>
 		</div>
-	</AdminLayoutMedical>
+	</AdminLayout>
 </template>
 
 <script>
-import AdminLayoutMedical from '@/components/layout/AdminLayoutMedical.vue'
+import AdminLayout from '@/components/layout/AdminLayout.vue'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import ComponentCard from '@/components/common/ComponentCard.vue'
 import Alert from '@/components/ui/Alert.vue'
@@ -97,7 +97,7 @@ import axios from 'axios'
 export default {
 	data() {
 		return {
-			currentPageTitle: 'Disease Types',
+			currentPageTitle: 'የበሽታ አይነት',EthnicGroup
 			disease_types: [],
 			disease_type: {},
 			name: '',
@@ -110,7 +110,7 @@ export default {
 		}
 	},
 	components: {
-		AdminLayoutMedical,
+		AdminLayout,
 		PageBreadcrumb,
 		ComponentCard,
 		Button,

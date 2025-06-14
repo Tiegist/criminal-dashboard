@@ -131,15 +131,18 @@
 
 						</div>
 						<div class="pt-6">
-							<button @click="fetchPrisioner('', true)"
-								class="w-2/3 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-200 shadow-lg">
-								🔎 {{ searching ? 'Searching' : 'ይፈልጉ' }}
-							</button>
+							<div class="flex justify-between w-3/4 mx-auto">
 
-							<button @click="clearSearch()"
-								class="w-1/3 py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition-all duration-200 shadow-lg">
-								ይሰርዙ
-							</button>
+								<button @click="fetchPrisioner('', true)"
+									class="w-2/3 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-200 shadow-lg">
+									🔎 {{ searching ? 'Searching' : 'ይፈልጉ' }}
+								</button>
+	
+								<button @click="clearSearch()"
+									class="w-2/3 py-3 ml-5 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition-all duration-200 shadow-lg">
+									ይሰርዙ
+								</button>
+							</div>
 
 							<div v-if="errorMessage" class="text-red-500 text-center font-semibold mt-4">
 								{{ errorMessage }}

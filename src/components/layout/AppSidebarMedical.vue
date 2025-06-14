@@ -254,7 +254,7 @@ const menuGroups = [
         icon: ListIcon,
         subItems: [
           // { name: "ሀይማኖቶች", path: "/religions", pro: false },
-          { name: "የበሽታ አይነቶች", path: "/disease-types", pro: false },
+          { name: "የበሽታ አይነቶች", path: "/disease-typesM", pro: false },
           // { name: "ብሄር", path: "/EthnicGroup", pro: false },
           // { name: "የወንጀል አይነቶች", path: "/Crimes", pro: false },
           // { name: "የወንጀለኛ አይነቶች", path: "/CriminalType", pro: false },
