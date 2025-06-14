@@ -12,7 +12,7 @@
           </svg>
         </button>
         <HeaderLogo />
-        <SearchBar />
+        <!-- <SearchBar /> -->
       </div>
       <div class="flex items-center gap-4">
         <ThemeToggler />

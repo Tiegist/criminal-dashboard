@@ -78,10 +78,10 @@
                   {{ users.user_name }}
                 </p>
               </div>
-              <div class="flex justify-between  w-1/3 mt-3">
-                <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">የስራ ድርሻ</p>
+              <div class="flex justify-between  w-1/2 mt-3">
+                <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">የስራ ድርሻ:</p>
 
-                 <p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="users.role == 1">አስተዳዳሪ</p>
+                 <p class="text-sm font-medium text-gray-800 dark:text-white/90 " v-if="users.role == 1">አስተዳዳሪ</p>
                 <p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="users.role == 2">ፖሊስ</p>
                 <p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="users.role == 3">ጥበቃ</p>
                 <p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="users.role == 4">ሀኪም</p>

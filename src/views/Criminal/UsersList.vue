@@ -66,10 +66,12 @@
                 </a> -->
                 <a @click="router.push({name: 'UserRegister', query: {user_id: user.id}})"
                   class="font-medium text-theme-sm text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">ያስተካክሉ</a>
+                  <a @click="confirmDelete(user.id)" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-4">ያጥፉ</a>
               </td>
             </tr>
           </tbody>
         </table>
+        
       </div>
     </div>
     <div class="flex w-12/12 mx-auto">
@@ -118,20 +120,26 @@ const fetchUsers = (url = '') => {
   url = url === '' ? apiServer.value + 'users' : url;
 
   axios.get(url).then((res) => {
-
     users.value = res.data.data.data
     paginationInfo.value = res.data.data;
-
   })
 };
 
+const confirmDelete = (userId) => {
+  const confirmed = window.confirm("Are you sure you want to delete this user?");
+  if (confirmed) {
+    axios.delete(`${apiServer.value}user/${userId}`).then(() => {
+      fetchUsers(); // Refresh the user list after deletion
+    }).catch((error) => {
+      console.error("Error deleting user:", error);
+      alert("Failed to delete user. Please try again."); // Handle error gracefully
+    });
+  }
+};
 
 onMounted(() => {
-  fetchUsers()
+  fetchUsers();
 });
-
-
-
 
 </script>
 
