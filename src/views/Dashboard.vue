@@ -51,12 +51,6 @@
 				</div>
 			</div>
 
-
-
-
-			<div class="col-span-12">
-				<statistics-chart />
-			</div>
 			<div class="col-span-12">
 				<CrimeCount v-if="loaded" :dashboardData="dashboardData" />
 			</div>

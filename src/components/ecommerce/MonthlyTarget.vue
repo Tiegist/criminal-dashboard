@@ -48,7 +48,7 @@ onMounted(() => {
 
 const series = computed(() => [dashboardData.value.male_prisoners, dashboardData.value.female_prisoners])
 const chartOptions = ref({
-	labels: ['Male', 'Female']
+	labels: ['ወንድ', 'ሴት']
 })
 
 </script>
