@@ -50,7 +50,7 @@ import { useStore } from 'vuex';
 import { useRoute, useRouter } from 'vue-router';
 import PoliceLayout from '@/components/layout/PoliceLayout.vue';
 
-const currentPageTitle = ref('Prisoner Profile')
+const currentPageTitle = ref('የእስረኛ የግል መረጃ');
 const store = useStore();
 const apiServer = computed(() => store.state.apiServer);
 

@@ -166,6 +166,14 @@ const router = createRouter({
         title: 'Disease Type',
       },
     },  
+      {
+      path: '/disease-typesM',
+      name: 'disease-typesM',
+      component: () => import('../views/Criminal/DiseaseTypeM.vue'),
+      meta: {
+        title: 'Disease Type',
+      },
+    },
 
     {
       path: '/',

@@ -10,11 +10,14 @@
             <h4 class="mb-2 text-lg font-semibold text-center text-gray-800 dark:text-white/90 xl:text-left">
               {{ users.full_name }}
             </h4>
-            <div class="flex flex-col items-center gap-1 text-center xl:flex-row xl:gap-3 xl:text-left">
-              <p class="text-sm text-gray-500 dark:text-gray-400">የስራ ድርሻ</p>
-              <div class="hidden h-3.5 w-px bg-gray-300 dark:bg-gray-700 xl:block"></div>
-              <p class="text-sm text-gray-500 dark:text-gray-400">{{ users.role }}</p>
-            </div>
+                     <div class="flex justify-between  w-10/11 mt-3">
+                <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">የስራ ድርሻ:</p>
+
+                 <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1" v-if="users.role == 1">አስተዳዳሪ</p>
+                <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1" v-if="users.role == 2">ፖሊስ</p>
+                <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1" v-if="users.role == 3">ጥበቃ</p>
+                <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1" v-if="users.role == 4">ሀኪም</p>
+              </div>
           </div>
           <!--  -->
 
@@ -79,9 +82,13 @@
                   {{ users.user_name }}
                 </p>
               </div>
-              <div class="flex justify-between  w-1/3 mt-3">
-                <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">የስራ ድርሻ</p>
-                <p class="text-sm font-medium text-gray-800 dark:text-white/90">{{ users.role }}</p>
+               <div class="flex justify-between  mt-3 w-1/3">
+                <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">የስራ ድርሻ:</p>
+
+                 <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1" v-if="users.role == 1">አስተዳዳሪ</p>
+                <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1" v-if="users.role == 2">ፖሊስ</p>
+                <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1" v-if="users.role == 3">ጥበቃ</p>
+                <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1" v-if="users.role == 4">ሀኪም</p>
               </div>
 
             </div>

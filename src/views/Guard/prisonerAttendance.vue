@@ -46,7 +46,7 @@
 									class="h-11 w-full rounded-lg bg-white dark:bg-gray-800 px-4 pr-12 text-sm text-gray-800 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400">
 									<option value="" disabled selected>ሰአት ይምረጡ</option>
 									<option value="1">ጠዋት</option>
-									<option value="2">NIGHT</option>
+									<option value="2">ማታ</option>
 								</select>
 								<div
 									class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-gray-400 text-lg">

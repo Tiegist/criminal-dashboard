@@ -226,9 +226,9 @@ const menuGroups = [
           { name: "የእስረኛ መረጃ ማሳያ", path: "/ShowPrisioner", pro: false },
           // { name: "የእስረኛ የህክምና መረጃ ", path: "/ShowMedical", pro: false },
           { name: "የእስረኛ ገንዘብ ማሳያ", path: "/ShowCashHistory", pro: false },
-          { name: "የእስረኛ ገንዘብ Transaction", path: "/ShowCashTransactions", pro: false },
+          { name: "የእስረኛ ገንዘብ ዝዉዉር", path: "/ShowCashTransactions", pro: false },
           { name: "የእስረኛ የህክምና ታሪክ ማሳያ", path: "/ShowMedicalInfo", pro: false },
-          { name: "የእስረኛ Attendance ማሳያ", path: "/showAttendance", pro: false },
+          { name: "የእስረኛ ስም መጥሪያ  ማሳያ", path: "/showAttendance", pro: false },
         ],
       },
       {

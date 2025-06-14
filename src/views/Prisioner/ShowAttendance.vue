@@ -33,7 +33,7 @@
                                             class="h-11 w-full rounded-lg bg-white dark:bg-gray-800 px-4 pr-12 text-sm text-gray-800 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400">
                                             <option value="" disabled selected>ሰአት ይምረጡ</option>
                                             <option value="1">ጠዋት</option>
-                                            <option value="2">NIGHT</option>
+                                            <option value="2">ማታ</option>
                                         </select>
                                         <div
                                             class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-gray-400 text-lg">
@@ -45,10 +45,13 @@
 
                         </div>
                         <div class="pt-6">
-                            <button @click="fetchPrisioner('', true)"
-                                class="w-2/3 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-200 shadow-lg">
-                                📅 {{ searching ? 'Searching' : 'Show' }}
-                            </button>
+                            <div class="w-1/2 ">
+
+                                <button @click="fetchPrisioner('', true)"
+                                    class="w-2/3  py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-200 shadow-lg">
+                                    📅 {{ searching ? 'Searching' : 'Show' }}
+                                </button>
+                            </div>
 
 
                             <div v-if="errorMessage" class="text-red-500 text-center font-semibold mt-4">

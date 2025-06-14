@@ -29,7 +29,9 @@
               <th class="px-5 py-3 text-left w-2/11 sm:px-6">
                 <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">የስራ ድርሻ</p>
               </th>
-
+  <th class="px-5 py-3 text-left w-2/11 sm:px-6">
+                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">ተግባር</p>
+              </th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
