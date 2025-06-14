@@ -132,7 +132,7 @@
 						</div>
 						<div class="pt-6">
 							<button @click="fetchPrisioner('', true)"
-								class="w-2/3 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-200 shadow-lg">
+								class="w-1/2 mr-10 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-200 shadow-lg">
 								🔎 {{ searching ? 'Searching' : 'ይፈልጉ' }}
 							</button>
 
