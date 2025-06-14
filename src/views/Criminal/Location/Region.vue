@@ -83,8 +83,8 @@
 			<h2 class="text-xl font-semibold mb-4"> ማጥፋቶን ያረጋግጡ </h2>
 			<p class="text-gray-700 mb-6">ለማጥፋት እርግጠኛ ኖት <span class="text-teal-600">{{ region.name }}</span></p>
 			<div class="flex justify-end space-x-2">
-				<button @click="() => isModalOpen = false" class="px-4 py-2 bg-gray-300 rounded-lg">No</button>
-				<button @click="deleteRegion()" class="px-4 py-2 bg-blue-600 bg-opacity-80 text-white rounded-lg">Yes</button>
+				<button @click="() => isModalOpen = false" class="px-4 py-2 bg-gray-300 rounded-lg">አይ </button>
+				<button @click="deleteRegion()" class="px-4 py-2 bg-blue-600 bg-opacity-80 text-white rounded-lg">አዎ </button>
 			</div>
 			</div>
 		</div>

@@ -6,7 +6,7 @@
           <thead>
             <tr class="border-b border-gray-200 dark:border-gray-700">
               <th class=" text-left w-1/11 sm:px-6">
-                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">-</p>
+                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">ቁጥር</p>
               </th>
               <th class="px-5 py-3 text-left w-2/11 sm:px-6">
                 <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">የእስረኛው ስም</p>

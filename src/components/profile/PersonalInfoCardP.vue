@@ -22,7 +22,7 @@
           <!--  -->
 
         </div>
-        <button @click="isProfileInfoModal = true" class="edit-button">
+        <!-- <button @click="isProfileInfoModal = true" class="edit-button">
           <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -30,7 +30,7 @@
               fill="" />
           </svg>
           ያስተካክሉ
-        </button>
+        </button> -->
       </div>
     </div>
 
@@ -46,7 +46,7 @@
               </h4>
             </div>
             <div>
-              <button class="edit-button " @click="isProfileInfoModal = true">
+              <!-- <button class="edit-button " @click="isProfileInfoModal = true">
                 <svg class="fill-current " width="18" height="18" viewBox="0 0 18 18" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd"
@@ -54,7 +54,7 @@
                     fill="" />
                 </svg>
                 ያስተካክሉ
-              </button>
+              </button> -->
             </div>
           </div>
 
@@ -176,14 +176,14 @@
           </div>
         </div>
         <div class="flex items-center gap-3 px-2 mt-6 lg:justify-end">
-          <button @click="isProfileInfoModal = false" type="button"
+          <!-- <button @click="isProfileInfoModal = false" type="button"
             class="flex w-full justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] sm:w-auto">
             ይመለሱ
           </button>
           <button @click="saveProfile" type="button"
             class="flex w-full justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 sm:w-auto">
             ያስተካክሉ
-          </button>
+          </button> -->
         </div>
       </form>
     </div>

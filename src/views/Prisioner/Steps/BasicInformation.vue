@@ -152,6 +152,7 @@ const editMode = computed(() => route.query.prison_history_id);
 const sexes = ref([]);
 const ethnicGroups = ref([]);
 const Towns = ref([]);
+const prisonerCe = ref([]);
 const prisonHistoryId = ref([])
 const prisonerId = ref([])
 const saving = ref(false);
@@ -211,7 +212,7 @@ const prisonerCell = async () => {
 	axios
 		.get(apiServer.value + 'prisonerCell')
 		.then(response => {
-			Towns.value = response.data.data;
+			prisonerCe.value = response.data.data;
 		})
 }
 

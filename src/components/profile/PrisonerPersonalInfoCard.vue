@@ -48,7 +48,7 @@
           </div>
         </div>
 
-        <button v-if="!isDoctor && history.date_of_release == null" class="edit-button" @click="editPrisoner(props.history.id)">
+        <!-- <button v-if="!isDoctor && history.date_of_release == null" class="edit-button" @click="editPrisoner(props.history.id)">
           <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -56,10 +56,9 @@
               fill="" />
           </svg>
           ያስተካክሉ
-        </button>
+        </button> -->
       </div>
     </div>
-
   </div>
 </template>
 

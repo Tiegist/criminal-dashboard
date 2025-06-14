@@ -126,11 +126,11 @@
 		</div>
 		<div v-if="isModalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opatown-50">
 			<div class="bg-white rounded-lg shadow-lg w-96 p-6">
-			<h2 class="text-xl font-semibold mb-4"> Confirm Delete </h2>
-			<p class="text-gray-700 mb-6">Are you sure to delete <span class="text-teal-600">{{ town.name }}</span></p>
+			<h2 class="text-xl font-semibold mb-4"> ማጥፋቱን ያረጋግጡ  </h2>
+			<p class="text-gray-700 mb-6">እርግጠኛ ነዎት ለማጥፋት?  <span class="text-teal-600">{{ town.name }}</span></p>
 			<div class="flex justify-end space-x-2">
-				<button @click="() => isModalOpen = false" class="px-4 py-2 bg-gray-300 rounded-lg">No</button>
-				<button @click="deleteTown()" class="px-4 py-2 bg-blue-600 bg-opatown-80 text-white rounded-lg">Yes</button>
+				<button @click="() => isModalOpen = false" class="px-4 py-2 bg-gray-300 rounded-lg">አይ </button>
+				<button @click="deleteTown()" class="px-4 py-2 bg-blue-600 bg-opatown-80 text-white rounded-lg">አዎ </button>
 			</div>
 			</div>
 		</div>
