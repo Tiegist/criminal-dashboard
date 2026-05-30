@@ -1,6 +1,6 @@
 <template>
   <AdminLayoutMedical>
-    <div class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+    <div class="app-table-wrap">
       <div class="max-w-full overflow-x-auto custom-scrollbar">
         <table class="min-w-full">
           <thead>
@@ -130,7 +130,7 @@ const fetchMedical = (url = '') => {
   })
 };
 const fetchSinglePrisioner = (prision_history_id) => {
-  axios.put(`http://127.0.0.1:8000/api/medical/${prision_history_id}`).then((res) => {
+  axios.put(`https://kalkidan.net:2083/api/medical/${prision_history_id}`).then((res) => {
     singlePrisioner.value = res.data.Prisioner
     console.log('prisioner_id', res.data.Prisioner.id)
     localStorage.setItem('prision_history_id', res.data.Prisioner.id)

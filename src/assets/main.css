@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;500;600;700&family=Outfit:wght@100..900&display=swap')
 layer(base);
 
 @import 'tailwindcss';
@@ -47,9 +47,9 @@ layer(base);
   --color-brand-200: #c2d6ff;
   --color-brand-300: #9cb9ff;
   --color-brand-400: #7592ff;
-  --color-brand-500: #465fff;
-  --color-brand-600: #3641f5;
-  --color-brand-700: #2a31d8;
+  --color-brand-500: #3b52e8;
+  --color-brand-600: #2f42d4;
+  --color-brand-700: #2536b8;
   --color-brand-800: #252dae;
   --color-brand-900: #262e89;
   --color-brand-950: #161950;
@@ -184,7 +184,15 @@ layer(base);
     cursor: pointer;
   }
   body {
-    @apply relative font-normal font-outfit z-1 bg-gray-50;
+    @apply relative font-normal font-outfit z-1 bg-gray-50 text-gray-800 antialiased;
+  }
+
+  html[lang='am'] body {
+    font-family: 'Noto Sans Ethiopic', Outfit, sans-serif;
+  }
+
+  ::selection {
+    @apply bg-brand-100 text-brand-800;
   }
 }
 
@@ -193,7 +201,7 @@ layer(base);
 }
 
 @utility menu-item-active {
-  @apply bg-brand-50 text-brand-500 dark:bg-brand-500/[0.12] dark:text-brand-400;
+  @apply bg-brand-50 text-brand-600 dark:bg-brand-500/[0.12] dark:text-brand-400;
 }
 
 @utility menu-item-inactive {
@@ -760,4 +768,166 @@ span.flatpickr-weekday,
 
 .edit-button {
   @apply flex w-full items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 lg:inline-flex lg:w-auto;
+}
+
+/* ── App UI utilities ── */
+@utility app-card {
+  @apply rounded-2xl border border-gray-200 bg-white shadow-theme-xs transition-shadow duration-200 hover:shadow-theme-sm dark:border-gray-800 dark:bg-white/[0.03];
+}
+
+@utility app-input {
+  @apply h-11 w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 transition-all duration-200 focus:border-brand-400 focus:outline-none focus:ring-4 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-600;
+}
+
+@utility app-select {
+  @apply app-input appearance-none pr-10;
+}
+
+@utility app-label {
+  @apply mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400;
+}
+
+@utility app-btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-4 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+@utility app-btn-primary {
+  @apply app-btn bg-brand-500 text-white shadow-theme-xs hover:bg-brand-600 focus:ring-brand-500/20 active:scale-[0.98];
+}
+
+@utility app-btn-secondary {
+  @apply app-btn border border-gray-300 bg-white text-gray-700 shadow-theme-xs hover:bg-gray-50 focus:ring-gray-500/10 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white/5;
+}
+
+@utility app-btn-danger {
+  @apply app-btn bg-error-500 text-white shadow-theme-xs hover:bg-error-600 focus:ring-error-500/20 active:scale-[0.98];
+}
+
+@utility app-btn-ghost {
+  @apply app-btn text-brand-600 hover:bg-brand-50 focus:ring-brand-500/10 dark:text-brand-400 dark:hover:bg-brand-500/10;
+}
+
+@utility app-table-wrap {
+  @apply overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-theme-xs dark:border-gray-800 dark:bg-white/[0.03];
+}
+
+@utility app-table {
+  @apply w-full text-sm text-left text-gray-600 dark:text-gray-400;
+}
+
+@utility app-table-head {
+  @apply bg-gray-50/80 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:bg-gray-800/50 dark:text-gray-400;
+}
+
+@utility app-table-row {
+  @apply border-b border-gray-100 bg-white transition-colors duration-150 hover:bg-gray-50/80 dark:border-gray-800 dark:bg-transparent dark:hover:bg-white/[0.02];
+}
+
+@utility app-page-title {
+  @apply text-xl font-semibold tracking-tight text-gray-800 dark:text-white/90;
+}
+
+@utility app-stat-card {
+  @apply app-card p-5 md:p-6;
+}
+
+@utility app-link-edit {
+  @apply font-medium text-brand-600 transition-colors hover:text-brand-700 hover:underline dark:text-brand-400 dark:hover:text-brand-300;
+}
+
+@utility app-pagination {
+  @apply inline-flex items-center gap-1 rounded-xl border border-gray-200 bg-white p-1 shadow-theme-xs dark:border-gray-700 dark:bg-gray-900;
+}
+
+@utility app-pagination-item {
+  @apply min-w-[2.25rem] rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200;
+}
+
+@utility app-pagination-active {
+  @apply bg-brand-500 text-white shadow-theme-xs;
+}
+
+@utility app-pagination-inactive {
+  @apply text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5;
+}
+
+@utility app-search-panel {
+  @apply app-card p-6 md:p-8;
+}
+
+@utility app-search-title {
+  @apply text-xl font-bold tracking-tight text-gray-800 dark:text-white/90 sm:text-2xl;
+}
+
+@utility app-badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+}
+
+@utility app-badge-brand {
+  @apply app-badge bg-brand-50 text-brand-700 dark:bg-brand-500/15 dark:text-brand-300;
+}
+
+@utility app-badge-success {
+  @apply app-badge bg-success-50 text-success-700 dark:bg-success-500/15 dark:text-success-300;
+}
+
+@utility app-link-delete {
+  @apply font-medium text-error-600 transition-colors hover:text-error-700 hover:underline dark:text-error-400 dark:hover:text-error-300;
+}
+
+@layer components {
+  /* Legacy delete modals */
+  .fixed.inset-0.flex.items-center.justify-center[class*='bg-gray-900'] {
+    @apply bg-gray-900/60 backdrop-blur-sm p-4;
+  }
+
+  .fixed.inset-0.flex.items-center.justify-center[class*='bg-gray-900'] > .bg-white {
+    @apply w-full max-w-md rounded-2xl border border-gray-200 p-6 shadow-theme-xl dark:border-gray-700 dark:bg-gray-900;
+  }
+
+  /* Legacy tables inside app-table-wrap */
+  .app-table-wrap table.w-full.text-sm {
+    @apply app-table;
+  }
+
+  .app-table-wrap thead.text-xs {
+    @apply app-table-head;
+  }
+
+  .app-table-wrap tbody tr.bg-white,
+  .app-table-wrap tbody tr.border-b {
+    @apply app-table-row;
+  }
+}
+
+@layer utilities {
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.2s ease;
+  }
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  .slide-up-enter-active,
+  .slide-up-leave-active {
+    transition: all 0.25s ease;
+  }
+  .slide-up-enter-from,
+  .slide-up-leave-to {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

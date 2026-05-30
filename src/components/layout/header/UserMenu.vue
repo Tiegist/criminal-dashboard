@@ -5,7 +5,7 @@
       @click.prevent="toggleDropdown"
     >
       <span class="w-10 h-10 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800 mr-3">
-        <img :src="`http://127.0.0.1:8000/${user.photo}`" alt="" />
+        <img :src="`https://kalkidan.net:2083/${user.photo}`" alt="" />
       </span>
 
       <span class="block mr-1 font-medium text-theme-sm">{{ user.full_name }} </span>
@@ -50,7 +50,7 @@
         <LogoutIcon
           class="text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300"
         />
-        ዘግተዉ ይውጡ
+        {{ $t('common.signOut') }}
       </router-link>
     </div>
     <!-- Dropdown End -->

@@ -228,7 +228,7 @@ const model = ref({
 })
 const fetchSex = async () => {
   try {
-    const res = await axios.get('http://127.0.0.1:8000/api/sexes');
+    const res = await axios.get('https://kalkidan.net:2083/api/sexes');
     sexes.value = res.data
     console.log('response', sexes.value);
   } catch (error) {
@@ -237,7 +237,7 @@ const fetchSex = async () => {
 }
 const getRole = async () => {
   try {
-    const res = await axios.get('http://127.0.0.1:8000/api/roles');
+    const res = await axios.get('https://kalkidan.net:2083/api/roles');
     roles.value = res.data
     console.log('response', roles.value);
   } catch (error) {
@@ -276,7 +276,7 @@ const registerUser = async () => {
   }
   // formData.append('signature', model.value.users.signature)
 
-  axios.post('http://127.0.0.1:8000/api/user', formData, {
+  axios.post('https://kalkidan.net:2083/api/user', formData, {
     'headers': {
       'Content-Type': 'multipart/form-data'
     }
@@ -302,7 +302,7 @@ const registerUser = async () => {
 
 function fetchEditUser() {
   axios
-    .get('http://127.0.0.1:8000/api/single-user?user_id=' + route.query.user_id)
+    .get('https://kalkidan.net:2083/api/single-user?user_id=' + route.query.user_id)
     .then(response => {
       model.value.users.phone_number = response.data.user.phone_number
       model.value.users.age = response.data.user.age

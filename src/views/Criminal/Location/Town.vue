@@ -1,26 +1,26 @@
 <template>
 	<AdminLayout>
 		<PageBreadcrumb :pageTitle="currentPageTitle" />
-		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-			<div class="space-y-6">
+		<div class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
+			<div class="lg:col-span-5 xl:col-span-4">
 				<ComponentCard title="ወረዳዎችን መቆጣጠር">
 					<div class="space-y-6">
 						<div>
-							<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+							<label class="app-label">
 								የወረዳ ስም
 							</label>
 							<input type="text" v-model="name" placeholder="Enter Town Name"
-								class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+								class="app-input" />
 						</div>
 
 						<div>
-							<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+							<label class="app-label">
 								ክልል ምረጥ
 							</label>
 							<div class="relative z-20 bg-transparent">
 								<select
 									v-model="region_id"
-									class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+									class="app-select"
 									:class="{ 'text-gray-800 dark:text-white/90': true }"
 									>
 									
@@ -33,13 +33,13 @@
 						</div>
 
 						<div v-if="region_id">
-							<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+							<label class="app-label">
 								ዞን ምረጥ
 							</label>
 							<div class="relative z-20 bg-transparent">
 								<select
 									v-model="city_id"
-									class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+									class="app-select"
 									:class="{ 'text-gray-800 dark:text-white/90': true }"
 									>
 									
@@ -76,15 +76,13 @@
 				</ComponentCard>
 			</div>
 
-			<div
-				class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+			<div class="lg:col-span-7 xl:col-span-8">
+				<div class="app-table-wrap">
 				<div class="max-w-full overflow-x-auto custom-scrollbar">
 
 
-					<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-						<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-							<thead
-								class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+						<table class="app-table">
+							<thead class="app-table-head">
 								<tr>
 									<th scope="col" class="px-6 py-3"> ስም </th>
 									<th scope="col" class="px-6 py-3"> ክልል </th>
@@ -94,7 +92,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr v-for="town in towns" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+								<tr v-for="town in towns" class="app-table-row">
 									<th scope="row"
 										class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 										{{ town.name }}
@@ -110,9 +108,10 @@
 									</th>
 
 									<td class="px-6 py-4">
-										<a @click="editTown(town)"	class="font-medium text-blue-600 dark:text-blue-500 hover:underline">አስተካክል</a>
-										|
-										<a @click="confirmDelete(town)" class="font-medium text-red-600 dark:text-red-500 hover:underline">አጥፋ</a>
+										<div class="flex justify-end gap-3">
+											<button type="button" @click="editTown(town)" class="app-link-edit">{{ $t('common.edit') }}</button>
+											<button type="button" @click="confirmDelete(town)" class="app-link-delete">{{ $t('common.delete') }}</button>
+										</div>
 									</td>
 								</tr>
 
@@ -124,16 +123,7 @@
 			</div>
 
 		</div>
-		<div v-if="isModalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opatown-50">
-			<div class="bg-white rounded-lg shadow-lg w-96 p-6">
-			<h2 class="text-xl font-semibold mb-4"> ማጥፋቱን ያረጋግጡ  </h2>
-			<p class="text-gray-700 mb-6">እርግጠኛ ነዎት ለማጥፋት?  <span class="text-teal-600">{{ town.name }}</span></p>
-			<div class="flex justify-end space-x-2">
-				<button @click="() => isModalOpen = false" class="px-4 py-2 bg-gray-300 rounded-lg">አይ </button>
-				<button @click="deleteTown()" class="px-4 py-2 bg-blue-600 bg-opatown-80 text-white rounded-lg">አዎ </button>
-			</div>
-			</div>
-		</div>
+		<ConfirmDialog v-model="isModalOpen" :item-name="town.name" @confirm="deleteTown()" />
 	</AdminLayout>
 </template>
 
@@ -142,6 +132,8 @@ import AdminLayout from '@/components/layout/AdminLayout.vue'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import ComponentCard from '@/components/common/ComponentCard.vue'
 import Alert from '@/components/ui/Alert.vue'
+import EmptyState from '@/components/common/EmptyState.vue'
+import ConfirmDialog from '@/components/ui/ConfirmDialog.vue'
 import Button from '@/components/ui/Button.vue'
 import axios from 'axios'
 
@@ -165,12 +157,13 @@ export default {
 			cities: [],
 		}
 	},
-	components: {
-		AdminLayout,
+	components: {AdminLayout,
 		PageBreadcrumb,
 		ComponentCard,
 		Button,
-		Alert,	
+		Alert,
+		EmptyState,
+		ConfirmDialog,
 	},
 	methods: {
 		addTown() {

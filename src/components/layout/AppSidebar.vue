@@ -21,8 +21,8 @@
           <img v-if="isExpanded || isHovered || isMobileOpen" class="hidden dark:block" src="/images/logo/logo-dark.svg"
             alt="Logo" width="150" height="40" />
           <img v-else src="/images/logo/logo-icon.svg" alt="Logo" width="32" height="32" />
-          <span class="mt-5">
-            ኮምቦልቻ ማረሚያ ቤት
+          <span v-if="isExpanded || isHovered || isMobileOpen" class="mt-1 ml-2 text-sm font-semibold leading-tight text-gray-800 dark:text-white/90">
+            {{ t('app.shortName') }}
           </span>
         </div>
 
@@ -39,12 +39,12 @@
                 : 'justify-start',
             ]">
               <template v-if="isExpanded || isHovered || isMobileOpen">
-                {{ menuGroup.title }}
+                {{ t(menuGroup.titleKey) }}
               </template>
               <HorizontalDots v-else />
             </h2>
             <ul class="flex flex-col gap-4">
-              <li v-for="(item, index) in menuGroup.items" :key="item.name">
+              <li v-for="(item, index) in menuGroup.items" :key="item.nameKey">
                 <button v-if="item.subItems" @click="toggleSubmenu(groupIndex, index)" :class="[
                   'menu-item group w-full',
                   {
@@ -62,7 +62,7 @@
                   ]">
                     <component :is="item.icon" />
                   </span>
-                  <span v-if="isExpanded || isHovered || isMobileOpen" class="menu-item-text">{{ item.name }}</span>
+                  <span v-if="isExpanded || isHovered || isMobileOpen" class="menu-item-text">{{ t(item.nameKey) }}</span>
                   <ChevronDownIcon v-if="isExpanded || isHovered || isMobileOpen" :class="[
                     'ml-auto w-5 h-5 transition-transform duration-200',
                     {
@@ -87,7 +87,7 @@
                   ]">
                     <component :is="item.icon" />
                   </span>
-                  <span v-if="isExpanded || isHovered || isMobileOpen" class="menu-item-text">{{ item.name }}</span>
+                  <span v-if="isExpanded || isHovered || isMobileOpen" class="menu-item-text">{{ t(item.nameKey) }}</span>
                 </router-link>
                 <transition @enter="startTransition" @after-enter="endTransition" @before-leave="startTransition"
                   @after-leave="endTransition">
@@ -107,7 +107,7 @@
                             ),
                           },
                         ]">
-                          {{ subItem.name }}
+                          {{ t(subItem.nameKey) }}
                           <span class="flex items-center gap-1 ml-auto">
                             <span v-if="subItem.new" :class="[
                               'menu-dropdown-badge',
@@ -151,186 +151,18 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import { useRoute } from "vue-router";
-
-import {
-  GridIcon,
-  CalenderIcon,
-  UserCircleIcon,
-  ChatIcon,
-  MailIcon,
-  DocsIcon,
-  PieChartIcon,
-  ChevronDownIcon,
-  HorizontalDots,
-  PageIcon,
-  TableIcon,
-  ListIcon,
-  PlugInIcon,
-} from "../../icons";
-import SidebarWidget from "./SidebarWidget.vue";
-import BoxCubeIcon from "@/icons/BoxCubeIcon.vue";
+import { useI18n } from "vue-i18n";
+import { ChevronDownIcon, HorizontalDots } from "../../icons";
 import { useSidebar } from "@/composables/useSidebar";
+import { adminMenuGroups } from "@/config/navigation";
 
 const route = useRoute();
-
+const { t } = useI18n();
 const { isExpanded, isMobileOpen, isHovered, openSubmenu } = useSidebar();
 
-const menuGroups = [
-  {
-    title: "Menu",
-    items: [
-
-      {
-        icon: GridIcon,
-        name: "ዳሽቦርድ",
-        path: "/",
-      },
-      {
-        icon: UserCircleIcon,
-        name: "የግል መረጃ",
-        path: "/profile",
-      },
-      {
-        icon: UserCircleIcon,
-        name: "ሰራተኞች",
-        path: "/usersList",
-      },
-      {
-        icon: ListIcon,
-        name: "የሰራተኞች መረጃ መመዝገቢያ ",
-        path: "/UserRegister",
-      },
-      {
-        name: "መረጃ መሙያ ቅጽ",
-        icon: ListIcon,
-        subItems: [
-          // { name: "Form Elements", path: "/form-elements", pro: false },
-          { name: "የእስረኞች መረጃ ቅጽ", path: "/prisoner-form", pro: false },
-          // { name: "የእስረኞች ታሪክ ቅጽ", path: "/PrisonerHistory", pro: false },
-          // { name: "የእስረኞች የፍርድ ቤት ታሪክ ቅጽ", path: "/PrisionerCourtHistory", pro: false },  
-          // { name: "Prisioner", path: "/Prisioner", pro: false },
-          // { name: "የእስረኞች ገጽታ ቅጽ", path: "/PrisionerApperance", pro: false },
-          // { name: "የእስረኞች ንብረት ቅጽ ", path: "/PrisionerProperty", pro: false },
-          // { name: "የእስረኞች ገንዘብ ቅጽ", path: "/CriminalCash", pro: false },
-          // { name: "የእስረኞች የህክምና ታሪክ ቅጽ", path: "/MedicalHistory", pro: false },
-
-
-        ],
-      },
-      {
-        name: "የእስረኛ መረጃ ማሳያ",
-        icon: ListIcon,
-        subItems: [
-          { name: "የእስረኛ መረጃ ማሳያ", path: "/ShowPrisioner", pro: false },
-          // { name: "የእስረኛ የህክምና መረጃ ", path: "/ShowMedical", pro: false },
-          { name: "የእስረኛ ገንዘብ ማሳያ", path: "/ShowCashHistory", pro: false },
-          { name: "የእስረኛ ገንዘብ ዝዉዉር", path: "/ShowCashTransactions", pro: false },
-          { name: "የእስረኛ የህክምና ታሪክ ማሳያ", path: "/ShowMedicalInfo", pro: false },
-          { name: "የእስረኛ ስም መጥሪያ  ማሳያ", path: "/showAttendance", pro: false },
-        ],
-      },
-      {
-        name: "ቦታዎች",
-        icon: ListIcon,
-        subItems: [
-          { name: "ክልል ", path: "/regions", pro: false },
-          { name: "ዞን", path: "/cities", pro: false },
-          { name: "ወረዳ", path: "/towns", pro: false },
-        ],
-      },
-      {
-        name: "የሰዉነት ገጽታዎቺ",
-        icon: ListIcon,
-        subItems: [
-          { name: "የጸጉር አይነት", path: "/hair", pro: false },
-
-          { name: "ጥርስ", path: "/Teeths", pro: false },
-          { name: "አፍንጫ", path: "/Noses", pro: false },
-          { name: "ከንፈር", path: "/Lips", pro: false },
-          { name: "ጆሮ", path: "/Ears", pro: false },
-          { name: "የአይን ቀለም", path: "/Eyes", pro: false },
-        ],
-      },
-      {
-        name: "ተጨማሪ መረጃዎች",
-        icon: ListIcon,
-        subItems: [
-          { name: "ሀይማኖቶች", path: "/religions", pro: false },
-          { name: "የበሽታ አይነቶች", path: "/disease-types", pro: false },
-          { name: "ብሄር", path: "/EthnicGroup", pro: false },
-          { name: "የወንጀል አይነቶች", path: "/Crimes", pro: false },
-          { name: "የወንጀለኛ አይነቶች", path: "/CriminalType", pro: false },
-          { name: "የትምህርት ደረጃ", path: "/EducationalLevel", pro: false },
-          { name: "የንብረት አይነቶች", path: "/PropertyType", pro: false },
-          { name: "የእስረኛው ክፍል", path: "/PrisonerCell", pro: false },
-          { name: "ፍርድ ቤቶች", path: "/Courts", pro: false },
-        ],
-      },
-
-
-      // {
-      //   name: "Forms",
-      //   icon: ListIcon,
-      //   subItems: [
-      //     { name: "Form Elements", path: "/form-elements", pro: false },
-      //     { name: "Prisoner Form", path: "/prisoner-form", pro: false },
-      //     { name: "prisoner history", path: "/PrisonerHistory", pro: false },
-      //     { name: "Prisioner crime", path: "/PrisonerCrimes", pro: false },
-      //     { name: "Prisioner Court History", path: "/PrisionerCourtHistory", pro: false },
-      //     // { name: "Prisioner", path: "/Prisioner", pro: false },
-      //     { name: "Prisioner Apperance", path: "/PrisionerApperance", pro: false },
-      //     { name: "Prisioner Property", path: "/PrisionerProperty", pro: false },
-      //     { name: "prisoner cash", path: "/CriminalCash", pro: false },
-      //     { name: "Medical History", path: "/MedicalHistory", pro: false },
-      //     { name: "User Register", path: "/UserRegister", pro: false },
-      //     { name: "show Prisioner", path: "/ShowPrisioner", pro: false },
-      //     { name: "show Medical", path: "/ShowMedical", pro: false },
-      //     { name: "prisoner cash", path: "/ShowPrisonerCash", pro: false },
-      //   ],
-      // },
-
-
-
-
-    ],
-  },
-  // {
-  //   title: "Others",
-  //   items: [
-  //     {
-  //       icon: PieChartIcon,
-  //       name: "Charts",
-  //       subItems: [
-  //         { name: "Line Chart", path: "/line-chart", pro: false },
-  //         { name: "Bar Chart", path: "/bar-chart", pro: false },
-  //       ],
-  //     },
-  //     {
-  //       icon: BoxCubeIcon,
-  //       name: "Ui Elements",
-  //       subItems: [
-  //         { name: "Alerts", path: "/alerts", pro: false },
-  //         { name: "Avatars", path: "/avatars", pro: false },
-  //         { name: "Badge", path: "/badge", pro: false },
-  //         { name: "Buttons", path: "/buttons", pro: false },
-  //         { name: "Images", path: "/images", pro: false },
-  //         { name: "Videos", path: "/videos", pro: false },
-  //       ],
-  //     },
-  //     {
-  //       icon: PlugInIcon,
-  //       name: "Authentication",
-  //       subItems: [
-  //         { name: "Signin", path: "/signin", pro: false },
-  //         { name: "Signup", path: "/signup", pro: false },
-  //       ],
-  //     },
-
-  //   ],
-  // },
-];
+const menuGroups = adminMenuGroups;
 
 const isActive = (path) => route.path === path;
 

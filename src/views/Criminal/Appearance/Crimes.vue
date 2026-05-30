@@ -1,93 +1,51 @@
 <template>
 	<AdminLayout>
-		<PageBreadcrumb :pageTitle="currentPageTitle" />
-		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-			<div class="space-y-6">
-				<ComponentCard title="የወንጀል አይነቶች">
-					<div class="space-y-6">
-						<div>
-							<label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-								የወንጀል አይነቶች 
-							</label>
-							<input type="text" v-model="name" placeholder="የወንጀል አይነት ያስገቡ"
-								class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
-						</div>
+		<PageBreadcrumb pageTitleKey="pages.Crimes" />
+		<div class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
+			<div class="lg:col-span-5 xl:col-span-4">
+				<ComponentCard :title="$t('pages.Crimes')">
+					<div>
+						<label class="app-label">{{ $t('pages.Crimes') }}</label>
+						<input type="text" v-model="name" :placeholder="$t('placeholders.enterCrimeType')" class="app-input" />
 					</div>
-
-					<Button size="sm" variant="primary" @click="handleForm"> 
-						<span v-if="!editValue">
-							{{ adding ? 'በማስገባት ላይ' : 'አስገባ' }} 
-						</span>
-						<span v-else>
-							{{ updating ? 'በማስተካከል ላይ' : 'አስተካክል' }} 
-						</span>
+					<Button size="sm" variant="primary" @click="handleForm" class="mt-4">
+						<span v-if="!editValue">{{ adding ? $t('common.submitting') : $t('common.submit') }}</span>
+						<span v-else>{{ updating ? $t('common.updating') : $t('common.update') }}</span>
 					</Button>
-					<Alert
-						v-if="successMessage"
-						variant="success"
-						:message="successMessage"
-						:showLink="false"
-					/>
-					<Alert
-						v-if="errorMessage"
-						variant="warning"
-						:message="errorMessage"
-						:showLink="false"
-					/>
+					<Alert v-if="successMessage" variant="success" :message="successMessage" :showLink="false" />
+					<Alert v-if="errorMessage" variant="warning" :message="errorMessage" :showLink="false" />
 				</ComponentCard>
 			</div>
-
-			<div
-				class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
-				<div class="max-w-full overflow-x-auto custom-scrollbar">
-
-
-					<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-						<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-							<thead
-								class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+			<div class="lg:col-span-7 xl:col-span-8">
+				<div class="app-table-wrap">
+					<div class="max-w-full overflow-x-auto custom-scrollbar">
+						<table class="app-table">
+							<thead class="app-table-head">
 								<tr>
-									<th scope="col" class="px-6 py-3">
-										ስም
-									</th>
-									<th scope="col" class="px-6 py-3">
-										ተግባር
-									</th>
-
+									<th scope="col" class="px-6 py-3.5">{{ $t('common.name') }}</th>
+									<th scope="col" class="px-6 py-3.5 text-right">{{ $t('common.action') }}</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr v-for="crime in crimes" :key="crime.key" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-									<th scope="row"
-										class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-										{{ crime.name }}
-									</th>
-
+								<tr v-if="crimes.length === 0">
+									<td colspan="2" class="px-6 py-10"><EmptyState :title="$t('common.noData')" /></td>
+								</tr>
+								<tr v-for="crime in crimes" :key="crime.key" class="app-table-row">
+									<th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ crime.name }}</th>
 									<td class="px-6 py-4">
-										<a @click="editcrime(crime)"	class="font-medium cursor-pointer text-blue-600 dark:text-blue-500 hover:underline">ያስተካክሉ</a>
-										|
-										<a @click="confirmDelete(crime)" class="font-medium cursor-pointer text-red-600 dark:text-red-500 hover:underline">ያጥፉ</a>
+										<div class="flex justify-end gap-3">
+											<button type="button" @click="editcrime(crime)" class="app-link-edit">{{ $t('common.edit') }}</button>
+											<button type="button" @click="confirmDelete(crime)" class="app-link-delete">{{ $t('common.delete') }}</button>
+										</div>
 									</td>
 								</tr>
-
 							</tbody>
 						</table>
 					</div>
-
 				</div>
 			</div>
-
 		</div>
-		<div v-if="isModalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-			<div class="bg-white rounded-lg shadow-lg w-96 p-6">
-			<h2 class="text-xl font-semibold mb-4">ያረጋግጡ</h2>
-			<p class="text-gray-700 mb-6">ማጥፋት ይፈልጋሉ?<span class="text-teal-600">{{ crime.name }}</span></p>
-			<div class="flex justify-end space-x-2">
-				<button @click="() => isModalOpen = false" class="px-4 py-2 bg-gray-300 rounded-lg">አይ</button>
-				<button @click="deletecrime()" class="px-4 py-2 bg-blue-600 bg-opacity-80 text-white rounded-lg">አዎ</button>
-			</div>
-			</div>
-		</div>
+		<ConfirmDialog v-model="isModalOpen" :item-name="crime.name" @confirm="deletecrime()" />
 	</AdminLayout>
 </template>
 
@@ -95,6 +53,8 @@
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
 import ComponentCard from '@/components/common/ComponentCard.vue'
+import EmptyState from '@/components/common/EmptyState.vue'
+import ConfirmDialog from '@/components/ui/ConfirmDialog.vue'
 import Alert from '@/components/ui/Alert.vue'
 import Button from '@/components/ui/Button.vue'
 import axios from 'axios'
@@ -102,7 +62,6 @@ import axios from 'axios'
 export default {
 	data() {
 		return {
-			currentPageTitle: 'የወንጀል አይነቶች',
 			crimes: [],
 			crime: {},
 			name: '',
@@ -114,22 +73,13 @@ export default {
 			isModalOpen: false,
 		}
 	},
-	components: {
-		AdminLayout,
-		PageBreadcrumb,
-		ComponentCard,
-		Button,
-		Alert,	
-	},
+	components: { AdminLayout, PageBreadcrumb, ComponentCard, EmptyState, ConfirmDialog, Alert, Button },
 	methods: {
 		addcrime() {
 			this.adding = true
 			this.successMessage = ''
 			this.errorMessage = ''
-			axios
-				.post(this.$store.state.apiServer + 'crime', {
-					name: this.name,
-				})
+			axios.post(this.$store.state.apiServer + 'crime', { name: this.name })
 				.then(response => {
 					this.successMessage = response.data.message
 					this.name = ''
@@ -144,14 +94,10 @@ export default {
 				})
 		},
 		updatecrime() {
-			this.adding = false
 			this.updating = true
 			this.successMessage = ''
 			this.errorMessage = ''
-			axios
-				.put(this.$store.state.apiServer + 'crime/' + this.editValue, {
-					name: this.name,
-				})
+			axios.put(this.$store.state.apiServer + 'crime/' + this.editValue, { name: this.name })
 				.then(response => {
 					this.successMessage = response.data.message
 					this.name = ''
@@ -167,18 +113,10 @@ export default {
 				})
 		},
 		handleForm() {
-			if(this.editValue) {
-				this.updatecrime()
-			} else {
-				this.addcrime()
-			}
+			this.editValue ? this.updatecrime() : this.addcrime()
 		},
 		loadcrime() {
-			axios
-				.get(this.$store.state.apiServer + 'crime')
-				.then(response => {
-					this.crimes = response.data.data
-				})
+			axios.get(this.$store.state.apiServer + 'crime').then(response => { this.crimes = response.data.data })
 		},
 		editcrime(crime) {
 			this.editValue = crime.id
@@ -189,10 +127,8 @@ export default {
 			this.isModalOpen = true
 		},
 		deletecrime() {
-			if(!this.crime.hasOwnProperty('id')) return
-
-			axios
-				.delete(this.$store.state.apiServer + 'crime/' + this.crime.id)
+			if (!this.crime.hasOwnProperty('id')) return
+			axios.delete(this.$store.state.apiServer + 'crime/' + this.crime.id)
 				.then(response => {
 					this.successMessage = response.data.message
 					setTimeout(() => this.successMessage = '', 4000)
@@ -204,11 +140,8 @@ export default {
 					this.errorMessage = error.response.data.message
 					setTimeout(() => this.errorMessage = '', 4000)
 				})
-		}
+		},
 	},
-	mounted() {
-		this.loadcrime()
-	}
+	mounted() { this.loadcrime() },
 }
-
 </script>

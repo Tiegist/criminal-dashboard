@@ -1,198 +1,143 @@
 <template>
-  <div class="w-2/3 mx-auto">
-    <!-- <div class="p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6" v-if="!isProfileInfoModal">
-      <div class="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
-        <div class="flex flex-col items-center w-full gap-6 xl:flex-row">
-          <div class="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800">
-            <img :src="`http://127.0.0.1:8000/${users.photo}`" alt="" />
-          </div>
-          <div class="order-3 xl:order-2">
-            <h4 class="mb-2 text-lg font-semibold text-center text-gray-800 dark:text-white/90 xl:text-left">
-              {{ users.full_name }}
-            </h4>
-            <div class="flex flex-col items-center gap-1 text-center xl:flex-row xl:gap-3 xl:text-left">
-              <p class="text-sm text-gray-500 dark:text-gray-400">የስራ ድርሻ</p>
-              <div class="hidden h-3.5 w-px bg-gray-300 dark:bg-gray-700 xl:block"></div>
-              <p class="text-sm text-gray-500 dark:text-gray-400">{{ users.role }}</p>
-            </div>
-          </div>
+  <div class="mx-auto max-w-4xl space-y-6">
+    <LoadingState v-if="loading" />
 
+    <template v-else-if="!isProfileInfoModal">
+      <!-- Hero card -->
+      <div class="app-card overflow-hidden p-0">
+        <div class="relative h-36 overflow-hidden bg-gradient-to-br from-brand-700 via-brand-500 to-brand-400 sm:h-44">
+          <div class="absolute inset-0 opacity-20"
+            style="background-image: radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px); background-size: 24px 24px;" />
+          <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
+          <div class="absolute -bottom-12 -left-8 h-32 w-32 rounded-full bg-brand-300/30 blur-2xl" />
         </div>
-         <button @click="isProfileInfoModal = true" class="edit-button">
-          <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M15.0911 2.78206C14.2125 1.90338 12.7878 1.90338 11.9092 2.78206L4.57524 10.116C4.26682 10.4244 4.0547 10.8158 3.96468 11.2426L3.31231 14.3352C3.25997 14.5833 3.33653 14.841 3.51583 15.0203C3.69512 15.1996 3.95286 15.2761 4.20096 15.2238L7.29355 14.5714C7.72031 14.4814 8.11172 14.2693 8.42013 13.9609L15.7541 6.62695C16.6327 5.74827 16.6327 4.32365 15.7541 3.44497L15.0911 2.78206ZM12.9698 3.84272C13.2627 3.54982 13.7376 3.54982 14.0305 3.84272L14.6934 4.50563C14.9863 4.79852 14.9863 5.2734 14.6934 5.56629L14.044 6.21573L12.3204 4.49215L12.9698 3.84272ZM11.2597 5.55281L5.6359 11.1766C5.53309 11.2794 5.46238 11.4099 5.43238 11.5522L5.01758 13.5185L6.98394 13.1037C7.1262 13.0737 7.25666 13.003 7.35947 12.9002L12.9833 7.27639L11.2597 5.55281Z"
-              fill="" />
-          </svg>
-          ያስተካክሉ
-        </button> 
-      </div>
-    </div> -->
 
-    <div class=" p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6" v-if="!isProfileInfoModal">
-
-      <div class="w-11/11">
-        <div class="">
-          <div class="flex justify-between">
-            <div>
-
-              <h4 class="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
-                <!-- የግል መረጃ -->
-              </h4>
-            </div>
-            <div>
-              <!-- <button class="edit-button " @click="isProfileInfoModal = true">
-                <svg class="fill-current " width="18" height="18" viewBox="0 0 18 18" fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M15.0911 2.78206C14.2125 1.90338 12.7878 1.90338 11.9092 2.78206L4.57524 10.116C4.26682 10.4244 4.0547 10.8158 3.96468 11.2426L3.31231 14.3352C3.25997 14.5833 3.33653 14.841 3.51583 15.0203C3.69512 15.1996 3.95286 15.2761 4.20096 15.2238L7.29355 14.5714C7.72031 14.4814 8.11172 14.2693 8.42013 13.9609L15.7541 6.62695C16.6327 5.74827 16.6327 4.32365 15.7541 3.44497L15.0911 2.78206ZM12.9698 3.84272C13.2627 3.54982 13.7376 3.54982 14.0305 3.84272L14.6934 4.50563C14.9863 4.79852 14.9863 5.2734 14.6934 5.56629L14.044 6.21573L12.3204 4.49215L12.9698 3.84272ZM11.2597 5.55281L5.6359 11.1766C5.53309 11.2794 5.46238 11.4099 5.43238 11.5522L5.01758 13.5185L6.98394 13.1037C7.1262 13.0737 7.25666 13.003 7.35947 12.9002L12.9833 7.27639L11.2597 5.55281Z"
-                    fill="" />
-                </svg>
-                ያስተካክሉ
-              </button> -->
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-4 w-6/7 pl-40">
-            <div class=" w-5/6">
-              <div class="flex justify-between w-1/2">
-                <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">ስም :</p>
-                <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1 "> {{ users.full_name }}</p>
-              </div>
-
-              <div class="flex justify-between  w-1/3 mt-3">
-                <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">እድሜ:</p>
-                <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1">{{ users.age }}</p>
-              </div>
+        <div class="relative px-6 pb-8 pt-0">
+          <div class="flex flex-col items-center gap-5 sm:flex-row sm:items-end sm:gap-8">
+            <div
+              class="-mt-16 flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-2xl border-4 border-white bg-brand-50 shadow-theme-lg dark:border-gray-900 dark:bg-brand-500/10 sm:-mt-20 sm:h-32 sm:w-32">
+              <img v-if="users.photo" :src="photoUrl" :alt="users.full_name" class="h-full w-full object-cover" />
+              <span v-else class="text-3xl font-bold text-brand-600 dark:text-brand-400">{{ initials }}</span>
             </div>
 
-
-            <div class="w-7/8">
-              <div class="flex justify-between w-1/3">
-
-                <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400 ">
-                  ልዩ ስም :
-                </p>
-                <p class="text-sm font-medium text-gray-800 dark:text-white/90 mt-1">
-                  {{ users.user_name }}
-                </p>
+            <div class="flex-1 pb-1 text-center sm:text-left">
+              <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {{ users.full_name || '—' }}
+              </h2>
+              <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">@{{ users.user_name || '—' }}</p>
+              <div class="mt-3 flex flex-wrap items-center justify-center gap-2 sm:justify-start">
+                <span class="app-badge-brand">{{ roleLabel }}</span>
+                <span v-if="users.age" class="app-badge bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300">
+                  {{ users.age }} {{ $t('profile.age') }}
+                </span>
               </div>
-              <div class="flex justify-between  w-1/2 mt-3">
-                <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">የስራ ድርሻ:</p>
-
-                 <p class="text-sm font-medium text-gray-800 dark:text-white/90 " v-if="users.role == 1">አስተዳዳሪ</p>
-                <p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="users.role == 2">ፖሊስ</p>
-                <p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="users.role == 3">ጥበቃ</p>
-                <p class="text-sm font-medium text-gray-800 dark:text-white/90" v-if="users.role == 4">ሀኪም</p>
-              </div>
-
-            </div>
-
-
-
-            <div class="flex  w-1/2">
-              <p class="mb-2 text-lg leading-normal text-gray-500 dark:text-gray-400">ስልክ ቁጥር :</p>
-              <p class="text-sm font-medium text-gray-800 dark:text-white/90 ml-4 mt-1">{{ users.phone_number }}</p>
             </div>
           </div>
         </div>
-
-
       </div>
-    </div>
 
-    <div v-if="isProfileInfoModal"
-      class="no-scrollbar relative w-full max-w-[700px] overflow-y-auto  bg-white  dark:bg-gray-900 p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6">
-      <!-- close btn -->
-      <button @click="isProfileInfoModal = false"
-        class="transition-color absolute right-5 top-5 z-999 flex h-11 w-11 items-center justify-center rounded-full bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-gray-600 dark:bg-gray-700 dark:bg-white/[0.05] dark:text-gray-400 dark:hover:bg-white/[0.07] dark:hover:text-gray-300">
-        <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd"
-            d="M6.04289 16.5418C5.65237 16.9323 5.65237 17.5655 6.04289 17.956C6.43342 18.3465 7.06658 18.3465 7.45711 17.956L11.9987 13.4144L16.5408 17.9565C16.9313 18.347 17.5645 18.347 17.955 17.9565C18.3455 17.566 18.3455 16.9328 17.955 16.5423L13.4129 12.0002L17.955 7.45808C18.3455 7.06756 18.3455 6.43439 17.955 6.04387C17.5645 5.65335 16.9313 5.65335 16.5408 6.04387L11.9987 10.586L7.45711 6.04439C7.06658 5.65386 6.43342 5.65386 6.04289 6.04439C5.65237 6.43491 5.65237 7.06808 6.04289 7.4586L10.5845 12.0002L6.04289 16.5418Z"
-            fill="" />
+      <!-- Details -->
+      <div class="app-card p-6 md:p-8">
+        <h3 class="app-page-title mb-6">{{ $t('profile.accountDetails') }}</h3>
+        <dl class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div v-for="field in detailFields" :key="field.key"
+            class="group flex gap-4 rounded-xl border border-gray-100 bg-gray-50/60 p-4 transition-colors duration-200 hover:border-brand-200 hover:bg-brand-50/30 dark:border-gray-800 dark:bg-white/[0.02] dark:hover:border-brand-500/30 dark:hover:bg-brand-500/5">
+            <div
+              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-brand-600 shadow-theme-xs dark:bg-gray-900 dark:text-brand-400">
+              <component :is="field.icon" class="h-5 w-5" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <dt class="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                {{ field.label }}
+              </dt>
+              <dd class="mt-0.5 truncate text-sm font-semibold text-gray-900 dark:text-white/90">
+                {{ field.value || '—' }}
+              </dd>
+            </div>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Contact -->
+      <div class="app-card p-6 md:p-8">
+        <h3 class="app-page-title mb-6">{{ $t('profile.contactInfo') }}</h3>
+        <div
+          class="flex items-center gap-4 rounded-xl border border-gray-100 bg-gray-50/60 p-5 dark:border-gray-800 dark:bg-white/[0.02]">
+          <div
+            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-success-50 text-success-600 dark:bg-success-500/10 dark:text-success-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.772v2.25z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
+              {{ $t('profile.phone') }}
+            </p>
+            <p class="mt-0.5 text-lg font-semibold text-gray-900 dark:text-white">{{ users.phone_number || '—' }}</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- Edit form (preserved for future use) -->
+    <div v-else class="app-card relative p-6 md:p-8">
+      <button type="button" @click="isProfileInfoModal = false"
+        class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-gray-500 transition-colors hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
-      <div class="px-2 pr-14">
-        <h4 class="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-          የግል መረጃዎትን ያስተካክሉ
-        </h4>
 
-      </div>
-      <form class="">
-        <div class="custom-scrollbar h-[458px] overflow-y-auto p-2">
+      <h4 class="mb-6 text-xl font-semibold text-gray-800 dark:text-white/90">{{ $t('profile.editTitle') }}</h4>
 
-          <div class="mt-7">
-            <h5 class="mb-5 text-lg font-medium text-gray-800 dark:text-white/90 lg:mb-6">
-              የግል መረጃ
-            </h5>
-
-            <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
-              <div class="col-span-2 lg:col-span-1">
-                <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                  ስም
-                </label>
-                <input type="text" value="Musharof"
-                  class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
-              </div>
-
-              <div class="col-span-2 lg:col-span-1">
-                <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                  እድሜ
-                </label>
-                <input type="text"
-                  class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
-              </div>
-
-              <div class="col-span-2 lg:col-span-1">
-                <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                  ልዩ ስም
-                </label>
-                <input type="text"
-                  class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
-              </div>
-
-              <div class="col-span-2 lg:col-span-1">
-                <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                  ስልክ ቁጥር
-                </label>
-                <input type="text"
-                  class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
-              </div>
-
-              <div class="col-span-2">
-                <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                  የስራ ድርሻ
-                </label>
-                <input type="text"
-                  class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
-              </div>
-            </div>
+      <form @submit.prevent>
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div>
+            <label class="app-label">{{ $t('profile.fullName') }}</label>
+            <input type="text" v-model="info.full_name" class="app-input" />
+          </div>
+          <div>
+            <label class="app-label">{{ $t('profile.age') }}</label>
+            <input type="text" v-model="info.age" class="app-input" />
+          </div>
+          <div>
+            <label class="app-label">{{ $t('profile.username') }}</label>
+            <input type="text" v-model="info.user_name" class="app-input" />
+          </div>
+          <div>
+            <label class="app-label">{{ $t('profile.phone') }}</label>
+            <input type="text" v-model="info.phone_number" class="app-input" />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="app-label">{{ $t('profile.role') }}</label>
+            <input type="text" v-model="info.role" class="app-input" />
           </div>
         </div>
-        <div class="flex items-center gap-3 px-2 mt-6 lg:justify-end">
-          <button @click="isProfileInfoModal = false" type="button"
-            class="flex w-full justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] sm:w-auto">
-            ይመለሱ
+        <div class="mt-6 flex flex-wrap justify-end gap-3">
+          <button type="button" class="app-btn app-btn-secondary" @click="isProfileInfoModal = false">
+            {{ $t('common.cancel') }}
           </button>
-          <button @click="saveProfile" type="button"
-            class="flex w-full justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 sm:w-auto">
-            ያስተካክሉ
+          <button type="button" class="app-btn app-btn-primary" @click="saveProfile">
+            {{ $t('common.save') }}
           </button>
         </div>
       </form>
     </div>
-
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted, h } from 'vue'
+import { useI18n } from 'vue-i18n'
 import axios from 'axios'
+import LoadingState from '@/components/common/LoadingState.vue'
+
+const { t } = useI18n()
 
 const isProfileInfoModal = ref(false)
-const users = ref([])
+const loading = ref(true)
+const users = ref({})
 const roles = ref([])
 const info = reactive({
   full_name: '',
@@ -200,8 +145,73 @@ const info = reactive({
   phone_number: '',
   user_name: '',
   age: null,
-  sex: ''
+  sex: '',
 })
+
+const photoUrl = computed(() =>
+  users.value.photo ? `https://kalkidan.net:2083/${users.value.photo}` : '',
+)
+
+const initials = computed(() => {
+  const name = users.value.full_name || ''
+  const parts = name.trim().split(/\s+/).filter(Boolean)
+  if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase()
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase()
+  return '?'
+})
+
+const roleLabel = computed(() => {
+  const roleMap = {
+    1: t('profile.roles.admin'),
+    2: t('profile.roles.police'),
+    3: t('profile.roles.guard'),
+    4: t('profile.roles.doctor'),
+  }
+  return roleMap[users.value.role] || '—'
+})
+
+const IconUser = () =>
+  h('svg', { fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor', 'stroke-width': '1.5' }, [
+    h('path', {
+      'stroke-linecap': 'round',
+      'stroke-linejoin': 'round',
+      d: 'M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z',
+    }),
+  ])
+
+const IconAt = () =>
+  h('svg', { fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor', 'stroke-width': '1.5' }, [
+    h('path', {
+      'stroke-linecap': 'round',
+      'stroke-linejoin': 'round',
+      d: 'M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25',
+    }),
+  ])
+
+const IconBadge = () =>
+  h('svg', { fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor', 'stroke-width': '1.5' }, [
+    h('path', {
+      'stroke-linecap': 'round',
+      'stroke-linejoin': 'round',
+      d: 'M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z',
+    }),
+  ])
+
+const IconCalendar = () =>
+  h('svg', { fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor', 'stroke-width': '1.5' }, [
+    h('path', {
+      'stroke-linecap': 'round',
+      'stroke-linejoin': 'round',
+      d: 'M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5',
+    }),
+  ])
+
+const detailFields = computed(() => [
+  { key: 'name', label: t('profile.fullName'), value: users.value.full_name, icon: IconUser },
+  { key: 'username', label: t('profile.username'), value: users.value.user_name, icon: IconAt },
+  { key: 'role', label: t('profile.role'), value: roleLabel.value, icon: IconBadge },
+  { key: 'age', label: t('profile.age'), value: users.value.age, icon: IconCalendar },
+])
 
 const saveProfile = async () => {
   const userData = {
@@ -210,41 +220,42 @@ const saveProfile = async () => {
     phone_number: info.phone_number,
     user_name: info.user_name,
     age: info.age,
-    sex: info.sex
+    sex: info.sex,
   }
 
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/user', userData, {
-      headers: {
-        "Content-Type": "application/json"
-      }
+    const response = await axios.post('https://kalkidan.net:2083/api/user', userData, {
+      headers: { 'Content-Type': 'application/json' },
     })
     console.log('Profile saved', response.data)
     isProfileInfoModal.value = false
+    fetchUser()
   } catch (error) {
-    console.error('Error saving profile', error)
+    console.error(' መገለጫ ማስቀመጥ ላይ ስህተት ስላለ እባክዎ እንደገና ይሞክሩ', error)
   }
 }
 
 const fetchUser = async () => {
+  loading.value = true
   try {
-    const response = await axios.get('http://127.0.0.1:8000/api/user')
+    const response = await axios.get('https://kalkidan.net:2083/api/user')
     users.value = response.data
-    console.log('Users:', users.value)
   } catch (error) {
-    console.error('Error fetching user information', error)
+    console.error('የተጠቃሚ መረጃ ማምጣት ላይ ስህተት', error)
+  } finally {
+    loading.value = false
   }
 }
 
 const fetchRole = async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/api/user-role')
+    const response = await axios.get('https://kalkidan.net:2083/api/user-role')
     roles.value = response.data
-    console.log('Roles:', roles.value)
   } catch (error) {
     console.error('Error fetching roles', error)
   }
 }
+
 onMounted(() => {
   fetchUser()
   fetchRole()

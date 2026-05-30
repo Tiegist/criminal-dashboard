@@ -76,14 +76,14 @@ const showPrisoiner = ref(false)
 const showPrisoinerInfo = ref(false)
 const showMore = ref(false)
 const fetchPrisioner = () => {
-  axios.get('http://127.0.0.1:8000/api/prisoner').then((res) => {
+  axios.get('https://kalkidan.net:2083/api/prisoner').then((res) => {
 
     singlePrisionerInfo.value = res.data.Prisioner
     console.log('Prisioner Infro', singlePrisionerInfo.value)
   })
 };
 const fetchMedical = () => {
-  axios.get('http://127.0.0.1:8000/api/medical').then((res) => {
+  axios.get('https://kalkidan.net:2083/api/medical').then((res) => {
 
     medicalInfo.value = res.data.data[0]
     console.log('med', medicalInfo.value)
@@ -98,7 +98,7 @@ const fetchMedical = () => {
 //     const fetchSinglePrisionerInfo = (id)=>{
 //     const prisoner_id =  localStorage.getItem('prisoner_id')
 //       console.log('prisoner_id',prisoner_id)
-// axios.get(`http://127.0.0.1:8000/api/prision-history/${prisoner_id}`).then((res)=>{
+// axios.get(`https://kalkidan.net:2083/api/prision-history/${prisoner_id}`).then((res)=>{
 //   singlePrisionerInfo.value = res.data.data
 //   console.log('med',singlePrisionerInfo.value)
 //   showPrisoinerInfo.value = true

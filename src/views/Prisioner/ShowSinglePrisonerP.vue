@@ -182,7 +182,7 @@ export default {
 
     const fetchPrisonerCell = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/prisonerCell');
+        const response = await axios.get('https://kalkidan.net:2083/api/prisonerCell');
         prisonerCells.value = response.data.data;
         console.log('criminal cell', religions.value);
       } catch (error) {
@@ -192,7 +192,7 @@ export default {
 
     const fetchCities = () => {
       axios
-        .get('http://127.0.0.1:8000/api/city')
+        .get('https://kalkidan.net:2083/api/city')
         .then((res) => {
           cities.value = res.data.data;
           console.log('citiesss', cities.value);
@@ -201,7 +201,7 @@ export default {
     };
     const fetchEducationalLevels = () => {
       axios
-        .get('http://127.0.0.1:8000/api/education')
+        .get('https://kalkidan.net:2083/api/education')
         .then((res) => {
           educationalLevels.value = res.data.data;
           console.log('educational levels', educationalLevels.value);
@@ -210,7 +210,7 @@ export default {
     };
     const fetchReligions = () => {
       axios
-        .get('http://127.0.0.1:8000/api/religion')
+        .get('https://kalkidan.net:2083/api/religion')
         .then((res) => {
           religions.value = res.data.data;
           console.log('religion', religions.value);
@@ -219,7 +219,7 @@ export default {
     };
     const fetchTowns = () => {
       axios
-        .get('http://127.0.0.1:8000/api/town')
+        .get('https://kalkidan.net:2083/api/town')
         .then((res) => {
           towns.value = res.data.data;
           console.log('towns', towns.value);
@@ -228,7 +228,7 @@ export default {
     };
     const fetchCriminals = () => {
       axios
-        .get('http://127.0.0.1:8000/api/criminalType')
+        .get('https://kalkidan.net:2083/api/criminalType')
         .then((res) => {
           criminals.value = res.data.data;
           console.log('criminals', criminals.value);
@@ -248,7 +248,7 @@ export default {
 
       try {
         const response = await axios.put(
-          'http://127.0.0.1:8000/api/prision-history',
+          'https://kalkidan.net:2083/api/prision-history',
           formData,
           {
             headers: {
@@ -300,7 +300,7 @@ export default {
     const fetchSinglePrisionerInfo = () => {
       const prisoner_id = localStorage.getItem('prisoner_id');
       axios
-        .get(`http://127.0.0.1:8000/api/prision-history`)
+        .get(`https://kalkidan.net:2083/api/prision-history`)
         .then((res) => {
           singlePrisioner.value = res.data.data;
           console.log('single prisioner info', singlePrisioner.value);

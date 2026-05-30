@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import i18n from '../i18n'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -705,6 +706,14 @@ const router = createRouter({
 export default router
 
 router.beforeEach((to, from, next) => {
-  // document.title = `Vue.js ${to.meta.title} | TailAdmin - Vue.js Tailwind CSS Dashboard Template`
+  const routeName = to.name
+  if (routeName && typeof routeName === 'string') {
+    const key = `pages.${routeName}`
+    if (i18n.global.te(key)) {
+      document.title = `${i18n.global.t(key)} | ${i18n.global.t('app.name')}`
+    } else {
+      document.title = i18n.global.t('app.name')
+    }
+  }
   next()
 })

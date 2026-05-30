@@ -556,7 +556,7 @@ import Button from '@/components/ui/Button.vue';
 saveChanges() {
       // Make API call to update the prisoner information
       axios
-        .put(`http://127.0.0.1:8000/api/prision-history/${this.editedHistory.id}`, this.editedHistory)
+        .put(`https://kalkidan.net:2083/api/prision-history/${this.editedHistory.id}`, this.editedHistory)
         .then((response) => {
           // Emit the 'update-history' event with the updated data
           this.$emit('update-history', response.data.data);

@@ -2,130 +2,65 @@
 	<LayoutComponent>
 		<div>
 			<div class="flex">
-				<div class="bg-gray-800 shadow-2xl rounded-2xl w-full p-8 border border-gray-700">
-					<h2 class="text-3xl font-bold text-white text-center">📋 የታራሚ መረጃ ይፈልጉ </h2>
+				<div class="app-search-panel w-full">
+					<h2 class="app-search-title text-center mb-8">📋 የታራሚ መረጃ ይፈልጉ</h2>
 
 					<div class="space-y-6">
 						<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
 
 							<div>
-								<label class="block text-sm font-medium text-gray-300 mb-1">ስም</label>
-								<div class="relative">
-									<span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-									</span>
-									<input type="text" v-model="prisoner.first_name"
-										class="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-								</div>
+								<label class="app-label">ስም</label>
+								<input type="text" v-model="prisoner.first_name" class="app-input">
 							</div>
 
 
 							<div>
-								<label class="block text-sm font-medium text-gray-300 mb-1">የአባት ስም</label>
-								<div class="relative">
-									<span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-									</span>
-									<input type="text" v-model="prisoner.middle_name"
-										class="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-								</div>
+								<label class="app-label">የአባት ስም</label>
+								<input type="text" v-model="prisoner.middle_name" class="app-input">
 							</div>
 
 							<div>
-								<label class="block text-sm font-medium text-gray-300 mb-1">የአያት ስም</label>
-								<div class="relative">
-									<span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-									</span>
-									<input type="text" v-model="prisoner.last_name"
-										class="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-								</div>
+								<label class="app-label">የአያት ስም</label>
+								<input type="text" v-model="prisoner.last_name" class="app-input">
 							</div>
 
 							<div>
-								<label class="block text-sm font-medium text-gray-300 mb-1">የእናት ስም</label>
-								<div class="relative">
-									<span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-									</span>
-									<input type="text" v-model="prisoner.mother_name"
-										class="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-								</div>
+								<label class="app-label">የእናት ስም</label>
+								<input type="text" v-model="prisoner.mother_name" class="app-input">
 							</div>
 
 
 							<div>
-								<label class="block text-sm font-medium text-gray-300 mb-1">እድሜ</label>
-								<div class="relative">
-									<span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-
-									</span>
-									<input type="tel" v-model="prisoner.date_of_birth"
-										class="w-full pl-10 pr-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-								</div>
+								<label class="app-label">እድሜ</label>
+								<input type="tel" v-model="prisoner.date_of_birth" class="app-input">
 							</div>
 
 
 							<div>
-								<label class="block text-sm font-medium text-gray-300 mb-1">ጾታ</label>
-								<div class="relative">
-									<select v-model="prisoner.sex"
-										class="w-full pl-3 pr-10 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
-
-										<option v-for="option in sexes" :key="option.id" :value="option.id">
-											{{ option.name }}
-										</option>
-									</select>
-									<div
-										class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
-										<svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"
-											viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-										</svg>
-									</div>
-								</div>
+								<label class="app-label">ጾታ</label>
+								<select v-model="prisoner.sex" class="app-select">
+									<option v-for="option in sexes" :key="option.id" :value="option.id">
+										{{ option.name }}
+									</option>
+								</select>
 							</div>
-
-
 
 							<div v-if="isAdmin">
-								<label class="block text-sm font-medium text-gray-300 mb-1">ሀይማኖት</label>
-								<div class="relative">
-									<select v-model="prisoner.religion_id"
-										class="w-full pl-3 pr-10 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
-
-										<option v-for="religion in religions" :key="religion.id" :value="religion.id">
-											{{ religion.name }}
-										</option>
-									</select>
-
-									<!-- Optional dropdown icon -->
-									<div
-										class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
-										<svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"
-											viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-										</svg>
-									</div>
-								</div>
+								<label class="app-label">ሀይማኖት</label>
+								<select v-model="prisoner.religion_id" class="app-select">
+									<option v-for="religion in religions" :key="religion.id" :value="religion.id">
+										{{ religion.name }}
+									</option>
+								</select>
 							</div>
 
-
-
 							<div v-if="isAdmin">
-								<label class="block text-sm font-medium text-gray-300 mb-1">የወንጀል አይነት</label>
-								<div class="relative">
-									<select v-model="prisoner.crime_id"
-										class="w-full pl-3 pr-10 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
-
-										<option v-for="crime in crimes" :key="crime.id" :value="crime.id">
-											{{ crime.name }}
-										</option>
-									</select>
-									<div
-										class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
-										<svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"
-											viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-										</svg>
-									</div>
-								</div>
+								<label class="app-label">የወንጀል አይነት</label>
+								<select v-model="prisoner.crime_id" class="app-select">
+									<option v-for="crime in crimes" :key="crime.id" :value="crime.id">
+										{{ crime.name }}
+									</option>
+								</select>
 							</div>
 
 
@@ -133,13 +68,11 @@
 						<div class="pt-6">
 							<div class="flex justify-between w-3/4 mx-auto">
 
-								<button @click="fetchPrisioner('', true)"
-									class="w-2/3 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-200 shadow-lg">
+								<button @click="fetchPrisioner('', true)" class="app-btn-primary flex-1 py-3">
 									🔎 {{ searching ? 'Searching' : 'ይፈልጉ' }}
 								</button>
-	
-								<button @click="clearSearch()"
-									class="w-2/3 py-3 ml-5 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition-all duration-200 shadow-lg">
+
+								<button @click="clearSearch()" class="app-btn-secondary flex-1 py-3 ml-4">
 									ይሰርዙ
 								</button>
 							</div>
@@ -161,32 +94,25 @@
 			</div>
 
 		</div>
-		<div
-			class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] mt-10">
+		<div class="app-table-wrap mt-8">
 			<div class="max-w-full overflow-x-auto custom-scrollbar">
-				<table class="min-w-full">
-					<thead>
-						<tr class="border-b border-gray-200 dark:border-gray-700">
-							<th class="px-5 py-3 text-left w-3/11 sm:px-6">
-								<p class="font-medium text-gray-500 text-theme-md dark:text-gray-400">ስም </p>
-							</th>
-							<th class="px-5 py-3 text-left w-2/11 sm:px-6">
-								<p class="font-medium text-gray-500 text-theme-md dark:text-gray-400">የአባት ስም </p>
-							</th>
-							<th class="px-5 py-3 text-left w-2/11 sm:px-6">
-								<p class="font-medium text-gray-500 text-theme-md dark:text-gray-400">የአያት ስም </p>
-							</th>
-							<th class="px-5 py-3 text-left w-2/11 sm:px-6">
-								<p class="font-medium text-gray-500 text-theme-md dark:text-gray-400">የ/ወ/መ/ፍ/ቁጥር</p>
-							</th>
-							<th class="px-5 py-3 text-left w-2/11 sm:px-6">
-								<p class="font-medium text-gray-500 text-theme-md dark:text-gray-400">ድርጊቶች</p>
-							</th>
+				<table class="app-table min-w-full">
+					<thead class="app-table-head">
+						<tr>
+							<th class="px-5 py-3.5 text-left">ስም</th>
+							<th class="px-5 py-3.5 text-left">የአባት ስም</th>
+							<th class="px-5 py-3.5 text-left">የአያት ስም</th>
+							<th class="px-5 py-3.5 text-left">የ/ወ/መ/ፍ/ቁጥር</th>
+							<th class="px-5 py-3.5 text-right">ድርጊቶች</th>
 						</tr>
 					</thead>
-					<tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-						<tr v-for="(user, index) in PrisionerInfo" :key="index"
-							class="border-t border-gray-100 dark:border-gray-800">
+					<tbody>
+						<tr v-if="PrisionerInfo.length === 0">
+							<td colspan="5" class="px-6 py-10">
+								<EmptyState :title="$t('common.noResults')" />
+							</td>
+						</tr>
+						<tr v-for="(user, index) in PrisionerInfo" :key="index" class="app-table-row">
 							<td class="px-5 py-4 sm:px-6">
 								<p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ user.first_name }}</p>
 							</td>
@@ -326,6 +252,7 @@ import { ref, onMounted, computed } from 'vue';
 import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue';
 import AdminLayout from '@/components/layout/AdminLayout.vue';
 import AdminLayoutMedical from '@/components/layout/AdminLayoutMedical.vue';
+import EmptyState from '@/components/common/EmptyState.vue';
 import Button from '@/components/ui/Button.vue';
 import FlatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';

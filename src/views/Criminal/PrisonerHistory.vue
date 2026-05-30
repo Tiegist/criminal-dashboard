@@ -3,7 +3,7 @@
     <PageBreadcrumb :pageTitle="currentPageTitle" />
     <div class="flex w-full ">
       <div class="w-1/2 mr-10 ">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የእስረኛው የመቆያ ክፍል
         </label>
         <div class="relative z-20 bg-transparent">
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="w-1/2">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የእስረኛው አይነት
         </label>
         <div class="relative z-20 bg-transparent">
@@ -53,7 +53,7 @@
     <!-- ///// -->
     <div class="flex w-full mt-5">
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           አሁን የሚኖርበት ዞን
         </label>
         <div class="relative z-20 bg-transparent">
@@ -75,7 +75,7 @@
         </div>
       </div>
       <div class="w-1/2">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የትምርት ደረጃ
         </label>
         <div class="relative z-20 bg-transparent">
@@ -101,7 +101,7 @@
     <!-- ////////////// -->
     <div class="flex w-full mt-5">
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           ሀይማኖት
         </label>
         <div class="relative z-20 bg-transparent">
@@ -124,11 +124,11 @@
       </div>
 
       <div class="w-1/2 ">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የቅርብ ተጠሪ
         </label>
         <input type="text" v-model="histories.closest_respondent"
-          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+          class="app-input" />
       </div>
 
 
@@ -137,7 +137,7 @@
     <div class="flex w-full mt-5">
 
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የቅርብ ተጠሪ መኖሪያ ከተማ
         </label>
         <div class="relative z-20 bg-transparent">
@@ -159,17 +159,17 @@
         </div>
       </div>
       <div class="w-1/2">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የቅርብ ተጠሪ መኖሪያ ቀበሌ
         </label>
         <input type="text" v-model="histories.closest_respondent_district"
-          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+          class="app-input" />
       </div>
     </div>
 
     <div class="flex w-full mt-5">
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የታሰረበት ቀን
         </label>
         <div class="relative">
@@ -189,7 +189,7 @@
       </div>
 
       <div class="w-1/2">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           ፎቶ ያስገቡ
         </label>
         <input @change="handlePhoto" accept="image/*" type="file"
@@ -203,7 +203,7 @@
 
 
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           እስራቱን ጨርሶ የሚፈታበት ቀን
         </label>
         <div class="relative">
@@ -221,25 +221,25 @@
         </div>
       </div>
       <div class="w-1/2 ">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           ስራ
         </label>
         <input type="text" v-model="histories.job"
-          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+          class="app-input" />
       </div>
       <!-- ///////// -->
     </div>
     <div class="flex w-full mt-5">
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           አሁን የሚኖርበት ቀበሌ
         </label>
         <input type="text" v-model="histories.current_district"
-          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+          class="app-input" />
       </div>
       <!-- ///// -->
       <div class="w-1/2">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           ሞባይል ስልክ
         </label>
         <div class="relative">
@@ -252,17 +252,17 @@
     </div>
     <div class="flex w-full mt-5">
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የመፈቻ ምክንያት
         </label>
         <input type="text" v-model="histories.release_reason"
-          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+          class="app-input" />
       </div>
 
 
       <!-- ///// -->
       <div class="w-1/2">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የቤት ስልክ
         </label>
         <div class="relative">
@@ -274,7 +274,7 @@
     </div>
     <div class="flex w-full mt-5">
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           በምህረት የሚፈታበት ቀን
         </label>
         <div class="relative">
@@ -292,7 +292,7 @@
         </div>
       </div>
       <div class="w-1/2 ">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የእስር ቅጣቱ ያለቀበት ቀን
         </label>
         <div class="relative">
@@ -381,7 +381,7 @@ export default {
 
     const fetchEducations = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/education');
+        const response = await axios.get('https://kalkidan.net:2083/api/education');
         educations.value = response.data.data;
         console.log('education', educations.value);
       } catch (error) {
@@ -391,7 +391,7 @@ export default {
 
     const fetchCriminalType = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/criminalType');
+        const response = await axios.get('https://kalkidan.net:2083/api/criminalType');
         criminalTypes.value = response.data.data;
         console.log('criminal type', criminalTypes.value);
       } catch (error) {
@@ -401,7 +401,7 @@ export default {
 
     const fetchCity = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/city');
+        const response = await axios.get('https://kalkidan.net:2083/api/city');
         Cities.value = response.data.data;
         console.log('city', Cities.value);
       } catch (error) {
@@ -411,7 +411,7 @@ export default {
 
     const fetchTowns = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/town');
+        const response = await axios.get('https://kalkidan.net:2083/api/town');
         towns.value = response.data.data;
         console.log('town', towns.value);
       } catch (error) {
@@ -421,7 +421,7 @@ export default {
 
     const fetchReligion = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/religion');
+        const response = await axios.get('https://kalkidan.net:2083/api/religion');
         religions.value = response.data.data;
         console.log('religion', religions.value);
       } catch (error) {
@@ -430,7 +430,7 @@ export default {
     };
     const fetchPrisonerCell = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/prisonerCell');
+        const response = await axios.get('https://kalkidan.net:2083/api/prisonerCell');
         prisonerCells.value = response.data.data;
         console.log('criminal cell', religions.value);
       } catch (error) {
@@ -460,7 +460,7 @@ export default {
       }
 
       try {
-        const response = await axios.post('http://127.0.0.1:8000/api/prision-history', formData, {
+        const response = await axios.post('https://kalkidan.net:2083/api/prision-history', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
