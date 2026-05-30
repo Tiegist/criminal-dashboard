@@ -326,7 +326,7 @@ const model = ref({
 })
 const fetchstatus = async () => {
   try {
-    const res = await axios.get('http://127.0.0.1:8000/api/status');
+    const res = await axios.get('https://kalkidan.net:2083/api/status');
     statuses.value = res.data
     console.log('response', statuses.value);
   } catch (error) {
@@ -335,7 +335,7 @@ const fetchstatus = async () => {
 }
 const fetchCourt = async () => {
   try {
-    const res = await axios.get('http://127.0.0.1:8000/api/court');
+    const res = await axios.get('https://kalkidan.net:2083/api/court');
     courts.value = res.data.data
     console.log('response', courts.value);
   } catch (error) {
@@ -344,7 +344,7 @@ const fetchCourt = async () => {
 }
 const fetchCriminalStatus = async () => {
   try {
-    const res = await axios.get('http://127.0.0.1:8000/api/criminal-status');
+    const res = await axios.get('https://kalkidan.net:2083/api/criminal-status');
     criminalStatuses.value = res.data
     console.log('response', criminalStatuses.value);
   } catch (error) {
@@ -353,7 +353,7 @@ const fetchCriminalStatus = async () => {
 }
 //   const fetchEthnic = async ()=>{
 //     try {
-//       const res = await axios.get('http://127.0.0.1:8000/api/ethincgroup');
+//       const res = await axios.get('https://kalkidan.net:2083/api/ethincgroup');
 //       ethnicGroups.value = res.data.data
 //       console.log('response',  ethnicGroups.value); 
 //     } catch (error) {
@@ -362,7 +362,7 @@ const fetchCriminalStatus = async () => {
 //   }
 //   const fetchTown = async ()=>{
 //     try {
-//       const res = await axios.get('http://127.0.0.1:8000/api/town');
+//       const res = await axios.get('https://kalkidan.net:2083/api/town');
 //       Towns.value = res.data.data
 //       console.log('response',  Towns.value); 
 //     } catch (error) {
@@ -381,7 +381,7 @@ const registercourt = async () => {
   formData.append('status', model.value.court.status);
   formData.append('criminal_status', model.value.court.criminal_status);
 
-  const response = await axios.post('http://127.0.0.1:8000/api/prisonerCourt', formData, {
+  const response = await axios.post('https://kalkidan.net:2083/api/prisonerCourt', formData, {
     'headers': {
       'Content-Type': 'multipart/form-data'
     }

@@ -278,7 +278,7 @@
   })
   const fetchSex = async ()=>{
     try {
-      const res = await axios.get('http://127.0.0.1:8000/api/sexes');
+      const res = await axios.get('https://kalkidan.net:2083/api/sexes');
       sexes.value = res.data
       console.log('response',  sexes.value); 
     } catch (error) {
@@ -287,7 +287,7 @@
   }
   const getRole = async ()=>{
     try {
-      const res = await axios.get('http://127.0.0.1:8000/api/roles');
+      const res = await axios.get('https://kalkidan.net:2083/api/roles');
       roles.value = res.data
       console.log('response',  roles.value); 
     } catch (error) {
@@ -321,7 +321,7 @@ const handleSignature = async(event)=>{
         formData.append('photo', model.value.users.photo)
         formData.append('signature', model.value.users.signature)
     
-    const response = await axios.post('http://127.0.0.1:8000/api/user',formData,{
+    const response = await axios.post('https://kalkidan.net:2083/api/user',formData,{
       'headers':{
         'Content-Type':'multipart/form-data'
       }

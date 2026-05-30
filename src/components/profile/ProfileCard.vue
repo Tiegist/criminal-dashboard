@@ -4,7 +4,7 @@
       <div class="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
         <div class="flex flex-col items-center w-full gap-6 xl:flex-row">
           <div class="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800">
-            <img :src="`http://127.0.0.1:8000/${users.photo}`" alt="" />
+            <img :src="`https://kalkidan.net:2083/${users.photo}`" alt="" />
           </div>
           <div class="order-3 xl:order-2">
             <h4 class="mb-2 text-lg font-semibold text-center text-gray-800 dark:text-white/90 xl:text-left">
@@ -150,7 +150,7 @@ const saveProfile = async () => {
   }
 
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/user', userData, {
+    const response = await axios.post('https://kalkidan.net:2083/api/user', userData, {
       headers: {
         "Content-Type": "application/json"
       }
@@ -164,7 +164,7 @@ const saveProfile = async () => {
 
 const fetchUser = async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/api/user')
+    const response = await axios.get('https://kalkidan.net:2083/api/user')
     users.value = response.data
     console.log('Users:', users.value)
   } catch (error) {
@@ -174,7 +174,7 @@ const fetchUser = async () => {
 
 const fetchRole = async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/api/user-role')
+    const response = await axios.get('https://kalkidan.net:2083/api/user-role')
     roles.value = response.data
     console.log('Roles:', roles.value)
   } catch (error) {

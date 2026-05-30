@@ -4,7 +4,7 @@
     <div class=" ml-">
       <div class=" w-full">
         <div class="w-1/2 mr-10">
-          <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+          <label class="app-label">
             የእስረኛው ሁኔታ
           </label>
           <div class="relative z-20 bg-transparent">
@@ -28,7 +28,7 @@
 
 
         <div class="w-1/2 mr-10 mt-5">
-          <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+          <label class="app-label">
             የወንጀሉ አይነት
           </label>
           <div class="relative z-20 bg-transparent">
@@ -51,7 +51,7 @@
       </div>
 
       <div class="w-1/2  mt-5">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የወንጀሉ ገለጻ
         </label>
         <textarea v-model="crimes.crime_description"
@@ -110,7 +110,7 @@ export default {
 
     const fetchCriminalStatus = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/criminal-status');
+        const response = await axios.get('https://kalkidan.net:2083/api/criminal-status');
         criminalStatus.value = response.data;
         console.log('criminalStatus', criminalStatus.value);
       } catch (error) {
@@ -119,7 +119,7 @@ export default {
     };
     const fetchcrime = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/crime');
+        const response = await axios.get('https://kalkidan.net:2083/api/crime');
         crimess.value = response.data.data;
         console.log('crimes', crimess.value);
       } catch (error) {
@@ -135,7 +135,7 @@ export default {
       });
 
       try {
-        const response = await axios.post('http://127.0.0.1:8000/api/Prisioner_crime', formData, {
+        const response = await axios.post('https://kalkidan.net:2083/api/Prisioner_crime', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

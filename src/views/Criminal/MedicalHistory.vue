@@ -3,7 +3,7 @@
     <PageBreadcrumb :pageTitle="currentPageTitle" />
     <div class="flex w-full">
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የህመሙ አይነት
         </label>
         <div class="relative z-20 bg-transparent">
@@ -25,11 +25,11 @@
         </div>
       </div>
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የሆስፒታል ስም
         </label>
         <input type="text" v-model="medical.hospital_name"
-          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+          class="app-input" />
       </div>
     </div>
 
@@ -37,7 +37,7 @@
 
     <div class="flex w-full mt-5">
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           ቀን
         </label>
         <div class="relative">
@@ -57,29 +57,29 @@
       </div>
 
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የዶክተሩ ስም
         </label>
         <input type="text" v-model="medical.doctor_name"
-          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+          class="app-input" />
       </div>
     </div>
 
     <div class="flex w-full mt-5">
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የዶክተሩ አድራሻ
         </label>
         <input type="text" v-model="medical.doctor_address"
-          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+          class="app-input" />
       </div>
 
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የብር መጠን
         </label>
         <input type="number" v-model="medical.medical_expense"
-          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+          class="app-input" />
       </div>
     </div>
     <div class="">
@@ -135,7 +135,7 @@ export default {
 
     const fetchDiseasetype = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/disease-type');
+        const response = await axios.get('https://kalkidan.net:2083/api/disease-type');
         diseaseTypes.value = response.data.data;
         console.log('diseaseType', diseaseTypes.value);
       } catch (error) {
@@ -151,7 +151,7 @@ export default {
       });
 
       try {
-        const response = await axios.post('http://127.0.0.1:8000/api/medical', formData, {
+        const response = await axios.post('https://kalkidan.net:2083/api/medical', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

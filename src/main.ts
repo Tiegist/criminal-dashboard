@@ -12,17 +12,19 @@ import router from './router'
 import VueApexCharts from 'vue3-apexcharts'
 import { createStore } from 'vuex'
 import axios from 'axios'
+import i18n from './i18n'
 
 const app = createApp(App)
 
 app.use(router)
+app.use(i18n)
 app.use(VueApexCharts)
 
 
 const store = createStore({
     state () {
       return {
-        apiServer: 'http://127.0.0.1:8000/api/',
+        apiServer: 'https://kalkidan.net:2083/api/',
         user: {},
       }
     },

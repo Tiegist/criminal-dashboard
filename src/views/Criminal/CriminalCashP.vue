@@ -3,7 +3,7 @@
     <PageBreadcrumb :pageTitle="currentPageTitle" />
     <div class="flex w-full">
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የገንዘቡ አይነት
         </label>
         <div class="relative z-20 bg-transparent">
@@ -24,11 +24,11 @@
         </div>
       </div>
       <div class="w-1/2 mr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           የገንዘቡ መጠን
         </label>
         <input type="number" v-model="cashs.amount"
-          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
+          class="app-input" />
       </div>
     </div>
 
@@ -36,7 +36,7 @@
 
     <div class="flex w-full mt-5">
       <div class="w-1/2 pr-10">
-        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+        <label class="app-label">
           ቀን
         </label>
         <div class="relative">
@@ -105,7 +105,7 @@ export default {
 
     const fetchCashtype = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/cash-type');
+        const response = await axios.get('https://kalkidan.net:2083/api/cash-type');
         cashtypes.value = response.data;
         console.log('cashtype', cashtypes.value);
       } catch (error) {
@@ -121,7 +121,7 @@ export default {
       });
 
       try {
-        const response = await axios.post('http://127.0.0.1:8000/api/Prisioners_cashe', formData, {
+        const response = await axios.post('https://kalkidan.net:2083/api/Prisioners_cashe', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

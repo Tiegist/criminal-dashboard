@@ -249,7 +249,7 @@ const model = ref({
 })
 const fetchSex = async () => {
   try {
-    const res = await axios.get('http://127.0.0.1:8000/api/sexes');
+    const res = await axios.get('https://kalkidan.net:2083/api/sexes');
     sexes.value = res.data
     console.log('response', sexes.value);
   } catch (error) {
@@ -258,7 +258,7 @@ const fetchSex = async () => {
 }
 const fetchEthnic = async () => {
   try {
-    const res = await axios.get('http://127.0.0.1:8000/api/ethincgroup');
+    const res = await axios.get('https://kalkidan.net:2083/api/ethincgroup');
     ethnicGroups.value = res.data.data
     console.log('response', ethnicGroups.value);
   } catch (error) {
@@ -267,7 +267,7 @@ const fetchEthnic = async () => {
 }
 const fetchTown = async () => {
   try {
-    const res = await axios.get('http://127.0.0.1:8000/api/town');
+    const res = await axios.get('https://kalkidan.net:2083/api/town');
     Towns.value = res.data.data
     console.log('response', Towns.value);
   } catch (error) {
@@ -288,7 +288,7 @@ const registerPrisioner = async () => {
   formData.append('birth_town_id', model.value.prisioner.birth_town_id);
   formData.append('ethnic_group_id', model.value.prisioner.ethnic_group_id);
 
-  const response = await axios.post('http://127.0.0.1:8000/api/prisioner', formData, {
+  const response = await axios.post('https://kalkidan.net:2083/api/prisioner', formData, {
     'headers': {
       'Content-Type': 'multipart/form-data'
     }

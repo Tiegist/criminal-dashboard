@@ -14,14 +14,16 @@
         <HeaderLogo />
         <!-- <SearchBar /> -->
       </div>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
+        <LanguageSwitcher />
         <ThemeToggler />
         <UserMenu />
       </div>
     </div>
 
     <!-- SMALL SCREEN HEADER (only UserMenu/Logout) -->
-    <div class="flex lg:hidden justify-end px-4 py-3">
+    <div class="flex lg:hidden items-center justify-end gap-3 px-4 py-3">
+      <LanguageSwitcher />
       <UserMenu />
     </div>
   </header>
@@ -31,6 +33,7 @@
 import { ref } from 'vue'
 import { useSidebar } from '@/composables/useSidebar'
 import ThemeToggler from '../common/ThemeToggler.vue'
+import LanguageSwitcher from '../common/LanguageSwitcher.vue'
 import SearchBar from './header/SearchBar.vue'
 import HeaderLogo from './header/HeaderLogo.vue'
 // import NotificationMenu from './header/NotificationMenu.vue'

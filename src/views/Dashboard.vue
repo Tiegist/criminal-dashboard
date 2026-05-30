@@ -1,6 +1,8 @@
 <template>
 	<admin-layout>
-		<div class="grid grid-cols-12 gap-4 md:gap-6">
+    <div class="grid grid-cols-12 gap-4 md:gap-6">
+      <LoadingState v-if="!loaded" :message="t('dashboard.loadingDashboard')" class="col-span-12" />
+      <template v-else>
 			<div class="col-span-12 space-y-6 xl:col-span-7">
 				<ecommerce-metrics v-if="loaded" :dashboardData="dashboardData" />
 				<monthly-sale v-if="loaded" :dashboardData="dashboardData" />
@@ -9,8 +11,7 @@
 				<monthly-target />
 				<div class="grid grid-cols-2 gap-2">
 
-					<div
-						class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
+					<div class="app-stat-card">
 						<div class="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl dark:bg-gray-800">
 							<svg class="fill-gray-800 dark:fill-white/90" width="24" height="24" viewBox="0 0 24 24"
 								fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,14 +23,13 @@
 
 						<div class="flex items-end justify-between mt-5">
 							<div>
-								<span class="text-sm text-gray-500 dark:text-gray-400">ወንድ እስረኞች </span>
+								<span class="text-sm text-gray-500 dark:text-gray-400">{{ t('dashboard.malePrisoners') }}</span>
 								<h4 class="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">{{
 									dashboardData.male_prisoners }}</h4>
 							</div>
 						</div>
 					</div>
-					<div
-						class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
+					<div class="app-stat-card">
 						<div class="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl dark:bg-gray-800">
 							<svg class="fill-gray-800 dark:fill-white/90" width="24" height="24" viewBox="0 0 24 24"
 								fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +41,7 @@
 
 						<div class="flex items-end justify-between mt-5">
 							<div>
-								<span class="text-sm text-gray-500 dark:text-gray-400">ሴት እስረኞት </span>
+								<span class="text-sm text-gray-500 dark:text-gray-400">{{ t('dashboard.femalePrisoners') }}</span>
 								<h4 class="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">{{
 									dashboardData.female_prisoners }}</h4>
 							</div>
@@ -58,6 +58,7 @@
 			<div class="col-span-12">
 				<AttendanceDashboard v-if="loaded" :dashboardData="dashboardData" />
 			</div>
+      </template>
 		</div>
 	</admin-layout>
 </template>
@@ -69,12 +70,15 @@ import MonthlyTarget from '../components/ecommerce/MonthlyTarget.vue'
 import MonthlySale from '../components/ecommerce/MonthlySale.vue'
 import CrimeCount from '../components/ecommerce/CrimeCount.vue'
 import AttendanceDashboard from '../components/ecommerce/AttendanceDashboard.vue'
+import LoadingState from '../components/common/LoadingState.vue'
+import { useI18n } from 'vue-i18n'
 
 import axios from 'axios'
 
 import { useStore } from 'vuex';
 import { ref, onMounted, computed } from 'vue';
 const store = useStore();
+const { t } = useI18n();
 
 const dashboardData = ref([])
 const apiServer = computed(() => store.state.apiServer);

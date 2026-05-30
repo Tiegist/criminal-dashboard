@@ -28,14 +28,14 @@ export default {
     const showPrisoinerInfo = ref(false)
     const showMore = ref(false)
     const fetchPrisioner = () => {
-      axios.get('http://127.0.0.1:8000/api/prisioner').then((res) => {
+      axios.get('https://kalkidan.net:2083/api/prisioner').then((res) => {
 
         PrisionerInfo.value = res.data.Prisioner
         console.log('Prisioner Infro', PrisionerInfo.value)
       })
     };
     const fetchSinglePrisioner = (prisoner_id) => {
-      axios.get(`http://127.0.0.1:8000/api/prisioner/${prisoner_id}`).then((res) => {
+      axios.get(`https://kalkidan.net:2083/api/prisioner/${prisoner_id}`).then((res) => {
         singlePrisioner.value = res.data.Prisioner
         console.log('prisioner_id', res.data.Prisioner.id)
         localStorage.setItem('prisoner_id', res.data.Prisioner.id)
@@ -47,7 +47,7 @@ export default {
     const fetchSinglePrisionerInfo = (id) => {
       const prisoner_id = localStorage.getItem('prisoner_id')
       console.log('prisoner_id', prisoner_id)
-      axios.get(`http://127.0.0.1:8000/api/prision-history/${prisoner_id}`).then((res) => {
+      axios.get(`https://kalkidan.net:2083/api/prision-history/${prisoner_id}`).then((res) => {
         singlePrisionerInfo.value = res.data.data
         console.log('single prisioner info', singlePrisionerInfo.value)
         showPrisoinerInfo.value = true

@@ -78,7 +78,7 @@ export default {
     const matchedHistory = ref([])
     const prisonerHistoryID = ref(null)
     // const fetchPrisioner = ()=>{
-    //     axios.get('http://127.0.0.1:8000/api/prisioner').then((res)=>{
+    //     axios.get('https://kalkidan.net:2083/api/prisioner').then((res)=>{
 
     //         PrisionerInfo.value = res.data.Prisioner
     //         console.log('Prisioner Infro',PrisionerInfo.value)
@@ -91,7 +91,7 @@ export default {
     const fetchSinglePrisionerApperance = (id) => {
       const priosoner_history_id = localStorage.getItem('priosoner_history_id')
       prisonerHistoryID.value = priosoner_history_id
-      axios.get(`http://127.0.0.1:8000/api/prisionerProperty`).then((res) => {
+      axios.get(`https://kalkidan.net:2083/api/prisionerProperty`).then((res) => {
         singlePrisioner.value = res.data.prisionerProperty
         console.log('single prisioner property', singlePrisioner.value)
         matchedHistory.value = singlePrisioner.value.find(item => item.prision_history_id == priosoner_history_id)
@@ -112,7 +112,7 @@ export default {
     //    // const prisioner_history_id = localStorage.getItem('prisioner_history_id')
     //       console.log('prisoner_id',prisoner_id)
     //       console.log('prisioner_history_id',prisioner_history_id)
-    // axios.get(`http://127.0.0.1:8000/api/prisionerapperance/`).then((res)=>{
+    // axios.get(`https://kalkidan.net:2083/api/prisionerapperance/`).then((res)=>{
     //   singlePrisionerApperance.value = res.data.prisionerApperance
     //  const mathedApperance =  singlePrisioner.value.find(item=>item.prisioner_history_id == prisioner_history_id)
     //   console.log('single prisioner',singlePrisioner.value )
